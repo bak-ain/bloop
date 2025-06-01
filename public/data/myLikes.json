@@ -1,0 +1,18 @@
+[
+  {
+    "id": "post1",
+    "viewType": "liked",
+    "type": "community",
+    "date": "2025.05.28",
+    "description": "오늘도 루하는 산책 중 🐶",
+    "imageUrls": ["/images/3.png"],
+    "likes": 6,
+    "comments": 13,
+    "isLiked": true,
+    "author": {
+      "name": "LUHA",
+      "profileImage": "/images/profiles/luha.png",
+      "badgeType": "artist"
+    }
+  }
+]

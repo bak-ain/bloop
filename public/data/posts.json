@@ -1,0 +1,70 @@
+{
+  "artist": [
+    {
+      "id": "1",
+      "name": "DOA",
+      "profileImage": "/images/profiles/doa.png",
+      "badgeType": "artist",
+      "date": "2025.05.28",
+      "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
+      "likes": 3,
+      "comment": 22,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/2.png"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "LUHA",
+      "profileImage": "/images/profiles/luha.png",
+      "badgeType": "artist",
+      "date": "2025.05.27",
+      "description": "루하는 오늘도 강아지 산책중 🐶",
+      "likes": 7,
+      "comment": 15,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/3.png"
+      ]
+    }
+  ],
+  "fan": [
+    {
+      "id": "1",
+      "name": "nanfan",
+      "profileImage": "/images/profiles/nanfan.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "date": "2025.05.28",
+      "description": "다들 이사진 봤어요 ? ㅠㅠ 역시 우리 도아뿐 ....",
+      "hashtag": "#운동하는 #도아 #섹시하다",
+      "likes": 3,
+      "comment": 22,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/2.png"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "pinkgomi",
+      "profileImage": "/images/profiles/pinkgomi.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "date": "2025.05.27",
+      "description": "루하 눈빛 무슨 일이야...",
+      "hashtag": "#루하 #고막남친 #산책짤",
+      "likes": 6,
+      "comment": 13,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/3.png"
+      ]
+    }
+  ]
+}

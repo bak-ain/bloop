@@ -1,0 +1,54 @@
+[
+  {
+    "id": "s1",
+    "viewType": "scrap",
+    "scrapCategory": "agency",
+    "type": "agency",
+    "title": "Second mini album 공식사진",
+    "description": "하이비스 second mini album 3차 사진 공개",
+    "date": "2025-05-29 17:52",
+    "likes": 100,
+    "isScrapped": true,
+    "imageUrls": [
+      "/images/posts/album.png"
+    ]
+  },
+  {
+    "id": "s2",
+    "viewType": "scrap",
+    "scrapCategory": "artist",
+    "type": "artist",
+    "description": "오늘 날씨가 너무 덥다 ㅠㅠ 다들 더위 조심 !!",
+    "date": "2025-05-29 17:52",
+    "likes": 21,
+    "isScrapped": true,
+    "author": {
+      "name": "DOA",
+      "profileImage": "/images/profiles/doa.png",
+      "badgeType": "artist"
+    },
+    "imageUrls": [
+      "/images/posts/doa.png"
+    ]
+  },
+  {
+    "id": "s3",
+    "viewType": "scrap",
+    "scrapCategory": "community",
+    "type": "community",
+    "description": "다들 이사진 봤어요 ? ㅠㅠ 역시 우리 도아는 ....",
+    "date": "2025-05-29 17:52",
+    "likes": 22,
+    "isScrapped": true,
+    "author": {
+      "name": "뿡뿡펀치",
+      "profileImage": "/images/profiles/fan.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "bbungya"
+    },
+    "imageUrls": [
+      "/images/posts/doa-fan.png"
+    ]
+  }
+]

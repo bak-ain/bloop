@@ -1,0 +1,26 @@
+[
+  {
+    "id": "heartmaster",
+    "emoji": "🧡",
+    "title": "하트마스터",
+    "description": "하루 평균 좋아요 5개가 넘어가는 당신은 반응만으로도 진심이 느껴지는 팬이에요."
+  },
+  {
+    "id": "looker",
+    "emoji": "👀",
+    "title": "눈팅러",
+    "description": "기록은 별로 없지만 저장을 많이하는 당신은 마음 깊은, 조용한 응원러"
+  },
+  {
+    "id": "talkmaker",
+    "emoji": "💬",
+    "title": "토크메이커",
+    "description": "3연속 인기게시물에 등록된 당신은 어디서든 중심이 되는 토크 장인, 커뮤니티 핵심러!"
+  },
+  {
+    "id": "connector",
+    "emoji": "🤝",
+    "title": "소통파",
+    "description": "댓글로 마음을 전하는 당신, 팬소통의 중심이에요!"
+  }
+]

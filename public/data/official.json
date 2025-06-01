@@ -1,0 +1,104 @@
+{
+  "highlight": [
+    {
+      "id": "h1",
+      "type": "default",
+      "title": "하이비스 콘서트",
+      "description": "만족스러운 콘서트를 위해!",
+      "likes": 50,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/top.png"
+      ]
+    },
+    {
+      "id": "h2",
+      "type": "default",
+      "title": "컴백 티저 공개",
+      "description": "HIBIS, 첫 정규 앨범 ‘Go Together’ 티저 공개",
+      "likes": 55,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/teaser.png"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "m1",
+      "type": "hot",
+      "date": "2025.05.31",
+      "title": "HOT 'DREAM' 라이브 무대 선공개",
+      "likes": 12,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/center.png"
+      ]
+    },
+    {
+      "id": "m2",
+      "type": "hot",
+      "date": "2025.05.26",
+      "title": "첫 정규 앨범 ‘Go Together’ 티저 공개",
+      "likes": 9,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/go_together.png"
+      ]
+    }
+  ],
+  "photo": [
+    {
+      "id": "p1",
+      "type": "imageOnly",
+      "likes": 10,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/photo1.png"
+      ]
+    },
+    {
+      "id": "p2",
+      "type": "imageOnly",
+      "likes": 10,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/photo2.png"
+      ]
+    }
+  ],
+  "behind": [
+    {
+      "id": "b1",
+      "type": "feature",
+      "title": "도아의 무대 전 셀프캠",
+      "description": "무대 뒤, 카메라에 남긴 진심 어린 셀프캠을 엿보세요.",
+      "buttonText": "보러가기",
+      "likes": 99,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/selfcam.png"
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "feature",
+      "title": "아린의 연습실 브이로그",
+      "description": "연습실의 따스한 오후를 담은 그 장면 그대로!",
+      "buttonText": "보러가기",
+      "likes": 34,
+      "isScrapped": true,
+      "isLiked": true,
+      "imageUrls": [
+        "/images/arin_vlog.png"
+      ]
+    }
+  ]
+}

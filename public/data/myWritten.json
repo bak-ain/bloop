@@ -1,0 +1,15 @@
+[
+  {
+    "id": "w1",
+    "viewType": "written",
+    "type": "community",
+    "description": "다들 이사진 봤어요 ? ㅠㅠ 역시 우리 도아는 .... 어쩌면 저렇게 블링블링....",
+    "date": "2025-05-29 17:52",
+    "likes": 1,
+    "comments": 22,
+    "editable": true,
+    "imageUrls": [
+      "/images/posts/doa-fan.png"
+    ]
+  }
+]

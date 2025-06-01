@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "user": {
+      "name": "nanfan",
+      "profileImage": "/images/profiles/nanfan.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "nanfan123"
+    },
+    "content": "방금 라이브 클립 봤는데 진짜 박수쳤어요... 최고의 보컬 👏",
+    "emoji": "/images/emoji/clap.png",
+    "date": "2025.05.29",
+    "likes": 3,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "2",
+    "user": {
+      "name": "mintcookie",
+      "profileImage": "/images/profiles/mintcookie.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "minty"
+    },
+    "content": "오늘 영상 미쳤다... 진짜 감동이었어요 😭",
+    "emoji": "/images/emoji/cry.png",
+    "date": "2025.05.29",
+    "likes": 5,
+    "comments": 1,
+    "isLiked": true
+  }
+]
