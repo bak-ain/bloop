@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
-import Home from './pages/home/Home';
-import Login from './pages/auth/Login';
-import Join from './pages/auth/Join';
-import OfficialFeed from './pages/feed/OfficialFeed';
-import ArtistFeed from './pages/feed/ArtistFeed';
-import FanFeed from './pages/feed/FanFeed';
-import Mypage from './pages/user/Mypage';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Join from './pages/Join';
+import OfficialFeed from './pages/OfficialFeed';
+import ArtistFeed from './pages/ArtistFeed';
+import FanFeed from './pages/FanFeed';
+import Mypage from './pages/Mypage';
 // import './App.css';
 
 function App() {

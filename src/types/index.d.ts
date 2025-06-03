@@ -76,6 +76,7 @@ export interface OfficialContent {
   date?: string;
   imageUrls: string[];       // ✅ 배열로 변경
   likes?: number;
+  hashtag?: string;
   buttonText?: string;
   isScrapped?: boolean;
   isLiked?: boolean;
