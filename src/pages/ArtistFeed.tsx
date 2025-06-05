@@ -38,6 +38,7 @@ const ArtistFeed = () => {
   }, []);
 
   return (
+    <ArtistPostProvider>
     <Container>
       {postList.map((post) => (
         <PostCard
@@ -65,6 +66,7 @@ const ArtistFeed = () => {
         />
       )}
     </Container>
+    </ArtistPostProvider>
   );
 };
 

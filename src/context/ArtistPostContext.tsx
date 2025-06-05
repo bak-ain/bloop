@@ -37,31 +37,57 @@ export const useArtistPost = () => {
 };
 
 export const ArtistPostProvider = ({ children }: { children: React.ReactNode }) => {
-  const [postList, setPostList] = useState<ArtistPost[]>(() => {
-    const stored = localStorage.getItem("artistPostList");
-    return stored ? JSON.parse(stored) : [];
-  });
+  const [postList, setPostList] = useState<ArtistPost[]>([]);
+  const [likedPostIds, setLikedPostIds] = useState<string[]>([]);
+  const [scrappedPostIds, setScrappedPostIds] = useState<string[]>([]);
+  const [commentsMap, setCommentsMap] = useState<Record<string, CommentPost[]>>({});
 
-  const [likedPostIds, setLikedPostIds] = useState<string[]>(() => {
-    return JSON.parse(localStorage.getItem("artistLikedPosts") || "[]");
-  });
+  // ✅ fetch posts + liked/scrapped on init
+  useEffect(() => {
+    const storedPostList = JSON.parse(localStorage.getItem("artistPostList") || "null");
+    const likedList = JSON.parse(localStorage.getItem("artistLikedPosts") || "[]");
+    const scrappedList = JSON.parse(localStorage.getItem("artistScrappedPosts") || "[]");
 
-  const [scrappedPostIds, setScrappedPostIds] = useState<string[]>(() => {
-    return JSON.parse(localStorage.getItem("artistScrappedPosts") || "[]");
-  });
+    setLikedPostIds(likedList);
+    setScrappedPostIds(scrappedList);
 
-  const [commentsMap, setCommentsMap] = useState<Record<string, CommentPost[]>>(() => {
+    if (storedPostList) {
+      setPostList(storedPostList);
+    } else {
+      fetch("/data/posts.json")
+        .then((res) => res.json())
+        .then((data) => {
+          setPostList(data.artist);
+          localStorage.setItem("artistPostList", JSON.stringify(data.artist));
+        });
+    }
+  }, []);
+
+  // ✅ fetch comments for all posts
+  useEffect(() => {
     const all: Record<string, CommentPost[]> = {};
-    const stored = localStorage.getItem("artistPostList");
-    const parsed: ArtistPost[] = stored ? JSON.parse(stored) : [];
-    parsed.forEach((post) => {
-      const raw = localStorage.getItem(`comments_${post.id}`);
-      if (raw) {
-        all[post.id] = JSON.parse(raw);
+
+    postList.forEach((post) => {
+      const saved = localStorage.getItem(`comments_${post.id}`);
+      const parsed = saved ? JSON.parse(saved) : null;
+
+      if (parsed && parsed.length > 0) {
+        all[post.id] = parsed;
+      } else {
+        fetch("/data/comments.json")
+          .then((res) => res.json())
+          .then((json: CommentPost[]) => {
+            const filtered = json.filter((c) => c.postId === post.id && c.postType === "artist");
+            all[post.id] = filtered;
+            localStorage.setItem(`comments_${post.id}`, JSON.stringify(filtered));
+            setCommentsMap((prev) => ({ ...prev, [post.id]: filtered }));
+          })
+          .catch((err) => console.error("댓글 불러오기 실패", err));
       }
     });
-    return all;
-  });
+
+    setCommentsMap(all);
+  }, [postList]);
 
   useEffect(() => {
     localStorage.setItem("artistPostList", JSON.stringify(postList));
