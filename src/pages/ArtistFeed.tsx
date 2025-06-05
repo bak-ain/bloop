@@ -3,6 +3,7 @@ import PostCard from "../components/PostCard";
 import Container from "../components/Container";
 import Popup from "../components/Popup";
 import { ArtistPost, FanPost } from "../types";
+import { ArtistPostProvider } from "../context/ArtistPostContext";
 
 const ArtistFeed = () => {
   const [postList, setPostList] = useState<(ArtistPost | FanPost)[]>([]);
