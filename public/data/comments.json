@@ -1,6 +1,8 @@
 [
   {
     "id": "1",
+    "postId": "a1",
+    "postType": "artist",
     "user": {
       "name": "nanfan",
       "profileImage": "/images/profiles/nanfan.png",
@@ -17,6 +19,261 @@
   },
   {
     "id": "2",
+    "postId": "a1",
+    "postType": "artist",
+    "user": {
+      "name": "bluebird",
+      "profileImage": "/images/profiles/bluebird.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "blue456"
+    },
+    "content": "고음 부분에서 소름 돋았어요... 레전드 무대!",
+    "emoji": "/images/emoji/fire.png",
+    "date": "2025.05.29",
+    "likes": 5,
+    "comments": 1,
+    "isLiked": false
+  },
+  {
+    "id": "3",
+    "postId": "a1",
+    "postType": "artist",
+    "user": {
+      "name": "peachpie",
+      "profileImage": "/images/profiles/peachpie.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "peach001"
+    },
+    "content": "무대 의상도 넘 잘 어울려요 ✨",
+    "emoji": "/images/emoji/star.png",
+    "date": "2025.05.29",
+    "likes": 1,
+    "comments": 0,
+    "isLiked": false
+  },
+
+  {
+    "id": "4",
+    "postId": "a2",
+    "postType": "artist",
+    "user": {
+      "name": "mintcookie",
+      "profileImage": "/images/profiles/mintcookie.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "minty"
+    },
+    "content": "산책짤 기다렸어요 ㅠㅠ 너무 귀여워요 🐶",
+    "emoji": "/images/emoji/cry.png",
+    "date": "2025.05.27",
+    "likes": 4,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "5",
+    "postId": "a2",
+    "postType": "artist",
+    "user": {
+      "name": "goguma",
+      "profileImage": "/images/profiles/goguma.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "gogu123"
+    },
+    "content": "오늘도 힐링 주셔서 감사합니다 🌿",
+    "emoji": "/images/emoji/leaf.png",
+    "date": "2025.05.27",
+    "likes": 2,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "6",
+    "postId": "a2",
+    "postType": "artist",
+    "user": {
+      "name": "bamboo",
+      "profileImage": "/images/profiles/bamboo.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "bamboo321"
+    },
+    "content": "루하의 산책짤은 진리입니다!",
+    "date": "2025.05.27",
+    "likes": 3,
+    "comments": 0,
+    "isLiked": false
+  },
+
+  {
+    "id": "7",
+    "postId": "a3",
+    "postType": "artist",
+    "user": {
+      "name": "kfan",
+      "profileImage": "/images/profiles/kfan.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "kfan007"
+    },
+    "content": "태국 공연 후기 너무 궁금했어요 🇹🇭",
+    "date": "2025.05.26",
+    "likes": 2,
+    "comments": 1,
+    "isLiked": false
+  },
+  {
+    "id": "8",
+    "postId": "a3",
+    "postType": "artist",
+    "user": {
+      "name": "bubblepop",
+      "profileImage": "/images/profiles/bubblepop.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "bubble999"
+    },
+    "content": "도아 하이라이트 기대중이에요!",
+    "emoji": "/images/emoji/music.png",
+    "date": "2025.05.26",
+    "likes": 3,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "9",
+    "postId": "a3",
+    "postType": "artist",
+    "user": {
+      "name": "lily",
+      "profileImage": "/images/profiles/lily.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "lily98"
+    },
+    "content": "세이 고생했어요 💛",
+    "emoji": "/images/emoji/heart.png",
+    "date": "2025.05.26",
+    "likes": 2,
+    "comments": 0,
+    "isLiked": true
+  },
+
+  {
+    "id": "10",
+    "postId": "a4",
+    "postType": "artist",
+    "user": {
+      "name": "jellycat",
+      "profileImage": "/images/profiles/jellycat.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "jcat"
+    },
+    "content": "알파카 넘 귀엽고 ARIN도 귀여움 두 배 🤍",
+    "emoji": "/images/emoji/alpaca.png",
+    "date": "2025.05.25",
+    "likes": 4,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "11",
+    "postId": "a4",
+    "postType": "artist",
+    "user": {
+      "name": "sunny",
+      "profileImage": "/images/profiles/sunny.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "sunnyfan"
+    },
+    "content": "이거 움짤로 만들어야 함 ㅋㅋ",
+    "date": "2025.05.25",
+    "likes": 1,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "12",
+    "postId": "a4",
+    "postType": "artist",
+    "user": {
+      "name": "cheese",
+      "profileImage": "/images/profiles/cheese.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "chz123"
+    },
+    "content": "그 표정 뭐예요 ㅋㅋ 미쳤다 진짜",
+    "emoji": "/images/emoji/lol.png",
+    "date": "2025.05.25",
+    "likes": 3,
+    "comments": 0,
+    "isLiked": true
+  },
+
+  {
+    "id": "13",
+    "postId": "f1",
+    "postType": "fan",
+    "user": {
+      "name": "banana",
+      "profileImage": "/images/profiles/banana.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "bana321"
+    },
+    "content": "섹시하다 도아 진짜 😳",
+    "emoji": "/images/emoji/fire.png",
+    "date": "2025.05.28",
+    "likes": 3,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "14",
+    "postId": "f1",
+    "postType": "fan",
+    "user": {
+      "name": "milktea",
+      "profileImage": "/images/profiles/milktea.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "milk44"
+    },
+    "content": "이 장면 저장했습니다 🫡",
+    "date": "2025.05.28",
+    "likes": 2,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "15",
+    "postId": "f1",
+    "postType": "fan",
+    "user": {
+      "name": "cookie",
+      "profileImage": "/images/profiles/cookie.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "cook88"
+    },
+    "content": "운동하는 도아 = 국보",
+    "emoji": "/images/emoji/heart.png",
+    "date": "2025.05.28",
+    "likes": 1,
+    "comments": 0,
+    "isLiked": false
+  },
+
+  {
+    "id": "16",
+    "postId": "f2",
+    "postType": "fan",
     "user": {
       "name": "mintcookie",
       "profileImage": "/images/profiles/mintcookie.png",
@@ -29,6 +286,42 @@
     "date": "2025.05.29",
     "likes": 5,
     "comments": 1,
+    "isLiked": true
+  },
+  {
+    "id": "17",
+    "postId": "f2",
+    "postType": "fan",
+    "user": {
+      "name": "rabbitluv",
+      "profileImage": "/images/profiles/rabbitluv.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "rabbit123"
+    },
+    "content": "이런 팬포스트 너무 좋아요 💖",
+    "emoji": "/images/emoji/heart.png",
+    "date": "2025.05.30",
+    "likes": 2,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "18",
+    "postId": "f2",
+    "postType": "fan",
+    "user": {
+      "name": "cloudy",
+      "profileImage": "/images/profiles/cloudy.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "cloudyday"
+    },
+    "content": "루하짤 저장각... 📷",
+    "emoji": "/images/emoji/camera.png",
+    "date": "2025.05.30",
+    "likes": 3,
+    "comments": 0,
     "isLiked": true
   }
 ]

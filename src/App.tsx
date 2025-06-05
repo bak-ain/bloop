@@ -15,10 +15,10 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/join" element={<Join />} />
-      <Route path="/officialfeed" element={<OfficialFeed />} />
-      <Route path="/artistfeed" element={<ArtistFeed />} />
-      <Route path="/fanfeed" element={<FanFeed />} />
-      <Route path="/mypage" element={<Mypage />} />
+      <Route path="/official" element={<OfficialFeed />} />
+      <Route path="/muse" element={<ArtistFeed />} />
+      <Route path="/loop" element={<FanFeed />} />
+      <Route path="/mybox" element={<Mypage />} />
     </Routes>
   );
 }

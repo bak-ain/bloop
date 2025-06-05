@@ -2,7 +2,7 @@
 export interface UserPreview {
   name: string;                 // 닉네임 or 활동명
   profileImage: string;
-  badgeType: 'fan' | 'artist' | 'agency';
+  badgeType: 'fan' | 'artist';
   badgeLevel?: 1 | 2 | 3;
   userId?: string;              // @아이디 표기용 (옵셔널)
 }
@@ -18,7 +18,10 @@ export interface BasePost {
   profileImage: string;
   badgeType: 'artist' | 'fan';
   badgeLevel?: 1 | 2 | 3;
-  imageUrls?: string[];       // ✅ 단일/다중 이미지 모두 대응
+  media?: {
+    type: 'image' | 'video';
+    url: string;
+  }[];
   hashtag?: string;
   emoji?: string;
 
@@ -46,20 +49,25 @@ export interface ArtistStoryCard {
 }
 
 
+
 // 댓글용
 export interface CommentPost {
   id: string;
+  postId: string;              // 🔹 댓글이 달린 포스트 ID
+  postType: "artist" | "fan";  // 🔹 포스트 타입 (아티스트 or 팬)
   user: UserPreview;
-  profileImage: string;
-  badgeType: 'fan';
-  badgeLevel: 1 | 2 | 3;
   content: string;
   emoji?: string;
   date: string;
   likes: number;
   comments: number;
   isLiked?: boolean;
+  showReplies?: boolean;
+  replies?: CommentPost[];
+  editable?: boolean;
 }
+
+
 
 export interface CommentInput {
   content: string;
@@ -70,11 +78,15 @@ export interface CommentInput {
 //기획사 공식 컨텐츠
 export interface OfficialContent {
   id: string;
-  type: 'default' | 'hot' | 'imageOnly' | 'feature';
+  type: 'default' | 'new' | 'imageOnly' | 'feature';
   title?: string;
   description?: string;
+  descriptionDetail?: string;
   date?: string;
-  imageUrls: string[];       // ✅ 배열로 변경
+  media?: {
+    type: 'image' | 'video';
+    url: string;
+  }[];
   likes?: number;
   hashtag?: string;
   buttonText?: string;
@@ -147,8 +159,6 @@ export interface MyCommentPost {
   parentTitle: string;
   content: string;
   date: string;
-  likes: number;
-  comments: number;
   editable: true;
 }
 
