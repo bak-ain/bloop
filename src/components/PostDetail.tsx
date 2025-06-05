@@ -150,7 +150,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
         setInput({ content: "", parentPostId: data.id });
         setReplyToId(null);
         setSelectedEmoji(null);
-        setShowStickerPicker(false); 
+        setShowStickerPicker(false);
     };
 
     const handleDelete = (id: string) => {
@@ -219,9 +219,11 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                     )}
                     {data.media && (
                         <div className={styles.media}>
-                            {data.media.map((m, i) => m.type === "video"
-                                ? <video key={i} src={m.url} controls className={styles.media_item} />
-                                : <img key={i} src={m.url} alt={`media-${i}`} className={styles.media_item} />)}
+                            {data.media.map((m, i) =>
+                                m.type === "video"
+                                    ? <video key={i} src={m.url} controls className={styles.media_item} />
+                                    : <img key={i} src={m.url} alt={`media-${i}`} className={styles.media_item} />
+                            )}
                         </div>
                     )}
                 </div>

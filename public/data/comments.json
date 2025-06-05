@@ -15,7 +15,7 @@
     "date": "2025.05.29",
     "likes": 3,
     "comments": 0,
-    "isLiked": true
+    "isLiked": false
   },
   {
     "id": "2",
@@ -70,7 +70,7 @@
     "date": "2025.05.27",
     "likes": 4,
     "comments": 0,
-    "isLiked": true
+    "isLiked": false
   },
   {
     "id": "5",
@@ -159,7 +159,7 @@
     "date": "2025.05.26",
     "likes": 2,
     "comments": 0,
-    "isLiked": true
+    "isLiked": false
   },
 
   {
@@ -178,7 +178,7 @@
     "date": "2025.05.25",
     "likes": 4,
     "comments": 0,
-    "isLiked": true
+    "isLiked": false
   },
   {
     "id": "11",
@@ -213,7 +213,7 @@
     "date": "2025.05.25",
     "likes": 3,
     "comments": 0,
-    "isLiked": true
+    "isLiked": false
   },
 
   {
@@ -249,7 +249,7 @@
     "date": "2025.05.28",
     "likes": 2,
     "comments": 0,
-    "isLiked": true
+    "isLiked": false
   },
   {
     "id": "15",
@@ -286,7 +286,7 @@
     "date": "2025.05.29",
     "likes": 5,
     "comments": 1,
-    "isLiked": true
+    "isLiked": false
   },
   {
     "id": "17",
@@ -322,6 +322,6 @@
     "date": "2025.05.30",
     "likes": 3,
     "comments": 0,
-    "isLiked": true
+    "isLiked": false
   }
 ]

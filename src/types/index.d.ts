@@ -33,20 +33,21 @@ export interface BasePost {
 export interface ArtistPost extends BasePost {
   badgeType: 'artist';
   badgeLevel?: never;
+  isStory?: boolean;
 }
 
 export interface FanPost extends BasePost {
   badgeType: 'fan';
   badgeLevel: 1 | 2 | 3;
 }
-export interface ArtistStoryCard {
-  id: string;
-  name: string;
-  profileImage: string;
-  imageUrls: string[];       // ✅ 배열로 변경
-  isScrapped?: boolean;
-  isLiked?: boolean;
-}
+// export interface ArtistStoryCard {
+//   id: string;
+//   name: string;
+//   profileImage: string;
+//   imageUrls: string[];       
+//   isScrapped?: boolean;
+//   isLiked?: boolean;
+// }
 
 
 
@@ -65,6 +66,7 @@ export interface CommentPost {
   showReplies?: boolean;
   replies?: CommentPost[];
   editable?: boolean;
+  replies?: CommentPost[]
 }
 
 

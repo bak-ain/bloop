@@ -11,10 +11,19 @@
       "comment": 3,
       "isScrapped": true,
       "isLiked": true,
+      "isStory": false,
       "media": [
         {
           "type": "image",
+          "url": "/images/1.png"
+        },
+        {
+          "type": "image",
           "url": "/images/2.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/3.png"
         }
       ]
     },
@@ -29,6 +38,7 @@
       "comment": 3,
       "isScrapped": true,
       "isLiked": true,
+      "isStory": false,
       "media": [
         {
           "type": "image",
@@ -46,6 +56,7 @@
       "likes": 7,
       "comment": 3,
       "isScrapped": true,
+      "isStory": false,
       "isLiked": true,
       "media": [
         {
@@ -65,10 +76,119 @@
       "comment": 3,
       "isScrapped": true,
       "isLiked": true,
+      "isStory": false,
       "media": [
         {
           "type": "image",
           "url": "/images/2.png"
+        }
+      ]
+    },
+    {
+      "id": "a5",
+      "name": "DOA",
+      "profileImage": "/images/profiles/doa.png",
+      "badgeType": "artist",
+      "date": "2025.05.28",
+      "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
+      "likes": 3,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "isStory": true,
+      "media": [
+        {
+          "type": "image",
+          "url": "/images/1.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/2.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/3.png"
+        }
+      ]
+    },
+    {
+      "id": "a6",
+      "name": "DOA",
+      "profileImage": "/images/profiles/doa.png",
+      "badgeType": "artist",
+      "date": "2025.05.28",
+      "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
+      "likes": 3,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "isStory": true,
+      "media": [
+        {
+          "type": "image",
+          "url": "/images/1.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/2.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/3.png"
+        }
+      ]
+    },
+    {
+      "id": "a7",
+      "name": "DOA",
+      "profileImage": "/images/profiles/doa.png",
+      "badgeType": "artist",
+      "date": "2025.05.28",
+      "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
+      "likes": 3,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "isStory": true,
+      "media": [
+        {
+          "type": "image",
+          "url": "/images/1.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/2.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/3.png"
+        }
+      ]
+    },
+    {
+      "id": "a8",
+      "name": "DOA",
+      "profileImage": "/images/profiles/doa.png",
+      "badgeType": "artist",
+      "date": "2025.05.28",
+      "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
+      "likes": 3,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "isStory": true,
+      "media": [
+        {
+          "type": "image",
+          "url": "/images/1.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/2.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/3.png"
         }
       ]
     }

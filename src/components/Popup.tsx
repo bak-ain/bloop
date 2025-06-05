@@ -1,55 +1,47 @@
 import { ArtistPost, FanPost } from "../types";
 import PostDetail from "./PostDetail";
-
+import { usePostList } from "../context/PostListContext";
 
 type PopupProps =
   | {
-    type: 'artistFeed';
-    data: ArtistPost;
-    postList: ArtistPost[];
-    setPostList: React.Dispatch<React.SetStateAction<ArtistPost[]>>;
-    onClose: () => void;
-    onUpdate?: (updatedPost: ArtistPost | FanPost) => void;
-  }
+      type: 'artistFeed';
+      data: ArtistPost;
+      onClose: () => void;
+      onUpdate?: (updatedPost: ArtistPost | FanPost) => void;
+    }
   | {
-    type: 'fanFeed';
-    data: FanPost;
-    postList: FanPost[];
-    setPostList: React.Dispatch<React.SetStateAction<FanPost[]>>;
-    onClose: () => void;
-  }
+      type: 'fanFeed';
+      data: FanPost;
+      onClose: () => void;
+    }
   | {
-    type: 'upload';
-    onClose: () => void;
-    onSubmit: (data: FanPost) => void;
-  }
+      type: 'upload';
+      onClose: () => void;
+      onSubmit: (data: FanPost) => void;
+    }
   | {
-    type: 'edit';
-    data: FanPost;
-    onClose: () => void;
-  };
-
-
+      type: 'edit';
+      data: FanPost;
+      onClose: () => void;
+    };
 
 const ArtistFeedPopup = ({
   data,
-  postList,
-  setPostList,
 }: {
   data: ArtistPost;
-  postList: ArtistPost[];
-  setPostList: React.Dispatch<React.SetStateAction<ArtistPost[]>>;
-}) => <PostDetail type="artist" data={data} postList={postList} setPostList={setPostList} />;
+}) => {
+  const { artistPosts, setArtistPosts } = usePostList();
+  return <PostDetail type="artist" data={data} postList={artistPosts} setPostList={setArtistPosts} />;
+};
 
 const FanFeedPopup = ({
   data,
-  postList,
-  setPostList,
 }: {
   data: FanPost;
-  postList: FanPost[];
-  setPostList: React.Dispatch<React.SetStateAction<FanPost[]>>;
-}) => <PostDetail type="fan" data={data} postList={postList} setPostList={setPostList} />;
+}) => {
+  const { fanPosts, setFanPosts } = usePostList();
+  return <PostDetail type="fan" data={data} postList={fanPosts} setPostList={setFanPosts} />;
+};
 
 const UploadPopup = ({ onSubmit }: { onSubmit: (data: FanPost) => void }) => {
   const handleUpload = () => {
@@ -75,11 +67,9 @@ const UploadPopup = ({ onSubmit }: { onSubmit: (data: FanPost) => void }) => {
   );
 };
 
-
 const EditPopup = ({ data }: { data: FanPost }) => (
   <div>수정 팝업 내용: {data.description}</div>
 );
-
 
 const Popup = (props: PopupProps) => {
   const { type, onClose } = props;
@@ -88,10 +78,10 @@ const Popup = (props: PopupProps) => {
     <div className="popup_wrapper">
       <div className="popup_content">
         {type === 'artistFeed' && (
-          <ArtistFeedPopup data={props.data} postList={props.postList} setPostList={props.setPostList} />
+          <ArtistFeedPopup data={props.data} />
         )}
         {type === 'fanFeed' && (
-          <FanFeedPopup data={props.data} postList={props.postList} setPostList={props.setPostList} />
+          <FanFeedPopup data={props.data} />
         )}
         {type === 'upload' && <UploadPopup onSubmit={props.onSubmit} />}
         {type === 'edit' && <EditPopup data={props.data} />}
@@ -100,10 +90,5 @@ const Popup = (props: PopupProps) => {
     </div>
   );
 };
-
-
-
-
-
 
 export default Popup;

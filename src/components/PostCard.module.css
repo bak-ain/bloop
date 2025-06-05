@@ -176,3 +176,30 @@
   margin-left: 6px;
   vertical-align: middle;
 }
+
+.media_item_wrapper {
+  position: relative;
+  display: inline-block;
+}
+.media_overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.storyContainer{
+  display: flex;
+  height: 250px;
+  border: 1px solid #ddd;
+}
+.storyCard{
+  flex: 1;
+}
+.storyImage{
+  width: 50%;
+  height: auto;
+}

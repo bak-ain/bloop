@@ -1,69 +1,64 @@
 import { useEffect, useState } from "react";
-import { ArtistPost, FanPost, CommentPost } from "../types";
+import { ArtistPost, FanPost } from "../types";
 import { getBadgeImage } from "../utils/badge";
 import styles from "./PostCard.module.css";
-import { updateLikeStatus, updateScrapStatus } from "../utils/postUtils"; // 유틸 사용
+import { useLikedScrapped } from "../context/LikedScrappedContext";
+import { usePostList } from "../context/PostListContext";
 
-interface PostCardProps {
-    data: ArtistPost | FanPost;
+interface PostCardProps<T extends ArtistPost | FanPost> {
+    data: T;
     likedPostIds: string[];
     scrappedPostIds: string[];
-    setLikedPostIds: React.Dispatch<React.SetStateAction<string[]>>;
-    setScrappedPostIds: React.Dispatch<React.SetStateAction<string[]>>;
-    postList: (ArtistPost | FanPost)[];
-    setPostList: React.Dispatch<React.SetStateAction<(ArtistPost | FanPost)[]>>;
-    onClick?: (post: ArtistPost | FanPost) => void;
+    onLike: () => void;
+    onScrap: () => void;
+    onClick?: () => void;
 }
 
-const PostCard = ({
+const PostCard = <T extends ArtistPost | FanPost>({
     data,
     likedPostIds,
     scrappedPostIds,
-    setLikedPostIds,
-    setScrappedPostIds,
-    postList,
-    setPostList,
+    onLike,
+    onScrap,
     onClick
-}: PostCardProps) => {
+}: PostCardProps<T>) => {
     const goToDetail = () => {
-        if (onClick) onClick(data);
+        if (onClick) onClick();
     };
 
-    const isArtist = data.badgeType === "artist";
-    const feedType = isArtist ? "artist" : "fan";
-
+    const isArtist = (data as ArtistPost).badgeType === "artist";
     const [liked, setLiked] = useState(false);
     const [scrapped, setScrapped] = useState(false);
     const [likeCount, setLikeCount] = useState(data.likes);
     const [commentCount, setCommentCount] = useState(data.comment);
 
-    // 초기 liked/scrapped 상태 설정
+    // 최신 liked/scrapped 상태 동기화
     useEffect(() => {
         setLiked(likedPostIds.includes(data.id));
         setScrapped(scrappedPostIds.includes(data.id));
     }, [likedPostIds, scrappedPostIds, data.id]);
 
-    // ✅ 댓글 수: postList에서 최신값 동기화
+    // 최신 댓글 수 동기화
+    const { artistPosts, fanPosts } = usePostList();
     useEffect(() => {
-        const found = postList.find((p) => p.id === data.id);
-        if (found) setCommentCount(found.comment);
-    }, [postList, data.id]);
+        if (isArtist) {
+            const found = artistPosts.find((p) => p.id === data.id);
+            if (found) setCommentCount(found.comment);
+        } else {
+            const found = fanPosts.find((p) => p.id === data.id);
+            if (found) setCommentCount(found.comment);
+        }
+    }, [artistPosts, fanPosts, data.id, isArtist]);
 
-    const toggleLike = () => {
-        const isNowLiked = !liked;
-        const result = updateLikeStatus(data, isNowLiked, likedPostIds, postList, feedType);
-        setLiked(isNowLiked);
-        setLikeCount((prev) => isNowLiked ? prev + 1 : Math.max(prev - 1, 0));
-        setLikedPostIds(result.updatedLikes);
-        setPostList(result.updatedPostList);
+    const handleLike = () => {
+        onLike();
+        setLiked((prev) => !prev);
+        setLikeCount((prev) => liked ? Math.max(prev - 1, 0) : prev + 1);
     };
 
-    const toggleScrap = () => {
-        const isNowScrapped = !scrapped;
-        const result = updateScrapStatus(data, isNowScrapped, scrappedPostIds, postList, feedType);
-        setScrapped(isNowScrapped);
-        setScrappedPostIds(result.updatedScraps);
-        setPostList(result.updatedPostList);
+    const handleScrap = () => {
+        onScrap();
+        setScrapped((prev) => !prev);
     };
 
     return (
@@ -85,11 +80,19 @@ const PostCard = ({
                         <p className={styles.desc}>{data.description}</p>
                         {data.media && (
                             <div className={styles.media}>
-                                {data.media.map((m, i) =>
+                                {data.media.slice(0, 2).map((m, i) =>
                                     m.type === "video" ? (
                                         <video key={i} src={m.url} controls className={styles.media_item} />
                                     ) : (
-                                        <img key={i} src={m.url} alt={`media-${i}`} className={styles.media_item} />
+                                        <div key={i} className={styles.media_item_wrapper}>
+                                            <img src={m.url} alt={`media-${i}`} className={styles.media_item} />
+                                            {/* 2번째(=마지막) 이미지이면서 전체가 3개 이상일 때 +N 표시 */}
+                                            {i === 1 && (data.media?.length ?? 0) > 2 && (
+                                                <div className={styles.media_overlay}>
+                                                    +{(data.media?.length ?? 0) - 2}
+                                                </div>
+                                            )}
+                                        </div>
                                     )
                                 )}
                             </div>
@@ -104,8 +107,8 @@ const PostCard = ({
                             <strong>{data.name}
                                 <img
                                     className={styles.badge_img}
-                                    src={getBadgeImage('fan', data.badgeLevel)}
-                                    alt={`fan badge Lv.${data.badgeLevel}`}
+                                    src={getBadgeImage('fan', (data as FanPost).badgeLevel)}
+                                    alt={`fan badge Lv.${(data as FanPost).badgeLevel}`}
                                 />
                             </strong>
                             <p className={styles.date}>{data.date}</p>
@@ -113,20 +116,28 @@ const PostCard = ({
                     </div>
                     <div className={styles.body_wrapper} onClick={goToDetail}>
                         <p className={styles.desc}>{data.description}</p>
-                        {data.hashtag && (
+                        {(data as FanPost).hashtag && (
                             <div className={styles.hashtags}>
-                                {data.hashtag.split(" ").map((tag, i) => (
+                                {(data as FanPost).hashtag?.split(" ").map((tag, i) => (
                                     <span key={i} className={styles.tag}>{tag}</span>
                                 ))}
                             </div>
                         )}
                         {data.media && (
                             <div className={styles.media}>
-                                {data.media.map((m, i) =>
+                                {data.media.slice(0, 2).map((m, i) =>
                                     m.type === "video" ? (
                                         <video key={i} src={m.url} controls className={styles.media_item} />
                                     ) : (
-                                        <img key={i} src={m.url} alt={`media-${i}`} className={styles.media_item} />
+                                        <div key={i} className={styles.media_item_wrapper}>
+                                            <img src={m.url} alt={`media-${i}`} className={styles.media_item} />
+                                            {/* 2번째(=마지막) 이미지이면서 전체가 3개 이상일 때 +N 표시 */}
+                                            {i === 1 && (data.media?.length ?? 0) > 2 && (
+                                                <div className={styles.media_overlay}>
+                                                    +{(data.media?.length ?? 0) - 2}
+                                                </div>
+                                            )}
+                                        </div>
                                     )
                                 )}
                             </div>
@@ -136,9 +147,9 @@ const PostCard = ({
             )}
 
             <div className={styles.meta_row}>
-                <button onClick={toggleLike}>{liked ? "❤️" : "🤍"} {likeCount}</button>
+                <button onClick={handleLike}>{liked ? "❤️" : "🤍"} {likeCount}</button>
                 <button onClick={goToDetail}>{`💬 ${commentCount}`}</button>
-                <button onClick={toggleScrap}>{scrapped ? "🔖" : "📌"}</button>
+                <button onClick={handleScrap}>{scrapped ? "🔖" : "📌"}</button>
             </div>
         </div>
     );
