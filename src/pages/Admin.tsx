@@ -1,6 +1,8 @@
+import styles from './Admin.module.css';
+
 const Admin = () => {
     return (
-        <div>
+        <div  className={`${styles.wrap} inner`}>
             Admin
         </div>
     )
