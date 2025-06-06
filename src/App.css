@@ -1,3 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard.css');
+
+@font-face {
+  font-family: 'KNPSKkomi';
+  src: url('../src/font/KNPSKkomi.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* font family */
+  --main-font-family: "Pretendard", sans-serif;
+  --day--font-family: 'KNPSKkomi-Regular00', sans-serif;
+  --title-font-family: "Allura", cursive;
+
+  /* color */
+  --main-color: #CA2649;
+
+  --point-color-red: #AF0000;
+  --point-color-blue: #419DDF;
+  --point-color-yellow: #F8D37B;
+  --point-color-purple: #B289FF;
+
+  --bg-color-lightgray: #FEFEFE;
+  --bg-color-chat: #F2F3F7;
+  --bg-color-post: #F7F8FA;
+
+  --sub-color-pink: #FFDAE2;
+  --sub-color-apricot: #FCB2B0;
+  --sub-color-yellow: #FDF7C8;
+  --sub-color-blue: #C7E7FF;
+  --sub-color-mint: #9FD6D7;
+  --sub-color-purple: #E2C8FD;
+
+
+  --font-color-darkgray: #6A6A6A;
+  --font-color-light_gary: #E5E5E5;
+  --font-color-gary: #C2C2C2;
+  --font-color-7: #777777;
+  --font-color-3: #333333;
+  --font-color-1: #1F1F1F;
+
+
+
+  /* margin */
+
+  /* wep */
+  --sec-pad: 150px;
+  --tit-pad: 50px;
+  --footer-pad: 200px;
+  /* tap */
+  --sec-pad: 100px;
+  --tit-pad: 50px;
+  --footer-pad: 150px;
+  /* mobile */
+  --sec-pad: 100px;
+  --tit-pad: 30px;
+  --footer-pad: 150px;
+}
+
+/* pretendard wep,tap */
+.wep_h3 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.wep_h4 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.wep_h5 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.wep_sub_20_r {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.wep_sub_20_m {
+  font-size: 20px;
+  font-weight: 500;;
+}
+
+.wep_sub_20_sb {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.wep_sub_18_r {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.wep_sub_18_m {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.wep_sub_18_sb {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.wep_sub_16_r {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.wep_sub_16_m {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.wep_sub_14_r {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.wep_sub_14_m {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.wep_sub_14_sb {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.wep_sub_13_m {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.wep_sub_12_r {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.wep_sub_12_m {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* pretendard mobile */
+.mobile_h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.mobile_h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.mobile_h5 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mobile_sub_18_r {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.mobile_sub_16_r {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.mobile_sub_16_m {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.mobile_sub_16_sb {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.mobile_sub_14_r {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.mobile_sub_14_m {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mobile_sub_14_sb {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mobile_sub_12_r {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.mobile_sub_12_m {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.mobile_sub_10_r {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+
+
+
+
+/* kkomi */
+
+.wep_kkomi_date_24 {
+  font-family: var(--day--font-family);
+  font-size: 24px;
+}
+
+.wep_kkomi_date_18 {
+  font-family: var(--day--font-family);
+  font-size: 18px;
+}
+
+.wep_kkomi_date_16 {
+  font-family: var(--day--font-family);
+  font-size: 16px;
+}
+
+.mobile_kkomi_date_14 {
+  font-family: var(--day--font-family);
+  font-size: 24px;
+}
+
+.mobile_kkomi_date_12 {
+  font-family: var(--day--font-family);
+  font-size: 18px;
+}
+
+.mobile_kkomi_date_10 {
+  font-family: var(--day--font-family);
+  font-size: 16px;
+}
+
+
+
+
+/* allura */
+.wep_allura_h2 {
+  font-family: var(--title-font-family);
+  font-size: 100px;
+}
+
+.tap_allura_h2 {
+  font-family: var(--title-font-family);
+  font-size: 80px;
+}
+
+.mobile_allura_h2 {
+  font-family: var(--title-font-family);
+  font-size: 80px;
+}
+
+
+
+
+
+
+
 /* 공통 레이아웃 */
 
 /* reset */
@@ -108,6 +385,7 @@ section {
 
 body {
   line-height: 1;
+  font-family: var(--main-font-family);
 }
 
 ol,
