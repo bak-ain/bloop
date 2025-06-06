@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { ArtistPost, FanPost, CommentPost, CommentInput, MyCommentPost } from "../types";
-import { updateLikeStatus, updateScrapStatus, updateCommentListAndCount } from "../utils/postUtils";
+import { ArtistPost, FanPost, CommentPost, CommentInput } from "../types";
 import { getBadgeImage, getAvailableEmojis } from "../utils/badge";
 import styles from "./PostDetail.module.css";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import 'dayjs/locale/ko'; // ✅ 한국어 로케일 추가
+import 'dayjs/locale/ko';
+import { useLikedScrapped } from "../context/LikedScrappedContext";
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
@@ -17,26 +17,41 @@ interface PostDetailProps<T extends ArtistPost | FanPost> {
 }
 
 const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setPostList }: PostDetailProps<T>) => {
-    const [liked, setLiked] = useState(false);
-    const [scrapped, setScrapped] = useState(false);
-    const [likeCount, setLikeCount] = useState(data.likes);
+    // 좋아요/스크랩 context 사용
+    const {
+        postLikeCounts,
+        toggleLike,
+        artistLikedIds,
+        fanLikedIds,
+        artistScrappedIds,
+        fanScrappedIds,
+        toggleScrap,
+    } = useLikedScrapped();
+
+    const likedPostIds = type === "artist" ? artistLikedIds : fanLikedIds;
+    const scrappedPostIds = type === "artist" ? artistScrappedIds : fanScrappedIds;
+
+    const [liked, setLiked] = useState(likedPostIds.includes(data.id));
+    const [scrapped, setScrapped] = useState(scrappedPostIds.includes(data.id));
+    const [likeCount, setLikeCount] = useState(postLikeCounts[data.id] ?? data.likes);
     const [commentCount, setCommentCount] = useState(data.comment);
     const [comments, setComments] = useState<CommentPost[]>([]);
     const [input, setInput] = useState<CommentInput>({ content: "", parentPostId: data.id });
     const [replyToId, setReplyToId] = useState<string | null>(null);
     const [showStickerPicker, setShowStickerPicker] = useState(false);
-    const [likedPostIds, setLikedPostIds] = useState<string[]>(() => JSON.parse(localStorage.getItem(`${type}LikedPosts`) || "[]"));
-    const [scrappedPostIds, setScrappedPostIds] = useState<string[]>(() => JSON.parse(localStorage.getItem(`${type}ScrappedPosts`) || "[]"));
     const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
     const userLevel = 2;
     const emojis = getAvailableEmojis(userLevel);
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
 
-
     useEffect(() => {
         setLiked(likedPostIds.includes(data.id));
         setScrapped(scrappedPostIds.includes(data.id));
     }, [data.id, likedPostIds, scrappedPostIds]);
+
+    useEffect(() => {
+        setLikeCount(postLikeCounts[data.id] ?? data.likes);
+    }, [postLikeCounts, data.id, data.likes]);
 
     useEffect(() => {
         const saved = localStorage.getItem(`comments_${data.id}`);
@@ -58,21 +73,12 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
         }
     }, [data.id, type]);
 
-    const toggleLike = () => {
-        const isNowLiked = !liked;
-        const result = updateLikeStatus(data, isNowLiked, likedPostIds, postList, type);
-        setLiked(isNowLiked);
-        setLikeCount((prev) => isNowLiked ? prev + 1 : Math.max(prev - 1, 0));
-        setPostList(result.updatedPostList);
-        setLikedPostIds(result.updatedLikes);
+    const handleToggleLike = () => {
+        toggleLike(type, data.id, data.likes);
     };
 
-    const toggleScrap = () => {
-        const isNowScrapped = !scrapped;
-        const result = updateScrapStatus(data, isNowScrapped, scrappedPostIds, postList, type);
-        setScrapped(isNowScrapped);
-        setPostList(result.updatedPostList);
-        setScrappedPostIds(result.updatedScraps);
+    const handleToggleScrap = () => {
+        toggleScrap(type, data.id);
     };
 
     const toggleCommentLike = (id: string) => {
@@ -118,6 +124,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                     return c;
                 });
                 localStorage.setItem(`comments_${data.id}`, JSON.stringify(updated));
+                // 답글은 postList의 commentCount에는 반영하지 않음
                 return updated;
             });
         } else {
@@ -141,10 +148,18 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                 editable: true,
                 replies: []
             };
-            const result = updateCommentListAndCount(newComment, data, comments, postList, type);
-            setComments(result.updatedComments);
-            setCommentCount(result.updatedComments.length);
-            setPostList(result.updatedPostList);
+            const updatedComments = [...comments, newComment];
+            setComments(updatedComments);
+            setCommentCount(updatedComments.length);
+            localStorage.setItem(`comments_${data.id}`, JSON.stringify(updatedComments));
+            // ★ PostCard의 댓글 수도 함께 업데이트
+            setPostList(prev =>
+                prev.map(post =>
+                    post.id === data.id
+                        ? { ...post, comment: updatedComments.length }
+                        : post
+                )
+            );
         }
 
         setInput({ content: "", parentPostId: data.id });
@@ -152,6 +167,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
         setSelectedEmoji(null);
         setShowStickerPicker(false);
     };
+
 
     const handleDelete = (id: string) => {
         const updatedComments: CommentPost[] = comments
@@ -163,13 +179,20 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                 }
                 return c;
             })
-            .filter((c): c is CommentPost => c !== null); // 타입 가드
+            .filter((c): c is CommentPost => c !== null);
 
         setComments(updatedComments);
+        setCommentCount(updatedComments.length); // ★ 즉시 카운트 반영
         localStorage.setItem(`comments_${data.id}`, JSON.stringify(updatedComments));
+        setPostList(prev =>
+            prev.map(post =>
+                post.id === data.id
+                    ? { ...post, comment: updatedComments.length }
+                    : post
+            )
+        );
         setConfirmDeleteId(null);
     };
-
 
     // 답글 입력창용
     const toggleReplyInput = (id: string, username: string) => {
@@ -188,21 +211,23 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
 
     const handleEmojiClick = (emoji: string) => {
         setSelectedEmoji(emoji);
-        setInput((prev) => ({ ...prev, emoji })); // emoji도 댓글 데이터에 저장
+        setInput((prev) => ({ ...prev, emoji }));
     };
-
 
     return (
         <div className={styles.post_detail}>
             <section className={styles.feed_content}>
                 <div className={styles.profile_row}>
-                    <img className={styles.profile_img} src={data.profileImage} alt={data.name} />
+                    <img className={styles.profile_img} src={data.user.profileImage} alt={data.user.name} />
                     <div className={styles.info}>
                         <strong>
-                            {data.name}
+                            {data.user.name}
                             <img
                                 className={styles.badge_img}
-                                src={getBadgeImage(data.badgeType, data.badgeLevel)}
+                                src={getBadgeImage(
+                                    data.user.badgeType,
+                                    data.user.badgeType === "fan" ? data.user.badgeLevel : undefined
+                                )}
                                 alt="badge"
                             />
                         </strong>
@@ -229,9 +254,9 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                 </div>
 
                 <div className={styles.meta_row}>
-                    <button onClick={toggleLike}>{liked ? "❤️" : "🤍"} {likeCount}</button>
+                    <button onClick={handleToggleLike}>{liked ? "❤️" : "🤍"} {likeCount}</button>
                     <button>{`💬 ${commentCount}`}</button>
-                    <button onClick={toggleScrap}>{scrapped ? "🔖" : "📌"}</button>
+                    <button onClick={handleToggleScrap}>{scrapped ? "🔖" : "📌"}</button>
                 </div>
             </section>
             <aside className={styles.comment_panel}>

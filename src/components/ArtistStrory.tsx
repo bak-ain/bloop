@@ -7,19 +7,20 @@ const ArtistStory = ({ onStoryClick }: { onStoryClick: (story: ArtistPost) => vo
     const storyList = artistPosts.filter(post => post.isStory);
     console.log("storyList", storyList);
 
-    return (
+  return (
         <div className={`${styles.storyContainer} inner`}>
             {storyList.map(story => (
                 <div className={styles.storyCard} key={story.id} onClick={() => onStoryClick(story)}>
-                    <img src={story.profileImage} alt={story.name} />
+                    {/* user가 undefined일 수 있으니 옵셔널 체이닝 처리 */}
+                    <img src={story.user?.profileImage ?? "/images/default_profile.png"} alt={story.user?.name ?? "아티스트"} />
                     {story.media && story.media.filter(m => m.type === "image").length > 0 && (
                         <img
                             className={styles.storyImage}
                             src={story.media.find(m => m.type === "image")!.url}
-                            alt={story.name}
+                            alt={story.user?.name ?? "아티스트"}
                         />
                     )}
-                    <div className={styles.storyName}>{story.name}</div>
+                    <div className={styles.storyName}>{story.user?.name ?? "아티스트"}</div>
                 </div>
             ))}
         </div>

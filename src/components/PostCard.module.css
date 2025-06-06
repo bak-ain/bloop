@@ -194,7 +194,7 @@
 .storyContainer{
   display: flex;
   height: 250px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
 }
 .storyCard{
   flex: 1;
