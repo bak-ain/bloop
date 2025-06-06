@@ -7,6 +7,7 @@ import OfficialFeed from './pages/OfficialFeed';
 import ArtistFeed from './pages/ArtistFeed';
 import FanFeed from './pages/FanFeed';
 import Mypage from './pages/Mypage';
+import Admin from './pages/Admin';
 import { PostListProvider } from "./context/PostListContext";
 import { LikedScrappedProvider } from "./context/LikedScrappedContext";
 import { CommentProvider } from './context/CommentContext';
@@ -25,6 +26,7 @@ function App() {
             <Route path="/muse" element={<ArtistFeed />} />
             <Route path="/loop" element={<FanFeed />} />
             <Route path="/mybox" element={<Mypage />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </ CommentProvider>
       </LikedScrappedProvider>
