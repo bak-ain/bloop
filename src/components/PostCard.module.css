@@ -1,0 +1,205 @@
+/* 공통 카드 */
+.post_card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Pretendard', sans-serif;
+  line-height: 1.5;
+}
+
+.post_card.artist {
+  background-color: #f7faff;
+}
+
+.post_card.fan {
+  background-color: #fff9fb;
+}
+
+.profile_row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.profile_img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  background: #ddd;
+}
+
+.profile_row .info {
+  flex: 1;
+}
+
+.profile_row strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+.profile_row .date {
+  font-size: 13px;
+  color: #888;
+}
+
+.artist_badge {
+  background: #2a7be4;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin-left: auto;
+}
+.body_wrapper{
+  cursor: pointer;
+}
+
+.desc {
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 8px;
+  white-space: pre-line;
+
+}
+
+.hashtags {
+  color: #e5397e;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  margin-right: 6px;
+}
+
+.media {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.media img,
+.media video {
+  width: calc(50% - 4px);
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.meta_row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.meta_row button {
+  all: unset;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: 0.2s;
+}
+
+.meta_row button:hover {
+  color: #e5397e;
+}
+
+.profile_bubble_layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.profile_img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 말풍선 상자 */
+.bubble_box {
+  position: relative;
+  background: #f5f5f5;
+  padding: 12px 16px;
+  border-radius: 14px;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+/* 말풍선 꼬리 */
+.bubble_box::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #f5f5f5;
+}
+
+.bubble_header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.badge_artist {
+  color: #1da1f2;
+  font-size: 14px;
+}
+
+.badge_fan {
+  color: #ff9f00;
+  font-size: 14px;
+}
+.badge_img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.media_item_wrapper {
+  position: relative;
+  display: inline-block;
+}
+.media_overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.storyContainer{
+  display: flex;
+  height: 250px;
+  border: 1px solid #ddd;
+}
+.storyCard{
+  flex: 1;
+}
+.storyImage{
+  width: 50%;
+  height: auto;
+}
