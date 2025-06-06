@@ -74,7 +74,7 @@ const PostCard = <T extends ArtistPost | FanPost>({
     // user가 없을 때 기본값 처리
     const user = data.user ?? {
         name: "알 수 없음",
-        profileImage: "/images/default_profile.png",
+        profileImage: "/images/3.png",
         badgeType: "fan" as const,
         badgeLevel: 1
     };

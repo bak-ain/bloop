@@ -12,7 +12,7 @@ const ArtistStory = ({ onStoryClick }: { onStoryClick: (story: ArtistPost) => vo
             {storyList.map(story => (
                 <div className={styles.storyCard} key={story.id} onClick={() => onStoryClick(story)}>
                     {/* user가 undefined일 수 있으니 옵셔널 체이닝 처리 */}
-                    <img src={story.user?.profileImage ?? "/images/default_profile.png"} alt={story.user?.name ?? "아티스트"} />
+                    <img className={styles.profileImage} src={story.user?.profileImage ?? "/images/default_profile.png"} alt={story.user?.name ?? "아티스트"} />
                     {story.media && story.media.filter(m => m.type === "image").length > 0 && (
                         <img
                             className={styles.storyImage}
