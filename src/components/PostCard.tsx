@@ -26,16 +26,10 @@ const PostCard = <T extends ArtistPost | FanPost>({
         if (onClick) onClick();
     };
 
-    // user가 없을 수 있으니 안전하게 처리
     const isArtist = data.user?.badgeType === "artist";
     const [liked, setLiked] = useState(false);
     const [scrapped, setScrapped] = useState(false);
-
-    // 좋아요 수를 context에서 관리
-    const { postLikeCounts } = useLikedScrapped();
-    const [likeCount, setLikeCount] = useState(
-        postLikeCounts[data.id] ?? data.likes
-    );
+    const [likeCount, setLikeCount] = useState(data.likes);
     const [commentCount, setCommentCount] = useState(data.comment);
 
     // 최신 liked/scrapped 상태 동기화
@@ -43,11 +37,6 @@ const PostCard = <T extends ArtistPost | FanPost>({
         setLiked(likedPostIds.includes(data.id));
         setScrapped(scrappedPostIds.includes(data.id));
     }, [likedPostIds, scrappedPostIds, data.id]);
-
-    // 최신 좋아요 수 동기화
-    useEffect(() => {
-        setLikeCount(postLikeCounts[data.id] ?? data.likes);
-    }, [postLikeCounts, data.id, data.likes]);
 
     // 최신 댓글 수 동기화
     const { artistPosts, fanPosts } = usePostList();
@@ -63,31 +52,25 @@ const PostCard = <T extends ArtistPost | FanPost>({
 
     const handleLike = () => {
         onLike();
-        // setLiked와 setLikeCount는 context에서 동기화되므로 별도 setState 불필요
+        setLiked((prev) => !prev);
+        setLikeCount((prev) => liked ? Math.max(prev - 1, 0) : prev + 1);
     };
 
     const handleScrap = () => {
         onScrap();
-        // setScrapped는 context에서 동기화되므로 별도 setState 불필요
-    };
-
-    // user가 없을 때 기본값 처리
-    const user = data.user ?? {
-        name: "알 수 없음",
-        profileImage: "/images/default_profile.png",
-        badgeType: "fan" as const,
-        badgeLevel: 1
+        setScrapped((prev) => !prev);
     };
 
     return (
         <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
             {isArtist ? (
                 <div className={styles.profile_bubble_layout}>
-                    <img className={styles.profile_img} src={user.profileImage} alt={user.name} />
+                    {/* 수정: data.profileImage → data.user.profileImage, data.name → data.user.name */}
+                    <img className={styles.profile_img} src={data.user.profileImage} alt={data.user.name} />
                     <div className={styles.bubble_box} onClick={goToDetail}>
                         <div className={styles.bubble_header}>
                             <strong>
-                                {user.name}
+                                {data.user.name}
                                 <img
                                     className={styles.badge_img}
                                     src={getBadgeImage('artist')}
@@ -120,19 +103,20 @@ const PostCard = <T extends ArtistPost | FanPost>({
             ) : (
                 <>
                     <div className={styles.profile_row}>
-                        <img className={styles.profile_img} src={user.profileImage} alt={user.name} />
+                        {/* 수정: data.profileImage → data.user.profileImage, data.name → data.user.name */}
+                        <img className={styles.profile_img} src={data.user.profileImage} alt={data.user.name} />
                         <div className={styles.info}>
                             <strong>
-                                {user.name}
+                                {data.user.name}
                                 <img
                                     className={styles.badge_img}
                                     src={getBadgeImage(
                                         'fan',
-                                        user.badgeType === "fan" ? user.badgeLevel : undefined
+                                        data.user.badgeType === "fan" ? data.user.badgeLevel : undefined // fan일 때만 badgeLevel 전달
                                     )}
                                     alt={
-                                        user.badgeType === "fan"
-                                            ? `fan badge Lv.${user.badgeLevel}`
+                                        data.user.badgeType === "fan"
+                                            ? `fan badge Lv.${data.user.badgeLevel}`
                                             : "fan badge"
                                     }
                                 />
