@@ -46,233 +46,409 @@
   /* margin */
 
   /* wep */
-  --sec-pad: 150px;
-  --tit-pad: 50px;
-  --footer-pad: 200px;
+  --wep-sec-pad: 150px;
+  --wep-tit-pad: 50px;
+  --wep-footer-pad: 200px;
   /* tap */
-  --sec-pad: 100px;
-  --tit-pad: 50px;
-  --footer-pad: 150px;
+  --tap-sec-pad: 100px;
+  --tap-tit-pad: 50px;
+  --tap-footer-pad: 150px;
   /* mobile */
-  --sec-pad: 100px;
-  --tit-pad: 30px;
-  --footer-pad: 150px;
+  --movbile-sec-pad: 100px;
+  --mobile-tit-pad: 30px;
+  --mobile-footer-pad: 150px;
 }
 
-/* pretendard wep,tap */
-.wep_h3 {
+/* 공통 */
+
+.day_span {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.icon_num {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.pagenation_num {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.btn_txt {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.h3_tit {
   font-size: 40px;
   font-weight: 700;
-  line-height: normal;
+  line-height: 60px;
 }
 
-.wep_h4 {
+/* 전체 카드 안 큰 내용 */
+.card_p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 33;
+}
+
+/* main */
+
+.main_card_h2 {
   font-size: 28px;
   font-weight: 700;
-  line-height: normal;
 }
 
-.wep_h5 {
+.main_card_p {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+/* 아티스트 */
+.artist_top {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 33px;
+}
+
+.card_name {
   font-size: 24px;
   font-weight: 600;
-  line-height: normal;
+  line-height: 24px;
 }
 
-.wep_sub_20_r {
-  font-size: 20px;
-  font-weight: 400;
-}
+/* 커뮤니티 */
 
-.wep_sub_20_m {
-  font-size: 20px;
-  font-weight: 500;;
-}
-
-.wep_sub_20_sb {
+.fan_top_name {
   font-size: 20px;
   font-weight: 600;
 }
 
-.wep_sub_18_r {
-  font-size: 18px;
+.fan_top_day {
+  font-size: 14px;
   font-weight: 400;
 }
 
-.wep_sub_18_m {
+.fan_top_p {
   font-size: 18px;
   font-weight: 500;
 }
 
-.wep_sub_18_sb {
-  font-size: 18px;
+/* 팝업 */
+.pop_name {
+  font-size: 24px;
   font-weight: 600;
+  line-height: 24px;
 }
 
-.wep_sub_16_r {
+.pop_icon_num {
   font-size: 16px;
   font-weight: 400;
 }
 
-.wep_sub_16_m {
+.pop_p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 33px;
+}
+
+.pop_chat_h1 {
   font-size: 16px;
   font-weight: 500;
+  line-height: 33px;
 }
 
-.wep_sub_14_r {
-  font-size: 14px;
+.pop_chat_time {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.pop_chat_p {
+  font-size: 18px;
   font-weight: 400;
+  line-height: 26px;
 }
 
-.wep_sub_14_m {
+.pop_chat_icon {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.pop_chat_span {
   font-size: 14px;
   font-weight: 500;
 }
 
-.wep_sub_14_sb {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.wep_sub_13_m {
+.pop_chat_uder {
   font-size: 13px;
   font-weight: 500;
 }
 
-.wep_sub_12_r {
-  font-size: 12px;
+.pop_chat_send {
+  font-size: 16px;
   font-weight: 400;
 }
 
-.wep_sub_12_m {
-  font-size: 12px;
-  font-weight: 500;
+/* 글 작성 */
+.user_txt_h1 {
+  font-size: 28px;
+  font-weight: 700;
 }
 
-/* pretendard mobile */
-.mobile_h3 {
+.user_txt_p_tag {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.user_txt_img {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/*오피스 */
+.offic_h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.offic_h3 {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
-.mobile_h4 {
+.offic_p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+/*오피스 상세 */
+.offic_detail_p {
   font-size: 20px;
-  font-weight: 700;
-}
-
-.mobile_h5 {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.mobile_sub_18_r {
-  font-size: 18px;
   font-weight: 400;
+  line-height: 33px;
 }
 
-.mobile_sub_16_r {
-  font-size: 16px;
-  font-weight: 400;
+/* 반응형 레이아웃 */
+@media (max-width: 768px) {
+  .inner {
+    padding: 0 16px;
+  }
+
+  .allura_h2 {
+    font-size: 80px;
+  }
+
+  .pop_name {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 33px;
+  }
+
+  .pop_p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 33px;
+  }
+
+  .pop_chat_p {
+    font-size: 16px;
+  }
+
+  .pop_chat_span {
+    font-size: 13px;
+  }
+
+  .pop_chat_uder {
+    font-size: 12px;
+  }
+
+  .pop_chat_send {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+
+
 }
 
-.mobile_sub_16_m {
-  font-size: 16px;
-  font-weight: 500;
+@media (max-width:450px) {
+  .layout header {
+    font-size: 1rem;
+    white-space: nowrap;
+    height: 46px;
+  }
+
+  .allura_h2 {
+    font-size: 55px;
+  }
+
+  .kkomi_day {
+    font-size: 14px;
+  }
+
+  .kkomi_sced {
+    font-size: 12px;
+  }
+
+  .kkomi_num {
+    font-size: 10px;
+  }
+
+  /* 공통 */
+  .h3_tit {
+    font-size: 24px;
+    line-height: 33px;
+  }
+
+  .card_p {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .day_span {
+    font-size: 14px;
+  }
+
+  .icon_num {
+    font-size: 14px;
+  }
+
+  .pagenation_num {
+    font-size: 16px;
+  }
+
+  .btn_txt {
+    font-size: 14px;
+  }
+
+  /* 메인 */
+  .main_card_h2 {
+    font-size: 20px;
+  }
+
+  .main_card_p {
+    font-size: 16px;
+  }
+
+  /* 아티스트 */
+  .artist_top {
+    font-size: 16px;
+    line-height: 33px;
+  }
+
+  .card_name {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  /* 커뮤니티 */
+
+  .fan_top_name {
+    font-size: 16px;
+  }
+
+  .fan_top_day {
+    font-size: 10px;
+  }
+
+  .fan_top_p {
+    font-size: 14px;
+    line-height: 20;
+  }
+
+  /* 팝업 */
+
+
+  .pop_name {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  .pop_icon_num {
+    font-size: 12px;
+  }
+
+  .pop_chat_h1 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .pop_chat_p {
+    font-size: 16px;
+  }
+
+  .pop_chat_icon {
+    font-weight: 400;
+  }
+
+  /* 글 작성 */
+  .user_txt_h1 {
+    font-size: 20px;
+  }
+
+  .user_txt_p_tag {
+    font-size: 16px;
+  }
+
+  .user_txt_img {
+    font-size: 14px;
+  }
+
+
+  /*오피스 */
+  .offic_h2 {
+    font-size: 20px;
+
+  }
+
+  .offic_h3 {
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  .offic_p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  /*오피스 상세 */
+  .offic_detail_p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25px;
+  }
 }
-
-.mobile_sub_16_sb {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.mobile_sub_14_r {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.mobile_sub_14_m {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.mobile_sub_14_sb {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.mobile_sub_12_r {
-  font-size: 12px;
-  font-weight: 400;
-}
-
-.mobile_sub_12_m {
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.mobile_sub_10_r {
-  font-size: 10px;
-  font-weight: 400;
-}
-
-
 
 
 
 /* kkomi */
 
-.wep_kkomi_date_24 {
+.kkomi_day {
   font-family: var(--day--font-family);
   font-size: 24px;
 }
 
-.wep_kkomi_date_18 {
+.kkomi_sced {
   font-family: var(--day--font-family);
   font-size: 18px;
 }
 
-.wep_kkomi_date_16 {
+.kkomi_num {
   font-family: var(--day--font-family);
   font-size: 16px;
 }
-
-.mobile_kkomi_date_14 {
-  font-family: var(--day--font-family);
-  font-size: 24px;
-}
-
-.mobile_kkomi_date_12 {
-  font-family: var(--day--font-family);
-  font-size: 18px;
-}
-
-.mobile_kkomi_date_10 {
-  font-family: var(--day--font-family);
-  font-size: 16px;
-}
-
-
 
 
 /* allura */
-.wep_allura_h2 {
+.allura_h2 {
   font-family: var(--title-font-family);
   font-size: 100px;
 }
-
-.tap_allura_h2 {
-  font-family: var(--title-font-family);
-  font-size: 80px;
-}
-
-.mobile_allura_h2 {
-  font-family: var(--title-font-family);
-  font-size: 80px;
-}
-
-
-
-
-
 
 
 /* 공통 레이아웃 */
@@ -476,21 +652,4 @@ body,
   padding: 20px 0;
   color: #999;
   font-size: 14px;
-}
-
-
-
-/* 반응형 레이아웃 */
-@media (max-width: 768px) {
-  .inner {
-    padding: 0 16px;
-  }
-}
-
-@media (max-width:450px) {
-  .layout header {
-    font-size: 1rem;
-    white-space: nowrap;
-    height: 46px;
-  }
 }
