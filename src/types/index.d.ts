@@ -10,14 +10,11 @@ export interface UserPreview {
 //게시물
 export interface BasePost {
   id: string;
-  name: string;
+  user: UserPreview;            // ← 통합: 작성자 정보
   date: string;
   description: string;
   likes: number;
   comment: number;
-  profileImage: string;
-  badgeType: 'artist' | 'fan';
-  badgeLevel?: 1 | 2 | 3;
   media?: {
     type: 'image' | 'video';
     url: string;
@@ -31,25 +28,17 @@ export interface BasePost {
 }
 
 export interface ArtistPost extends BasePost {
-  badgeType: 'artist';
-  badgeLevel?: never;
+  user: Omit<UserPreview, 'badgeLevel'> & { badgeType: 'artist' }; // artist는 badgeLevel 없음
+  // badgeType: 'artist'; // user로 대체
+  // badgeLevel?: never;   // user로 대체
   isStory?: boolean;
 }
 
 export interface FanPost extends BasePost {
-  badgeType: 'fan';
-  badgeLevel: 1 | 2 | 3;
+  user: UserPreview & { badgeType: 'fan'; badgeLevel: 1 | 2 | 3 }; // fan은 badgeLevel 필수
+  // badgeType: 'fan'; // user로 대체
+  // badgeLevel: 1 | 2 | 3; // user로 대체
 }
-// export interface ArtistStoryCard {
-//   id: string;
-//   name: string;
-//   profileImage: string;
-//   imageUrls: string[];       
-//   isScrapped?: boolean;
-//   isLiked?: boolean;
-// }
-
-
 
 // 댓글용
 export interface CommentPost {

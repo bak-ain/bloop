@@ -9,7 +9,9 @@ interface LikedScrappedContextType {
   setArtistScrappedIds: React.Dispatch<React.SetStateAction<string[]>>;
   fanScrappedIds: string[];
   setFanScrappedIds: React.Dispatch<React.SetStateAction<string[]>>;
-  toggleLike: (type: "artist" | "fan", postId: string) => void;
+  postLikeCounts: Record<string, number>;
+  setPostLikeCounts: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+  toggleLike: (type: "artist" | "fan", postId: string, defaultLikes: number) => void;
   toggleScrap: (type: "artist" | "fan", postId: string) => void;
 }
 
@@ -22,19 +24,24 @@ export const useLikedScrapped = () => {
 };
 
 export const LikedScrappedProvider = ({ children }: { children: React.ReactNode }) => {
-  const [artistLikedIds, setArtistLikedIds] = useState<string[]>([]);
-  const [fanLikedIds, setFanLikedIds] = useState<string[]>([]);
-  const [artistScrappedIds, setArtistScrappedIds] = useState<string[]>([]);
-  const [fanScrappedIds, setFanScrappedIds] = useState<string[]>([]);
+  // useState의 초기값에서 localStorage 값을 읽어오도록 수정
+  const [artistLikedIds, setArtistLikedIds] = useState<string[]>(
+    () => JSON.parse(localStorage.getItem("artistLikedPosts") || "[]")
+  );
+  const [fanLikedIds, setFanLikedIds] = useState<string[]>(
+    () => JSON.parse(localStorage.getItem("fanLikedPosts") || "[]")
+  );
+  const [artistScrappedIds, setArtistScrappedIds] = useState<string[]>(
+    () => JSON.parse(localStorage.getItem("artistScrappedPosts") || "[]")
+  );
+  const [fanScrappedIds, setFanScrappedIds] = useState<string[]>(
+    () => JSON.parse(localStorage.getItem("fanScrappedPosts") || "[]")
+  );
+  const [postLikeCounts, setPostLikeCounts] = useState<Record<string, number>>(
+    () => JSON.parse(localStorage.getItem("postLikeCounts") || "{}")
+  );
 
-  useEffect(() => {
-    // localStorage에서 불러오기
-    setArtistLikedIds(JSON.parse(localStorage.getItem("artistLikedPosts") || "[]"));
-    setFanLikedIds(JSON.parse(localStorage.getItem("fanLikedPosts") || "[]"));
-    setArtistScrappedIds(JSON.parse(localStorage.getItem("artistScrappedPosts") || "[]"));
-    setFanScrappedIds(JSON.parse(localStorage.getItem("fanScrappedPosts") || "[]"));
-  }, []);
-
+  // 변경사항이 있을 때만 localStorage에 저장
   useEffect(() => {
     localStorage.setItem("artistLikedPosts", JSON.stringify(artistLikedIds));
   }, [artistLikedIds]);
@@ -47,8 +54,12 @@ export const LikedScrappedProvider = ({ children }: { children: React.ReactNode 
   useEffect(() => {
     localStorage.setItem("fanScrappedPosts", JSON.stringify(fanScrappedIds));
   }, [fanScrappedIds]);
+  useEffect(() => {
+    localStorage.setItem("postLikeCounts", JSON.stringify(postLikeCounts));
+  }, [postLikeCounts]);
 
-  const toggleLike = (type: "artist" | "fan", postId: string) => {
+  // 좋아요 토글 시 likeCount도 함께 관리
+  const toggleLike = (type: "artist" | "fan", postId: string, defaultLikes: number) => {
     if (type === "artist") {
       setArtistLikedIds((prev) =>
         prev.includes(postId) ? prev.filter((id) => id !== postId) : [...prev, postId]
@@ -58,6 +69,15 @@ export const LikedScrappedProvider = ({ children }: { children: React.ReactNode 
         prev.includes(postId) ? prev.filter((id) => id !== postId) : [...prev, postId]
       );
     }
+    setPostLikeCounts((prev) => {
+      const liked =
+        (type === "artist" ? artistLikedIds : fanLikedIds).includes(postId);
+      const current = prev[postId] ?? defaultLikes;
+      return {
+        ...prev,
+        [postId]: liked ? Math.max(current - 1, 0) : current + 1,
+      };
+    });
   };
 
   const toggleScrap = (type: "artist" | "fan", postId: string) => {
@@ -79,6 +99,7 @@ export const LikedScrappedProvider = ({ children }: { children: React.ReactNode 
         fanLikedIds, setFanLikedIds,
         artistScrappedIds, setArtistScrappedIds,
         fanScrappedIds, setFanScrappedIds,
+        postLikeCounts, setPostLikeCounts,
         toggleLike, toggleScrap
       }}
     >

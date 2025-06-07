@@ -194,10 +194,16 @@
 .storyContainer{
   display: flex;
   height: 250px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
 }
 .storyCard{
   flex: 1;
+}
+.storyCard .profileImage{
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .storyImage{
   width: 50%;
