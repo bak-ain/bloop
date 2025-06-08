@@ -9,18 +9,13 @@ interface OfficialPostProps {
 
 const OfficialPost = ({ data }: OfficialPostProps) => {
   const {
-    officialLikedIds,
     officialScrappedIds,
-    toggleLike,
     toggleScrap,
-    postLikeCounts,
   } = useLikedScrapped();
   const navigate = useNavigate();
 
-  // 좋아요/스크랩 상태
-  const isLiked = officialLikedIds.includes(data.id);
+  // 스크랩 상태
   const isScrapped = officialScrappedIds.includes(data.id);
-  const likeCount = postLikeCounts[data.id] ?? data.likes ?? 0;
 
   // 카드 클릭 시 상세 페이지 이동
   const handleClick = () => {
@@ -31,12 +26,6 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
   const handleScrap = (e: React.MouseEvent) => {
     e.stopPropagation();
     toggleScrap("official", data.id);
-  };
-
-  // 좋아요 버튼 클릭 (필요시)
-  const handleLike = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    toggleLike("official", data.id, data.likes ?? 0);
   };
 
   switch (data.type) {
@@ -56,8 +45,7 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
               onClick={handleScrap}
               aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
             >
-              {/* 스크랩 아이콘 */}
-              <span>★</span>
+              {isScrapped ? "🔖" : "📌"}
             </button>
           </div>
           <div className={styles.mediaInfo}>
@@ -81,7 +69,7 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
             onClick={handleScrap}
             aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
           >
-            <span>★</span>
+            {isScrapped ? "🔖" : "📌"}
           </button>
         </div>
       );
@@ -100,7 +88,7 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
               onClick={handleScrap}
               aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
             >
-              <span>★</span>
+              {isScrapped ? "🔖" : "📌"}
             </button>
           </div>
           <div className={styles.behindInfo}>
