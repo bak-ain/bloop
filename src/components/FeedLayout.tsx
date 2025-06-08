@@ -3,12 +3,11 @@ import PostCard from "./PostCard";
 import { ArtistPost, FanPost } from "../types";
 import styles from "./FeedLayout.module.css"
 
-
 interface FeedLayoutProps<T extends ArtistPost | FanPost> {
     posts: T[];
     likedIds: string[];
     scrappedIds: string[];
-    onLike: (id: string, defaultLikes: number) => void; // 수정
+    onLike: (id: string, defaultLikes: number) => void;
     onScrap: (id: string) => void;
     onPostClick: (post: T) => void;
     pageSize?: number;
@@ -27,12 +26,12 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
         className,
     }: FeedLayoutProps<T>
 ) => {
-    const [showLikedOnly, setShowLikedOnly] = useState(false);
+    const [showScrappedOnly, setShowScrappedOnly] = useState(false);
     const [page, setPage] = useState(1);
 
     // 필터링
-    const filtered = showLikedOnly
-        ? posts.filter(post => likedIds.includes(post.id))
+    const filtered = showScrappedOnly
+        ? posts.filter(post => scrappedIds.includes(post.id))
         : posts;
 
     // 페이지네이션
@@ -44,14 +43,13 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
             <div style={{ marginBottom: 16 }}>
                 <button
                     onClick={() => {
-                        setShowLikedOnly(v => {
-                            // 버튼을 누를 때마다 page를 1로 초기화
+                        setShowScrappedOnly(v => {
                             setPage(1);
                             return !v;
                         });
                     }}
                 >
-                    {showLikedOnly ? "ALL VIEW" : "POP VIEW"}
+                    {showScrappedOnly ? "ALL VIEW" : "POP VIEW"}
                 </button>
             </div>
             {paged.map(post => (
@@ -60,7 +58,6 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
                     data={post}
                     likedPostIds={likedIds}
                     scrappedPostIds={scrappedIds}
-                    // 기본 좋아요 수도 함께 전달
                     onLike={() => onLike(post.id, post.likes)}
                     onScrap={() => onScrap(post.id)}
                     onClick={() => onPostClick(post)}
