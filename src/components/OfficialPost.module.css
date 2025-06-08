@@ -1,12 +1,160 @@
-.scrapBtn {
-    background: "none";
-    border: "none";
-    cursor: "pointer";
-    color: "#888";
-    font-size: 22;
-    display: "flex";
-    align-items: "center";
+
+.detailWrapper {
+  padding-block: 48px;
 }
-.scrapBtn.active{
-    color: #2986E2;
+
+.notFound {
+  padding: 80px 0;
+  text-align: center;
+  color: #888;
+}
+
+.detailHeader {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detailNew {
+  color: #D13B5A;
+  font-weight: 700;
+  font-size: 28px;
+  margin-right: 12px;
+}
+
+.detailTitle {
+  font-size: 32px;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.detailDate {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.detailMedia {
+  background: #f2f2f2;
+  border-radius: 8px;
+  width: 100%;
+  min-height: 350px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.detailImg,
+.detailVideo {
+  max-width: 48%;
+  max-height: 350px;
+  border-radius: 8px;
+}
+
+.detailDesc {
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 32px;
+}
+
+.detailBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 24px;
+  gap: 24px;
+  font-size: 22px;
+  color: #222;
+}
+
+.detailHashtags {
+  display: flex;
+  gap: 16px;
+}
+
+.detailHashtag {
+  color: #2986E2;
+  font-size: 15px;
+}
+
+.detailActions {
+  display: flex;
+  gap: 24px;
+}
+
+.detailLikeBtn,
+.detailScrapBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.detailLikeBtn {
+  color: #888;
+}
+
+.detailLikeBtn[aria-label="좋아요 취소"] {
+  color: #D13B5A;
+}
+
+.ScrapBtn {
+  color: #888;
+}
+
+.ScrapBtn[aria-label="스크랩 해제"] {
+  color: #2986E2;
+}
+
+.detailLikeCount {
+  font-size: 18px;
+  margin-left: 4px;
+}
+.detailShareBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: #888;
+  margin-left: 8px;
+}
+
+.sharePopup {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: #fff;
+  color: #222;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 16px 20px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  min-width: 260px;
+}
+
+.shareUrl {
+  font-size: 14px;
+  margin-bottom: 12px;
+  word-break: break-all;
+}
+
+.copyBtn, .closeBtn {
+  background: #eee;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 14px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 14px;
 }

@@ -415,27 +415,11 @@ button {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
 
 
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
-}
-
-
-.layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.container{
+  width: 100%;
+  font-family: var(--main-font-family);
 }
 
 .inner {
@@ -443,25 +427,6 @@ body,
   margin: 0 auto;
   padding: 0 40px;
   width: 100%;
-}
-
-.layout header {
-  border-bottom: 1px solid #eee;
-  background-color: #5C7AEA;
-  font-size: 1.1rem;
-  height: 56px;
-}
-
-.layout main {
-  flex: 1;
-
-}
-
-.layout footer {
-  text-align: center;
-  padding: 20px 0;
-  color: #999;
-  font-size: 14px;
 }
 
 
