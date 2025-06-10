@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Join from './pages/Join';
@@ -15,6 +15,24 @@ import { CommentProvider } from './context/CommentContext';
 // import './App.css';
 
 function App() {
+  const location = useLocation();
+  useEffect(() => {
+    const shouldHide = location.pathname.startsWith("/admin");
+
+    const observer = new MutationObserver(() => {
+      const chatbase = document.querySelector("#chatbase-bubble-button") as HTMLElement;
+      if (chatbase) {
+        chatbase.style.display = shouldHide ? 'none' : 'block';
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
   return (
     <PostListProvider>
       <LikedScrappedProvider>
