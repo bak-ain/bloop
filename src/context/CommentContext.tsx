@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { CommentPost, CommentInput } from "../types";
+import { CommentPost } from "../types";
 
 // 내 userId를 가져오는 함수(혹은 상수로 대체)
 const myUserId = localStorage.getItem("userId") || "me"; // 실제 구현에 맞게 수정
@@ -13,7 +13,8 @@ interface CommentContextType {
     addComment: (
         type: "artist" | "fan",
         postId: string,
-        comment: CommentPost
+        comment: CommentPost,
+        parentCommentId?: string
     ) => void;
     deleteComment: (
         type: "artist" | "fan",
@@ -36,30 +37,25 @@ export const useComment = () => {
 };
 
 export const CommentProvider = ({ children }: { children: React.ReactNode }) => {
-    const [artistComments, setArtistComments] = useState<Record<string, CommentPost[]>>({});
-    const [fanComments, setFanComments] = useState<Record<string, CommentPost[]>>({});
-    const [myComments, setMyComments] = useState<CommentPost[]>([]);
+    // useState의 초기값에서 localStorage 값을 읽어오도록 수정
+    const [artistComments, setArtistComments] = useState<Record<string, CommentPost[]>>(
+        () => JSON.parse(localStorage.getItem("artistComments") || "{}")
+    );
+    const [fanComments, setFanComments] = useState<Record<string, CommentPost[]>>(
+        () => JSON.parse(localStorage.getItem("fanComments") || "{}")
+    );
+    const [myComments, setMyComments] = useState<CommentPost[]>(
+        () => JSON.parse(localStorage.getItem("myComments") || "[]")
+    );
 
-    // 댓글 데이터 불러오기
+    // 댓글 변경 시 localStorage에 저장
     useEffect(() => {
-        // 아티스트 댓글
-        const loadedArtistComments: Record<string, CommentPost[]> = {};
-        const artistPostList = JSON.parse(localStorage.getItem("artistPostList") || "[]");
-        artistPostList.forEach((post: { id: string }) => {
-            const saved = localStorage.getItem(`comments_artist_${post.id}`);
-            if (saved) loadedArtistComments[post.id] = JSON.parse(saved);
-        });
-        setArtistComments(loadedArtistComments);
+        localStorage.setItem("artistComments", JSON.stringify(artistComments));
+    }, [artistComments]);
 
-        // 팬 댓글
-        const loadedFanComments: Record<string, CommentPost[]> = {};
-        const fanPostList = JSON.parse(localStorage.getItem("fanPostList") || "[]");
-        fanPostList.forEach((post: { id: string }) => {
-            const saved = localStorage.getItem(`comments_fan_${post.id}`);
-            if (saved) loadedFanComments[post.id] = JSON.parse(saved);
-        });
-        setFanComments(loadedFanComments);
-    }, []);
+    useEffect(() => {
+        localStorage.setItem("fanComments", JSON.stringify(fanComments));
+    }, [fanComments]);
 
     // 내 댓글 리스트 동기화
     useEffect(() => {
@@ -68,7 +64,7 @@ export const CommentProvider = ({ children }: { children: React.ReactNode }) => 
 
         function collectMyComments(list: CommentPost[]) {
             list.forEach((c) => {
-                if (c.user.userId === myUserId) mine.push(c);
+                if (c.user?.userId === myUserId) mine.push(c);
                 if (c.replies && c.replies.length > 0) collectMyComments(c.replies);
             });
         }
@@ -79,18 +75,6 @@ export const CommentProvider = ({ children }: { children: React.ReactNode }) => 
         setMyComments(mine);
         localStorage.setItem("myComments", JSON.stringify(mine));
     }, [artistComments, fanComments]);
-    // 댓글 변경 시 localStorage에 저장
-    useEffect(() => {
-        Object.entries(artistComments).forEach(([postId, comments]) => {
-            localStorage.setItem(`comments_artist_${postId}`, JSON.stringify(comments));
-        });
-    }, [artistComments]);
-
-    useEffect(() => {
-        Object.entries(fanComments).forEach(([postId, comments]) => {
-            localStorage.setItem(`comments_fan_${postId}`, JSON.stringify(comments));
-        });
-    }, [fanComments]);
 
     // 댓글 추가 함수
     const addComment = (
@@ -104,14 +88,14 @@ export const CommentProvider = ({ children }: { children: React.ReactNode }) => 
                 let updated = { ...prev };
                 if (parentCommentId) {
                     // 답댓글: 부모의 replies에만 추가
-                    updated[postId] = updated[postId].map((c) =>
+                    updated[postId] = updated[postId]?.map((c) =>
                         c.id === parentCommentId
                             ? {
                                 ...c,
                                 replies: c.replies ? [...c.replies, comment] : [comment],
                             }
                             : c
-                    );
+                    ) ?? [];
                 } else {
                     // 일반 댓글: 최상위 배열에 추가
                     updated[postId] = prev[postId] ? [...prev[postId], comment] : [comment];
@@ -122,14 +106,14 @@ export const CommentProvider = ({ children }: { children: React.ReactNode }) => 
             setFanComments((prev) => {
                 let updated = { ...prev };
                 if (parentCommentId) {
-                    updated[postId] = updated[postId].map((c) =>
+                    updated[postId] = updated[postId]?.map((c) =>
                         c.id === parentCommentId
                             ? {
                                 ...c,
                                 replies: c.replies ? [...c.replies, comment] : [comment],
                             }
                             : c
-                    );
+                    ) ?? [];
                 } else {
                     updated[postId] = prev[postId] ? [...prev[postId], comment] : [comment];
                 }
@@ -145,20 +129,27 @@ export const CommentProvider = ({ children }: { children: React.ReactNode }) => 
         postId: string,
         commentId: string
     ) => {
+        const deleteRecursive = (comments: CommentPost[]): CommentPost[] =>
+            comments
+                .filter((c) => c.id !== commentId)
+                .map((c) =>
+                    c.replies
+                        ? { ...c, replies: deleteRecursive(c.replies) }
+                        : c
+                );
+
         if (type === "artist") {
             setArtistComments((prev) => ({
                 ...prev,
-                [postId]: prev[postId]?.filter((c) => c.id !== commentId) || [],
+                [postId]: prev[postId] ? deleteRecursive(prev[postId]) : [],
             }));
         } else {
             setFanComments((prev) => ({
                 ...prev,
-                [postId]: prev[postId]?.filter((c) => c.id !== commentId) || [],
+                [postId]: prev[postId] ? deleteRecursive(prev[postId]) : [],
             }));
         }
-        // myComments에서도 삭제
-        setMyComments((prev) => prev.filter((c) => c.id !== commentId));
-        localStorage.setItem("myComments", JSON.stringify(myComments.filter((c) => c.id !== commentId)));
+        // myComments는 useEffect에서 자동 동기화
     };
 
     // 댓글 좋아요 토글 함수
@@ -167,23 +158,29 @@ export const CommentProvider = ({ children }: { children: React.ReactNode }) => 
         postId: string,
         commentId: string
     ) => {
+        const toggleLikeRecursive = (comments: CommentPost[]): CommentPost[] =>
+            comments.map((c) =>
+                c.id === commentId
+                    ? {
+                        ...c,
+                        isLiked: !c.isLiked,
+                        likes: c.isLiked ? c.likes - 1 : c.likes + 1,
+                    }
+                    : {
+                        ...c,
+                        replies: c.replies ? toggleLikeRecursive(c.replies) : [],
+                    }
+            );
+
         if (type === "artist") {
             setArtistComments((prev) => ({
                 ...prev,
-                [postId]: prev[postId]?.map((c) =>
-                    c.id === commentId
-                        ? { ...c, isLiked: !c.isLiked, likes: c.isLiked ? c.likes - 1 : c.likes + 1 }
-                        : c
-                ) || [],
+                [postId]: prev[postId] ? toggleLikeRecursive(prev[postId]) : [],
             }));
         } else {
             setFanComments((prev) => ({
                 ...prev,
-                [postId]: prev[postId]?.map((c) =>
-                    c.id === commentId
-                        ? { ...c, isLiked: !c.isLiked, likes: c.isLiked ? c.likes - 1 : c.likes + 1 }
-                        : c
-                ) || [],
+                [postId]: prev[postId] ? toggleLikeRecursive(prev[postId]) : [],
             }));
         }
     };

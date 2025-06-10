@@ -2,9 +2,11 @@
   "artist": [
     {
       "id": "a1",
-      "name": "DOA",
-      "profileImage": "/images/profiles/doa.png",
-      "badgeType": "artist",
+      "user": {
+        "name": "DOA",
+        "profileImage": "/images/emoji1.png",
+        "badgeType": "artist"
+      },
       "date": "2025.05.28",
       "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
       "likes": 3,
@@ -13,25 +15,18 @@
       "isLiked": true,
       "isStory": false,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/1.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/3.png"
-        }
+        { "type": "image", "url": "/images/1.png" },
+        { "type": "image", "url": "/images/2.png" },
+        { "type": "image", "url": "/images/3.png" }
       ]
     },
     {
       "id": "a2",
-      "name": "LUHA",
-      "profileImage": "/images/profiles/luha.png",
-      "badgeType": "artist",
+      "user": {
+        "name": "LUHA",
+         "profileImage": "/images/emoji2.png",
+        "badgeType": "artist"
+      },
       "date": "2025.05.27",
       "description": "루하는 오늘도 강아지 산책중 🐶",
       "likes": 7,
@@ -40,17 +35,16 @@
       "isLiked": true,
       "isStory": false,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        }
+        { "type": "image", "url": "/images/2.png" }
       ]
     },
     {
       "id": "a3",
-      "name": "SEI",
-      "profileImage": "/images/profiles/luha.png",
-      "badgeType": "artist",
+      "user": {
+        "name": "SEI",
+         "profileImage": "/images/emoji2.png",
+        "badgeType": "artist"
+      },
       "date": "2025.05.27",
       "description": "여러분들 !! 저는 태국 공연 잘 끝냈습니다 !! 오늘 라이브는 도아언니 하이라이트 메들리 있어요 ><",
       "likes": 7,
@@ -59,17 +53,16 @@
       "isStory": false,
       "isLiked": true,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        }
+        { "type": "image", "url": "/images/2.png" }
       ]
     },
     {
       "id": "a4",
-      "name": "ARIN",
-      "profileImage": "/images/profiles/luha.png",
-      "badgeType": "artist",
+      "user": {
+        "name": "ARIN",
+         "profileImage": "/images/emoji2.png",
+        "badgeType": "artist"
+      },
       "date": "2025.05.27",
       "description": "저희 알파카 어떠십니까 ㅎ",
       "likes": 7,
@@ -78,17 +71,16 @@
       "isLiked": true,
       "isStory": false,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        }
+        { "type": "image", "url": "/images/2.png" }
       ]
     },
     {
       "id": "a5",
-      "name": "DOA",
-      "profileImage": "/images/profiles/doa.png",
-      "badgeType": "artist",
+      "user": {
+        "name": "DOA",
+        "profileImage": "/images/emoji1.png",
+        "badgeType": "artist"
+      },
       "date": "2025.05.28",
       "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
       "likes": 3,
@@ -97,25 +89,18 @@
       "isLiked": true,
       "isStory": true,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/1.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/3.png"
-        }
+        { "type": "image", "url": "/images/1.png" },
+        { "type": "image", "url": "/images/2.png" },
+        { "type": "image", "url": "/images/3.png" }
       ]
     },
     {
       "id": "a6",
-      "name": "DOA",
-      "profileImage": "/images/profiles/doa.png",
-      "badgeType": "artist",
+      "user": {
+        "name": "DOA",
+        "profileImage": "/images/emoji1.png",
+        "badgeType": "artist"
+      },
       "date": "2025.05.28",
       "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
       "likes": 3,
@@ -124,25 +109,18 @@
       "isLiked": true,
       "isStory": true,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/1.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/3.png"
-        }
+        { "type": "image", "url": "/images/1.png" },
+        { "type": "image", "url": "/images/2.png" },
+        { "type": "image", "url": "/images/3.png" }
       ]
     },
     {
       "id": "a7",
-      "name": "DOA",
-      "profileImage": "/images/profiles/doa.png",
-      "badgeType": "artist",
+      "user": {
+        "name": "DOA",
+        "profileImage": "/images/emoji1.png",
+        "badgeType": "artist"
+      },
       "date": "2025.05.28",
       "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
       "likes": 3,
@@ -151,25 +129,18 @@
       "isLiked": true,
       "isStory": true,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/1.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/3.png"
-        }
+        { "type": "image", "url": "/images/1.png" },
+        { "type": "image", "url": "/images/2.png" },
+        { "type": "image", "url": "/images/3.png" }
       ]
     },
     {
       "id": "a8",
-      "name": "DOA",
-      "profileImage": "/images/profiles/doa.png",
-      "badgeType": "artist",
+      "user": {
+        "name": "DOA",
+        "profileImage": "/images/emoji1.png",
+        "badgeType": "artist"
+      },
       "date": "2025.05.28",
       "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
       "likes": 3,
@@ -178,28 +149,110 @@
       "isLiked": true,
       "isStory": true,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/1.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/3.png"
-        }
+        { "type": "image", "url": "/images/1.png" },
+        { "type": "image", "url": "/images/2.png" },
+        { "type": "image", "url": "/images/3.png" }
+      ]
+    },
+      {
+      "id": "a9",
+      "user": {
+        "name": "LUHA",
+         "profileImage": "/images/emoji2.png",
+        "badgeType": "artist"
+      },
+      "date": "2025.05.27",
+      "description": "루하는 오늘도 강아지 산책중 🐶",
+      "likes": 7,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "isStory": false,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },  {
+      "id": "a10",
+      "user": {
+        "name": "LUHA",
+         "profileImage": "/images/emoji2.png",
+        "badgeType": "artist"
+      },
+      "date": "2025.05.27",
+      "description": "루하는 오늘도 강아지 산책중 🐶",
+      "likes": 7,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "isStory": false,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+      {
+      "id": "a11",
+      "user": {
+        "name": "LUHA",
+         "profileImage": "/images/emoji2.png",
+        "badgeType": "artist"
+      },
+      "date": "2025.05.27",
+      "description": "루하는 오늘도 강아지 산책중 🐶",
+      "likes": 7,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "isStory": false,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+      {
+      "id": "a12",
+      "user": {
+        "name": "LUHA",
+         "profileImage": "/images/emoji2.png",
+        "badgeType": "artist"
+      },
+      "date": "2025.05.27",
+      "description": "루하는 오늘도 강아지 산책중 🐶",
+      "likes": 7,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "isStory": false,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+      {
+      "id": "a13",
+      "user": {
+        "name": "LUHA",
+         "profileImage": "/images/emoji2.png",
+        "badgeType": "artist"
+      },
+      "date": "2025.05.27",
+      "description": "루하는 오늘도 강아지 산책중 🐶",
+      "likes": 7,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "isStory": false,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
       ]
     }
   ],
   "fan": [
     {
       "id": "f1",
-      "name": "nanfan",
-      "profileImage": "/images/profiles/nanfan.png",
-      "badgeType": "fan",
-      "badgeLevel": 1,
+      "user": {
+        "name": "nanfan",
+        "profileImage": "/images/emoji3.png",
+        "badgeType": "fan",
+        "badgeLevel": 1
+      },
       "date": "2025.05.28",
       "description": "다들 이사진 봤어요 ? ㅠㅠ 역시 우리 도아뿐 ....",
       "hashtag": "#운동하는 #도아 #섹시하다",
@@ -208,18 +261,17 @@
       "isScrapped": true,
       "isLiked": true,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        }
+        { "type": "image", "url": "/images/2.png" }
       ]
     },
     {
       "id": "f2",
-      "name": "pinkgomi",
-      "profileImage": "/images/profiles/pinkgomi.png",
-      "badgeType": "fan",
-      "badgeLevel": 3,
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
       "date": "2025.05.27",
       "description": "루하 눈빛 무슨 일이야...",
       "hashtag": "#루하 #고막여친 #산책짤",
@@ -228,10 +280,235 @@
       "isScrapped": true,
       "isLiked": true,
       "media": [
-        {
-          "type": "image",
-          "url": "/images/2.png"
-        }
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f3",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "루하 눈빛 무슨 일이야...",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 6,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f4",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "루하 눈빛 무슨 일이야...",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 6,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f5",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "루하 눈빛 무슨 일이야...",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 6,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f6",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "루하 눈빛 무슨 일이야...",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 6,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f7",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "ddddsewqrqwe",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 26,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f8",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "무슨 일이야...",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 36,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f9",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "efefefefe...",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 30,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f10",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "루하 눈빛 무슨 일이야...",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 5,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f11",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "루하 눈빛 무슨 일이야...",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 2,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f12",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "루하 눈빛 무슨 일이야...",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 8,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f13",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "aaaa",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 16,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
+      ]
+    },
+     {
+      "id": "f14",
+      "user": {
+        "name": "pinkgomi",
+        "profileImage": "/images/emoji4.png",
+        "badgeType": "fan",
+        "badgeLevel": 3
+      },
+      "date": "2025.05.27",
+      "description": "ddddd",
+      "hashtag": "#루하 #고막여친 #산책짤",
+      "likes": 20,
+      "comment": 3,
+      "isScrapped": true,
+      "isLiked": true,
+      "media": [
+        { "type": "image", "url": "/images/2.png" }
       ]
     }
   ]

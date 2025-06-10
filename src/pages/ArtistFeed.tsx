@@ -1,14 +1,15 @@
 import { usePostList } from "../context/PostListContext";
 import { useLikedScrapped } from "../context/LikedScrappedContext";
-import PostCard from "../components/PostCard";
+import FeedLayout from "../components/FeedLayout";
 import Container from "../components/Container";
 import Popup from "../components/Popup";
 import ArtistStory from "../components/ArtistStrory";
 import { ArtistPost } from "../types";
 import { useState } from "react";
+import styles from "../components/FeedLayout.module.css";
 
 const ArtistFeed = () => {
-  const { artistPosts, setArtistPosts } = usePostList();
+  const { artistPosts } = usePostList();
   const { artistLikedIds, artistScrappedIds, toggleLike, toggleScrap } = useLikedScrapped();
   const [selectedPost, setSelectedPost] = useState<ArtistPost | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -24,20 +25,18 @@ const ArtistFeed = () => {
         setSelectedPost(story);
         setIsPopupOpen(true);
       }} />
-      {artistPosts.map((post) => (
-        <PostCard
-          key={post.id}
-          data={post}
-          likedPostIds={artistLikedIds}
-          scrappedPostIds={artistScrappedIds}
-          onLike={() => toggleLike("artist", post.id)}
-          onScrap={() => toggleScrap("artist", post.id)}
-          onClick={() => {
-            setSelectedPost(post);
-            setIsPopupOpen(true);
-          }}
-        />
-      ))}
+      <FeedLayout
+        className={styles.artistFeedLayout}
+        posts={artistPosts}
+        likedIds={artistLikedIds}
+        scrappedIds={artistScrappedIds}
+        onLike={(id, defaultLikes) => toggleLike("artist", id, defaultLikes)}
+        onScrap={id => toggleScrap("artist", id)}
+        onPostClick={post => {
+          setSelectedPost(post);
+          setIsPopupOpen(true);
+        }}
+      />
       {isPopupOpen && selectedPost && (
         <Popup
           type="artistFeed"

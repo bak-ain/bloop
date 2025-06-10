@@ -26,10 +26,16 @@ const PostCard = <T extends ArtistPost | FanPost>({
         if (onClick) onClick();
     };
 
-    const isArtist = (data as ArtistPost).badgeType === "artist";
+    // user가 없을 수 있으니 안전하게 처리
+    const isArtist = data.user?.badgeType === "artist";
     const [liked, setLiked] = useState(false);
     const [scrapped, setScrapped] = useState(false);
-    const [likeCount, setLikeCount] = useState(data.likes);
+
+    // 좋아요 수를 context에서 관리
+    const { postLikeCounts } = useLikedScrapped();
+    const [likeCount, setLikeCount] = useState(
+        postLikeCounts[data.id] ?? data.likes
+    );
     const [commentCount, setCommentCount] = useState(data.comment);
 
     // 최신 liked/scrapped 상태 동기화
@@ -37,6 +43,11 @@ const PostCard = <T extends ArtistPost | FanPost>({
         setLiked(likedPostIds.includes(data.id));
         setScrapped(scrappedPostIds.includes(data.id));
     }, [likedPostIds, scrappedPostIds, data.id]);
+
+    // 최신 좋아요 수 동기화
+    useEffect(() => {
+        setLikeCount(postLikeCounts[data.id] ?? data.likes);
+    }, [postLikeCounts, data.id, data.likes]);
 
     // 최신 댓글 수 동기화
     const { artistPosts, fanPosts } = usePostList();
@@ -52,23 +63,31 @@ const PostCard = <T extends ArtistPost | FanPost>({
 
     const handleLike = () => {
         onLike();
-        setLiked((prev) => !prev);
-        setLikeCount((prev) => liked ? Math.max(prev - 1, 0) : prev + 1);
+        // setLiked와 setLikeCount는 context에서 동기화되므로 별도 setState 불필요
     };
 
     const handleScrap = () => {
         onScrap();
-        setScrapped((prev) => !prev);
+        // setScrapped는 context에서 동기화되므로 별도 setState 불필요
+    };
+
+    // user가 없을 때 기본값 처리
+    const user = data.user ?? {
+        name: "알 수 없음",
+        profileImage: "/images/3.png",
+        badgeType: "fan" as const,
+        badgeLevel: 1
     };
 
     return (
         <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
             {isArtist ? (
                 <div className={styles.profile_bubble_layout}>
-                    <img className={styles.profile_img} src={data.profileImage} alt={data.name} />
+                    <img className={styles.profile_img} src={user.profileImage} alt={user.name} />
                     <div className={styles.bubble_box} onClick={goToDetail}>
                         <div className={styles.bubble_header}>
-                            <strong>{data.name}
+                            <strong>
+                                {user.name}
                                 <img
                                     className={styles.badge_img}
                                     src={getBadgeImage('artist')}
@@ -86,7 +105,6 @@ const PostCard = <T extends ArtistPost | FanPost>({
                                     ) : (
                                         <div key={i} className={styles.media_item_wrapper}>
                                             <img src={m.url} alt={`media-${i}`} className={styles.media_item} />
-                                            {/* 2번째(=마지막) 이미지이면서 전체가 3개 이상일 때 +N 표시 */}
                                             {i === 1 && (data.media?.length ?? 0) > 2 && (
                                                 <div className={styles.media_overlay}>
                                                     +{(data.media?.length ?? 0) - 2}
@@ -102,13 +120,21 @@ const PostCard = <T extends ArtistPost | FanPost>({
             ) : (
                 <>
                     <div className={styles.profile_row}>
-                        <img className={styles.profile_img} src={data.profileImage} alt={data.name} />
+                        <img className={styles.profile_img} src={user.profileImage} alt={user.name} />
                         <div className={styles.info}>
-                            <strong>{data.name}
+                            <strong>
+                                {user.name}
                                 <img
                                     className={styles.badge_img}
-                                    src={getBadgeImage('fan', (data as FanPost).badgeLevel)}
-                                    alt={`fan badge Lv.${(data as FanPost).badgeLevel}`}
+                                    src={getBadgeImage(
+                                        'fan',
+                                        user.badgeType === "fan" ? user.badgeLevel : undefined
+                                    )}
+                                    alt={
+                                        user.badgeType === "fan"
+                                            ? `fan badge Lv.${user.badgeLevel}`
+                                            : "fan badge"
+                                    }
                                 />
                             </strong>
                             <p className={styles.date}>{data.date}</p>
@@ -116,9 +142,9 @@ const PostCard = <T extends ArtistPost | FanPost>({
                     </div>
                     <div className={styles.body_wrapper} onClick={goToDetail}>
                         <p className={styles.desc}>{data.description}</p>
-                        {(data as FanPost).hashtag && (
+                        {data.hashtag && (
                             <div className={styles.hashtags}>
-                                {(data as FanPost).hashtag?.split(" ").map((tag, i) => (
+                                {data.hashtag.split(" ").map((tag, i) => (
                                     <span key={i} className={styles.tag}>{tag}</span>
                                 ))}
                             </div>
@@ -131,7 +157,6 @@ const PostCard = <T extends ArtistPost | FanPost>({
                                     ) : (
                                         <div key={i} className={styles.media_item_wrapper}>
                                             <img src={m.url} alt={`media-${i}`} className={styles.media_item} />
-                                            {/* 2번째(=마지막) 이미지이면서 전체가 3개 이상일 때 +N 표시 */}
                                             {i === 1 && (data.media?.length ?? 0) > 2 && (
                                                 <div className={styles.media_overlay}>
                                                     +{(data.media?.length ?? 0) - 2}
