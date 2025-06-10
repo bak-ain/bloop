@@ -4,6 +4,9 @@ import { getBadgeImage } from "../utils/badge";
 import styles from "./PostCard.module.css";
 import { useLikedScrapped } from "../context/LikedScrappedContext";
 import { usePostList } from "../context/PostListContext";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 interface PostCardProps<T extends ArtistPost | FanPost> {
     data: T;
@@ -25,6 +28,15 @@ const PostCard = <T extends ArtistPost | FanPost>({
     const goToDetail = () => {
         if (onClick) onClick();
     };
+
+    function getDisplayDate(dateStr: string) {
+        const now = dayjs();
+        const date = dayjs(dateStr);
+        // 24시간(1일) 이내면 fromNow, 아니면 날짜/시간 포맷
+        return now.diff(date, "hour") < 24
+            ? date.fromNow()
+            : date.format("YYYY.MM.DD");
+    }
 
     // user가 없을 수 있으니 안전하게 처리
     const isArtist = data.user?.badgeType === "artist";
@@ -54,11 +66,16 @@ const PostCard = <T extends ArtistPost | FanPost>({
     useEffect(() => {
         if (isArtist) {
             const found = artistPosts.find((p) => p.id === data.id);
-            if (found) setCommentCount(found.comment);
+            if (found && found.comment !== commentCount) {
+                setCommentCount(found.comment);
+            }
         } else {
             const found = fanPosts.find((p) => p.id === data.id);
-            if (found) setCommentCount(found.comment);
+            if (found && found.comment !== commentCount) {
+                setCommentCount(found.comment);
+            }
         }
+        // eslint-disable-next-line
     }, [artistPosts, fanPosts, data.id, isArtist]);
 
     const handleLike = () => {
@@ -94,9 +111,9 @@ const PostCard = <T extends ArtistPost | FanPost>({
                                     alt="artist badge"
                                 />
                             </strong>
-                            <p className={styles.date}>{data.date}</p>
+                            <p className={styles.date}>{getDisplayDate(data.date)}</p>
                         </div>
-                        <p className={styles.desc}>{data.description}</p>
+                        <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
                         {data.media && (
                             <div className={styles.media}>
                                 {data.media.slice(0, 2).map((m, i) =>
@@ -137,11 +154,11 @@ const PostCard = <T extends ArtistPost | FanPost>({
                                     }
                                 />
                             </strong>
-                            <p className={styles.date}>{data.date}</p>
+                            <p className={styles.date}>{getDisplayDate(data.date)}</p>
                         </div>
                     </div>
                     <div className={styles.body_wrapper} onClick={goToDetail}>
-                        <p className={styles.desc}>{data.description}</p>
+                        <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
                         {data.hashtag && (
                             <div className={styles.hashtags}>
                                 {data.hashtag.split(" ").map((tag, i) => (

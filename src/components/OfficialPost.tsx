@@ -40,13 +40,6 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
             ) : (
               <div className={styles.mediaThumbPlaceholder} />
             )}
-            <button
-              className={`${styles.scrapBtn} ${isScrapped ? styles.active : ""}`}
-              onClick={handleScrap}
-              aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
-            >
-              {isScrapped ? "🔖" : "📌"}
-            </button>
           </div>
           <div className={styles.mediaInfo}>
             <div className={styles.mediaDate}>{data.date}</div>
@@ -64,13 +57,6 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
           ) : (
             <div className={styles.photoPlaceholder} />
           )}
-          <button
-            className={`${styles.scrapBtn} ${isScrapped ? styles.active : ""}`}
-            onClick={handleScrap}
-            aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
-          >
-            {isScrapped ? "🔖" : "📌"}
-          </button>
         </div>
       );
     case "feature":
@@ -83,13 +69,6 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
             ) : (
               <div className={styles.behindThumbPlaceholder} />
             )}
-            <button
-              className={`${styles.scrapBtn} ${isScrapped ? styles.active : ""}`}
-              onClick={handleScrap}
-              aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
-            >
-              {isScrapped ? "🔖" : "📌"}
-            </button>
           </div>
           <div className={styles.behindInfo}>
             <div className={styles.behindTitle}>{data.title}</div>

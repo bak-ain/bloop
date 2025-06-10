@@ -4,6 +4,7 @@ import { usePostList } from "../context/PostListContext";
 import { getAvailableEmojis } from "../utils/badge";
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./Popup.module.css";
+import dayjs from "dayjs";
 
 type PopupProps =
   | {
@@ -16,6 +17,7 @@ type PopupProps =
     type: 'fanFeed';
     data: FanPost;
     onClose: () => void;
+    onEdit?: (post: FanPost) => void;
   }
   | {
     type: 'upload';
@@ -26,6 +28,7 @@ type PopupProps =
     type: 'edit';
     data: FanPost;
     onClose: () => void;
+    onUpdate?: (data: FanPost) => void;
   };
 
 const ArtistFeedPopup = ({
@@ -40,9 +43,11 @@ const ArtistFeedPopup = ({
 const FanFeedPopup = ({
   data,
   onClose,
+  onEdit,
 }: {
   data: FanPost;
   onClose: () => void;
+  onEdit?: (post: FanPost) => void;
 }) => {
   const { fanPosts, setFanPosts } = usePostList();
   return (
@@ -52,6 +57,7 @@ const FanFeedPopup = ({
       postList={fanPosts}
       setPostList={setFanPosts}
       onClose={onClose}
+      onEdit={onEdit}
     />
   );
 };
@@ -197,7 +203,7 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
         badgeLevel: 1,
         userId: "me123",
       },
-      date: new Date().toISOString(),
+      date: dayjs().toISOString(), 
       description, // HTML로 저장
       hashtag: hashtags.map(tag => `#${tag}`).join(","),
       likes: 0,
@@ -335,9 +341,239 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
   );
 };
 
-const EditPopup = ({ data }: { data: FanPost }) => (
-  <div>수정 팝업 내용: {data.description}</div>
-);
+const EditPopup = ({
+  data,
+  onClose,
+  onSubmit,
+}: {
+  data: FanPost;
+  onClose: () => void;
+  onSubmit?: (data: FanPost) => void;
+}) => {
+  const [images, setImages] = useState<string[]>(data.media?.map((m) => m.url) || []);
+  const [hashtagInput, setHashtagInput] = useState("");
+  const [hashtags, setHashtags] = useState<string[]>(
+    data.hashtag ? data.hashtag.split(",").map((tag) => tag.replace(/^#/, "")) : []
+  );
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const editorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (editorRef.current && data.description) {
+      editorRef.current.innerHTML = data.description;
+    }
+  }, [data.description]);
+
+  const handleHashtagInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setHashtagInput(e.target.value);
+  };
+
+  const handleHashtagKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if ((e.key === " " || e.key === "Enter") && hashtagInput.trim()) {
+      const tag = hashtagInput.trim().replace(/^#/, "");
+      if (tag && !hashtags.includes(tag)) {
+        setHashtags([...hashtags, tag]);
+      }
+      setHashtagInput("");
+      e.preventDefault();
+    }
+  };
+
+  const handleRemoveHashtag = (idx: number) => {
+    setHashtags(hashtags.filter((_, i) => i !== idx));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files);
+      const readers = files.map(
+        (file) =>
+          new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (ev) => resolve(ev.target?.result as string);
+            reader.readAsDataURL(file);
+          })
+      );
+      Promise.all(readers).then((imgs) => setImages((prev) => [...prev, ...imgs]));
+    }
+  };
+
+  const handleRemoveImage = (idx: number) => {
+    setImages((prev) => prev.filter((_, i) => i !== idx));
+  };
+
+  // 이모지 관련 (UploadPopup과 동일)
+  const userLevel = data.user.badgeLevel || 1;
+  const emojis = getAvailableEmojis(userLevel);
+
+  const handleEmojiInsert = (emoji: string) => {
+    const editor = editorRef.current;
+    if (!editor) return;
+    let selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0 || !editor.contains(selection.anchorNode)) {
+      editor.focus();
+      selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(editor);
+      range.collapse(false);
+      if (selection) {
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+    }
+    const img = document.createElement("img");
+    img.src = emoji;
+    img.alt = "emoji";
+    img.style.width = "100px";
+    img.style.height = "100px";
+    img.style.verticalAlign = "middle";
+    img.style.border = "1px solid #e0e0e0";
+    img.style.borderRadius = "8px";
+    if (selection) {
+      const range = selection.getRangeAt(0);
+      range.collapse(false);
+      range.insertNode(img);
+      const br = document.createElement("br");
+      range.setStartAfter(img);
+      range.collapse(false);
+      range.insertNode(br);
+      range.setStartAfter(br);
+      range.setEndAfter(br);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+    setShowEmojiPicker(false);
+    editor.focus();
+  };
+
+  // 수정 완료
+  const handleEdit = () => {
+    const editor = editorRef.current;
+    const description = editor?.innerHTML || "";
+    const updatedPost: FanPost = {
+      ...data,
+      description,
+      hashtag: hashtags.map(tag => `#${tag}`).join(","),
+      media: images.map((url) => ({ type: "image", url })),
+    };
+    if (onSubmit) onSubmit(updatedPost);
+    onClose();
+  };
+
+  return (
+    <div className={styles.uploadPopupWrapper}>
+      <h2 className={styles.uploadPopupTitle}>게시물 수정</h2>
+      <div className={styles.uploadPopupTextareaBox}>
+        <div
+          ref={editorRef}
+          className={styles.uploadPopupEditor}
+          contentEditable
+          suppressContentEditableWarning
+          data-placeholder="내용을 입력해주세요."
+          style={{
+            minHeight: 120,
+            border: "1px solid #e0e0e0",
+            borderRadius: 12,
+            padding: 30,
+            fontSize: "1rem",
+            marginBottom: 24,
+            background: "#fafbfc",
+            outline: "none",
+          }}
+        />
+      </div>
+      <div className={styles.uploadPopupHashtagBox}>
+        {hashtags.map((tag, idx) => (
+          <span className={styles.uploadPopupHashtag} key={tag}>
+            #{tag}
+            <button
+              type="button"
+              className={styles.uploadPopupHashtagRemove}
+              onClick={() => handleRemoveHashtag(idx)}
+            >
+              ×
+            </button>
+          </span>
+        ))}
+        <input
+          className={styles.uploadPopupInput}
+          placeholder="# 태그를 입력해주세요."
+          value={hashtagInput}
+          onChange={handleHashtagInput}
+          onKeyDown={handleHashtagKeyDown}
+        />
+      </div>
+      <div className={styles.uploadPopupFileBox}>
+        <button
+          type="button"
+          className={styles.uploadPopupFileBtn}
+          onClick={() => document.getElementById("edit-file-input")?.click()}
+        >
+          파일 선택
+        </button>
+        <input
+          id="edit-file-input"
+          type="file"
+          accept="image/*"
+          multiple
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+        />
+      </div>
+      <div className={styles.uploadPopupImageList}>
+        {images.map((img, idx) => (
+          <div key={idx} className={styles.uploadPopupImageItem}>
+            <img
+              src={img}
+              alt={`preview-${idx}`}
+              className={styles.uploadPopupImage}
+            />
+            <button
+              onClick={() => handleRemoveImage(idx)}
+              className={styles.uploadPopupRemoveBtn}
+              type="button"
+            >
+              ×
+            </button>
+          </div>
+        ))}
+      </div>
+      <div className={styles.uploadPopupBtnBox}>
+        <button
+          type="button"
+          className={styles.uploadPopupEmojiBtn}
+          onClick={() => setShowEmojiPicker((prev) => !prev)}
+        >
+          😀
+        </button>
+        {showEmojiPicker && (
+          <div className={styles.uploadPopupEmojiPicker}>
+            {Array.from({ length: Math.ceil(emojis.length / 3) }).map((_, rowIdx) => (
+              <div className={styles.uploadPopupEmojiRow} key={rowIdx}>
+                {emojis.slice(rowIdx * 3, rowIdx * 3 + 3).map((emoji, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    className={styles.uploadPopupEmoji}
+                    onClick={() => handleEmojiInsert(emoji)}
+                  >
+                    <img src={emoji} alt={`emoji${rowIdx * 3 + i + 1}`} />
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+        <button
+          onClick={handleEdit}
+          className={styles.uploadPopupSubmitBtn}
+        >
+          수정 완료
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const Popup = (props: PopupProps) => {
   const { type, onClose } = props;
@@ -358,10 +594,10 @@ const Popup = (props: PopupProps) => {
           <ArtistFeedPopup data={props.data} />
         )}
         {type === 'fanFeed' && (
-          <FanFeedPopup data={props.data} onClose={onClose} />
+          <FanFeedPopup data={props.data} onClose={onClose} onEdit={props.onEdit} />
         )}
         {type === 'upload' && <UploadPopup onSubmit={props.onSubmit} onClose={onClose} />}
-        {type === 'edit' && <EditPopup data={props.data} />}
+        {type === 'edit' && <EditPopup data={props.data} onClose={onClose} onSubmit={props.onUpdate} />}
         <button onClick={onClose}>X</button>
       </div>
     </div>

@@ -16,9 +16,10 @@ interface PostDetailProps<T extends ArtistPost | FanPost> {
     postList: T[];
     setPostList: React.Dispatch<React.SetStateAction<T[]>>;
     onClose?: () => void;
+    onEdit?: (post: T) => void;
 }
 
-const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setPostList, onClose }: PostDetailProps<T>) => {
+const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setPostList, onClose, onEdit }: PostDetailProps<T>) => {
     // 좋아요/스크랩 context 사용
     const {
         postLikeCounts,
@@ -42,6 +43,14 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
         likedCommentIds,
     } = useComment();
 
+    function getDisplayDate(dateStr: string) {
+        const now = dayjs();
+        const date = dayjs(dateStr);
+        // 24시간(1일) 이내면 fromNow, 아니면 날짜/시간 포맷
+        return now.diff(date, "hour") < 24
+            ? date.fromNow()
+            : date.format("YYYY.MM.DD");
+    }
     const likedPostIds = type === "artist" ? artistLikedIds : fanLikedIds;
     const scrappedPostIds = type === "artist" ? artistScrappedIds : fanScrappedIds;
 
@@ -60,11 +69,10 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     const emojis = getAvailableEmojis(userLevel);
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
     const [showMoreMenu, setShowMoreMenu] = useState(false);
+    const [showEditPopup, setShowEditPopup] = useState(false);
 
     // 수정 팝업 띄우기 (상위에서 props로 내려받거나 context 사용)
-    const onEdit = () => {
-        // 예시: setShowEditPopup(true);
-    };
+    // const onEdit = () => setShowEditPopup(true);
 
     useEffect(() => {
         setLiked(likedPostIds.includes(data.id));
@@ -178,7 +186,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                         >⋯</button>
                         {showMoreMenu && (
                             <div className={styles.more_menu}>
-                                <button onClick={() => { setShowMoreMenu(false); onEdit(); }}>수정하기</button>
+                                <button onClick={() => { setShowMoreMenu(false); onEdit?.(data); }}>수정하기</button>
                                 <button onClick={() => setConfirmDelete({ type: "post", id: data.id })}>삭제하기</button>
                             </div>
                         )}
@@ -198,12 +206,12 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                                 alt="badge"
                             />
                         </strong>
-                        <p className={styles.date}>{data.date}</p>
+                        <p className={styles.date}>{getDisplayDate(data.date)}</p>
                     </div>
                 </div>
 
                 <div className={styles.body_wrapper}>
-                    <p className={styles.desc}>{data.description}</p>
+                    <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
                     {data.hashtag && (
                         <div className={styles.hashtags}>
                             {data.hashtag.split(" ").map((tag, i) => <span key={i} className={styles.tag}>{tag}</span>)}
@@ -239,7 +247,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                                 <p>{c.content}</p>
                                 {c.emoji && <img src={c.emoji} className={styles.comment_emoji} />}
                                 <div className={styles.comment_meta}>
-                                    <span>{dayjs(c.date).fromNow()}</span>
+                                    <span>{getDisplayDate(c.date)}</span>
                                     <button onClick={() => toggleReplyInput(c.id, c.user.name)}>답글 달기</button>
                                     {c.editable && (
                                         <button
@@ -274,7 +282,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                                                     <p>{r.content}</p>
                                                     {r.emoji && <img src={r.emoji} className={styles.comment_emoji} />}
                                                     <div className={styles.comment_meta}>
-                                                        <span>{dayjs(r.date).fromNow()}</span>
+                                                        <span>{getDisplayDate(r.date)}</span>
                                                         {r.editable && <button className={styles.delete} onClick={() => setConfirmDelete({ type: "comment", id: r.id })}>삭제</button>}
                                                     </div>
                                                     <div className={styles.comment_actions}>

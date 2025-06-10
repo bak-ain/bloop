@@ -14,10 +14,17 @@ const FanFeed = () => {
     const [selectedPost, setSelectedPost] = useState<FanPost | null>(null);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [isUploadOpen, setIsUploadOpen] = useState(false);
+    const [isEditOpen, setIsEditOpen] = useState(false);
+    const [editPost, setEditPost] = useState<FanPost | null>(null);
 
     const handleClosePopup = () => {
         setSelectedPost(null);
         setIsPopupOpen(false);
+    };
+    // PostDetail(혹은 FanFeedPopup)에서
+    const handleEdit = (post: FanPost) => {
+        setEditPost(post);
+        setIsEditOpen(true);
     };
 
     return (
@@ -51,6 +58,7 @@ const FanFeed = () => {
                     type="fanFeed"
                     data={selectedPost}
                     onClose={handleClosePopup}
+                    onEdit={handleEdit}
                 />
             )}
             {/* 업로드 팝업 */}
@@ -61,6 +69,20 @@ const FanFeed = () => {
                     onSubmit={(data: FanPost) => {
                         setFanPosts([data, ...fanPosts]);
                         setIsUploadOpen(false);
+                    }}
+                />
+            )}
+            {isEditOpen && editPost && (
+                <Popup
+                    type="edit"
+                    data={editPost}
+                    onClose={() => setIsEditOpen(false)}
+                    onUpdate={(updatedPost: FanPost) => {
+                        setFanPosts((prev) =>
+                            prev.map((p) => (p.id === updatedPost.id ? updatedPost : p))
+                        );
+                        setSelectedPost(updatedPost);
+                        setIsEditOpen(false);
                     }}
                 />
             )}
