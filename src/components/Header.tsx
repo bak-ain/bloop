@@ -5,7 +5,7 @@ const Header = () => {
         <header className={`${styles.header} inner`}>
             <h1>
                 <a href="/" className={styles.logo}>
-                    <img src="/logo.png" alt="Logo" />
+                    <img src="/images/logo.png" alt="Logo" />
                 </a>
             </h1>
             <Nav />

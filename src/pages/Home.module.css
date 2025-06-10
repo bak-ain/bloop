@@ -1,12 +1,13 @@
-.mainBanner{
+.mainBanner {
     width: 100%;
-    height: 1080px;
-    background-image: url('/public/images/mainBanner2.png');
-    background-size: contain;
+    height: 100vh;
+    background-image: url('/public/images/mainBanner.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
-.mainContent{
+
+.mainContent {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -14,4 +15,105 @@
     align-items: center;
     justify-content: center;
     background-color: #fff;
+}
+
+section {
+    padding-block: var(--wep-sec-pad);
+    width: 100%;
+}
+
+h2 {
+    font-family: var(--title-font-family);
+    font-size: 100px;
+    color: var(--main-color);
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: var(--wep-tit-pad);
+    text-align: left;
+    margin-left: 300px;
+    /* line-height: normal; */
+}
+
+.memberProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.memberProfile h2{
+    align-self: flex-start;
+}
+.profileList {
+    display: flex;
+    gap: 20px;
+}
+
+.profileCard {
+    width: 241px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: left;
+    justify-content: center;
+}
+
+.profileImg {
+    width: 241px;
+    height: 241px;
+    background-image: url('/public/images/profileFrame.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.profileImg img {
+    width: 215px;
+    height: auto;
+    object-fit: cover;
+}
+
+.sticker {
+    position: absolute;
+}
+
+.DOA .sticker {
+    width: 40px;
+    height: 40px;
+    left: -19px;
+    top: -5px;
+}
+
+.ARIN .sticker {
+    width: auto;
+    height: 70px;
+    bottom: -32px;
+    right: -30px;
+}
+
+.SEI .sticker {
+    width: 30px;
+    height: auto;
+    bottom: -13px;
+    right: -10px;
+}
+
+.LUHA .sticker {
+    width: 45px;
+    height: auto;
+    top: -13px;
+    left: -15px;
+}
+
+.profileName {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    /* line-height: normal; */
+    color: var(--font-color-3);
+    padding-left: 10px;
 }

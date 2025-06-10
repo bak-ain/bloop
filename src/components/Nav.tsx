@@ -24,9 +24,10 @@ const Nav = () => {
                         MY BOX
                     </NavLink>
                 </li>
-                <li>
+                <li className={styles.login}>
                     <NavLink to="/login" className={({ isActive }) => (isActive ? styles.active : '')}>
-                        <div></div>
+                        <div className={styles.loginIcon}></div>
+                        LOGIN
                     </NavLink>
                 </li>
             </ul>
