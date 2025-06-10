@@ -420,6 +420,7 @@ button {
 .container{
   width: 100%;
   font-family: var(--main-font-family);
+  position: relative;
 }
 
 .inner {
@@ -428,8 +429,18 @@ button {
   padding: 0 40px;
   width: 100%;
 }
+#chatbase-bubble-button{
+  background-image: url(/public/images/chatbot.png) !important;
+  background-size: cover !important;
+  border-radius: 0% !important;
+  background-color: transparent !important;
+  /* bottom: 115px !important; */
+}
 
-
+#chatbase-bubble-button img{
+border-radius: 0 !important;
+display: none !important;
+}
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {
   .inner {

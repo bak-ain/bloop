@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
 import { useLikedScrapped } from "../context/LikedScrappedContext";
+import { useComment } from "../context/CommentContext";
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
@@ -14,9 +15,10 @@ interface PostDetailProps<T extends ArtistPost | FanPost> {
     data: T;
     postList: T[];
     setPostList: React.Dispatch<React.SetStateAction<T[]>>;
+    onClose?: () => void;
 }
 
-const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setPostList }: PostDetailProps<T>) => {
+const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setPostList, onClose }: PostDetailProps<T>) => {
     // 좋아요/스크랩 context 사용
     const {
         postLikeCounts,
@@ -28,21 +30,41 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
         toggleScrap,
     } = useLikedScrapped();
 
+    // 댓글 context 사용
+    const {
+        artistComments,
+        fanComments,
+        addComment,
+        deleteComment,
+        toggleCommentLike,
+        showRepliesMap,
+        toggleShowReplies,
+        likedCommentIds,
+    } = useComment();
+
     const likedPostIds = type === "artist" ? artistLikedIds : fanLikedIds;
     const scrappedPostIds = type === "artist" ? artistScrappedIds : fanScrappedIds;
+
+    // 댓글 목록을 context에서 가져옴
+    const comments = (type === "artist" ? artistComments[data.id] : fanComments[data.id]) || [];
 
     const [liked, setLiked] = useState(likedPostIds.includes(data.id));
     const [scrapped, setScrapped] = useState(scrappedPostIds.includes(data.id));
     const [likeCount, setLikeCount] = useState(postLikeCounts[data.id] ?? data.likes);
     const [commentCount, setCommentCount] = useState(data.comment);
-    const [comments, setComments] = useState<CommentPost[]>([]);
     const [input, setInput] = useState<CommentInput>({ content: "", parentPostId: data.id });
     const [replyToId, setReplyToId] = useState<string | null>(null);
     const [showStickerPicker, setShowStickerPicker] = useState(false);
-    const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+    const [confirmDelete, setConfirmDelete] = useState<{ type: "post" | "comment", id: string } | null>(null);
     const userLevel = 2;
     const emojis = getAvailableEmojis(userLevel);
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
+    const [showMoreMenu, setShowMoreMenu] = useState(false);
+
+    // 수정 팝업 띄우기 (상위에서 props로 내려받거나 context 사용)
+    const onEdit = () => {
+        // 예시: setShowEditPopup(true);
+    };
 
     useEffect(() => {
         setLiked(likedPostIds.includes(data.id));
@@ -54,24 +76,16 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     }, [postLikeCounts, data.id, data.likes]);
 
     useEffect(() => {
-        const saved = localStorage.getItem(`comments_${data.id}`);
-        const parsed = saved ? JSON.parse(saved) : null;
-
-        if (parsed && parsed.length > 0) {
-            setComments(parsed);
-            setCommentCount(parsed.length);
-        } else {
-            fetch("/data/comments.json")
-                .then((res) => res.json())
-                .then((json: CommentPost[]) => {
-                    const filtered = json.filter((c) => c.postId === data.id && c.postType === type);
-                    setComments(filtered);
-                    setCommentCount(filtered.length);
-                    localStorage.setItem(`comments_${data.id}`, JSON.stringify(filtered));
-                })
-                .catch((err) => console.error("댓글 불러오기 실패", err));
-        }
-    }, [data.id, type]);
+        // 댓글 개수 동기화
+        setCommentCount(comments.length);
+        setPostList(prev =>
+            prev.map(post =>
+                post.id === data.id
+                    ? { ...post, comment: comments.length }
+                    : post
+            )
+        );
+    }, [comments, data.id, setPostList]);
 
     const handleToggleLike = () => {
         toggleLike(type, data.id, data.likes);
@@ -81,85 +95,33 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
         toggleScrap(type, data.id);
     };
 
-    const toggleCommentLike = (id: string) => {
-        setComments((prev) =>
-            prev.map((c) =>
-                c.id === id ? { ...c, isLiked: !c.isLiked, likes: c.isLiked ? c.likes - 1 : c.likes + 1 } : c
-            )
-        );
-    };
-
     const handleSubmitComment = () => {
         if (!input.content.trim() && !input.emoji) return;
 
+        const commentData: CommentPost = {
+            id: `${Date.now()}-${Math.random()}`,
+            postId: data.id,
+            postType: type,
+            ...input,
+            user: {
+                name: "me",
+                profileImage: "/images/profiles/me.png",
+                badgeType: "fan",
+                badgeLevel: 1,
+                userId: "me123",
+            },
+            date: new Date().toISOString(),
+            likes: 0,
+            comments: 0,
+            isLiked: false,
+            editable: true,
+            replies: [],
+        };
+
         if (replyToId) {
-            setComments((prev) => {
-                const updated = prev.map((c) => {
-                    if (c.id === replyToId) {
-                        const newReply: CommentPost = {
-                            id: String(Date.now()),
-                            postId: data.id,
-                            postType: type,
-                            user: {
-                                name: "me",
-                                profileImage: "/images/profiles/me.png",
-                                badgeType: "fan",
-                                badgeLevel: 1,
-                                userId: "me123",
-                            },
-                            content: input.content,
-                            emoji: input.emoji,
-                            date: new Date().toISOString(),
-                            likes: 0,
-                            comments: 0,
-                            isLiked: false,
-                            editable: true,
-                            replies: []
-                        };
-                        return {
-                            ...c,
-                            replies: [...(c.replies || []), newReply]
-                        };
-                    }
-                    return c;
-                });
-                localStorage.setItem(`comments_${data.id}`, JSON.stringify(updated));
-                // 답글은 postList의 commentCount에는 반영하지 않음
-                return updated;
-            });
+            addComment(type, data.id, commentData, replyToId);
         } else {
-            const newComment: CommentPost = {
-                id: String(Date.now()),
-                postId: data.id,
-                postType: type,
-                user: {
-                    name: "me",
-                    profileImage: "/images/profiles/me.png",
-                    badgeType: "fan",
-                    badgeLevel: 1,
-                    userId: "me123",
-                },
-                content: input.content,
-                emoji: input.emoji,
-                date: new Date().toISOString(),
-                likes: 0,
-                comments: 0,
-                isLiked: false,
-                editable: true,
-                replies: []
-            };
-            const updatedComments = [...comments, newComment];
-            setComments(updatedComments);
-            setCommentCount(updatedComments.length);
-            localStorage.setItem(`comments_${data.id}`, JSON.stringify(updatedComments));
-            // ★ PostCard의 댓글 수도 함께 업데이트
-            setPostList(prev =>
-                prev.map(post =>
-                    post.id === data.id
-                        ? { ...post, comment: updatedComments.length }
-                        : post
-                )
-            );
+            addComment(type, data.id, commentData);
         }
 
         setInput({ content: "", parentPostId: data.id });
@@ -168,30 +130,20 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
         setShowStickerPicker(false);
     };
 
-
-    const handleDelete = (id: string) => {
-        const updatedComments: CommentPost[] = comments
-            .map((c) => {
-                if (c.id === id) return null;
-                if (c.replies && c.replies.length > 0) {
-                    const filteredReplies = c.replies.filter((r) => r.id !== id);
-                    return { ...c, replies: filteredReplies };
-                }
-                return c;
-            })
-            .filter((c): c is CommentPost => c !== null);
-
-        setComments(updatedComments);
-        setCommentCount(updatedComments.length); // ★ 즉시 카운트 반영
-        localStorage.setItem(`comments_${data.id}`, JSON.stringify(updatedComments));
-        setPostList(prev =>
-            prev.map(post =>
-                post.id === data.id
-                    ? { ...post, comment: updatedComments.length }
-                    : post
-            )
-        );
-        setConfirmDeleteId(null);
+    const handleDelete = () => {
+        if (!confirmDelete) return;
+        if (confirmDelete.type === "post") {
+            setPostList(prev => prev.filter(post => post.id !== confirmDelete.id));
+            alert("삭제되었습니다.");
+            setConfirmDelete(null);
+            if (typeof onClose === "function") onClose(); // 게시물 삭제 시 팝업 닫기
+        } else {
+            // 댓글/답글 삭제
+            deleteComment(type, data.id, confirmDelete.id);
+            alert("삭제되었습니다.");
+            setConfirmDelete(null);
+            // 팝업은 닫지 않음
+        }
     };
 
     // 답글 입력창용
@@ -200,13 +152,14 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
         setInput((prev) => ({ ...prev, content: prev.content.startsWith(`@${username}`) ? prev.content : `@${username} ` }));
     };
 
-    // 답글 보기/숨기기용
-    const toggleShowReplies = (id: string) => {
-        setComments((prev) =>
-            prev.map((c) =>
-                c.id === id ? { ...c, showReplies: !c.showReplies } : c
-            )
-        );
+    // 실제 context의 toggleCommentLike 사용
+    const handleCommentLike = (id: string) => {
+        toggleCommentLike(type, data.id, id);
+    };
+
+    // 실제 context의 toggleShowReplies 사용
+    const handleShowReplies = (id: string) => {
+        toggleShowReplies(id);
     };
 
     const handleEmojiClick = (emoji: string) => {
@@ -217,6 +170,20 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     return (
         <div className={styles.post_detail}>
             <section className={styles.feed_content}>
+                {data.user.name === "me" && (
+                    <div className={styles.more_menu_wrapper}>
+                        <button
+                            className={styles.more_btn}
+                            onClick={() => setShowMoreMenu((prev) => !prev)}
+                        >⋯</button>
+                        {showMoreMenu && (
+                            <div className={styles.more_menu}>
+                                <button onClick={() => { setShowMoreMenu(false); onEdit(); }}>수정하기</button>
+                                <button onClick={() => setConfirmDelete({ type: "post", id: data.id })}>삭제하기</button>
+                            </div>
+                        )}
+                    </div>
+                )}
                 <div className={styles.profile_row}>
                     <img className={styles.profile_img} src={data.user.profileImage} alt={data.user.name} />
                     <div className={styles.info}>
@@ -274,22 +241,29 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                                 <div className={styles.comment_meta}>
                                     <span>{dayjs(c.date).fromNow()}</span>
                                     <button onClick={() => toggleReplyInput(c.id, c.user.name)}>답글 달기</button>
-                                    {c.editable && <button className={styles.delete} onClick={() => setConfirmDeleteId(c.id)}>삭제</button>}
+                                    {c.editable && (
+                                        <button
+                                            className={styles.delete}
+                                            onClick={() => setConfirmDelete({ type: "comment", id: c.id })}
+                                        >
+                                            삭제
+                                        </button>
+                                    )}
                                 </div>
                                 <div className={styles.comment_actions}>
-                                    <button onClick={() => toggleCommentLike(c.id)}>{c.isLiked ? "❤️" : "🤍"}</button>
+                                    <button onClick={() => handleCommentLike(c.id)}>{likedCommentIds.includes(c.id) ? "❤️" : "🤍"}</button>
                                     <span>{c.likes}</span>
                                 </div>
                                 {c.replies && c.replies.length > 0 && (
                                     <div className={styles.reply_toggle_row}>
-                                        <button onClick={() => toggleShowReplies(c.id)}>
-                                            {c.replies.length}개 답글 {c.showReplies ? '숨기기' : '보기'}
+                                        <button onClick={() => handleShowReplies(c.id)}>
+                                            {c.replies.length}개 답글 보기
                                         </button>
                                     </div>
                                 )}
-                                {c.showReplies && (
+                                {c.replies && c.replies.length > 0 && showRepliesMap[c.id] && (
                                     <div className={styles.reply_list}>
-                                        {c.replies?.map((r) => (
+                                        {c.replies.map((r) => (
                                             <div key={r.id} className={styles.reply_item}>
                                                 <img src={r.user.profileImage} alt={r.user.name} className={styles.comment_avatar} />
                                                 <div>
@@ -301,10 +275,10 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                                                     {r.emoji && <img src={r.emoji} className={styles.comment_emoji} />}
                                                     <div className={styles.comment_meta}>
                                                         <span>{dayjs(r.date).fromNow()}</span>
-                                                        {r.editable && <button className={styles.delete} onClick={() => setConfirmDeleteId(r.id)}>삭제</button>}
+                                                        {r.editable && <button className={styles.delete} onClick={() => setConfirmDelete({ type: "comment", id: r.id })}>삭제</button>}
                                                     </div>
                                                     <div className={styles.comment_actions}>
-                                                        <button onClick={() => toggleCommentLike(r.id)}>{r.isLiked ? "❤️" : "🤍"}</button>
+                                                        <button onClick={() => handleCommentLike(r.id)}>{likedCommentIds.includes(r.id) ? "❤️" : "🤍"}</button>
                                                         <span>{r.likes}</span>
                                                     </div>
                                                 </div>
@@ -318,11 +292,11 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                     ))}
                 </div>
 
-                {confirmDeleteId && (
+                {confirmDelete && (
                     <div className={styles.confirm_popup}>
                         <p>정말 삭제하시겠어요?</p>
-                        <button onClick={() => handleDelete(confirmDeleteId)}>삭제</button>
-                        <button onClick={() => setConfirmDeleteId(null)}>취소</button>
+                        <button onClick={handleDelete}>삭제</button>
+                        <button onClick={() => setConfirmDelete(null)}>취소</button>
                     </div>
                 )}
                 {selectedEmoji && (

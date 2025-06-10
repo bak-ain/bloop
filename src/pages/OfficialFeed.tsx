@@ -3,6 +3,8 @@ import OfficialBanner from "../components/OfficialBanner";
 import OfficialPost from "../components/OfficialPost";
 import { usePostList } from "../context/PostListContext";
 import styles from "./OfficialFeed.module.css"
+import "swiper/css";
+import "swiper/css/navigation";
 
 const OfficialFeed = () => {
     const { officialPosts } = usePostList();

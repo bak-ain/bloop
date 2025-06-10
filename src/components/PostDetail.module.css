@@ -1,3 +1,6 @@
+.post_detail{
+    background: #fff;
+}
 .badge_img {
   width: 20px;
   height: 20px;
@@ -17,4 +20,50 @@
 .emoji_preview img{
     width: 100px;
     height: auto;
+}
+.more_menu_wrapper {
+  position: relative;
+  display: inline-block;
+}
+.more_btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.more_menu {
+  position: absolute;
+  right: 0;
+  top: 32px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+.more_menu button {
+  background: none;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+}
+.more_menu button:hover {
+  background: #f5f6fa;
+}
+.confirm_popup {
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1001;
+}
+.confirm_popup > div, .confirm_popup p {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 40px;
+  text-align: center;
 }

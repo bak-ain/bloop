@@ -13,6 +13,7 @@ const FanFeed = () => {
     const { fanLikedIds, fanScrappedIds, toggleLike, toggleScrap } = useLikedScrapped();
     const [selectedPost, setSelectedPost] = useState<FanPost | null>(null);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [isUploadOpen, setIsUploadOpen] = useState(false);
 
     const handleClosePopup = () => {
         setSelectedPost(null);
@@ -21,12 +22,18 @@ const FanFeed = () => {
 
     return (
         <Container>
+            <button
+                className={styles.writeButton}
+                onClick={() => setIsUploadOpen(true)}
+            >
+                <img src="/images/editBtn.png" alt="글쓰기" />
+            </button>
             <PopularPost
                 posts={fanPosts}
                 onPostClick={post => {
                     setSelectedPost(post);
                     setIsPopupOpen(true);
-                }}/>
+                }} />
             <FeedLayout
                 className={styles.fanFeedLayout}
                 posts={fanPosts}
@@ -44,6 +51,17 @@ const FanFeed = () => {
                     type="fanFeed"
                     data={selectedPost}
                     onClose={handleClosePopup}
+                />
+            )}
+            {/* 업로드 팝업 */}
+            {isUploadOpen && (
+                <Popup
+                    type="upload"
+                    onClose={() => setIsUploadOpen(false)}
+                    onSubmit={(data: FanPost) => {
+                        setFanPosts([data, ...fanPosts]);
+                        setIsUploadOpen(false);
+                    }}
                 />
             )}
         </Container>

@@ -52,6 +52,7 @@ export interface CommentPost {
   likes: number;
   comments: number;
   isLiked?: boolean;
+  likedUserIds?: string[];
   showReplies?: boolean;
   replies?: CommentPost[];
   editable?: boolean;

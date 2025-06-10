@@ -1,0 +1,17 @@
+.writeButton{
+    position: fixed;
+    bottom: 80px;
+    right: 1rem;
+    background: transparent;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.writeButton img {
+    width: 55px;
+    height: auto;
+    object-fit: cover;
+}
