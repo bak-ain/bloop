@@ -7,30 +7,30 @@ const Admin = () => {
                 <div>
                     <h1 >
                         <a href="/">
-                            <img src="이미지주소.jpg" alt="설명 텍스트" className="logo" />
+                            <img src="../images/dash/logo.jpg" alt="bloop logo" className="logo" />
+                            <p className={`${styles.h1_txt}`}>bloop</p>
                         </a>
                     </h1>
-                    <nav className={`${styles.gnb}`}>
+                    <nav className={`${styles.gnb} ${styles.p_txt_2}`}>
                         <p>General</p>
                         <ul>
-                            <li className={styles.on} ><a href="">대시보드</a></li>
-                            <li><a href="">일정관리</a></li>
-                            <li><a href="">컨텐츠관리</a></li>
-                            <li><a href="">계정관리</a></li>
+                            <li className={styles.on} ><a href=""><img src="../images/dash/dash_icon.png" alt="대시보드" />대시보드</a></li>
+                            <li><a href=""><img src="../images/dash/list_icon.png" alt="일정관리" />일정관리</a></li>
+                            <li><a href=""><img src="../images/dash/file_icon.png" alt="일정관리" />컨텐츠관리</a></li>
+                            <li><a href=""><img src="../images/dash/edi_icon.png" alt="일정관리" />계정관리</a></li>
                         </ul>
                     </nav>
                 </div>
-                <h2>로그아웃</h2>
+                <h2> <a href="#"><img src="../images/dash/logout_icon.png" alt="로그아웃" />로그아웃</a></h2>
             </header>
             <div className={`${styles.contents}`}>
                 <div className={`${styles.top}`}>
-                    <h2>Setting</h2>
+                    <h2 className={`${styles.h1_txt}`}>Setting</h2>
                     <div className={`${styles.con1}`}>
                         <div className={`${styles.box} ${styles.profile_box}`}>
                             <div className={`${styles.top}`}>
-                                <h3>메인 비주얼</h3>
                                 <button type="button"
-                                    className={`${styles.edit_btn}`}>
+                                    className={`${styles.btn_st}`}>
                                     편집
                                 </button>
                             </div>
@@ -38,7 +38,7 @@ const Admin = () => {
 
                                 <ul className={styles.profileScroll}>
                                     <li>
-                                        <p>프로필</p>
+                                        <p className={` ${styles.p_txt_2}`}>프로필</p>
                                         <ul>
                                             <li><img src="../images/dash/doa.jpg" alt="도아" />
                                                 <span>DOA(도아)</span></li>
@@ -58,7 +58,7 @@ const Admin = () => {
 
                                     </li>
                                     <li>
-                                        <p>메인이미지</p>
+                                        <p className={` ${styles.p_txt_2}`}>메인이미지</p>
                                         <img src="../images/dash/main.jpg" alt="메인이미지" />
                                     </li>
                                 </ul>
@@ -66,19 +66,19 @@ const Admin = () => {
                         </div>
                         <div className={`${styles.box} ${styles.color_box}`}>
                             <div className={`${styles.top}`}>
-                                <h3>색상 및 로고</h3>
+
                                 <button type="button"
-                                    className={`${styles.edit_btn}`}>
+                                    className={`${styles.btn_st}`}>
                                     편집
                                 </button>
                             </div>
                             <ul className={`${styles.bottom}`}>
                                 <li>
-                                    <p>로고</p>
+                                    <p className={` ${styles.p_txt_2}`}>로고</p>
                                     <img src="../images/dash/log.jpg" alt="logo" />
                                 </li>
                                 <li>
-                                    <p>주요색상</p>
+                                    <p className={` ${styles.p_txt_2}`}>주요색상</p>
                                     <div className={`${styles.under}`}>
                                         <div className={`${styles.left}`}>
 
@@ -89,7 +89,7 @@ const Admin = () => {
                                     </div>
                                 </li>
                                 <li>
-                                    <p>보조색상</p>
+                                    <p className={` ${styles.p_txt_2}`}>보조색상</p>
                                     <div className={`${styles.under}`}>
                                         <div className={`${styles.left}`}>
 
@@ -126,58 +126,62 @@ const Admin = () => {
 
                 </div>
                 <div className={`${styles.top}`}>
-                    <h2>Analysis</h2>
+                    <h2 className={`${styles.h1_txt}`}>Analysis</h2>
                     <div className={`${styles.con2}`}>
                         <div className={styles.chart_area}>
 
                             <div className={styles.chart_left}>
+                                <h3 className={styles.h3_txt}>오늘의 활동</h3>
                                 <div className={styles.stat_cards}>
+
                                     <div className={styles.card}>
                                         <div className={styles.card_top}>
                                             <p>방문자수</p>
-                                            <i className="icon-user" />
+                                            <img src="../images/dash/user_icon.png" alt="방문자 수" />
                                         </div>
-                                        <h3>1,423명</h3>
+                                        <h3 className={styles.h2_txt}>1,423명</h3>
                                         <div className={styles.card_bottom}>
-                                            <span className={styles.blue}>🔵 12%</span>
+                                            <span className={styles.colo}><img className={styles.imag} src="../images/dash/up_icon.png" alt="up" /> 12%</span>
                                         </div>
                                     </div>
 
                                     <div className={styles.card}>
                                         <div className={styles.card_top}>
                                             <p>게시물 수</p>
-                                            <i className="icon-post" />
+                                            <img src="../images/dash/img_icon.png" alt="게시글 수" />
                                         </div>
-                                        <h3>408명</h3>
+                                        <h3 className={styles.h2_txt}>408명</h3>
                                         <div className={styles.card_bottom}>
-                                            <span className={styles.red}>🔴 8%</span>
+                                            <span className={styles.colo}><img className={styles.imag} src="../images/dash/down_icon.png" alt="down" /> 8%</span>
                                         </div>
                                     </div>
 
                                     <div className={styles.card}>
                                         <div className={styles.card_top}>
                                             <p>댓글 수</p>
-                                            <i className="icon-comment" />
+                                            <img src="../images/dash/edit_icon.png" alt="댓글 수" />
                                         </div>
-                                        <h3>3,761명</h3>
+                                        <h3 className={styles.h2_txt}>3,761명</h3>
                                         <div className={styles.card_bottom}>
-                                            <span className={styles.blue}>🔵 38%</span>
+                                            <span className={styles.colo}><img className={styles.imag} src="../images/dash/up_icon.png" alt="up" /> 38%</span>
                                         </div>
                                     </div>
                                 </div>
+                                <h3 className={styles.h3_txt} >팬 활동 추이</h3>
                                 <div className={styles.under}>
+
                                     <div className={styles.chart}>
-                                        <p>시간/기간별 활동량</p>
+                                        <p className={` ${styles.p_txt_2}`}>시간/기간별 활동량</p>
                                         <div className={styles.tab_header}>
-                                            <button className={`${styles.tab_btn} ${styles.active}`}>7 days</button>
-                                            <button className={styles.tab_btn}>30 days</button>
+                                            <button className={`${styles.tab_btn} ${styles.active} ${styles.p_txt_2}`}>7 days</button>
+                                            <button className={`${styles.tab_btn} ${styles.p_txt_2}`} >30 days</button>
                                         </div>
                                         <div className={styles.chart_img}>
                                             <img src="../images/dash/chart.png" alt="7일 활동량 그래프" />
                                         </div>
                                     </div>
                                     <div className={styles.chart_bottom}>
-                                        <p>등급별 가입 분포</p>
+                                        <p className={` ${styles.p_txt_2}`}>등급별 가입 분포</p>
                                         <img src="../images/dash/donut.jpg" alt="등급 가입 도넛 그래프" />
                                         <div className={styles.rank_stats}>
                                             <div>
@@ -199,17 +203,17 @@ const Admin = () => {
                             </div>
                             <div className={styles.chart_right}>
                                 <div className={styles.content_header}>
-                                    <h3>인기 콘텐츠 분석</h3>
+                                    <h3 className={styles.h3_txt} >인기 콘텐츠 분석</h3>
                                     <div className={styles.tabs}>
-                                        <button className={`${styles.tab} ${styles.active}`}>좋아요순</button>
-                                        <button className={styles.tab}>저장순</button>
-                                        <button className={styles.tab}>댓글순</button>
+                                        <button className={`${styles.tab} ${styles.active} ${styles.btn_st}`}>좋아요순</button>
+                                        <button className={`${styles.tab} ${styles.btn_st_off}`}>저장순</button>
+                                        <button className={`${styles.tab} ${styles.btn_st_off}`}>댓글순</button>
                                     </div>
                                 </div>
 
                                 <table className={styles.rank_table}>
                                     <thead>
-                                        <tr>
+                                        <tr className={`${styles.thead_txt}`}>
                                             <th>순위</th>
                                             <th>카테고리</th>
                                             <th>제목</th>
@@ -224,6 +228,8 @@ const Admin = () => {
                                             { rank: "03", type: "아티스트", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
                                             { rank: "04", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
                                             { rank: "05", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
+                                             { rank: "06", type: "아티스트", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
+                                              { rank: "07", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" }
                                         ].map((item, idx) => (
                                             <tr key={idx}>
                                                 <td>{item.rank}</td>
@@ -232,9 +238,12 @@ const Admin = () => {
                                                         {item.type}
                                                     </span>
                                                 </td>
-                                                <td>{item.title}</td>
-                                                <td>{item.date}</td>
-                                                <td className={styles.likes}>{item.like}개 ➤</td>
+                                                <td className={styles.p_txt_3}>{item.title}
+
+                                                </td>
+                                                <td className={`${styles.p_txt_2} ${styles.date}`}>{item.date}</td>
+                                                <td className={styles.likes}>{item.like}개</td>
+                                                <td className={styles.arrow}><img src="../images/dash/arrow_icon.png" alt="arrow" /></td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -268,7 +277,7 @@ const Admin = () => {
                 </div>
                 <div className={`${styles.top}`}>
                     <div className={styles.con3}>
-                        <h2>Schedule</h2>
+                        <h2 className={`${styles.h1_txt}`}>Schedule</h2>
                         <div className={styles.schedule_body}>
                             <div className={styles.calendar_wrap}>
                                 <div className={styles.calendar_header}>
@@ -277,7 +286,7 @@ const Admin = () => {
                                         <span>5월</span>
                                         <button>{'>'}</button>
                                     </div>
-                                    <button className={styles.edit_btn}>편집</button>
+                                    <button className={`${styles.btn_st}`}>편집</button>
                                 </div>
                                 <div className={styles.calendar_img}>
                                     <img src="../images/dash/cal.jpg" alt="5월 달력" />
@@ -291,16 +300,16 @@ const Admin = () => {
                 </div>
                 <div className={`${styles.top}`}>
                     <div className={styles.con4}>
-                        <h2>Content</h2>
+                        <h2 className={`${styles.h1_txt}`}>Content</h2>
                         <div className={styles.content_header}>
                             <div className={styles.tab_menu}>
-                                <button className={styles.active}>전체</button>
+                                <button className={`${styles.active}`} >전체</button>
                                 <button>기획사</button>
                                 <button>아티스트</button>
                             </div>
                             <div className={styles.action_buttons}>
-                                <button>+ 게시물</button>
-                                <button>편집</button>
+                                <button className={`${styles.btn_st}`}>+ 게시물</button>
+                                <button className={`${styles.btn_st}`}>편집</button>
                             </div>
                         </div>
 

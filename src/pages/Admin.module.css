@@ -8,6 +8,87 @@
     --font-color-7: #777777;
     --font-color-3: #333333;
     --font-color-1: #1F1F1F;
+    --main-font-family: "Pretendard", sans-serif;
+}
+
+body {
+    font-family: var(--main-font-family);
+    color: var(--font-color-1);
+}
+
+.h1_txt {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 10px;
+}
+
+.h2_txt {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.h3_txt {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 33px;
+}
+
+
+.p_txt_1 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.p_txt_2 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.p_txt_3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.thead_txt {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--font-color-7);
+}
+
+.span_txt {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.span_txt_1 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.btn_st {
+    width: 80px;
+    height: 35px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: var(--blue);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--main-font-family);
+}
+
+.btn_st_off {
+    width: 80px;
+    height: 35px;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: 500;
+    background-color: var(--font-color-light_gary);
+    color: var(--font-color-1);
+    cursor: pointer;
+    font-family: var(--main-font-family);
 }
 
 * {
@@ -36,7 +117,6 @@
     gap: 50px;
     width: 200px;
     padding: 50px 0;
-    font-size: 18px;
     box-shadow: 4px 0px 4px 0px rgba(16, 27, 145, 0.05);
 }
 
@@ -44,13 +124,43 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
     gap: 50px;
+    padding: 0 5px 0 30px;
 }
 
 .ad_header>div h1 {
     width: 100%;
     height: 40px;
+
+}
+
+.ad_header>div h1 a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.ad_header>div h1 a img {
+    width: 25px;
+}
+
+.ad_header>div h1 a p {
+    text-transform: uppercase;
+}
+
+.ad_header h2 a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.ad_header h2 img {
+    width: 25px;
 }
 
 .gnb {
@@ -58,11 +168,12 @@
     flex-direction: column;
     gap: 20px;
     width: 100%;
+    align-items: flex-start;
 }
 
 .gnb p {
     text-align: center;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .gnb ul {
@@ -70,8 +181,6 @@
     width: 100%;
     flex-direction: column;
     gap: 20px;
-    padding: 0 5px;
-
 }
 
 .gnb ul li {
@@ -79,15 +188,16 @@
     height: 50px;
     border-radius: 5px;
     font-weight: 400;
+    padding: 0 10px;
 }
 
 .gnb ul li.on {
-    background-color: #F8F7F9;
+    background-color: #E9F2F9;
 }
 
 .gnb ul li.on a {
     color: var(--blue);
-    font-weight: 600;
+
 }
 
 .gnb ul li a {
@@ -95,9 +205,13 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 20px;
 }
 
+.gnb ul li a img {
+    width: 24px;
+}
 
 
 .contents {
@@ -106,7 +220,7 @@
     background-color: #F5F9FF;
     display: flex;
     flex-direction: column;
-    padding: 10px 35px;
+    padding: 50px 35px;
     gap: 20px;
     overflow-x: hidden;
     padding-bottom: 200px;
@@ -114,6 +228,8 @@
     min-height: 100vh;
     /* 배경을 채우기 위한 최소 높이 */
     box-sizing: border-box;
+    gap: 90px;
+
 }
 
 .contents>.top {
@@ -125,20 +241,10 @@
     width: 100%;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.contents h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--font-color-1);
-    height: 30px;
-    margin-bottom: 15px;
-}
-
-.contents h3 {
-    font-size: 16px;
-    font-weight: 600;
-}
 
 .contents .con1 {
     width: 100%;
@@ -163,31 +269,14 @@
     align-items: center;
 }
 
-.contents .con1 .box .top .edit_btn {
-    width: 80px;
-    height: 35px;
-    color: #fff;
-    background-color: var(--blue);
-    border-radius: 5px;
-}
+
 
 .contents .con1 .profile_box {
     width: 45%;
 }
 
-.contents .con1 .profile_box .bottom {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 5px;
-    height: 100%;
-
-}
-
-.contents .con1 .box .bottom p {
-    font-size: 15px;
-    font-weight: 500;
+.contents .con1 .profile_box .top {
+    justify-content: end;
 }
 
 .contents .con1 .profile_box .bottom>ul {
@@ -200,6 +289,8 @@
     scrollbar-width: thin;
     height: 350px;
     padding: 20px 15px;
+    background: #fff;
+    border-radius: 5px;
 }
 
 .profileScroll::-webkit-scrollbar {
@@ -226,6 +317,7 @@
     flex-wrap: nowrap;
     overflow: hidden;
     gap: 15px;
+
 }
 
 .contents .con1 .profile_box .bottom>ul>li>ul>li {
@@ -251,36 +343,37 @@
     width: 100%;
 }
 
-.contents .con1 .box .top .edit_btn {
-    width: 80px;
-    height: 35px;
-    color: #fff;
-    background-color: var(--blue);
-    border-radius: 5px;
-}
+
 
 .contents .con1 .color_box {
     width: 25%;
 
 }
 
+.contents .con1 .color_box .top {
+    justify-content: end;
+}
+
 .contents .con1 .color_box .bottom {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
     /* padding: 20px 15px; */
     background: #fff;
     border-radius: 5px;
     height: 100%;
-    padding: 15px 20px;
     justify-content: space-between;
 }
 
 .contents .con1 .color_box .bottom li {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    padding: 20px;
+    gap: 5px;
+}
+
+.contents .con1 .color_box .bottom li .under {
+    padding: 0;
 }
 
 .contents .con1 .color_box .bottom li img {
@@ -379,7 +472,7 @@
 .chart_area {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 50px;
     flex-wrap: wrap;
     width: 100%;
     align-items: stretch;
@@ -392,7 +485,7 @@
     /* ✅ 줄바꿈 기준선 (원하는 브레이크포인트) */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .stat_cards {
@@ -426,30 +519,52 @@
     border-radius: 0 3px 3px 0;
 }
 
-.card_top,
+.card_top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_top p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.card_top img {
+    width: 27px;
+}
+
 .card_bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 400;
 }
 
-.card_bottom {
-    margin-top: 10px;
+.card_bottom .colo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+.card_bottom .colo .imag {
+    width: 25px;
+}
+
 
 .under {
     display: flex;
     justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
-}
-
-.chart,
-.chart_bottom {
-    flex: 1;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
+}
+
+.chart {
+    flex: 1.5 1;
     min-width: 300px;
 }
 
@@ -464,7 +579,14 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    flex: 1;
+    background: #F8F7F9;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 300px;
 }
+
+
 
 .tab_header {
     display: flex;
@@ -483,6 +605,7 @@
     cursor: pointer;
     padding-bottom: 5px;
     position: relative;
+    font-family: var(--main-font-family);
 }
 
 .tab_btn.active {
@@ -507,8 +630,8 @@
 }
 
 .chart_bottom img {
-    width: 80%;
-    padding-left: 70px;
+    width: 100%;
+    padding-left: 20px;
 }
 
 .rank_stats {
@@ -524,15 +647,7 @@
     align-items: center;
 }
 
-.up {
-    color: #3a8ef6;
-    font-weight: bold;
-}
 
-.down {
-    color: #ff4d4f;
-    font-weight: bold;
-}
 
 
 .chart_right {
@@ -541,7 +656,6 @@
     /* ✅ 강제 너비 해제 */
     width: 100%;
     /* ✅ 가능하면 최대한 넓게 */
-    padding: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -574,7 +688,6 @@
     color: #fff;
 }
 
-.chart_right {}
 
 .rank_table {
     width: 100%;
@@ -583,17 +696,24 @@
     /* ✅ 자동 너비 조정 */
     height: auto;
     display: table;
+    flex: 1;
+    text-align: center;
 }
 
 .rank_table thead {
     display: table-header-group;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--font-color-7);
+    border-bottom: 1px solid #ccc;
 }
+
+.rank_table thead tr {}
 
 .rank_table thead th {
     padding: 12px 10px;
-    font-weight: 600;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
+
     white-space: normal;
     /* ✅ 헤더도 줄바꿈 가능 */
 }
@@ -606,6 +726,11 @@
     display: table-row;
     height: auto;
     /* ✅ 높이 자동 조정 */
+
+}
+
+.rank_table tbody td:nth-child(1) {
+    color: var(--blue);
 }
 
 .rank_table td {
@@ -618,6 +743,7 @@
     /* ✅ 단어 단위 줄바꿈 */
     overflow-wrap: anywhere;
     /* ✅ 너무 긴 단어도 줄바꿈 */
+    text-align: center;
 }
 
 .badge {
@@ -628,19 +754,27 @@
 }
 
 .green {
-    background-color: #d8f5d1;
-    color: #39a844;
+    background-color: #E7F4E4;
+    color: #59904B;
 }
 
 .red {
-    background-color: #ffe2e2;
-    color: #d84a4a;
+    background-color: #FBE7E7;
+    color: #C95C5C;
 }
 
 .likes {
     font-weight: 600;
-    color: #f54040;
+    color: #FF4A4A;
     text-align: right;
+}
+
+.date {
+    color: var(--font-color-7);
+}
+
+.arrow img {
+    height: 24px;
 }
 
 /* 모바일 전용 콘텐츠 분석 리스트 */
@@ -730,7 +864,6 @@
     flex: 1 1 45%;
     min-width: 300px;
     border-radius: 10px;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -762,15 +895,7 @@
     cursor: pointer;
 }
 
-.edit_btn {
-    background-color: var(--blue);
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 5px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-}
+
 
 .calendar_image {
     width: 100%;
@@ -819,9 +944,7 @@
 .content_header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eaeaea;
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -906,10 +1029,13 @@
 
 /* 카테고리 뱃지 */
 .badge {
-    padding: 4px 8px;
+    display: block;
+    width: 70px;
     border-radius: 10px;
     font-size: 12px;
     font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
 }
 
 .green {
@@ -1009,11 +1135,18 @@
     height: 18px;
 }
 
+@media (max-width: 1484px) {
+    .contents .con2 .chart_area {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
 
 @media (min-width: 1025px) {
-  .mobile_content_list {
-    display: none !important;
-  }
+    .mobile_content_list {
+        display: none !important;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -1138,6 +1271,8 @@
 
 }
 
+@media (min-width: 845px) {}
+
 /* PC 이상에서는 숨기기 */
 @media (min-width: 768px) {
     .mobile_rank_list {
@@ -1149,6 +1284,26 @@
 
 
 @media (max-width: 767px) {
+
+    .contents {
+        padding: 50px 20px;
+    }
+
+    .p_txt_2 {
+        font-size: 14px;
+    }
+
+    .h1_txt {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .btn_st {
+        width: 50px;
+        height: 50px;
+        font-size: 14px;
+    }
+
     .contents {
         margin-left: 0;
         width: 100%;
@@ -1230,10 +1385,7 @@
         width: 100%;
     }
 
-    .contents .con2 .chart_area {
-        flex-direction: column;
-        gap: 15px;
-    }
+
 
     .contents .con2 .chart_left,
     .contents .con2 .chart_right {
@@ -1246,14 +1398,14 @@
         padding-top: 20px;
     }
 
-    .contents .con2 .stat_cards {
-        flex-direction: column;
-        gap: 15px;
-    }
 
     .contents .con2 .card {
         width: 100%;
         min-width: unset;
+    }
+
+    .card_top img {
+        display: none;
     }
 
     .contents .con2 .tab_header {
@@ -1276,6 +1428,7 @@
         display: block;
         border-collapse: separate;
         border-spacing: 0;
+
     }
 
 
@@ -1308,6 +1461,10 @@
         display: flex;
     }
 
+    .likes {
+        font-size: 14px;
+    }
+
     .rank_table {
         display: none !important;
     }
@@ -1317,6 +1474,13 @@
         display: none !important;
     }
 
+    .contents .con4 {
+        padding: 0;
+    }
+
+    .calendar_header {
+        padding: 0;
+    }
 
 
 }
