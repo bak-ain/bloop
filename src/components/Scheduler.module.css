@@ -82,6 +82,7 @@
 
 :global(.react-calendar__tile--now) {
     background: transparent;
+    /* border: 1px solid #D13B5A !important; */
 }
 
 :global(.react-calendar__tile--now:enabled:hover) {
@@ -92,8 +93,14 @@
     background: transparent;
 }
 
+:global(.react-calendar__tile--active) {
+    background: transparent;
+}
+
 :global(.react-calendar__tile--now abbr) {
-    border: 1px solid #D13B5A;
+    /* border: 2px solid #D13B5A; */
+    background: var(--main-color);
+    color: #fff;
     border-radius: 50%;
     padding: 6px 10px;
 }
@@ -132,16 +139,65 @@
     font-size: 18px;
     font-weight: 400;
 }
-.stickerImg{
+
+.stickerImg {
     position: absolute;
-    object-fit: cover;
-    /* height: auto; */
+    object-fit: contain;
 }
-.sticker_0601{
-    width: 90px;
-    top: 90px;
-    left: 100px;
+
+.sticker_0601 {
+    width: 60px;
+    top: 70px;
+    left: 220px;
 }
+
+.sticker_0604 {
+    width: 120px;
+    top: 320px;
+    left: -80px;
+}
+
+.sticker_0610 {
+    width: 100px;
+    top: 104px;
+    right: -30px;
+}
+
+.sticker_0611 {
+    top: 220px;
+    left: 510px;
+}
+
+.sticker_0619 {
+    top: 262px;
+    right: 305px;
+}
+
+.sticker_0614 {
+    top: 86px;
+    right: 415px;
+}
+
+.sticker_0606 {
+    top: 308px;
+    right: 120px;
+}
+
+.sticker_0627 {
+    top: 450px;
+    left: 450px;
+}
+
+.sticker_0624 {
+    bottom: 110px;
+    right: -12px;
+}
+
+.sticker_0628 {
+    bottom: 35px;
+    left: 85px;
+}
+
 .popupOverlay {
     position: fixed;
     left: 0;
