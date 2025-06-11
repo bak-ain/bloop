@@ -5,18 +5,16 @@
 
 .calendar {
     width: 1024px;
-    height: 650px;
+    height: max-content;
     margin: 0 auto;
-    background-image: url('/public/images/scheduleBorder.svg');
-    background-position: center top;
-    background-size: cover;
     background-color: #fff;
-    background-repeat: no-repeat;
     border: none;
-    /* border-radius: 18px; */
     box-shadow: none;
     font-family: 'KNPSKkomi';
     position: relative;
+    background-image: url('/public/images/scheduleBorder3.png');
+    background-repeat: no-repeat;
+    background-position: right;
 }
 
 .monthNav {
@@ -50,10 +48,20 @@
 .monthBtnR {
     background-image: url('/public/images/chevronR.png');
 }
-
+:global(.react-calendar){
+    /* border-right: 1px solid #ccc; */
+}
 :global(.react-calendar__month-view__weekdays) {
     height: 50px;
     min-height: 50px;
+    background-image: url(/public/images/scheduleBorder1.svg);
+    /* background-size: contain; */
+    background-repeat: repeat-x;
+}
+
+:global(.react-calendar__month-view__days) {
+    background-image: url(/public/images/scheduleBorder2.svg);
+    /* background-size: contain; */
 }
 
 :global(.react-calendar__tile) {

@@ -1129,7 +1129,11 @@
     color: var(--font-color-7);
 }
 
-.content_table td {}
+.content_table td.colType {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .content_table tbody td:nth-child(2) {
     color: var(--blue);
