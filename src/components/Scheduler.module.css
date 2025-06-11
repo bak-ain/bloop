@@ -131,7 +131,11 @@
 }
 
 :global(.react-calendar__month-view__days__day--neighboringMonth) {
-    background: rgba(248, 248, 248, 0.7);
+    background: rgba(248, 248, 248, 0.5);
+    color: var(--sub-color-apricot);
+}
+:global(.react-calendar__month-view__days__day--neighboringMonth:enabled:hover) {
+    background: rgba(248, 248, 248, 0.5);
     color: var(--sub-color-apricot);
 }
 

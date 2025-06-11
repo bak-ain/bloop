@@ -1,5 +1,7 @@
 import Container from "../components/Container";
 import Scheduler from "../components/Scheduler";
+import MainOfficial from "../components/MainOfficial";
+import { usePostList } from "../context/PostListContext";
 import styles from "./Home.module.css"
 
 // MemberProfile
@@ -43,6 +45,18 @@ const MemberProfile = () => (
 
 
 const Home = () => {
+    const { officialPosts } = usePostList();
+    const officialDefaultList = officialPosts
+        .filter(item => item.type === "default")
+        .map(item => ({
+            ...item,
+            type: item.type as "default" | "new" | "imageOnly" | "feature",
+            media: item.media?.map((m: any) => ({
+                ...m,
+                type: m.type === "image" || m.type === "video" ? m.type : "image",
+            })),
+        }));
+
     return (
         <div className={`${styles.home} home`}>
             <Container>
@@ -54,6 +68,7 @@ const Home = () => {
                         <h2 className={styles.scheduleTitle}>Schedule</h2>
                         <Scheduler />
                     </section>
+                    <MainOfficial contents={officialDefaultList} />
                 </div>
             </Container>
         </div>
