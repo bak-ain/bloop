@@ -117,3 +117,21 @@ section {
     color: var(--font-color-3);
     padding-left: 10px;
 }
+.schedule{
+    position: relative;
+}
+.scheduleTitle{
+    position: relative;
+
+}
+.scheduleBg{
+    width: 100%;
+    height: 100%;
+    background-image: url('/public/images/scheduleBg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+}

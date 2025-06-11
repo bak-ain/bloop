@@ -50,6 +50,7 @@ const Home = () => {
                 <div className={styles.mainContent}>
                     <MemberProfile />
                     <section className={styles.schedule}>
+                        <div className={styles.scheduleBg} />
                         <h2 className={styles.scheduleTitle}>Schedule</h2>
                         <Scheduler />
                     </section>
