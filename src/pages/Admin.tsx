@@ -196,17 +196,17 @@ const Admin = () => {
                                         <p className={` ${styles.p_txt_2}`}>등급별 가입 분포</p>
                                         <img src="../images/dash/donut.jpg" alt="등급 가입 도넛 그래프" />
                                         <div className={styles.rank_stats}>
-                                            <div>
-                                                <strong>3,450명</strong>
-                                                <span className={styles.up}>12% ↑</span>
+                                            <div  className={`${styles.card_info} ${styles.borderRight}`}>
+                                                <strong className={styles.p_txt_1}>3,450명</strong>
+                                                <span className={styles.up}>12% <img src="../images/dash/up_blue.png" alt="up" /></span>
                                             </div>
-                                            <div>
-                                                <strong>2,820명</strong>
-                                                <span className={styles.up}>10% ↑</span>
+                                            <div  className={`${styles.card_info} ${styles.borderRight}  }`}>
+                                                <strong className={styles.p_txt_1}>2,820명</strong>
+                                                <span className={styles.up}>10% <img src="../images/dash/up_blue.png" alt="up" /></span>
                                             </div>
-                                            <div>
-                                                <strong>5,690명</strong>
-                                                <span className={styles.down}>18% ↓</span>
+                                            <div  className={`${styles.card_info} ${styles.borderRight} ${styles.second}`}>
+                                                <strong className={styles.p_txt_1}>5,690명</strong>
+                                                <span className={styles.up}>18% <img src="../images/dash/up_light_blue.png" alt="down" /></span>
                                             </div>
                                         </div>
                                     </div>
