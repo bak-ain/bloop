@@ -3,12 +3,23 @@ import styles from './Admin.module.css';
 const Admin = () => {
     return (
         <div className={`${styles.wrap}`}>
+            <header className={styles.header}>
+                <div className={styles.logoWrap}>
+                    <img src="../images/dash/logo.jpg" alt="bloop logo" className={styles.logoIcon} />
+                    <span className={styles.logoText}>BLOOP</span>
+                </div>
+                <button className={styles.menuToggle}>
+                    <span />
+                    <span />
+                    <span />
+                </button>
+            </header>
             <header className={`${styles.ad_header}`}>
                 <div>
                     <h1 >
                         <a href="/">
                             <img src="../images/dash/logo.jpg" alt="bloop logo" className="logo" />
-                            <p className={`${styles.h1_txt}`}>bloop</p>
+                            <p className={`${styles.h1_txt_2}`}>bloop</p>
                         </a>
                     </h1>
                     <nav className={`${styles.gnb} ${styles.p_txt_2}`}>
@@ -29,6 +40,7 @@ const Admin = () => {
                     <div className={`${styles.con1}`}>
                         <div className={`${styles.box} ${styles.profile_box}`}>
                             <div className={`${styles.top}`}>
+                                <p className={` ${styles.p_txt_2}`}> 프로필</p>
                                 <button type="button"
                                     className={`${styles.btn_st}`}>
                                     편집
@@ -66,7 +78,7 @@ const Admin = () => {
                         </div>
                         <div className={`${styles.box} ${styles.color_box}`}>
                             <div className={`${styles.top}`}>
-
+                                <p className={` ${styles.p_txt_2}`}> 색상 및 로고</p>
                                 <button type="button"
                                     className={`${styles.btn_st}`}>
                                     편집
@@ -102,13 +114,13 @@ const Admin = () => {
                             </ul>
                         </div>
                         <div className={`${styles.box} ${styles.info_box}`}>
-                            {/* <div className={`${styles.pro}`}>
-                                <div></div>
-                                <h4>HIBIS</h4>
-                                <p>NEONIVE엔터테인먼트</p>
+                            <div className={`${styles.pro}`}>
+                                <div><img src="../images/dash/info_logo.png" alt="하이비스" /></div>
+                                <h4 className={`${styles.h1_txt_1}`}>HIBIS</h4>
+                                <p className={`${styles.p_txt_2}`}>NEONIVE엔터테인먼트</p>
                             </div>
                             <div className={`${styles.office}`}>
-                                <ul>
+                                <ul >
                                     <li><p>관리자</p><span>정유찬</span></li>
                                     <li><p>아이디</p><span>NEONIVE</span></li>
                                     <li><p>이메일</p><span>NEONIVE@naver.com</span></li>
@@ -120,7 +132,7 @@ const Admin = () => {
                                     <li><p>아티스트</p><span>하이비스</span></li>
                                     <li><p>구성원</p><span>도아 / 아린 / 세이 / 루하</span></li>
                                 </ul>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
 
@@ -228,13 +240,13 @@ const Admin = () => {
                                             { rank: "03", type: "아티스트", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
                                             { rank: "04", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
                                             { rank: "05", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
-                                             { rank: "06", type: "아티스트", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
-                                              { rank: "07", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" }
+                                            { rank: "06", type: "아티스트", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
+                                            { rank: "07", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" }
                                         ].map((item, idx) => (
                                             <tr key={idx}>
-                                                <td>{item.rank}</td>
+                                                <td className={`${styles.p_txt_3}`}>{item.rank}</td>
                                                 <td>
-                                                    <span className={`${styles.badge} ${item.type === "기획사" ? styles.green : styles.red}`}>
+                                                    <span className={`${styles.badge} ${item.type === "기획사" ? styles.green : styles.red} ${styles.span_txt}`}>
                                                         {item.type}
                                                     </span>
                                                 </td>
@@ -258,17 +270,17 @@ const Admin = () => {
                                     { rank: "05", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950" },
                                 ].map((item, idx) => (
                                     <div className={styles.mobile_row} key={idx}>
-                                        <div className={styles.rank}>{item.rank}</div>
+                                        <div className={`${styles.p_txt_3} ${styles.blues}`}>{item.rank}</div>
                                         <div className={styles.content}>
-                                            <p className={styles.title}>
+                                            <p className={styles.p_txt_3}>
                                                 <strong>[ARIN]</strong> 뮤직뱅크 직캠 영상
                                             </p>
                                             <div className={styles.sub_info}>
                                                 <span className={styles.date}>{item.date}</span>
-                                                <span className={styles.likes}>❤️ {item.like}개</span>
+                                                <span className={styles.likes}><img src="../images/dash/heart_icon.png" alt="" className={styles.like_img} /> {item.like}개</span>
                                             </div>
                                         </div>
-                                        <div className={styles.arrow}>➤</div>
+                                        <div className={styles.arrow}><img src="../images/dash/arrow_icon.png" alt="arrow" /></div>
                                     </div>
                                 ))}
                             </div>
@@ -303,9 +315,9 @@ const Admin = () => {
                         <h2 className={`${styles.h1_txt}`}>Content</h2>
                         <div className={styles.content_header}>
                             <div className={styles.tab_menu}>
-                                <button className={`${styles.active}`} >전체</button>
-                                <button>기획사</button>
-                                <button>아티스트</button>
+                                <button className={`${styles.active} ${styles.p_txt_1} `} >전체</button>
+                                <button className={` ${styles.p_txt_2} `}>기획사</button>
+                                <button className={` ${styles.p_txt_2} `} >아티스트</button>
                             </div>
                             <div className={styles.action_buttons}>
                                 <button className={`${styles.btn_st}`}>+ 게시물</button>
@@ -315,7 +327,7 @@ const Admin = () => {
 
                         <table className={styles.content_table}>
                             <thead>
-                                <tr>
+                                <tr className={`${styles.thead_txt}`}>
                                     <th className={styles.colType}>카테고리</th>
                                     <th className={styles.colRank}>순번</th>
                                     <th>제목</th>
@@ -335,28 +347,32 @@ const Admin = () => {
                                     { rank: "03", type: "아티스트", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950", comment: "10,950", save: "10,950", image: "300GB" },
                                     { rank: "04", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950", comment: "10,950", save: "10,950", image: "300GB" },
                                     { rank: "05", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950", comment: "10,950", save: "10,950", image: "300GB" },
+                                    { rank: "06", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950", comment: "10,950", save: "10,950", image: "300GB" },
+                                    { rank: "07", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950", comment: "10,950", save: "10,950", image: "300GB" },
+                                    { rank: "08", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950", comment: "10,950", save: "10,950", image: "300GB" },
+                                    { rank: "09", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950", comment: "10,950", save: "10,950", image: "300GB" }, { rank: "10", type: "기획사", title: "[ARIN] 뮤직뱅크 직캠 영상", date: "09/06/2023", like: "10,950", comment: "10,950", save: "10,950", image: "300GB" },
                                 ].map((item, idx) => (
                                     <tr key={idx}>
                                         <td className={styles.colType}>
-                                            <span className={`${styles.badge} ${item.type === "기획사" ? styles.green : styles.red}`}>
+                                            <span className={`${styles.badge} ${item.type === "기획사" ? styles.green : styles.red} ${styles.span_txt}`}>
                                                 {item.type}
                                             </span>
                                         </td>
-                                        <td className={styles.colRank}>{item.rank}</td>
-                                        <td>{item.title}</td>
-                                        <td>{item.date}</td>
-                                        <td className={styles.likes}>{item.like}</td>
-                                        <td>{item.comment}</td>
-                                        <td>{item.save}</td>
-                                        <td>{item.image}</td>
+                                        <td className={`${styles.colRank} ${styles.p_txt_3}`}>{item.rank}</td>
+                                        <td className={styles.p_txt_3}>{item.title}</td>
+                                        <td className={`${styles.date}`}>{item.date}</td>
+                                        <td className={`${styles.date}`}>{item.like}</td>
+                                        <td className={`${styles.date}`}>{item.comment}</td>
+                                        <td className={`${styles.date}`} >{item.save}</td>
+                                        <td className={`${styles.date}`}>{item.image}</td>
                                         <td>
                                             <button className={styles.icon_btn}>
-                                                <img src="/icons/upload.svg" alt="업로드" />
+                                                <img src="../images/dash/share_icon.png" alt="업로드" />
                                             </button>
                                         </td>
                                         <td>
                                             <button className={styles.icon_btn}>
-                                                <img src="/icons/view.svg" alt="보기" />
+                                                <img src="../images/dash/arrow_icon.png" alt="보기" />
                                             </button>
                                         </td>
                                     </tr>
@@ -409,17 +425,29 @@ const Admin = () => {
                                 },
                             ].map((item, idx) => (
                                 <div className={styles.mobile_content_item} key={idx}>
-                                    <div className={styles.title}>{item.title}</div>
-                                    <div className={styles.sub_info}>
-                                        <span>{item.date}</span>
-                                        <span className={styles.likes}>❤️ {item.like}개</span>
-                                        <span>💬 {item.comment}</span>
-                                        <span>🔖 {item.save}</span>
-                                        <span>{item.image}</span>
+                                    <div className={styles.top_txt}>
+                                        <div className={styles.txt}>
+                                            <div className={` ${styles.p_txt_3}`}>{item.title}</div>
+                                            <div className={styles.sub_info}>
+                                                <span className={styles.date}>{item.date}</span>
+
+                                            </div>
+                                        </div>
+                                        <button><img src="../images/dash/arrow_icon.png" alt="보기" /></button>
                                     </div>
+
                                     <div className={styles.actions}>
-                                        <button><img src="/icons/upload.svg" alt="업로드" /></button>
-                                        <button><img src="/icons/view.svg" alt="보기" /></button>
+                                        <div className={styles.s_sub_info}>
+                                            <span className={`${styles.dates}`}><img src="../images/dash/heart_b_icon.png" alt="heart" /> {item.like}개</span>
+                                            <span className={`${styles.dates}`}><img src="../images/dash/pop_icon.png" alt="heart" /> {item.comment}</span>
+                                            <span className={`${styles.dates}`}><img src="../images/dash/chat_icon.png" alt="heart" />  {item.save}</span>
+
+                                        </div>
+                                        <div className={styles.icon}>
+
+                                            <span className={`${styles.dates}`} >{item.image}</span>
+                                        </div>
+
                                     </div>
                                 </div>
                             ))}
@@ -428,9 +456,11 @@ const Admin = () => {
 
 
                         <div className={styles.pagination}>
+                            <button className={styles.arrow}><img src="../images/dash/arrow_icon.png" alt="arrow" /></button>
                             <button className={styles.active}>1</button>
-                            <button >2</button>
+                            <button>2</button>
                             <button>3</button>
+                            <button className={styles.arrow}><img src="../images/dash/arrow_icon.png" alt="arrow" /></button>
                         </div>
                     </div>
 
