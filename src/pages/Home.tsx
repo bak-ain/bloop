@@ -1,7 +1,8 @@
 import Container from "../components/Container";
+import Scheduler from "../components/Scheduler";
 import styles from "./Home.module.css"
 
-// MemberProfile.tsx
+// MemberProfile
 interface Member {
     name: string;
     en: string;
@@ -43,11 +44,15 @@ const MemberProfile = () => (
 
 const Home = () => {
     return (
-        <div className="home">
+        <div className={`${styles.home} home`}>
             <Container>
                 <div className={styles.mainBanner} />
                 <div className={styles.mainContent}>
                     <MemberProfile />
+                    <section className={styles.schedule}>
+                        <h2 className={styles.scheduleTitle}>Schedule</h2>
+                        <Scheduler />
+                    </section>
                 </div>
             </Container>
         </div>

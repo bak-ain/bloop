@@ -12,7 +12,8 @@ import OfficialPostDetail from './pages/OfficialPostDetail';
 import { PostListProvider } from "./context/PostListContext";
 import { LikedScrappedProvider } from "./context/LikedScrappedContext";
 import { CommentProvider } from './context/CommentContext';
-// import './App.css';
+import { ScheduleProvider } from './context/ScheduleContext';
+import './App.css';
 
 function App() {
   const location = useLocation();
@@ -34,23 +35,25 @@ function App() {
     return () => observer.disconnect();
   }, [location.pathname]);
   return (
-    <PostListProvider>
-      <LikedScrappedProvider>
-        <CommentProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/join" element={<Join />} />
-            <Route path="/official" element={<OfficialFeed />} />
-            <Route path="/official/:id" element={<OfficialPostDetail />} />
-            <Route path="/muse" element={<ArtistFeed />} />
-            <Route path="/loop" element={<FanFeed />} />
-            <Route path="/mybox" element={<Mypage />} />
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
-        </ CommentProvider>
-      </LikedScrappedProvider>
-    </PostListProvider>
+    <ScheduleProvider>
+      <PostListProvider>
+        <LikedScrappedProvider>
+          <CommentProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/join" element={<Join />} />
+              <Route path="/official" element={<OfficialFeed />} />
+              <Route path="/official/:id" element={<OfficialPostDetail />} />
+              <Route path="/muse" element={<ArtistFeed />} />
+              <Route path="/loop" element={<FanFeed />} />
+              <Route path="/mybox" element={<Mypage />} />
+              <Route path="/admin" element={<Admin />} />
+            </Routes>
+          </ CommentProvider>
+        </LikedScrappedProvider>
+      </PostListProvider>
+    </ScheduleProvider>
   );
 }
 

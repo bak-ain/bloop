@@ -1,0 +1,282 @@
+.schedulerWrapper {
+    position: relative;
+
+}
+
+.calendar {
+    width: 1024px;
+    height: 650px;
+    margin: 0 auto;
+    background-image: url('/public/images/scheduleBorder.svg');
+    background-position: center top;
+    background-size: cover;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    border: none;
+    /* border-radius: 18px; */
+    box-shadow: none;
+    font-family: 'KNPSKkomi';
+    position: relative;
+}
+
+.monthNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: var(--wep-tit-pad);
+}
+
+.monthTitle {
+    color: var(--font-color-3);
+    font-family: var(--main-font-family);
+}
+
+.monthNav button {
+    background-color: transparent;
+    border: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.monthBtnL {
+    background-image: url('/public/images/chevronL2.png');
+}
+
+.monthBtnR {
+    background-image: url('/public/images/chevronR.png');
+}
+
+:global(.react-calendar__month-view__weekdays) {
+    height: 50px;
+    min-height: 50px;
+}
+
+:global(.react-calendar__tile) {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 16px;
+}
+
+:global(.react-calendar__tile:enabled:hover) {
+    background: transparent;
+
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #D13B5A;
+    background: transparent;
+    padding: 0;
+    height: 36px;
+    line-height: 36px;
+}
+
+:global(.react-calendar__tile--now) {
+    background: transparent;
+}
+
+:global(.react-calendar__tile--now:enabled:hover) {
+    background: none;
+}
+
+:global(.react-calendar__tile--now:enabled:focus) {
+    background: transparent;
+}
+
+:global(.react-calendar__tile--now abbr) {
+    border: 1px solid #D13B5A;
+    border-radius: 50%;
+    padding: 6px 10px;
+}
+
+:global(.react-calendar__month-view__days__day) {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+:global(.react-calendar__month-view__weekdays__weekday) {
+    color: var(--sub-color-apricot);
+    font-size: 24px;
+    font-weight: 400;
+    text-align: left;
+}
+
+:global(.react-calendar__month-view__weekdays__weekday abbr) {
+    text-decoration: none;
+}
+
+:global(.react-calendar__month-view__days__day--neighboringMonth) {
+    background: rgba(248, 248, 248, 0.7);
+    color: var(--sub-color-apricot);
+}
+
+.dayEventList {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    /* position: relative; */
+}
+
+.dayEvent {
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+}
+.stickerImg{
+    position: absolute;
+    object-fit: cover;
+    /* height: auto; */
+}
+.sticker_0601{
+    width: 90px;
+    top: 90px;
+    left: 100px;
+}
+.popupOverlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popupBox {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    min-width: 300px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+.popupTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.popupDesc {
+    margin-bottom: 18px;
+    color: #444;
+}
+
+.popupCloseBtn {
+    background: #D13B5A;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.loading {
+    text-align: center;
+    color: #888;
+    padding: 32px 0;
+}
+
+.error {
+    text-align: center;
+    color: #D13B5A;
+    padding: 32px 0;
+}
+
+/* 팝업 오버레이 */
+.popupOverlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* 팝업 박스 */
+.popupBox {
+    background: #fff;
+    border-radius: 24px;
+    min-width: 400px;
+    max-width: 480px;
+    padding: 40px 36px 32px 36px;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    text-align: left;
+}
+
+/* 닫기 버튼 */
+.popupCloseBtn {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #222;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* 제목 */
+.popupTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    margin-top: 0;
+    letter-spacing: -1px;
+}
+
+/* 이미지 */
+.popupImage {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: block;
+}
+
+/* 설명 */
+.popupDesc {
+    color: #444;
+    font-size: 1.08rem;
+    margin-bottom: 32px;
+    margin-top: 0;
+}
+
+/* 날짜/장소 정보 행 */
+.popupInfoRow {
+    display: flex;
+    gap: 48px;
+    margin-top: 0;
+}
+
+.popupInfoLabel {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 6px;
+    font-size: 1rem;
+}
+
+.popupInfoValue {
+    color: #444;
+    font-size: 1rem;
+}

@@ -166,7 +166,7 @@ button {
 :root {
   /* font family */
   --main-font-family: "Pretendard", sans-serif;
-  --day--font-family: 'KNPSKkomi-Regular00', sans-serif;
+  --day--font-family: 'KNPSKkomi', sans-serif;
   --title-font-family: "Allura", cursive;
 
   /* color */
@@ -446,6 +446,12 @@ main{
 #chatbase-bubble-button img{
 border-radius: 0 !important;
 display: none !important;
+}
+#chatbase-message-bubbles{
+  display: none !important;
+}
+.react-calendar__navigation{
+    display: none !important;
 }
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {

@@ -2,7 +2,7 @@
   {
     "id": "s1",
     "title": "SBS 인기가요 컴백 무대",
-    "imageUrl": "/images/schedule/mbc_musiccore_poster.png",
+    "imageUrl": "/images/1.png",
     "datetime": "2025.06.01(일) 오후 3:00",
     "location": "서울 등촌동 SBS 공개홀",
     "description": "3집 앨범 활동 첫 음악방송 출연"
@@ -10,6 +10,7 @@
   {
     "id": "s5",
     "title": "팬사인회 (홍대)",
+    "imageUrl": "/images/2.png",
     "datetime": "2025.06.10(화) 오후 5:00",
     "location": "홍대 무신사 스튜디오",
     "description": "앨범 구매자 대상 추첨 팬사인회"
