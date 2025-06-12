@@ -98,6 +98,7 @@ const PostCard = <T extends ArtistPost | FanPost>({
 
     return (
         <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
+            {/* 아티스트 게시물 카드 */}
             {isArtist ? (
                 <div className={styles.profile_bubble_layout}>
                     <img className={styles.profile_img} src={user.profileImage} alt={user.name} />
@@ -136,10 +137,11 @@ const PostCard = <T extends ArtistPost | FanPost>({
                 </div>
             ) : (
                 <>
+                    {/* 팬게시물카드 */}
                     <div className={styles.profile_row}>
                         <img className={styles.profile_img} src={user.profileImage} alt={user.name} />
                         <div className={styles.info}>
-                            <strong>
+                            <strong className="card_name">
                                 {user.name}
                                 <img
                                     className={styles.badge_img}
@@ -154,7 +156,7 @@ const PostCard = <T extends ArtistPost | FanPost>({
                                     }
                                 />
                             </strong>
-                            <p className={styles.date}>{getDisplayDate(data.date)}</p>
+                            <p className={styles.day_span}>{getDisplayDate(data.date)}</p>
                         </div>
                     </div>
                     <div className={styles.body_wrapper} onClick={goToDetail}>
@@ -189,9 +191,28 @@ const PostCard = <T extends ArtistPost | FanPost>({
             )}
 
             <div className={styles.meta_row}>
-                <button onClick={handleLike}>{liked ? "❤️" : "🤍"} {likeCount}</button>
-                <button onClick={goToDetail}>{`💬 ${commentCount}`}</button>
-                <button onClick={handleScrap}>{scrapped ? "🔖" : "📌"}</button>
+                <button onClick={handleLike}>
+                    <img className={styles.like_icon}
+                        src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+                        alt={liked ? "좋아요 취소" : "좋아요"}
+                    />{" "}
+                    {likeCount}
+                </button>
+                <button onClick={goToDetail}>
+                    <img className={styles.like_icon}
+                        src="/images/icon/message.png"
+                        alt="댓글"
+                    />{" "}
+                    {commentCount}
+                </button>
+                <button onClick={handleScrap}>
+                    <img
+                        className={styles.like_icon}
+                        src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
+                        alt={scrapped ? "스크랩 취소" : "스크랩"}
+                    />
+                    {/* {scrapped ? "🔖" : "📌"} */}
+                </button>
             </div>
         </div>
     );

@@ -40,8 +40,9 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
 
     return (
         <div className={`${styles.feedLayout} ${className ?? ""} inner`}>
-            <div style={{ marginBottom: 16 }}>
-                <button
+            <div className={styles.popviewBtn}>
+            {/* <div style={{ marginBottom: 16 }}> */}
+                <button className={styles.popView}
                     onClick={() => {
                         setShowScrappedOnly(v => {
                             setPage(1);
@@ -49,6 +50,10 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
                         });
                     }}
                 >
+                    <img
+                        src="/images/icon/popview.png"
+                        alt="POP VIEW"
+                    />
                     {showScrappedOnly ? "ALL VIEW" : "POP VIEW"}
                 </button>
             </div>

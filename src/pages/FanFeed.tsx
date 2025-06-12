@@ -29,63 +29,65 @@ const FanFeed = () => {
 
     return (
         <Container>
-            <button
-                className={styles.writeButton}
-                onClick={() => setIsUploadOpen(true)}
-            >
-                <img src="/images/editBtn.png" alt="글쓰기" />
-            </button>
-            <PopularPost
-                posts={fanPosts}
-                onPostClick={post => {
-                    setSelectedPost(post);
-                    setIsPopupOpen(true);
-                }} />
-            <FeedLayout
-                className={styles.fanFeedLayout}
-                posts={fanPosts}
-                likedIds={fanLikedIds}
-                scrappedIds={fanScrappedIds}
-                onLike={(id, defaultLikes) => toggleLike("fan", id, defaultLikes)}
-                onScrap={id => toggleScrap("fan", id)}
-                onPostClick={post => {
-                    setSelectedPost(post);
-                    setIsPopupOpen(true);
-                }}
-            />
-            {isPopupOpen && selectedPost && (
-                <Popup
-                    type="fanFeed"
-                    data={selectedPost}
-                    onClose={handleClosePopup}
-                    onEdit={handleEdit}
-                />
-            )}
-            {/* 업로드 팝업 */}
-            {isUploadOpen && (
-                <Popup
-                    type="upload"
-                    onClose={() => setIsUploadOpen(false)}
-                    onSubmit={(data: FanPost) => {
-                        setFanPosts([data, ...fanPosts]);
-                        setIsUploadOpen(false);
+            <div className={styles.fanFeedContainer}>
+                <button
+                    className={styles.writeButton}
+                    onClick={() => setIsUploadOpen(true)}
+                >
+                    <img src="/images/editBtn.png" alt="글쓰기" />
+                </button>
+                <PopularPost
+                    posts={fanPosts}
+                    onPostClick={post => {
+                        setSelectedPost(post);
+                        setIsPopupOpen(true);
+                    }} />
+                <FeedLayout
+                    className={styles.fanFeedLayout}
+                    posts={fanPosts}
+                    likedIds={fanLikedIds}
+                    scrappedIds={fanScrappedIds}
+                    onLike={(id, defaultLikes) => toggleLike("fan", id, defaultLikes)}
+                    onScrap={id => toggleScrap("fan", id)}
+                    onPostClick={post => {
+                        setSelectedPost(post);
+                        setIsPopupOpen(true);
                     }}
                 />
-            )}
-            {isEditOpen && editPost && (
-                <Popup
-                    type="edit"
-                    data={editPost}
-                    onClose={() => setIsEditOpen(false)}
-                    onUpdate={(updatedPost: FanPost) => {
-                        setFanPosts((prev) =>
-                            prev.map((p) => (p.id === updatedPost.id ? updatedPost : p))
-                        );
-                        setSelectedPost(updatedPost);
-                        setIsEditOpen(false);
-                    }}
-                />
-            )}
+                {isPopupOpen && selectedPost && (
+                    <Popup
+                        type="fanFeed"
+                        data={selectedPost}
+                        onClose={handleClosePopup}
+                        onEdit={handleEdit}
+                    />
+                )}
+                {/* 업로드 팝업 */}
+                {isUploadOpen && (
+                    <Popup
+                        type="upload"
+                        onClose={() => setIsUploadOpen(false)}
+                        onSubmit={(data: FanPost) => {
+                            setFanPosts([data, ...fanPosts]);
+                            setIsUploadOpen(false);
+                        }}
+                    />
+                )}
+                {isEditOpen && editPost && (
+                    <Popup
+                        type="edit"
+                        data={editPost}
+                        onClose={() => setIsEditOpen(false)}
+                        onUpdate={(updatedPost: FanPost) => {
+                            setFanPosts((prev) =>
+                                prev.map((p) => (p.id === updatedPost.id ? updatedPost : p))
+                            );
+                            setSelectedPost(updatedPost);
+                            setIsEditOpen(false);
+                        }}
+                    />
+                )}
+            </div>
         </Container>
     );
 };

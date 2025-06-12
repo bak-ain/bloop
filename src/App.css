@@ -216,7 +216,6 @@ button {
 }
 
 /* 공통 */
-
 .day_span {
   font-size: 16px;
   font-weight: 400;
@@ -276,7 +275,6 @@ button {
 }
 
 /* 커뮤니티 */
-
 .fan_top_name {
   font-size: 20px;
   font-weight: 600;
@@ -610,7 +608,6 @@ main {
   }
 
   /* 커뮤니티 */
-
   .fan_top_name {
     font-size: 16px;
   }
