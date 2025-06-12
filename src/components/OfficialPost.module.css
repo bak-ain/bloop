@@ -1,45 +1,141 @@
+/* 배너 */
+
+.bannerWrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  padding-block: 100px 150px;
+}
+
+.bannerSwiper {
+  width: 100%;
+  height: 500px;
+  /* 원하는 높이로 조정 */
+}
+
+.bannerImg,
+.bannerImgPlaceholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* .bannerNavBtn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transform: translateY(-50%);
+} */
+:global(.swiper-button-prev),
+:global(.swiper-button-next) {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* 왼쪽(이전) 버튼은 오른쪽에서 56px 떨어짐 */
+:global(.swiper-button-prev) {
+  right: 56px;
+  left: auto;
+}
+
+/* 오른쪽(다음) 버튼은 오른쪽 끝 */
+:global(.swiper-button-next) {
+  right: 16px;
+  left: auto;
+}
+
+:global(.swiper-button-prev)::after,
+:global(.swiper-button-next)::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.bannerOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+/* 상세 */
 
 .detailWrapper {
-  padding-block: 48px;
+  padding-block: 100px 200px;
 }
 
 .notFound {
   padding: 80px 0;
   text-align: center;
-  color: #888;
+
+}
+
+.detailTop {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 30px;
+
+}
+
+.detailTxt {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .detailHeader {
-  margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 }
 
 .detailNew {
   color: #D13B5A;
-  font-weight: 700;
-  font-size: 28px;
-  margin-right: 12px;
 }
 
 .detailTitle {
-  font-size: 32px;
-  font-weight: 700;
   vertical-align: middle;
 }
 
 .detailDate {
-  color: #666;
-  font-size: 15px;
-  margin-bottom: 24px;
+  color: var(--font-color-darkgray);
 }
 
 .detailMedia {
-  background: #f2f2f2;
   border-radius: 8px;
   width: 100%;
-  min-height: 350px;
   margin-bottom: 32px;
   display: flex;
   align-items: center;
@@ -47,45 +143,66 @@
   overflow: hidden;
   gap: 12px;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .detailImg,
 .detailVideo {
-  max-width: 48%;
-  max-height: 350px;
+  width: 100%;
   border-radius: 8px;
 }
 
+.detailBotttomTxt {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 15px;
+
+}
+
 .detailDesc {
-  font-size: 16px;
-  color: #222;
-  margin-bottom: 32px;
+  padding-bottom: 15px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #eee;
 }
 
 .detailBottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #eee;
-  padding-top: 24px;
   gap: 24px;
-  font-size: 22px;
-  color: #222;
+  flex-wrap: wrap;
 }
+
+
 
 .detailHashtags {
   display: flex;
-  gap: 16px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .detailHashtag {
   color: #2986E2;
-  font-size: 15px;
 }
 
 .detailActions {
   display: flex;
-  gap: 24px;
+  gap: 13px;
+}
+
+.officePopImg {
+  width: 34px;
+  height: 34px;
+}
+
+.officeHeartImg {
+  width: 32px;
+  height: 32px;
 }
 
 .detailLikeBtn,
@@ -93,7 +210,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 22px;
   display: flex;
   align-items: center;
   color: #888;
@@ -120,13 +236,17 @@
   font-size: 18px;
   margin-left: 4px;
 }
+
 .detailShareBtn {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 22px;
   color: #888;
-  margin-left: 8px;
+}
+
+.officeShare_icon {
+  width: 30px;
 }
 
 .sharePopup {
@@ -139,7 +259,7 @@
   border-radius: 8px;
   padding: 16px 20px;
   z-index: 10;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   min-width: 260px;
 }
 
@@ -149,7 +269,8 @@
   word-break: break-all;
 }
 
-.copyBtn, .closeBtn {
+.copyBtn,
+.closeBtn {
   background: #eee;
   border: none;
   border-radius: 4px;
@@ -158,45 +279,63 @@
   cursor: pointer;
   font-size: 14px;
 }
-/* OfficialPost.module.css */
-.bannerWrapper {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
+
+@media (max-width: 1024px) {
+  .detailWrapper {
+    padding-block: 80px 150px;
+  }
 }
-.bannerSwiper {
-  width: 100%;
-  height: 320px; /* 원하는 높이로 조정 */
+
+
+
+@media (max-width: 767px) {
+  .detailWrapper {
+    padding-block: 50px 150px;
+  }
+
+  .office_h3_tit {
+    font-size: 28px;
+  }
+
+  .detailHashtags {
+    gap: 15px;
+  }
 }
-.bannerImg,
-.bannerImgPlaceholder {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
+
+@media (max-width:656px) {
+  .officePopImg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .officeHeartImg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .officeShare_icon {
+    width: 24px;
+  }
+
+  .detailBottom {
+    gap: 15px;
+  }
+
+  .detailActions {
+    gap: 5px;
+  }
 }
-.bannerNavBtn {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  transform: translateY(-50%);
+
+@media (max-width: 402px) {
+  .detailWrapper {
+    padding-block: 50px 150px;
+  }
 }
-.bannerNavPrev { left: 10px; }
-.bannerNavNext { right: 10px; }
-.bannerOverlay{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+@media (max-width: 320px) {
+  .detailWrapper {
+    padding-block: 50px 150px;
+  }
+
+
 }

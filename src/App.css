@@ -111,6 +111,7 @@ section {
 
 body {
   line-height: 1;
+  color: var(--font-color-1);
 }
 
 ol,
@@ -379,15 +380,25 @@ button {
   line-height: 26px;
 }
 
+
+
 /*오피스 상세 */
 .offic_detail_p {
   font-size: 20px;
-  font-weight: 400;
-  line-height: 33px;
+  font-weight: 500;
+  line-height: 32px;
 }
 
+.office_h3_tit {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+}
 
-
+.office_tag {
+  font-size: 18px;
+  font-weight: 400;
+}
 
 /* kkomi */
 
@@ -418,24 +429,28 @@ button {
 
 
 
-.container{
+.container {
   width: 100%;
   font-family: var(--main-font-family);
   position: relative;
 }
-main{
+
+main {
   padding-top: 100px;
 }
-.home main{
+
+.home main {
   padding-top: 0;
 }
+
 .inner {
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 40px;
   width: 100%;
 }
-#chatbase-bubble-button{
+
+#chatbase-bubble-button {
   background-image: url(/public/images/chatbot.png) !important;
   background-size: cover !important;
   border-radius: 0% !important;
@@ -443,16 +458,19 @@ main{
   /* bottom: 115px !important; */
 }
 
-#chatbase-bubble-button img{
-border-radius: 0 !important;
-display: none !important;
-}
-#chatbase-message-bubbles{
+#chatbase-bubble-button img {
+  border-radius: 0 !important;
   display: none !important;
 }
-.react-calendar__navigation{
-    display: none !important;
+
+#chatbase-message-bubbles {
+  display: none !important;
 }
+
+.react-calendar__navigation {
+  display: none !important;
+}
+
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {
   .inner {
@@ -492,9 +510,34 @@ display: none !important;
     font-weight: 400;
   }
 
+  .office_h3_tit {
+    font-size: 28px;
+    line-height: normal;
+  }
 
+  /*오피스 상세 */
+  .offic_detail_p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 25px;
+  }
+
+  .office_tag {
+    font-size: 16px;
+  }
 
 }
+
+@media (max-width:530px) {
+  .office_tag {
+    font-size: 15px;
+  }
+    .office_h3_tit {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
 
 @media (max-width:450px) {
   .layout header {
@@ -644,4 +687,11 @@ display: none !important;
     font-weight: 500;
     line-height: 25px;
   }
+
+  @media (max-width:420px) {
+    .office_tag {
+      font-size: 15px;
+    }
+  }
+
 }

@@ -1,3 +1,22 @@
-.wrap{
-    /* overflow: hidden; */
+
+ main{
+    background-color: var(--font-color-1);
 }
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {}
+
+
+
+@media (max-width: 767px) {}
+
+@media (max-width:656px) {}
+
+@media (max-width: 402px) {}

@@ -30,13 +30,23 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
 
   switch (data.type) {
     case "new":
-      // 트렌드 미디어 카드
       return (
+        // 트렌드 미디어 카드
         <div className={styles.mediaCard} onClick={handleClick}>
           <div className={styles.mediaThumb}>
             {/* 썸네일 이미지가 있다면 */}
-            {data.media && data.media[0]?.url ? (
-              <img src={data.media[0].url} alt={data.title} />
+            {data.media && data.media[0] ? (
+              data.media[0].type === "video" ? (
+                // 비디오일 경우 썸네일 이미지 사용
+                data.media[0].thumbnail ? (
+                  <img src={data.media[0].thumbnail} alt={data.title} />
+                ) : (
+                  <div className={styles.mediaThumbPlaceholder} />
+                )
+              ) : (
+                // 이미지일 경우 그대로 출력
+                <img src={data.media[0].url} alt={data.title} />
+              )
             ) : (
               <div className={styles.mediaThumbPlaceholder} />
             )}
