@@ -230,9 +230,27 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                 </div>
 
                 <div className={styles.meta_row}>
-                    <button onClick={handleToggleLike}>{liked ? "❤️" : "🤍"} {likeCount}</button>
-                    <button>{`💬 ${commentCount}`}</button>
-                    <button onClick={handleToggleScrap}>{scrapped ? "🔖" : "📌"}</button>
+                    <button onClick={handleToggleLike}>
+                        <img className={styles.like_icon}
+                            src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+                            alt={liked ? "좋아요 취소" : "좋아요"}
+                        />{" "}
+                        {likeCount}
+                    </button>
+                    <button><img className={styles.like_icon}
+                        src="/images/icon/message.png"
+                        alt="댓글"
+                    />{" "}
+                        {commentCount}
+                    </button>
+                    <button onClick={handleToggleScrap}>
+                        <img
+                            className={styles.like_icon}
+                            src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
+                            alt={scrapped ? "스크랩 취소" : "스크랩"}
+                        />
+                        {/* {scrapped ? "🔖" : "📌"} */}
+                    </button>
                 </div>
             </section>
             <aside className={styles.comment_panel}>

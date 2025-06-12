@@ -3,7 +3,7 @@
   background: #fff;
   border-radius: 12px;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   font-family: 'Pretendard', sans-serif;
   line-height: 1.5;
@@ -57,7 +57,8 @@
   padding: 2px 6px;
   margin-left: auto;
 }
-.body_wrapper{
+
+.body_wrapper {
   cursor: pointer;
 }
 
@@ -177,6 +178,7 @@
   color: #ff9f00;
   font-size: 14px;
 }
+
 .badge_img {
   width: 25px;
   height: 25px;
@@ -186,38 +188,78 @@
   vertical-align: middle;
 }
 
-.media_item_wrapper {
+.media {
+  width: 100%;
   position: relative;
-  display: inline-block;
 }
+
+.single {
+  display: block;
+
+  .media_item_wrapper {
+    width: 100%;
+  }
+
+  .media_item {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+}
+
+.multi {
+  display: flex;
+  overflow: hidden;
+  gap: 8px;
+
+  .media_item_wrapper {
+    flex: 1;
+  }
+
+  .media_item {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+}
+
 .media_overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.storyContainer{
+
+.storyContainer {
   display: flex;
   height: 250px;
   /* border: 1px solid #ddd; */
 }
-.storyCard{
+
+.storyCard {
   flex: 1;
 }
-.storyCard .profileImage{
+
+.storyCard .profileImage {
   width: 48px;
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
 }
-.storyImage{
+
+.storyImage {
   width: 50%;
   height: auto;
 }
+
 .popularCard {
   background: #f5f6fa;
   border-radius: 12px;
