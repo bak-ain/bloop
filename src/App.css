@@ -170,7 +170,7 @@ button {
   --title-font-family: "Allura", cursive;
 
   /* color */
-  --main-color: #CA2649;
+  --main-color: #DB3155;
 
   --point-color-red: #AF0000;
   --point-color-blue: #419DDF;
@@ -416,8 +416,24 @@ button {
 
 /* 공통 레이아웃 */
 
+.mainOfficialSwiper .swiper-slide {
+    transition: transform 0.3s, opacity 0.3s;
+    /* opacity: 0.5; */
+    width: 450px;
+}
 
+.mainOfficialSwiper .swiper-slide.swiper-slide-active {
+    /* opacity: 1; */
+    transform: scale(1);
+    z-index: 2;
+}
 
+.mainOfficialSwiper .swiper-slide.swiper-slide-next,
+.mainOfficialSwiper .swiper-slide.swiper-slide-prev {
+    /* opacity: 0.8; */
+    transform: scale(0.92);
+    z-index: 1;
+}
 .container{
   width: 100%;
   font-family: var(--main-font-family);
@@ -425,9 +441,13 @@ button {
 }
 main{
   padding-top: 100px;
+  padding-bottom: var( --wep-footer-pad);
 }
 .home main{
   padding-top: 0;
+}
+.official main{
+  background: var(--font-color-1);
 }
 .inner {
   max-width: 1024px;
