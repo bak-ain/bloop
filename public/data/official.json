@@ -60,7 +60,7 @@
       "id": "m1",
       "type": "new",
       "date": "2025.05.31",
-      "title": "HOT 'DREAM' M/V 티저 선공개",
+      "title": "<span>NEW</span> HOT 'DREAM' M/V 티저 선공개",
       "descriptionDetail": "아직 모든 것이 베일에 싸인 지금, 무대의 조각들이 하나둘 드러나며 팬과 함께할 새로운 서사의 시작을 알립니다.<br /> 함께 걷는 이 길 위, 단지 보여주는 것을 넘어 ‘우리의 꿈’이 되어가는 과정을 지금 가장 먼저 만나보세요.",
       "hashtag": "#하이비스 #GoTogether #첫정규 #티저공개 #앨범시작",
       "likes": 12,
@@ -70,7 +70,7 @@
         {
           "type": "video",
           "url": "/images/office/doa.mp4",
-          "thumbnail": "/images/office/vid1.png"
+          "thumbnail": "/images/office/vid1.jpg"
         }
       ]
     },
@@ -88,7 +88,7 @@
         {
           "type": "video",
           "url": "/images/office/sei.mp4",
-          "thumbnail": "/images/office/vid2.png"
+          "thumbnail": "/images/office/vid2.jpg"
         }
       ]
     },
@@ -106,7 +106,7 @@
         {
           "type": "video",
           "url": "/images/office/luha.mp4",
-          "thumbnail": "/images/office/vid3.png"
+          "thumbnail": "/images/office/vid3.jpg"
         }
       ]
     }

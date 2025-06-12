@@ -3,11 +3,13 @@ import styles from "./OfficialPost.module.css";
 import { useLikedScrapped } from "../context/LikedScrappedContext";
 import { useNavigate } from "react-router-dom";
 
+
 interface OfficialPostProps {
   data: OfficialContent;
+  index?: number;
 }
 
-const OfficialPost = ({ data }: OfficialPostProps) => {
+const OfficialPost = ({ data, index }: OfficialPostProps) => {
   const {
     officialScrappedIds,
     toggleScrap,
@@ -41,19 +43,24 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
                 data.media[0].thumbnail ? (
                   <img src={data.media[0].thumbnail} alt={data.title} />
                 ) : (
-                  <div className={styles.mediaThumbPlaceholder} />
+                  <div className={`${styles.mediaThumbPlaceholder} ${styles.mediaImg}`} />
                 )
               ) : (
                 // 이미지일 경우 그대로 출력
-                <img src={data.media[0].url} alt={data.title} />
+                <img src={data.media[0].url} alt={data.title} className={`${styles.mediaImg}`} />
               )
             ) : (
               <div className={styles.mediaThumbPlaceholder} />
             )}
           </div>
           <div className={styles.mediaInfo}>
-            <div className={styles.mediaDate}>{data.date}</div>
-            <div className={styles.mediaTitle}>{data.title}</div>
+            <div className={`${styles.mediaDate} day_span`}>{data.date}</div>
+            <div className={styles.mediaTitle}>
+              <h3
+                className={`${styles.detailTitle} offic_h3  `}
+                dangerouslySetInnerHTML={{ __html: data.title ?? "" }}
+              />
+            </div>
             {/* 필요시 해시태그, 좋아요 등 추가 */}
           </div>
         </div>
@@ -63,16 +70,20 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
       return (
         <div className={styles.photoCard} onClick={handleClick}>
           {data.media && data.media[0]?.url ? (
-            <img src={data.media[0].url} alt={data.title} />
+            <img src={data.media[0].url} alt={data.title} className={`${styles.officeImg}`} />
           ) : (
             <div className={styles.photoPlaceholder} />
           )}
         </div>
       );
     case "feature":
-      // 비하인드 카드 (좌우 레이아웃)
+      // 비하인드 카드 (좌우 레이아웃, 두 번째만 반전)
+      const isReverse = index === 1;
       return (
-        <div className={styles.behindCard} onClick={handleClick}>
+        <div
+          className={`${styles.behindCard} ${isReverse ? styles.behindCardReverse : ""}`}
+          onClick={handleClick}
+        >
           <div className={styles.behindThumb}>
             {data.media && data.media[0]?.url ? (
               <img src={data.media[0].url} alt={data.title} />
@@ -81,16 +92,24 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
             )}
           </div>
           <div className={styles.behindInfo}>
-            <div className={styles.behindTitle}>{data.title}</div>
-            <div className={styles.behindDesc}>{data.description}</div>
+            <div className={styles.behindTitleTop}>
+              <div className={`${styles.behindTitle} offic_h4`}>{data.title}
+              </div>
+              <div
+                className={`${styles.behinbehindDescdTitle} offic_p`}
+                dangerouslySetInnerHTML={{ __html: data.description ?? "" }}/>
+            </div>
             <button
-              className={styles.behindDetailBtn}
+
+              className={`${styles.behindDetailBtn}  officeBtn`}
               onClick={(e) => {
                 e.stopPropagation();
                 handleClick();
               }}
             >
-              보러가기 <span style={{ fontSize: 14 }}>→</span>
+              보러가기
+              <img src="/images/icon/office_icon.png" alt="go" className={`${styles.behindIcon}`} />
+
             </button>
           </div>
         </div>

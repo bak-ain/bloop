@@ -57,10 +57,7 @@ const OfficialPostDetail = () => {
                 <div className={`${styles.detailTop} `}>
                     <div className={`${styles.detailTxt} `}>
                         <div className={`${styles.detailHeader} office_h3_tit`}>
-                            {post.type === "new" && (
-                                <span className={`${styles.detailNew} office_h3_tit`}>NEW</span>
-                            )}
-                            <span
+                            <h3
                                 className={`${styles.detailTitle} office_h3_tit`}
                                 dangerouslySetInnerHTML={{ __html: post.title ?? "" }}
                             />
@@ -83,7 +80,11 @@ const OfficialPostDetail = () => {
                                         key={idx}
                                         src={item.url}
                                         controls
+                                        autoPlay
+                                        loop
+                                        muted
                                         className={styles.detailVideo}
+                                        poster={item.thumbnail}
                                     />
                                 )
                             )
@@ -109,7 +110,7 @@ const OfficialPostDetail = () => {
                                 aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
                             >
                                 <img
-                                    src={isScrapped ? "/images/icon/pop_on_icon.png" : "/images/office/pop_icon.png"}
+                                    src={isScrapped ? "/images/icon/pop_on_icon.png" : "/images/icon/pop_icon.png"}
                                     alt={isScrapped ? "스크랩 해제" : "스크랩"}
                                     className={`${styles.officePopImg}`}
                                 />
@@ -120,9 +121,9 @@ const OfficialPostDetail = () => {
                                 aria-label={isLiked ? "좋아요 취소" : "좋아요"}
                             >
                                 <img
-                                    src={isLiked ? "/images/icon/heart_p_icon.png" : "/images/office/heart_icon.png"}
+                                    src={isLiked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
                                     alt={isLiked ? "좋아요 취소" : "좋아요"}
-                                   
+
                                     className={`${styles.officeHeartImg}`}
                                 />
                             </button>

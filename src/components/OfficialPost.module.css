@@ -1,17 +1,24 @@
 /* 배너 */
 
+
+
 .bannerWrapper {
   width: 100%;
   max-width: 900px;
+
   margin: 0 auto;
   position: relative;
-  padding-block: 100px 150px;
+  padding-top: 100px;
+  padding-bottom: 150px;
+   border-radius: 10px;
 }
 
 .bannerSwiper {
   width: 100%;
   height: 500px;
   /* 원하는 높이로 조정 */
+  position: relative;
+  border-radius: 10px;
 }
 
 .bannerImg,
@@ -20,6 +27,9 @@
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+  /* 원하는 색상과 두께 */
+  box-sizing: border-box;
+  display: block;
 }
 
 /* .bannerNavBtn {
@@ -33,10 +43,13 @@
   cursor: pointer;
   transform: translateY(-50%);
 } */
-.bannerWrapper :global(.swiper-button-prev),
-.bannerWrapper :global(.swiper-button-next) {
+
+.swiperWrapper {}
+
+.swiperWrapper :global(.swiper-button-prev),
+.swiperWrapper :global(.swiper-button-next) {
   position: absolute;
-  bottom: 16px;
+  top: 95%;
   z-index: 10;
   color: #fff;
   width: 30px;
@@ -44,21 +57,23 @@
   border-radius: 50%;
   display: flex;
   justify-content: flex-end;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
 }
 
-.bannerWrapper :global(.swiper-button-prev) {
-  right: 56px;
+.swiperWrapper :global(.swiper-button-prev) {
+  right: 12%;
   left: auto;
+  /* bottom: 16px !important; */
 }
 
-.bannerWrapper :global(.swiper-button-next) {
-  right: 16px;
+.swiperWrapper :global(.swiper-button-next) {
+  right: 5%;
   left: auto;
+  /* bottom: 16px !important; */
 }
 
-.bannerWrapper :global(.swiper-button-prev)::after,
-.bannerWrapper :global(.swiper-button-next)::after {
+.swiperWrapper :global(.swiper-button-prev)::after,
+.swiperWrapper :global(.swiper-button-next)::after {
   font-size: 20px;
   font-weight: bold;
 }
@@ -74,14 +89,187 @@
   display: flex;
   align-items: center;
   justify-content: center;
+    border-radius: 10px;
 }
 
+.bannerTitle {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}
+
+/* 트렌드 미디어 */
+.detailTitle span {
+  color: #D13B5A;
+}
+
+.detailTitle h3 {
+  font-size: 30px;
+}
+
+.mediaCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mediaThumb {
+  width: 100%;
+  height: 250px;
+}
+
+.mediaThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.mediaImg {
+  width: 50px;
+}
+
+.mediaInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mediaDate {
+  color: var(--font-color-gary);
+}
+
+.mediaInfo h3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* 오피셜 포토 */
+.photoCard {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.officeImg {
+  width: 100%;
+  aspect-ratio: 1/1;
+  /* 정사각형 비율, 필요시 */
+  object-fit: cover;
+  display: block;
+}
+
+/* 비하인드 */
 
 
 
+.behindCard {
+  display: flex;
+  align-items: stretch;
+  /* 원하는 배경색 */
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 180px;
+  max-height: 280px;
+  gap: 20px;
+  width: 100%;
+}
 
+.behindCardReverse {
+  flex-direction: row-reverse;
+}
 
+.behindThumb {
+  width: 50%;
+  min-width: 140px;
+  /* 이미지 없을 때 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+}
+
+.behindThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+.behindThumbPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: #fff6f6;
+}
+
+.behindInfo {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+}
+
+.behindTitleTop {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.behindTitle {
+  color: #fff;
+
+}
+
+.behinbehindDescdTitle {
+  color: var(--font-color-gary);
+  color: var(--font-color-gary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  /* 원하는 줄 수로 변경 가능 */
+  -webkit-box-orient: vertical;
+  max-width: 80%;
+  white-space: normal;
+}
+
+.behindDetailBtn {
+  width: 150px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  justify-content: center;
+  border: 1px solid var(--point-color-blue);
+  background: none;
+  color: var(--point-color-blue);
+  cursor: pointer;
+  /*  transition: background 0.2s, color 0.2s; */
+  font-family: var(--main-font-family);
+  gap: 5px;
+}
+
+.behindDetailBtn .behindIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.behindDetailBtn:hover {
+  background: #2986e2;
+  color: #fff;
+
+}
 
 /* 상세 */
 
@@ -115,9 +303,7 @@
   gap: 20px;
 }
 
-.detailNew {
-  color: #D13B5A;
-}
+
 
 .detailTitle {
   vertical-align: middle;
@@ -278,25 +464,147 @@
   .detailWrapper {
     padding-block: 80px 150px;
   }
+
+  .swiperWrapper :global(.swiper-button-prev) {
+    right: 12%;
+    left: auto;
+    /* bottom: 16px !important; */
+  }
+
+  .swiperWrapper :global(.swiper-button-next) {
+    right: 5%;
+    left: auto;
+    /* bottom: 16px !important; */
+  }
 }
 
 
 
 @media (max-width: 767px) {
+  
+  .bannerWrapper {
+    padding-top: 80px;
+    padding-bottom: 90px;
+  }
+
+  .swiperWrapper :global(.swiper-button-prev),
+  .swiperWrapper :global(.swiper-button-next) {
+    top: 92%;
+  }
+
+  .swiperWrapper :global(.swiper-button-prev)::after,
+  .swiperWrapper :global(.swiper-button-next)::after {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  /* 비하인드 */
+  .behinbehindDescdTitle {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    /* 원하는 줄 수로 변경 가능 */
+    -webkit-box-orient: vertical;
+    max-width: 80%;
+    white-space: normal;
+  }
+
+  .behindCard {
+    gap: 20px;
+    min-height: unset;
+    max-height: unset;
+  }
+
+  .behindThumb,
+  .behindInfo {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* 상세 */
   .detailWrapper {
     padding-block: 50px 150px;
   }
 
-  .office_h3_tit {
-    font-size: 28px;
-  }
+
 
   .detailHashtags {
     gap: 15px;
   }
+
+
 }
 
 @media (max-width:656px) {
+
+  .swiperWrapper img {
+    height: 340px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+  }
+
+  .swiperWrapper :global(.swiper-button-prev) {
+    right: 15%;
+    left: auto;
+    /* bottom: 16px !important; */
+  }
+
+  .swiperWrapper :global(.swiper-button-next) {
+    right: 5%;
+    left: auto;
+    /* bottom: 16px !important; */
+  }
+
+  .bannerWrapper {
+    padding-top: 30px;
+    padding-bottom: 0px;
+  }
+
+  .bannerTitle {
+    left: 20px;
+    top: 20px;
+  }
+
+  /* 미디어 */
+
+  .mediaCard {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .mediaThumb {
+    height: 150px;
+    width: 45%;
+  }
+
+  .behindDetailBtn .behindIcon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .mediaInfo h3 {
+    overflow: visible;
+    text-overflow: unset;
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    -webkit-box-orient: unset;
+    white-space: normal;
+  }
+
+  .detailTitle {
+    width: 90%;
+    /* 여러 줄 허용 */
+  }
+
+  .behindDetailBtn {
+    width: 120px;
+    height: 35px;
+  }
+
+  /* 상세 */
   .officePopImg {
     width: 28px;
     height: 28px;
@@ -318,12 +626,19 @@
   .detailActions {
     gap: 5px;
   }
+
+
+
+
+
 }
 
 @media (max-width: 402px) {
   .detailWrapper {
     padding-block: 50px 150px;
   }
+
+
 }
 
 @media (max-width: 320px) {

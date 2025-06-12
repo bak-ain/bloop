@@ -364,25 +364,52 @@ button {
 }
 
 /*오피스 */
+.office_h1_tit {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 43px;
+}
+
 .offic_h2 {
   font-size: 28px;
   font-weight: 700;
 }
 
 .offic_h3 {
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.offic_h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.offic_h4 {
+  font-size: 26px;
   font-weight: 600;
 }
 
 .offic_p {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 26px;
+}
+
+.officeBtn {
+  font-size: 17px;
+  font-weight: 600;
 }
 
 
 
 /*오피스 상세 */
+.office_h1 {
+  font-size: 40px;
+  font-weight: 700;
+  font-weight: 60px;
+}
+
 .offic_detail_p {
   font-size: 20px;
   font-weight: 500;
@@ -526,16 +553,57 @@ main {
     font-size: 16px;
   }
 
+  .office_h1_tit {
+    font-size: 28px;
+  }
+
+  .offic_h3 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .offic_h4 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .officeBtn {
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .offic_h2 {
+    font-size: 23px;
+    font-weight: 600;
+  }
+
 }
 
 @media (max-width:530px) {
   .office_tag {
     font-size: 15px;
   }
-    .office_h3_tit {
+
+  .office_h3_tit {
     font-size: 28px;
     line-height: 34px;
   }
+
+  .office_h1_tit {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .offic_h4 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+ .officeBtn {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+
 }
 
 
@@ -665,10 +733,7 @@ main {
 
 
   /*오피스 */
-  .offic_h2 {
-    font-size: 20px;
 
-  }
 
   .offic_h3 {
     font-size: 18px;
@@ -676,9 +741,14 @@ main {
   }
 
   .offic_p {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 23px;
+  }
+
+
+  .offic_h4 {
+    font-weight: 500;
   }
 
   /*오피스 상세 */
@@ -691,6 +761,11 @@ main {
   @media (max-width:420px) {
     .office_tag {
       font-size: 15px;
+    }
+
+    .office_h1_tit {
+      font-size: 18px;
+      line-height: 30px;
     }
   }
 
