@@ -17,11 +17,11 @@ const OfficialFeed = () => {
 
     return (
         <Container>
-            <div className={`${styles.wrap} inner`}>
+            <div className={`${styles.officialWrap} inner`}>
             {/* 배너 */}
-            <div  style={{ display: "flex", justifyContent: "center", margin: "48px 0 80px 0" }}>
+            
                 <OfficialBanner highlights={highlights} />
-            </div>
+
 
             {/* 트렌드 미디어 */}
             <section style={{ marginBottom: 80 }}>
