@@ -3,6 +3,7 @@
     {
       "id": "h1",
       "type": "default",
+      "date": "2025.08.31",
       "title": "하이비스, 첫 정규 앨범<br />‘ODYSSEY’로 빛나는 감정의 여정 시작",
       "description": "만족스러운 콘서트를 위해!",
       "descriptionDetail": "연습실의 땀과 웃음, 무대 뒤의 떨림까지 고스란히 담긴 첫 번째 정규 앨범.<br />함께 걷는 이 길 위, 팬과 함께 만드는 순간의 설렘을 지금 미리 만나보세요.",
@@ -13,17 +14,14 @@
       "media": [
         {
           "type": "image",
-          "url": "/images/2.png"
-        },
-                {
-          "type": "image",
-          "url": "/images/3.png"
+          "url": "/images/office/top_1.jpg"
         }
       ]
     },
     {
       "id": "h2",
       "type": "default",
+      "date": "2025.10.31",
       "title": "하이틴 카리스마 도아, 오늘 솔로 출격!<br />미니 1집 ‘FLASHPOINT’",
       "description": "하이틴 카리스마 도아, 오늘 솔로 출격!<br />미니 1집 ‘FLASHPOINT’",
       "descriptionDetail": "연습실의 땀과 웃음, 무대 뒤의 떨림까지 고스란히 담긴 첫 번째 정규 앨범.<br />함께 걷는 이 길 위, 팬과 함께 만드는 순간의 설렘을 지금 미리 만나보세요.",
@@ -34,13 +32,14 @@
       "media": [
         {
           "type": "image",
-          "url": "/images/2.png"
+          "url": "../images/office/top_2.jpg"
         }
       ]
     },
     {
       "id": "h3",
       "type": "default",
+      "date": "2025.1.31",
       "title": "하이비스, 데뷔 2주년<br />팬쇼케이스 RE:MEMBER 개최",
       "description": "하이비스, 데뷔 2주년<br />팬쇼케이스 RE:MEMBER 개최",
       "descriptionDetail": "연습실의 땀과 웃음, 무대 뒤의 떨림까지 고스란히 담긴 첫 번째 정규 앨범.<br />함께 걷는 이 길 위, 팬과 함께 만드는 순간의 설렘을 지금 미리 만나보세요.",
@@ -51,33 +50,27 @@
       "media": [
         {
           "type": "image",
-          "url": "/images/2.png"
+          "url": "../images/office/top_3.jpg"
         }
       ]
     }
   ],
-  "media": [
+    "media": [
     {
       "id": "m1",
       "type": "new",
       "date": "2025.05.31",
-      "title": "HOT 'DREAM' 라이브 무대 선공개",
-      "descriptionDetail": "연습실의 땀과 웃음, 무대 뒤의 떨림까지 고스란히 담긴 첫 번째 정규 앨범.<br />함께 걷는 이 길 위, 팬과 함께 만드는 순간의 설렘을 지금 미리 만나보세요.",
+      "title": "HOT 'DREAM' M/V 티저 선공개",
+      "descriptionDetail": "아직 모든 것이 베일에 싸인 지금, 무대의 조각들이 하나둘 드러나며 팬과 함께할 새로운 서사의 시작을 알립니다.<br /> 함께 걷는 이 길 위, 단지 보여주는 것을 넘어 ‘우리의 꿈’이 되어가는 과정을 지금 가장 먼저 만나보세요.",
       "hashtag": "#하이비스 #GoTogether #첫정규 #티저공개 #앨범시작",
       "likes": 12,
       "isScrapped": true,
       "isLiked": true,
       "media": [
         {
-          "type": "image",
-          "url": "/images/2.png"
-        },
-                {
-          "type": "image",
-          "url": "/images/3.png"
-        },        {
-          "type": "image",
-          "url": "/images/4.png"
+          "type": "video",
+          "url": "/images/office/doa.mp4",
+          "thumbnail": "/images/office/vid1.png"
         }
       ]
     },
@@ -93,16 +86,9 @@
       "isLiked": true,
       "media": [
         {
-          "type": "image",
-          "url": "/images/2.png"
-        },
-                {
-          "type": "image",
-          "url": "/images/3.png"
-        },
-                {
-          "type": "image",
-          "url": "/images/4.png"
+          "type": "video",
+          "url": "/images/office/sei.mp4",
+          "thumbnail": "/images/office/vid2.png"
         }
       ]
     },
@@ -118,8 +104,9 @@
       "isLiked": true,
       "media": [
         {
-          "type": "image",
-          "url": "/images/2.png"
+          "type": "video",
+          "url": "/images/office/luha.mp4",
+          "thumbnail": "/images/office/vid3.png"
         }
       ]
     }
@@ -174,11 +161,11 @@
           "type": "image",
           "url": "/images/2.png"
         },
-                {
+        {
           "type": "image",
           "url": "/images/2.png"
         },
-                {
+        {
           "type": "image",
           "url": "/images/2.png"
         }
@@ -304,11 +291,11 @@
           "type": "image",
           "url": "/images/4.png"
         },
-                {
+        {
           "type": "image",
           "url": "/images/5.png"
         },
-                {
+        {
           "type": "image",
           "url": "/images/6.png"
         }

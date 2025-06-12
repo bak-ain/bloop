@@ -54,78 +54,97 @@ const OfficialPostDetail = () => {
     return (
         <Container>
             <div className={`${styles.detailWrapper} inner`}>
-                <div className={styles.detailHeader}>
-                    {post.type === "new" && (
-                        <span className={styles.detailNew}>NEW</span>
-                    )}
-                    <span
-                        className={styles.detailTitle}
-                        dangerouslySetInnerHTML={{ __html: post.title ?? "" }}
-                    />
-                </div>
-                <div className={styles.detailDate}>{post.date}</div>
-                <div className={styles.detailMedia}>
-                    {post.media && post.media.length > 0 ? (
-                        post.media.map((item, idx) =>
-                            item.type === "image" ? (
-                                <img
-                                    key={idx}
-                                    src={item.url}
-                                    alt={post.title}
-                                    className={styles.detailImg}
-                                />
-                            ) : (
-                                <video
-                                    key={idx}
-                                    src={item.url}
-                                    controls
-                                    className={styles.detailVideo}
-                                />
+                <div className={`${styles.detailTop} `}>
+                    <div className={`${styles.detailTxt} `}>
+                        <div className={`${styles.detailHeader} office_h3_tit`}>
+                            {post.type === "new" && (
+                                <span className={`${styles.detailNew} office_h3_tit`}>NEW</span>
+                            )}
+                            <span
+                                className={`${styles.detailTitle} office_h3_tit`}
+                                dangerouslySetInnerHTML={{ __html: post.title ?? "" }}
+                            />
+                        </div>
+                        <div className={`${styles.detailDate} day_span`}>{post.date}</div>
+                    </div>
+
+                    <div className={styles.detailMedia}>
+                        {post.media && post.media.length > 0 ? (
+                            post.media.map((item, idx) =>
+                                item.type === "image" ? (
+                                    <img
+                                        key={idx}
+                                        src={item.url}
+                                        alt={post.title}
+                                        className={styles.detailImg}
+                                    />
+                                ) : (
+                                    <video
+                                        key={idx}
+                                        src={item.url}
+                                        controls
+                                        className={styles.detailVideo}
+                                    />
+                                )
                             )
-                        )
-                    ) : null}
-                </div>
-                <div className={styles.detailDesc}>
-                    <div dangerouslySetInnerHTML={{ __html: post.descriptionDetail ?? post.description ?? "" }} />
-                </div>
-                <div className={styles.detailBottom}>
-                    <div className={styles.detailHashtags}>
-                        {hashtags.map((tag, idx) => (
-                            <span key={idx} className={styles.detailHashtag}>#{tag.replace("#", "")}</span>
-                        ))}
-                    </div>
-                    <div className={styles.detailActions}>
-                        <button
-                            onClick={() => toggleScrap("official", post.id)}
-                            className={styles.detailScrapBtn}
-                            aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
-                        >
-                            {isScrapped ? "🔖" : "📌"}
-                        </button>
-                        <button
-                            onClick={() => toggleLike("official", post.id, post.likes ?? 0)}
-                            className={styles.detailLikeBtn}
-                            aria-label={isLiked ? "좋아요 취소" : "좋아요"}
-                        >
-                            {isLiked ? "❤️" : "🤍"} <span className={styles.detailLikeCount}>{likeCount}</span>
-                        </button>
-                        <button
-                            onClick={handleShare}
-                            className={styles.detailShareBtn}
-                            aria-label="공유하기"
-                            type="button"
-                        >
-                            📤
-                        </button>
-                        {showShare && (
-                            <div className={styles.sharePopup}>
-                                <div className={styles.shareUrl}>{shareUrl}</div>
-                                <button className={styles.copyBtn} onClick={handleCopy}>링크 복사</button>
-                                <button className={styles.closeBtn} onClick={() => setShowShare(false)}>닫기</button>
-                            </div>
-                        )}
+                        ) : null}
                     </div>
                 </div>
+                <div className={`${styles.detailBotttomTxt} `}>
+                    <div className={`${styles.detailDesc} offic_detail_p`}>
+                        <div dangerouslySetInnerHTML={{ __html: post.descriptionDetail ?? post.description ?? "" }} />
+                    </div>
+                    <div className={styles.line}></div>
+                    <div className={styles.detailBottom}>
+
+                        <div className={`${styles.detailHashtags} office_tag`}>
+                            {hashtags.map((tag, idx) => (
+                                <span key={idx} className={styles.detailHashtag}>#{tag.replace("#", " ")}</span>
+                            ))}
+                        </div>
+                        <div className={styles.detailActions}>
+                            <button
+                                onClick={() => toggleScrap("official", post.id)}
+                                className={styles.detailScrapBtn}
+                                aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
+                            >
+                                <img
+                                    src={isScrapped ? "/images/icon/pop_on_icon.png" : "/images/office/pop_icon.png"}
+                                    alt={isScrapped ? "스크랩 해제" : "스크랩"}
+                                    className={`${styles.officePopImg}`}
+                                />
+                            </button>
+                            <button
+                                onClick={() => toggleLike("official", post.id, post.likes ?? 0)}
+                                className={styles.detailLikeBtn}
+                                aria-label={isLiked ? "좋아요 취소" : "좋아요"}
+                            >
+                                <img
+                                    src={isLiked ? "/images/icon/heart_p_icon.png" : "/images/office/heart_icon.png"}
+                                    alt={isLiked ? "좋아요 취소" : "좋아요"}
+                                   
+                                    className={`${styles.officeHeartImg}`}
+                                />
+                            </button>
+                            <button
+                                onClick={handleShare}
+                                className={styles.detailShareBtn}
+                                aria-label="공유하기"
+                                type="button"
+                            >
+                                <img src="/images/icon/share_icon.png" alt="공유하기" className={`${styles.officeShare_icon}`} />
+                            </button>
+                            {showShare && (
+                                <div className={styles.sharePopup}>
+                                    <div className={styles.shareUrl}>{shareUrl}</div>
+                                    <button className={styles.copyBtn} onClick={handleCopy}>링크 복사</button>
+                                    <button className={styles.closeBtn} onClick={() => setShowShare(false)}>닫기</button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </Container>
     );

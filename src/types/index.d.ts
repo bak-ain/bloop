@@ -78,6 +78,7 @@ export interface OfficialContent {
   media?: {
     type: 'image' | 'video';
     url: string;
+    thumbnail?: string;
   }[];
   likes?: number;
   hashtag?: string;
