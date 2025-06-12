@@ -40,9 +40,11 @@ section {
     align-items: center;
     justify-content: center;
 }
-.memberProfile h2{
+
+.memberProfile h2 {
     align-self: flex-start;
 }
+
 .profileList {
     display: flex;
     gap: 20px;
@@ -117,14 +119,17 @@ section {
     color: var(--font-color-3);
     padding-left: 10px;
 }
-.schedule{
+
+.schedule {
     position: relative;
 }
-.scheduleTitle{
+
+.scheduleTitle {
     position: relative;
 
 }
-.scheduleBg{
+
+.scheduleBg {
     width: 100%;
     height: 100%;
     background-image: url('/public/images/scheduleBg.png');
@@ -135,31 +140,38 @@ section {
     left: 0;
     opacity: 0.3;
 }
+
 .mainOfficialSwiper {
-  width: 100%;
-  padding: 40px 0;
+    width: 1024px;
 }
+
+/* Swiper에서 활성화된(가운데) 슬라이드에 효과 app.css에서 진행 */
+
+
 .mainOfficialCard {
-  background: #222;
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-  text-align: center;
-  color: #fff;
-  position: relative;
+    background: #222;
+    border-radius: 32px;
+    overflow: hidden;
+    /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2); */
+    text-align: center;
+    color: #fff;
+    position: relative;
 }
+
 .mainOfficialImg {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
 }
+
 .mainOfficialText {
-  padding: 24px 16px 32px 16px;
+    padding: 24px 16px 32px 16px;
 }
+
 .mainOfficialTitle {
-  font-family: 'Dancing Script', cursive;
-  color: #b13b5a;
-  font-size: 3rem;
-  text-align: left;
-  margin-bottom: 32px;
+    font-family: 'Dancing Script', cursive;
+    color: #b13b5a;
+    font-size: 3rem;
+    text-align: left;
+    margin-bottom: 32px;
 }

@@ -33,41 +33,35 @@
   cursor: pointer;
   transform: translateY(-50%);
 } */
-:global(.swiper-button-prev),
-:global(.swiper-button-next) {
+.bannerWrapper :global(.swiper-button-prev),
+.bannerWrapper :global(.swiper-button-next) {
   position: absolute;
-  top: 50%;
+  bottom: 16px;
   z-index: 10;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
   color: #fff;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  justify-content: flex-end;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* 왼쪽(이전) 버튼은 오른쪽에서 56px 떨어짐 */
-:global(.swiper-button-prev) {
+.bannerWrapper :global(.swiper-button-prev) {
   right: 56px;
   left: auto;
 }
 
-/* 오른쪽(다음) 버튼은 오른쪽 끝 */
-:global(.swiper-button-next) {
+.bannerWrapper :global(.swiper-button-next) {
   right: 16px;
   left: auto;
 }
 
-:global(.swiper-button-prev)::after,
-:global(.swiper-button-next)::after {
+.bannerWrapper :global(.swiper-button-prev)::after,
+.bannerWrapper :global(.swiper-button-next)::after {
   font-size: 20px;
   font-weight: bold;
 }
-
 
 .bannerOverlay {
   position: absolute;
