@@ -168,7 +168,7 @@ const PostCard = <T extends ArtistPost | FanPost>({
                                 ))}
                             </div>
                         )}
-                        {data.media && (
+                        {/* {data.media && (
                             <div className={styles.media}>
                                 {data.media.slice(0, 2).map((m, i) =>
                                     m.type === "video" ? (
@@ -185,10 +185,37 @@ const PostCard = <T extends ArtistPost | FanPost>({
                                     )
                                 )}
                             </div>
+                        )} */}
+                        {data.media && (
+                            <div
+                                className={`${styles.media} ${data.media.length === 1 ? styles.single : styles.multi
+                                    }`}
+                            >
+                                {data.media.slice(0, 2).map((m, i) =>
+                                    m.type === "video" ? (
+                                        <video key={i} src={m.url} controls className={styles.media_item} />
+                                    ) : (
+                                        <div key={i} className={styles.media_item_wrapper}>
+                                            <img
+                                                src={m.url}
+                                                alt={`media-${i}`}
+                                                className={styles.media_item}
+                                            />
+                                            {/* 🔽 이 부분을 아래처럼 바꿔줘야 해 */}
+                                            {i === 1 && (data.media?.length ?? 0) > 2 && (
+                                                <div className={styles.media_overlay}>
+                                                    +{(data.media?.length ?? 0) - 2}
+                                                </div>
+                                            )}
+                                        </div>
+                                    )
+                                )}
+                            </div>
                         )}
                     </div>
                 </>
-            )}
+            )
+            }
 
             <div className={styles.meta_row}>
                 <button onClick={handleLike}>

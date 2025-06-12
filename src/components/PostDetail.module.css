@@ -1,6 +1,47 @@
-.post_detail{
-    background: #fff;
+.post_detail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.post_detail_all {
+  display: flex;
+  width: 70%;
+  height: 60%;
+  background: #fff;
+  border-radius: 20px;
+  z-index: 1000;
+  position: relative;
+  padding: 30px 20px 15px 20px;
+}
+
+section {
+  padding: 0;
+  border-right: 1px solid #ccc;
+  width: 60%;
+}
+
+aside {
+  width: 40%;
+}
+
+/* .feed_content {
+  width: 80%;
+  height: 70%;
+  background: #fff;
+  border-radius: 20px;
+  z-index: 1000;
+  position: relative;
+  padding: 30px 20px 15px 20px;
+} */
+
 .badge_img {
   width: 20px;
   height: 20px;
@@ -9,28 +50,34 @@
   margin-left: 6px;
   vertical-align: middle;
 }
-.sticker_picker img{
-    width: 80px;
-    height: auto;
+
+.sticker_picker img {
+  width: 80px;
+  height: auto;
 }
-.emoji_preview{
-    width: 200px;
-    height: 130px;
+
+.emoji_preview {
+  width: 200px;
+  height: 130px;
 }
-.emoji_preview img{
-    width: 100px;
-    height: auto;
+
+.emoji_preview img {
+  width: 100px;
+  height: auto;
 }
+
 .more_menu_wrapper {
   position: relative;
   display: inline-block;
 }
+
 .more_btn {
   background: none;
   border: none;
   font-size: 2rem;
   cursor: pointer;
 }
+
 .more_menu {
   position: absolute;
   right: 0;
@@ -38,11 +85,12 @@
   background: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   z-index: 10;
   display: flex;
   flex-direction: column;
 }
+
 .more_menu button {
   background: none;
   border: none;
@@ -51,19 +99,112 @@
   cursor: pointer;
   text-align: left;
 }
+
 .more_menu button:hover {
   background: #f5f6fa;
 }
+
 .confirm_popup {
   position: fixed;
-  left: 0; top: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.2);
-  display: flex; align-items: center; justify-content: center;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1001;
 }
-.confirm_popup > div, .confirm_popup p {
+
+.confirm_popup>div,
+.confirm_popup p {
   background: #fff;
   border-radius: 12px;
   padding: 32px 40px;
   text-align: center;
 }
+
+.profile_row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.profile_img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  background: #ddd;
+}
+
+.profile_row .info {
+  flex: 1;
+}
+
+
+
+.profile_row strong {
+  display: block;
+  /* font-size: 16px;
+  font-weight: 600; */
+  color: #111;
+}
+
+.profile_row .day_span {
+  /* font-size: 13px; */
+  color: var(--font-color-7);
+}
+
+/* 팝업 이미지 */
+.media {
+  width: 600px;
+  height: 480px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.media_item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* border: 3px solid #333; */
+  display: block;
+}
+
+
+/* 버튼 */
+.meta_row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  font-size: 14px;
+  color: #666;
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
+}
+
+.meta_row button {
+  all: unset;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.meta_row button:hover {
+  color: #e5397e;
+}
+
+.meta_row button img {
+  width: 30px;
+  height: 30px;
+}
+
+/*  */
