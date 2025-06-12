@@ -84,16 +84,17 @@ export function updateCommentListAndCount<T extends ArtistPost | FanPost>(
   localStorage.setItem(`${feedType}PostList`, JSON.stringify(updatedPostList));
 
   // MyCommentPost 저장도 함께 처리
-  const myComment: MyCommentPost = {
-    id: newComment.id,
-    viewType: "comment",
-    parentTitle: post.description,
-    content: newComment.content,
-    date: newComment.date,
-    editable: true
-  };
-  const prevMyComments: MyCommentPost[] = JSON.parse(localStorage.getItem("myComments") || "[]");
-  localStorage.setItem("myComments", JSON.stringify([...prevMyComments, myComment]));
+  // const myComment: MyCommentPost = {
+  //   id: newComment.id,
+  //   viewType: "comment",
+  //   parentTitle: post.description,
+  //   content: newComment.content,
+  //   date: newComment.date,
+  //   editable: true,
+  //   userId: newComment.user // Ensure newComment has user
+  // };
+  // const prevMyComments: MyCommentPost[] = JSON.parse(localStorage.getItem("myComments") || "[]");
+  // localStorage.setItem("myComments", JSON.stringify([...prevMyComments, myComment]));
 
   return { updatedComments, updatedPostList };
 }

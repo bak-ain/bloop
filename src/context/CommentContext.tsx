@@ -5,7 +5,7 @@ import { CommentPost } from "../types";
 // 내 userId를 가져오는 함수(혹은 상수로 대체)
 // const myUserId = localStorage.getItem("userId") || "me"; // 실제 구현에 맞게 수정
 // 내 userId를 가져오는 함수(혹은 상수로 대체)
-const myUserId = "me123"; // 임시로 고정
+const myUserId = localStorage.getItem("userId") || "me123"; // 파일 상단에 추가
 
 interface CommentContextType {
     artistComments: Record<string, CommentPost[]>;

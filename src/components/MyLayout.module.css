@@ -1,0 +1,62 @@
+.cardRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cardThumb {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.cardTextWrap {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #222;
+}
+.cardLikeIcon {
+  margin-left: auto;
+  opacity: 0.5;
+}
+.cardDate {
+  text-align: right;
+  color: #888;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+.commentCard {
+  background: #d4edfa;
+  border-radius: 10px;
+  padding: 10px 0 0 0;
+  margin-bottom: 12px;
+}
+.commentHeader {
+  background: #b3e0fc;
+  border-radius: 10px 10px 0 0;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.commentLabel {
+  margin-right: 12px;
+  color: #222;
+}
+.commentParentTitle {
+  color: #222;
+}
+.commentContent {
+  background: #fff;
+  padding: 12px;
+  border-radius: 0 0 10px 10px;
+  font-size: 1.05rem;
+  color: #222;
+}
+.cardDate {
+  text-align: right;
+  color: #888;
+  font-size: 0.95rem;
+  margin: 8px 12px 0 0;
+}

@@ -1,0 +1,99 @@
+.levelGuideWrap {
+  padding: 32px 0;
+}
+.levelGuideTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.levelGuideSubtitle {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #888;
+}
+.levelGrid {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.levelCard {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 32px 18px 18px 18px;
+  width: 280px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.levelBadgeWrap {
+  margin-bottom: 10px;
+}
+.levelBadgeImg {
+  width: 64px;
+  height: 64px;
+}
+.levelName {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+.levelDesc {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.levelDetail {
+  font-size: 1rem;
+  color: #444;
+  text-align: center;
+  margin-bottom: 18px;
+}
+.levelCondition {
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.levelEmojis {
+  width: 100%;
+  text-align: center;
+}
+.levelEmojiLabel {
+  font-size: 0.95rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+.levelEmojiList {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.levelEmojiImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #f0f0f0;
+}
+@media (max-width: 900px) {
+  .levelGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .levelCard {
+    width: 90%;
+    max-width: 340px;
+  }
+}

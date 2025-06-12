@@ -70,6 +70,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
     const [showMoreMenu, setShowMoreMenu] = useState(false);
     const [showEditPopup, setShowEditPopup] = useState(false);
+    const myUserId = localStorage.getItem("userId") || "me123"; // 파일 상단에 추가
 
     // 수정 팝업 띄우기 (상위에서 props로 내려받거나 context 사용)
     // const onEdit = () => setShowEditPopup(true);
@@ -116,7 +117,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                 profileImage: "/images/profiles/me.png",
                 badgeType: "fan",
                 badgeLevel: 1,
-                userId: "me123",
+                userId: myUserId,
             },
             date: new Date().toISOString(),
             likes: 0,

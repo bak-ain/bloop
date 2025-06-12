@@ -153,6 +153,7 @@ export interface MyCommentPost {
   content: string;
   date: string;
   editable: true;
+  userId: string;
 }
 
 //팬성향
@@ -282,8 +283,8 @@ export interface AgencyProfileEditable {
 
 //회원등급
 export interface UserLevelStatus {
-  currentLevel: 'BEGINNER' | 'LOFAN' | 'PROFANSSOR';
-  nextLevel?: 'LOFAN' | 'PROFANSSOR';
+  currentLevel: 'BLING' | 'LOOPY' | 'POPIN'; // 현재 등급
+  nextLevel?: 'LOOPY' | 'POPIN';
   progress: number;
   remaining: {
     posts: number;
