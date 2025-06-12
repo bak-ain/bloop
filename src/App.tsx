@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -13,17 +13,29 @@ import MyPop from './pages/MyPop';
 import MyMood from './pages/MyMood';
 import LevelGuide from './pages/LevelGuide';
 import OfficialPostDetail from './pages/OfficialPostDetail';
+import ScrollToTop from "./components/ScrollToTop";
 import { PostListProvider } from "./context/PostListContext";
 import { LikedScrappedProvider } from "./context/LikedScrappedContext";
 import { CommentProvider } from './context/CommentContext';
 import { ScheduleProvider } from './context/ScheduleContext';
 import { MyContentProvider } from './context/MyContentContext';
+import { UserProvider } from './context/UserContext ';
 import './App.css';
 
 function App() {
   const location = useLocation();
+  const [posts, setPosts] = useState<any>(null);
+
+  useEffect(() => {
+    fetch("/data/posts.json")
+      .then(res => res.json())
+      .then(data => setPosts(data));
+  }, []);
+
   useEffect(() => {
     const shouldHide = location.pathname.startsWith("/admin");
+
+    if (!posts) return;
 
     const observer = new MutationObserver(() => {
       const chatbase = document.querySelector("#chatbase-bubble-button") as HTMLElement;
@@ -38,33 +50,38 @@ function App() {
     });
 
     return () => observer.disconnect();
-  }, [location.pathname]);
+  }, [location.pathname, posts]);
+  if (!posts) return null;
+
   return (
-    <ScheduleProvider>
-      <PostListProvider>
-        <LikedScrappedProvider>
-          <CommentProvider>
-            <MyContentProvider>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/join" element={<Join />} />
-                <Route path="/official" element={<OfficialFeed />} />
-                <Route path="/official/:id" element={<OfficialPostDetail />} />
-                <Route path="/muse" element={<ArtistFeed />} />
-                <Route path="/loop" element={<FanFeed />} />
-                <Route path="/mybox" element={<Mypage />} />
-                <Route path="/mypop" element={<MyPop />} />
-                <Route path="/myecho" element={<MyEcho />} />
-                <Route path="/mymood" element={<MyMood />} />
-                <Route path="/levelguide" element={<LevelGuide />} />
-                <Route path="/admin" element={<Admin />} />
-              </Routes>
-            </MyContentProvider>
-          </ CommentProvider>
-        </LikedScrappedProvider>
-      </PostListProvider>
-    </ScheduleProvider>
+    <UserProvider>
+      <ScrollToTop />
+      <ScheduleProvider>
+        <PostListProvider>
+          <LikedScrappedProvider posts={posts}>
+            <CommentProvider>
+              <MyContentProvider>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/join" element={<Join />} />
+                  <Route path="/official" element={<OfficialFeed />} />
+                  <Route path="/official/:id" element={<OfficialPostDetail />} />
+                  <Route path="/muse" element={<ArtistFeed />} />
+                  <Route path="/loop" element={<FanFeed />} />
+                  <Route path="/mybox" element={<Mypage />} />
+                  <Route path="/mypop" element={<MyPop />} />
+                  <Route path="/myecho" element={<MyEcho />} />
+                  <Route path="/mymood" element={<MyMood />} />
+                  <Route path="/levelguide" element={<LevelGuide />} />
+                  <Route path="/admin" element={<Admin />} />
+                </Routes>
+              </MyContentProvider>
+            </CommentProvider>
+          </LikedScrappedProvider>
+        </PostListProvider>
+      </ScheduleProvider>
+    </UserProvider>
   );
 }
 

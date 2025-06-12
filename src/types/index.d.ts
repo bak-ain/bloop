@@ -35,7 +35,8 @@ export interface ArtistPost extends BasePost {
 }
 
 export interface FanPost extends BasePost {
-  user: UserPreview & { badgeType: 'fan'; badgeLevel: 1 | 2 | 3 }; // fan은 badgeLevel 필수
+  user: UserPreview & { badgeType: 'fan'; badgeLevel: 1 | 2 | 3 }; 
+  // fan은 badgeLevel 필수
   // badgeType: 'fan'; // user로 대체
   // badgeLevel: 1 | 2 | 3; // user로 대체
 }
@@ -204,6 +205,7 @@ export interface FanSignupInput {
     marketing?: boolean;
     over14: boolean;
   };
+  profileImage?: string
 }
 
 export interface AgencySignupInput {
@@ -222,6 +224,7 @@ export interface AgencySignupInput {
     marketing?: boolean;
     over14: boolean;
   };
+  profileImage?: string
 }
 
 //유저관리

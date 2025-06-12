@@ -3,6 +3,7 @@ import PostDetail from "./PostDetail";
 import { usePostList } from "../context/PostListContext";
 import { getAvailableEmojis } from "../utils/badge";
 import React, { useRef, useState, useEffect } from "react";
+import { useUserContext } from "../context/UserContext ";
 import styles from "./Popup.module.css";
 import dayjs from "dayjs";
 
@@ -12,12 +13,18 @@ type PopupProps =
     data: ArtistPost;
     onClose: () => void;
     onUpdate?: (updatedPost: ArtistPost | FanPost) => void;
+    postList: ArtistPost[];
+    setPostList: React.Dispatch<React.SetStateAction<ArtistPost[]>>;
+
   }
   | {
     type: 'fanFeed';
     data: FanPost;
     onClose: () => void;
     onEdit?: (post: FanPost) => void;
+    postList: FanPost[];
+    setPostList: React.Dispatch<React.SetStateAction<FanPost[]>>;
+
   }
   | {
     type: 'upload';
@@ -33,35 +40,46 @@ type PopupProps =
 
 const ArtistFeedPopup = ({
   data,
+  onClose,
+  postList,
+  setPostList,
 }: {
   data: ArtistPost;
-}) => {
-  const { artistPosts, setArtistPosts } = usePostList();
-  return <PostDetail type="artist" data={data} postList={artistPosts} setPostList={setArtistPosts} />;
-};
+  onClose: () => void;
+  postList: ArtistPost[];
+  setPostList: React.Dispatch<React.SetStateAction<ArtistPost[]>>;
+}) => (
+  <PostDetail
+    type="artist"
+    data={data}
+    postList={postList}
+    setPostList={setPostList}
+    onClose={onClose}
+  />
+);
 
 const FanFeedPopup = ({
   data,
   onClose,
+  postList,
+  setPostList,
   onEdit,
 }: {
   data: FanPost;
   onClose: () => void;
+  postList: FanPost[];
+  setPostList: React.Dispatch<React.SetStateAction<FanPost[]>>;
   onEdit?: (post: FanPost) => void;
-}) => {
-  const { fanPosts, setFanPosts } = usePostList();
-  return (
-    <PostDetail
-      type="fan"
-      data={data}
-      postList={fanPosts}
-      setPostList={setFanPosts}
-      onClose={onClose}
-      onEdit={onEdit}
-    />
-  );
-};
-
+}) => (
+  <PostDetail
+    type="fan"
+    data={data}
+    postList={postList}
+    setPostList={setPostList}
+    onClose={onClose}
+    onEdit={onEdit}
+  />
+);
 
 const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void; onClose: () => void }) => {
   const [hashtag, setHashtag] = useState("");
@@ -71,6 +89,7 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
   const editorRef = useRef<HTMLDivElement>(null);
   const [hashtagInput, setHashtagInput] = useState("");
   const [hashtags, setHashtags] = useState<string[]>([]);
+  const { user } = useUserContext();
 
   const handleHashtagInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHashtagInput(e.target.value);
@@ -91,8 +110,8 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
     setHashtags(hashtags.filter((_, i) => i !== idx));
   };
 
-  // 실제 유저의 badgeLevel로 변경 필요
-  const userLevel = 3;
+  // 실제 유저의 badgeLevel로 변경
+  const userLevel = (user && (user as any).badgeLevel) || 1;
   const emojis = getAvailableEmojis(userLevel);
 
   // 파일 선택 시 미리보기
@@ -194,16 +213,22 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
   const handleUpload = () => {
     const editor = editorRef.current;
     const description = editor?.innerHTML || "";
+
+    if (!user) {
+      alert("로그인 후 이용 가능합니다.");
+      return;
+    }
+
     const newPost: FanPost = {
       id: "temp-id-" + Date.now(),
       user: {
-        name: "me",
-        profileImage: "/me.png",
-        badgeType: "fan",
-        badgeLevel: 1,
-        userId: "me123",
+        name: user.name,
+        profileImage: (user as any).profileImage || "/profile_img.png",
+        badgeType: user.userType === 'agency' ? 'fan' : user.userType,
+        badgeLevel: (user as any).badgeLevel || 1,
+        userId: user.id,
       },
-      date: dayjs().toISOString(), 
+      date: dayjs().toISOString(),
       description, // HTML로 저장
       hashtag: hashtags.map(tag => `#${tag}`).join(","),
       likes: 0,
@@ -591,10 +616,21 @@ const Popup = (props: PopupProps) => {
     <div className={styles.popupWrapper}>
       <div className={styles.popupContent}>
         {type === 'artistFeed' && (
-          <ArtistFeedPopup data={props.data} />
+          <ArtistFeedPopup
+            data={props.data}
+            onClose={onClose}
+            postList={props.postList}
+            setPostList={props.setPostList}
+          />
         )}
         {type === 'fanFeed' && (
-          <FanFeedPopup data={props.data} onClose={onClose} onEdit={props.onEdit} />
+          <FanFeedPopup
+            data={props.data}
+            onClose={onClose}
+            postList={props.postList}
+            setPostList={props.setPostList}
+            onEdit={props.onEdit}
+          />
         )}
         {type === 'upload' && <UploadPopup onSubmit={props.onSubmit} onClose={onClose} />}
         {type === 'edit' && <EditPopup data={props.data} onClose={onClose} onSubmit={props.onUpdate} />}

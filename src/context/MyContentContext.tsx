@@ -1,11 +1,14 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { MyWrittenPost, MyCommentPost } from "../types";
+import { useUserContext } from "./UserContext ";
 
 // 좋아요/스크랩은 LikedScrappedContext에서 관리하므로 여기선 제외
+
 
 interface MyContentContextType {
     written: MyWrittenPost[];
     comments: MyCommentPost[];
+    setWritten: React.Dispatch<React.SetStateAction<any[]>>; // 추가
     addWritten: (post: MyWrittenPost) => void;
     removeWritten: (id: string) => void;
     addComment: (comment: MyCommentPost) => void;
@@ -25,6 +28,9 @@ export const MyContentProvider = ({ children }: { children: React.ReactNode }) =
     const [written, setWritten] = useState<MyWrittenPost[]>([]);
     const [comments, setComments] = useState<MyCommentPost[]>([]);
 
+    const { user } = useUserContext();
+    const myUserId = user?.id || "";
+
     // 데이터 fetch 또는 localStorage에서 불러오기
     const fetchAll = async () => {
         // 1. 목데이터 fetch
@@ -42,10 +48,26 @@ export const MyContentProvider = ({ children }: { children: React.ReactNode }) =
 
         setWritten(allWritten);
 
-        // 댓글도 동일하게
+        // === 댓글도 목데이터 + 내 댓글만 필터링 ===
+        const commentsRes = await fetch("/data/comments.json");
+        const commentsMock = await commentsRes.json();
+
+        const myCommentsFromMock = commentsMock.filter(
+            (c: any) => c.user?.userId === myUserId
+        );
+        // localStorage 데이터
         const commentsLS = localStorage.getItem("myComments");
         const commentsLocal = commentsLS ? JSON.parse(commentsLS) : [];
-        setComments(commentsLocal);
+
+        // 합치기 (중복 제거: id 기준)
+        const allComments = [
+            ...commentsLocal,
+            ...myCommentsFromMock.filter(
+                (mock: any) => !commentsLocal.some((local: any) => local.id === mock.id)
+            )
+        ];
+
+        setComments(allComments);
     };
 
     useEffect(() => {
@@ -96,6 +118,7 @@ export const MyContentProvider = ({ children }: { children: React.ReactNode }) =
             value={{
                 written,
                 comments,
+                setWritten,
                 addWritten,
                 removeWritten,
                 addComment,

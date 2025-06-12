@@ -3,12 +3,15 @@ import Container from "../components/Container";
 import { useParams } from "react-router-dom";
 import { usePostList } from "../context/PostListContext";
 import { useLikedScrapped } from "../context/LikedScrappedContext";
+import { useUserContext } from "../context/UserContext ";
 import styles from "../components/OfficialPost.module.css";
 
 const OfficialPostDetail = () => {
     const { id } = useParams<{ id: string }>();
     const { officialPosts } = usePostList();
     const {
+        officialLikedPosts,
+        officialScrappedPosts,
         officialLikedIds,
         officialScrappedIds,
         toggleLike,
@@ -16,13 +19,17 @@ const OfficialPostDetail = () => {
         postLikeCounts,
     } = useLikedScrapped();
 
+    const { user } = useUserContext();
     const [showShare, setShowShare] = useState(false);
 
-    // 해당 포스트 찾기
-    const post = useMemo(
-        () => officialPosts.find((p) => p.id === id),
-        [officialPosts, id]
-    );
+    // 해당 포스트 찾기 (officialPosts → liked → scrapped 순서로 찾기)
+    const post = useMemo(() => {
+        return (
+            officialPosts.find((p) => String(p.id) === id) ||
+            officialLikedPosts.find((p) => String(p.id) === id) ||
+            officialScrappedPosts.find((p) => String(p.id) === id)
+        );
+    }, [officialPosts, officialLikedPosts, officialScrappedPosts, id]);
 
     if (!post) return <div className={styles.notFound}>존재하지 않는 게시물입니다.</div>;
 
@@ -105,7 +112,13 @@ const OfficialPostDetail = () => {
                         </div>
                         <div className={styles.detailActions}>
                             <button
-                                onClick={() => toggleScrap("official", post.id)}
+                                onClick={() => {
+                                    if (!user) {
+                                        alert("로그인 후 이용 가능합니다.");
+                                        return;
+                                    }
+                                    toggleScrap("official", post.id, post);
+                                }}
                                 className={styles.detailScrapBtn}
                                 aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
                             >
@@ -116,7 +129,13 @@ const OfficialPostDetail = () => {
                                 />
                             </button>
                             <button
-                                onClick={() => toggleLike("official", post.id, post.likes ?? 0)}
+                                onClick={() => {
+                                    if (!user) {
+                                        alert("로그인 후 이용 가능합니다.");
+                                        return;
+                                    }
+                                    toggleLike("official", post.id, post.likes ?? 0, post);
+                                }}
                                 className={styles.detailLikeBtn}
                                 aria-label={isLiked ? "좋아요 취소" : "좋아요"}
                             >

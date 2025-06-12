@@ -12,7 +12,7 @@
       "likes": 3,
       "comment": 3,
       "isScrapped": true,
-      "isLiked": true,
+      "isLiked": false,
       "isStory": false,
       "media": [
         { "type": "image", "url": "/images/1.png" },
@@ -31,7 +31,7 @@
       "description": "루하는 오늘도 강아지 산책중 🐶",
       "likes": 7,
       "comment": 3,
-      "isScrapped": true,
+      "isScrapped": false,
       "isLiked": true,
       "isStory": false,
       "media": [
@@ -49,9 +49,9 @@
       "description": "여러분들 !! 저는 태국 공연 잘 끝냈습니다 !! 오늘 라이브는 도아언니 하이라이트 메들리 있어요 ><",
       "likes": 7,
       "comment": 3,
-      "isScrapped": true,
+      "isScrapped": false,
       "isStory": false,
-      "isLiked": true,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -67,7 +67,7 @@
       "description": "저희 알파카 어떠십니까 ㅎ",
       "likes": 7,
       "comment": 3,
-      "isScrapped": true,
+      "isScrapped": false,
       "isLiked": true,
       "isStory": false,
       "media": [
@@ -85,8 +85,8 @@
       "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
       "likes": 3,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "isStory": true,
       "media": [
         { "type": "image", "url": "/images/1.png" },
@@ -106,7 +106,7 @@
       "likes": 3,
       "comment": 3,
       "isScrapped": true,
-      "isLiked": true,
+      "isLiked": false,
       "isStory": true,
       "media": [
         { "type": "image", "url": "/images/1.png" },
@@ -125,8 +125,8 @@
       "description": "오늘의 TMI : 라이네이트 아니고 미니쉬 함 (윙크)",
       "likes": 3,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "isStory": true,
       "media": [
         { "type": "image", "url": "/images/1.png" },
@@ -146,7 +146,7 @@
       "likes": 3,
       "comment": 3,
       "isScrapped": true,
-      "isLiked": true,
+      "isLiked": false,
       "isStory": true,
       "media": [
         { "type": "image", "url": "/images/1.png" },
@@ -165,7 +165,7 @@
       "description": "루하는 오늘도 강아지 산책중 🐶",
       "likes": 7,
       "comment": 3,
-      "isScrapped": true,
+      "isScrapped": false,
       "isLiked": true,
       "isStory": false,
       "media": [
@@ -182,8 +182,8 @@
       "description": "루하는 오늘도 강아지 산책중 🐶",
       "likes": 7,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "isStory": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
@@ -200,8 +200,8 @@
       "description": "루하는 오늘도 강아지 산책중 🐶",
       "likes": 7,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "isStory": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
@@ -218,8 +218,8 @@
       "description": "루하는 오늘도 강아지 산책중 🐶",
       "likes": 7,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "isStory": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
@@ -236,8 +236,8 @@
       "description": "루하는 오늘도 강아지 산책중 🐶",
       "likes": 7,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "isStory": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
@@ -258,8 +258,8 @@
       "hashtag": "#운동하는 #도아 #섹시하다",
       "likes": 3,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" },
          { "type": "image", "url": "/images/5.png" },
@@ -280,8 +280,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 6,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -299,8 +299,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 6,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -318,8 +318,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 6,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -337,8 +337,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 6,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -356,8 +356,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 6,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -375,8 +375,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 26,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -394,8 +394,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 36,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -413,8 +413,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 30,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -432,8 +432,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 5,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -451,8 +451,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 2,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -470,8 +470,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 8,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -489,8 +489,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 16,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]
@@ -508,8 +508,8 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 20,
       "comment": 3,
-      "isScrapped": true,
-      "isLiked": true,
+      "isScrapped": false,
+      "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]

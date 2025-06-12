@@ -4,30 +4,47 @@ import styles from "./Mypage.module.css";
 import type { UserPreview, UserLevelStatus } from "../types";
 import { getBadgeImage, getLevelBadgeIcon } from "../utils/badge";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/UserContext ";
 
-// 임시 유저 데이터
-const mockUser: UserPreview = {
-    name: "me",
-    profileImage: "/images/emoji1.png",
-    badgeType: "fan",
-    badgeLevel: 1,
-    userId: "me123",
-};
-// 임시 등급 데이터
-const mockLevel: UserLevelStatus = {
-    currentLevel: "BLING",
-    nextLevel: "LOOPY",
-    progress: 62,
-    remaining: {
-        posts: 3,
-        comments: 10,
-    },
-    badgeIconUrl: getLevelBadgeIcon("BLING"),
-};
-
+// 로그인 유저 정보 사용
 const Mypage = () => {
-
+    const { user } = useUserContext();
     const navigate = useNavigate();
+
+    // 비회원 접근 시 처리
+    if (!user) {
+        return (
+            <Container>
+                <div className={styles.mypageWrap}>
+                    <div className={styles.notLoginMsg}>
+                        마이페이지는 로그인 후 이용 가능합니다.
+                    </div>
+                </div>
+            </Container>
+        );
+    }
+
+    // user에서 필요한 정보 추출 (UserPreview 형태로 가공)
+    const userPreview: UserPreview = {
+        name: user.name,
+        profileImage: (user as any).profileImage || "/images/emoji1.png",
+        badgeType: user.userType === "agency" ? "artist" : user.userType,
+        badgeLevel: user.userType === "fan" ? (user as any).badgeLevel ?? 1 : 1,
+        userId: user.id,
+    };
+
+    // 임시 등급 데이터 (실제 서비스에서는 user 데이터 기반으로 변경)
+    const mockLevel: UserLevelStatus = {
+        currentLevel: "BLING",
+        nextLevel: "LOOPY",
+        progress: 62,
+        remaining: {
+            posts: 3,
+            comments: 10,
+        },
+        badgeIconUrl: getLevelBadgeIcon("BLING"),
+    };
+
     return (
         <Container>
             <div className={`${styles.mypageWrap} inner`}>
@@ -35,24 +52,24 @@ const Mypage = () => {
                     <div className={styles.profileCard}>
                         <div className={styles.profileTop}>
                             <img
-                                src={mockUser.profileImage}
-                                alt={mockUser.name}
+                                src={userPreview.profileImage}
+                                alt={userPreview.name}
                                 className={styles.profileImg}
                             />
-                            {mockUser.badgeType === "fan" && (
+                            {userPreview.badgeType === "fan" && (
                                 <img
                                     className={styles.badge_img}
                                     src={getBadgeImage(
-                                        mockUser.badgeType,
-                                        mockUser.badgeType === "fan" ? mockUser.badgeLevel : undefined
+                                        userPreview.badgeType,
+                                        userPreview.badgeLevel
                                     )}
                                     alt="badge"
                                 />
                             )}
                         </div>
                         <div className={styles.profileInfo}>
-                            <p className={styles.profileName}>{mockUser.name} 님</p>
-                            <span className={styles.profileId}>@{mockUser.userId}</span>
+                            <p className={styles.profileName}>{userPreview.name} 님</p>
+                            <span className={styles.profileId}>@{userPreview.userId}</span>
                         </div>
                     </div>
                 </div>
@@ -60,7 +77,7 @@ const Mypage = () => {
                     <div className={styles.levelCard}>
                         <div className={styles.levelInfo}>
                             <div className={styles.levelLabel}>
-                                현재 {mockUser.name}님의 등급은
+                                현재 {userPreview.name}님의 등급은
                             </div>
                             <div className={styles.levelName}>
                                 <span>BLING</span>

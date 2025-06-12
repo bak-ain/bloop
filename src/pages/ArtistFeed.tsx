@@ -30,8 +30,8 @@ const ArtistFeed = () => {
         posts={artistPosts}
         likedIds={artistLikedIds}
         scrappedIds={artistScrappedIds}
-        onLike={(id, defaultLikes) => toggleLike("artist", id, defaultLikes)}
-        onScrap={id => toggleScrap("artist", id)}
+        onLike={(id, defaultLikes, post) => toggleLike("artist", id, defaultLikes,  post)}
+        onScrap={(id, post) => toggleScrap("artist", id,  post)}
         onPostClick={post => {
           setSelectedPost(post);
           setIsPopupOpen(true);
@@ -42,6 +42,8 @@ const ArtistFeed = () => {
           type="artistFeed"
           data={selectedPost}
           onClose={handleClosePopup}
+          postList={artistPosts}
+          setPostList={() => {}}
         />
       )}
     </Container>

@@ -7,6 +7,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
 import { useLikedScrapped } from "../context/LikedScrappedContext";
 import { useComment } from "../context/CommentContext";
+import { useUserContext } from "../context/UserContext "; // 추가
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
@@ -43,10 +44,11 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
         likedCommentIds,
     } = useComment();
 
+    const { user } = useUserContext(); // 추가
+
     function getDisplayDate(dateStr: string) {
         const now = dayjs();
         const date = dayjs(dateStr);
-        // 24시간(1일) 이내면 fromNow, 아니면 날짜/시간 포맷
         return now.diff(date, "hour") < 24
             ? date.fromNow()
             : date.format("YYYY.MM.DD");
@@ -65,15 +67,14 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     const [replyToId, setReplyToId] = useState<string | null>(null);
     const [showStickerPicker, setShowStickerPicker] = useState(false);
     const [confirmDelete, setConfirmDelete] = useState<{ type: "post" | "comment", id: string } | null>(null);
-    const userLevel = 2;
+    const userLevel = (user && (user as any).badgeLevel) || 1; // 실제 유저의 badgeLevel 사용
     const emojis = getAvailableEmojis(userLevel);
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
     const [showMoreMenu, setShowMoreMenu] = useState(false);
     const [showEditPopup, setShowEditPopup] = useState(false);
-    const myUserId = localStorage.getItem("userId") || "me123"; // 파일 상단에 추가
 
-    // 수정 팝업 띄우기 (상위에서 props로 내려받거나 context 사용)
-    // const onEdit = () => setShowEditPopup(true);
+    // 내 userId
+    const myUserId = user?.id || ""; // Context에서 가져옴
 
     useEffect(() => {
         setLiked(likedPostIds.includes(data.id));
@@ -85,7 +86,6 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     }, [postLikeCounts, data.id, data.likes]);
 
     useEffect(() => {
-        // 댓글 개수 동기화
         setCommentCount(comments.length);
         setPostList(prev =>
             prev.map(post =>
@@ -97,14 +97,26 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     }, [comments, data.id, setPostList]);
 
     const handleToggleLike = () => {
+        if (!user) {
+            alert("로그인 후 이용 가능합니다.");
+            return;
+        }
         toggleLike(type, data.id, data.likes);
     };
 
     const handleToggleScrap = () => {
+        if (!user) {
+            alert("로그인 후 이용 가능합니다.");
+            return;
+        }
         toggleScrap(type, data.id);
     };
 
     const handleSubmitComment = () => {
+        if (!user) {
+            alert("로그인 후 이용 가능합니다.");
+            return;
+        }
         if (!input.content.trim() && !input.emoji) return;
 
         const commentData: CommentPost = {
@@ -113,11 +125,11 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
             postType: type,
             ...input,
             user: {
-                name: "me",
-                profileImage: "/images/profiles/me.png",
-                badgeType: "fan",
-                badgeLevel: 1,
-                userId: myUserId,
+                name: user.name,
+                profileImage: (user as any).profileImage || "/images/profiles/me.png",
+                badgeType: user.userType === "agency" ? "fan" : user.userType,
+                badgeLevel: (user as any).badgeLevel || 1,
+                userId: user.id,
             },
             date: new Date().toISOString(),
             likes: 0,
@@ -145,28 +157,27 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
             setPostList(prev => prev.filter(post => post.id !== confirmDelete.id));
             alert("삭제되었습니다.");
             setConfirmDelete(null);
-            if (typeof onClose === "function") onClose(); // 게시물 삭제 시 팝업 닫기
+            if (typeof onClose === "function") onClose();
         } else {
-            // 댓글/답글 삭제
             deleteComment(type, data.id, confirmDelete.id);
             alert("삭제되었습니다.");
             setConfirmDelete(null);
-            // 팝업은 닫지 않음
         }
     };
 
-    // 답글 입력창용
     const toggleReplyInput = (id: string, username: string) => {
         setReplyToId((prev) => (prev === id ? null : id));
         setInput((prev) => ({ ...prev, content: prev.content.startsWith(`@${username}`) ? prev.content : `@${username} ` }));
     };
 
-    // 실제 context의 toggleCommentLike 사용
     const handleCommentLike = (id: string) => {
+        if (!user) {
+            alert("로그인 후 이용 가능합니다.");
+            return;
+        }
         toggleCommentLike(type, data.id, id);
     };
 
-    // 실제 context의 toggleShowReplies 사용
     const handleShowReplies = (id: string) => {
         toggleShowReplies(id);
     };
@@ -179,7 +190,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     return (
         <div className={styles.post_detail}>
             <section className={styles.feed_content}>
-                {data.user.name === "me" && (
+                {data.user.userId === myUserId && (
                     <div className={styles.more_menu_wrapper}>
                         <button
                             className={styles.more_btn}

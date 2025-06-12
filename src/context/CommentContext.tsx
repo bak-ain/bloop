@@ -1,11 +1,11 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { useUserContext } from "./UserContext ";
 import { CommentPost } from "../types";
 
 
 // 내 userId를 가져오는 함수(혹은 상수로 대체)
 // const myUserId = localStorage.getItem("userId") || "me"; // 실제 구현에 맞게 수정
 // 내 userId를 가져오는 함수(혹은 상수로 대체)
-const myUserId = localStorage.getItem("userId") || "me123"; // 파일 상단에 추가
 
 interface CommentContextType {
     artistComments: Record<string, CommentPost[]>;
@@ -13,6 +13,7 @@ interface CommentContextType {
     fanComments: Record<string, CommentPost[]>;
     setFanComments: React.Dispatch<React.SetStateAction<Record<string, CommentPost[]>>>;
     myComments: CommentPost[];
+    setMyComments: React.Dispatch<React.SetStateAction<CommentPost[]>>; // 수정
     addComment: (
         type: "artist" | "fan",
         postId: string,
@@ -43,6 +44,8 @@ export const useComment = () => {
 };
 
 export const CommentProvider = ({ children }: { children: React.ReactNode }) => {
+    const { user } = useUserContext(); // 추가
+    const myUserId = user?.id || "";   // Context에서 가져옴
     const [loading, setLoading] = useState(true);
     const [artistComments, setArtistComments] = useState<Record<string, CommentPost[]>>({});
     const [fanComments, setFanComments] = useState<Record<string, CommentPost[]>>({});
@@ -258,6 +261,7 @@ export const CommentProvider = ({ children }: { children: React.ReactNode }) => 
     return (
         <CommentContext.Provider
             value={{
+                setMyComments,
                 artistComments,
                 setArtistComments,
                 fanComments,

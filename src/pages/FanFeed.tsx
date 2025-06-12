@@ -47,8 +47,8 @@ const FanFeed = () => {
                     posts={fanPosts}
                     likedIds={fanLikedIds}
                     scrappedIds={fanScrappedIds}
-                    onLike={(id, defaultLikes) => toggleLike("fan", id, defaultLikes)}
-                    onScrap={id => toggleScrap("fan", id)}
+                    onLike={(id, defaultLikes, post) => toggleLike("fan", id, defaultLikes, post)}
+                    onScrap={(id, post) => toggleScrap("fan", id, post)}
                     onPostClick={post => {
                         setSelectedPost(post);
                         setIsPopupOpen(true);
@@ -60,6 +60,8 @@ const FanFeed = () => {
                         data={selectedPost}
                         onClose={handleClosePopup}
                         onEdit={handleEdit}
+                        postList={fanPosts}
+                        setPostList={setFanPosts}
                     />
                 )}
                 {/* 업로드 팝업 */}

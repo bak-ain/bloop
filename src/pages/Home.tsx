@@ -2,6 +2,7 @@ import Container from "../components/Container";
 import Scheduler from "../components/Scheduler";
 import MainOfficial from "../components/MainOfficial";
 import { usePostList } from "../context/PostListContext";
+import { useUserContext } from "../context/UserContext ";
 import styles from "./Home.module.css"
 
 // MemberProfile
@@ -45,6 +46,8 @@ const MemberProfile = () => (
 
 
 const Home = () => {
+    const { user } = useUserContext();
+    const isLogin = !!user;
     const { officialPosts } = usePostList();
     type CustomMainOfficialKey = "h1" | "h2" | "h3";
     const customMainOfficial: Record<CustomMainOfficialKey, { title: string; description: string }> = {
@@ -73,11 +76,17 @@ const Home = () => {
             <Container>
                 <div className={styles.mainBanner} />
                 <div className={styles.mainContent}>
-                    <MemberProfile />
-                    <section className={styles.schedule}>
+                    <section className={styles.schedule} style={{ position: "relative" }}>
                         <div className={styles.scheduleBg} />
                         <h2 className={styles.scheduleTitle}>Schedule</h2>
-                        <Scheduler />
+                        <div style={!isLogin ? { filter: "blur(3px)", pointerEvents: "none" } : {}}>
+                            <Scheduler />
+                        </div>
+                        {!isLogin && (
+                            <div className={styles.blurOverlay}>
+                                <span>로그인 후 이용 가능합니다.</span>
+                            </div>
+                        )}
                     </section>
                     <MainOfficial contents={officialDefaultList} />
                 </div>

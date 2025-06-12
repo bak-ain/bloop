@@ -7,8 +7,8 @@ interface FeedLayoutProps<T extends ArtistPost | FanPost> {
     posts: T[];
     likedIds: string[];
     scrappedIds: string[];
-    onLike: (id: string, defaultLikes: number) => void;
-    onScrap: (id: string) => void;
+    onLike: (id: string, defaultLikes: number, post: T) => void;
+    onScrap: (id: string, post: T) => void;
     onPostClick: (post: T) => void;
     pageSize?: number;
     className?: string;
@@ -63,8 +63,8 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
                     data={post}
                     likedPostIds={likedIds}
                     scrappedPostIds={scrappedIds}
-                    onLike={() => onLike(post.id, post.likes)}
-                    onScrap={() => onScrap(post.id)}
+                    onLike={() => onLike(post.id, post.likes, post)}
+                    onScrap={() => onScrap(post.id, post)}
                     onClick={() => onPostClick(post)}
                 />
             ))}
