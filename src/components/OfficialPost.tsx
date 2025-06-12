@@ -30,8 +30,8 @@ const OfficialPost = ({ data }: OfficialPostProps) => {
 
   switch (data.type) {
     case "new":
+      // 트렌드 미디어 카드
       return (
-        // 트렌드 미디어 카드
         <div className={styles.mediaCard} onClick={handleClick}>
           <div className={styles.mediaThumb}>
             {/* 썸네일 이미지가 있다면 */}

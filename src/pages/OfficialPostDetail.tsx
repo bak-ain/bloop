@@ -109,7 +109,7 @@ const OfficialPostDetail = () => {
                                 aria-label={isScrapped ? "스크랩 해제" : "스크랩"}
                             >
                                 <img
-                                    src={isScrapped ? "/images/office/pop_on_icon.png" : "/images/office/pop_icon.png"}
+                                    src={isScrapped ? "/images/icon/pop_on_icon.png" : "/images/office/pop_icon.png"}
                                     alt={isScrapped ? "스크랩 해제" : "스크랩"}
                                     className={`${styles.officePopImg}`}
                                 />
@@ -120,7 +120,7 @@ const OfficialPostDetail = () => {
                                 aria-label={isLiked ? "좋아요 취소" : "좋아요"}
                             >
                                 <img
-                                    src={isLiked ? "/images/office/heart_p_icon.png" : "/images/office/heart_icon.png"}
+                                    src={isLiked ? "/images/icon/heart_p_icon.png" : "/images/office/heart_icon.png"}
                                     alt={isLiked ? "좋아요 취소" : "좋아요"}
                                    
                                     className={`${styles.officeHeartImg}`}
@@ -132,7 +132,7 @@ const OfficialPostDetail = () => {
                                 aria-label="공유하기"
                                 type="button"
                             >
-                                <img src="/images/office/share_icon.png" alt="공유하기" className={`${styles.officeShare_icon}`} />
+                                <img src="/images/icon/share_icon.png" alt="공유하기" className={`${styles.officeShare_icon}`} />
                             </button>
                             {showShare && (
                                 <div className={styles.sharePopup}>
