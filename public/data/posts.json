@@ -261,7 +261,10 @@
       "isScrapped": true,
       "isLiked": true,
       "media": [
-        { "type": "image", "url": "/images/2.png" }
+        { "type": "image", "url": "/images/2.png" },
+         { "type": "image", "url": "/images/5.png" },
+          { "type": "image", "url": "/images/4.png" },
+           { "type": "image", "url": "/images/6.png" }
       ]
     },
     {

@@ -15,3 +15,28 @@
     height: auto;
     object-fit: cover;
 }
+
+.popviewBtn {
+    padding: 80px 0 50px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.popView {
+    width: 150px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--point-color-blue);
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 45px;
+    color: #fff;
+    gap: 5px;
+}
+
+.popView img {
+    width: 30px;
+    height: 30px;
+}

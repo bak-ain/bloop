@@ -1,0 +1,49 @@
+.mypageWrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+.profileSection{
+    flex: 1 1 30%;
+    height: 250px;
+    /* max-width: 400px;
+    min-width: 260px; */
+    background: yellow;
+}
+ .levelSection {
+    flex: 1 1 60%;
+    height: 250px;
+    /* max-width: 400px;
+    min-width: 260px; */
+    background: yellow;
+}
+
+.heartSection {
+    flex: 1 1 100%;
+    min-width: 320px;
+    height: 270px;
+    background: #f9f9f9;
+}
+
+.menuSection {
+    flex: 1 1 100%;
+    min-width: 320px;
+    height: 250px;
+    background: pink;
+}
+
+@media (max-width: 768px) {
+    .mypageWrap {
+        /* flex-direction: column; */
+        gap: 16px;
+    }
+    .profileSection, .levelSection, .heartSection, .menuSection {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+}

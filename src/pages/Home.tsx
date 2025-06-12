@@ -46,16 +46,27 @@ const MemberProfile = () => (
 
 const Home = () => {
     const { officialPosts } = usePostList();
+    type CustomMainOfficialKey = "h1" | "h2" | "h3";
+    const customMainOfficial: Record<CustomMainOfficialKey, { title: string; description: string }> = {
+        h1: { title: "하이비스 데뷔 첫 풀 앨범‘STARSEED’", description: "만족스러운 콘서트를 위해!" },
+        h2: { title: "도아 솔로 출격 !", description: "미니 1 집 ‘FLASHPOINT’ 발매" },
+        h3: { title: "데뷔 2주년 팬미팅 ", description: "팬쇼케이스 RE:MEMBER 개최" },
+    };
+
     const officialDefaultList = officialPosts
         .filter(item => item.type === "default")
-        .map(item => ({
-            ...item,
-            type: item.type as "default" | "new" | "imageOnly" | "feature",
-            media: item.media?.map((m: any) => ({
-                ...m,
-                type: m.type === "image" || m.type === "video" ? m.type : "image",
-            })),
-        }));
+        .map(item => {
+            const key = item.id as CustomMainOfficialKey;
+            return {
+                ...item,
+                title: customMainOfficial[key]?.title ?? item.title,
+                description: customMainOfficial[key]?.description ?? item.description,
+                media: item.media?.map((m: any) => ({
+                    ...m,
+                    type: m.type === "image" || m.type === "video" ? m.type : "image",
+                })),
+            };
+        });
 
     return (
         <div className={`${styles.home} home`}>

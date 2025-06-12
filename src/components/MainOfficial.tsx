@@ -17,11 +17,13 @@ const MainOfficial = ({ contents }: MainOfficialProps) => (
       modules={[Navigation, Pagination]}
       slidesPerView={3}
       centeredSlides
-      spaceBetween={30}
+      spaceBetween={0}
       navigation
       pagination={{ clickable: true }}
       loop={contents.length > 2}
-      className={styles.mainOfficialSwiper}
+      initialSlide={1} 
+      loopAdditionalSlides={2}
+      className={`${styles.mainOfficialSwiper} mainOfficialSwiper`}
     >
       {contents.map(content => (
         <SwiperSlide key={content.id}>
@@ -29,7 +31,7 @@ const MainOfficial = ({ contents }: MainOfficialProps) => (
             <img src={content.media?.[0]?.url} alt={content.title} className={styles.mainOfficialImg} />
             <div className={styles.mainOfficialContent}>
               <h3 dangerouslySetInnerHTML={{ __html: content.title || "" }} />
-              <p>{content.description}</p>
+              <p >{content.description}</p>
             </div>
           </div>
         </SwiperSlide>
