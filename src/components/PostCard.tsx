@@ -102,19 +102,43 @@ const PostCard = <T extends ArtistPost | FanPost>({
             {isArtist ? (
                 <div className={styles.profile_bubble_layout}>
                     <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
+                    {/* <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
+                        <path
+                            d="M17,0 L5,15 L17,30 Z"
+                            fill="#f5f5f5"
+                            
+                            strokeWidth="2"
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                        />
+                    </svg> */}
+                    <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
+                        <path
+                            d="M20,2 Q-10,15 20,28 Z"
+                            fill="#f5f5f5"
+                            stroke="#322828"
+                            strokeWidth="2"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+
                     <div className={styles.bubble_box} onClick={goToDetail}>
-                        <div className={styles.bubble_header}>
-                            <strong>
-                                {user.name}
-                                <img
-                                    className={styles.a_badge_img}
-                                    src={getBadgeImage('artist')}
-                                    alt="artist badge"
-                                />
-                            </strong>
-                            <p className={styles.date}>{getDisplayDate(data.date)}</p>
+                        <div className={styles.infoTop}>
+                            <div className={styles.info}>
+                                <strong className="card_name">
+                                    {user.name}
+                                    <img
+                                        className={styles.a_badge_img}
+                                        src={getBadgeImage('artist')}
+                                        alt="artist badge"
+                                    />
+                                </strong>
+                                <p className={`day_span`}>{getDisplayDate(data.date)}</p>
+                            </div>
+                            <p className={`card_p`} dangerouslySetInnerHTML={{ __html: data.description }} />
                         </div>
-                        <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
+
+
                         {data.media && (
                             <div className={styles.a_media}>
                                 {data.media.slice(0, 2).map((m, i) =>
@@ -133,7 +157,38 @@ const PostCard = <T extends ArtistPost | FanPost>({
                                 )}
                             </div>
                         )}
+                        <div className={styles.a_meta_row}>
+                            <button onClick={e => {
+                                e.stopPropagation(); // 상세보기로 버블링 방지
+                                handleLike();
+                            }}
+                            >
+                                <img className={styles.like_icon}
+                                    src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+                                    alt={liked ? "좋아요 취소" : "좋아요"}
+                                />{" "}
+                                {likeCount}
+                            </button>
+                            <button onClick={goToDetail}>
+                                <img className={styles.like_icon}
+                                    src="/images/icon/message.png"
+                                    alt="댓글"
+                                />{" "}
+                                {commentCount}
+                            </button>
+                            <button onClick={e => {
+                                e.stopPropagation(); // 상세보기로 버블링 방지
+                                handleScrap();
+                            }}>
+                                <img
+                                    className={styles.like_icon}
+                                    src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
+                                    alt={scrapped ? "스크랩 취소" : "스크랩"}
+                                />
+                            </button>
+                        </div>
                     </div>
+
                 </div>
             ) : (
                 <>
@@ -156,11 +211,11 @@ const PostCard = <T extends ArtistPost | FanPost>({
                                     }
                                 />
                             </strong>
-                            <p className={styles.day_span}>{getDisplayDate(data.date)}</p>
+                            <p className={`day_span`}>{getDisplayDate(data.date)}</p>
                         </div>
                     </div>
                     <div className={styles.body_wrapper} onClick={goToDetail}>
-                        <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
+                        <p className={`card_p`} dangerouslySetInnerHTML={{ __html: data.description }} />
                         {data.hashtag && (
                             <div className={styles.hashtags}>
                                 {data.hashtag.split(" ").map((tag, i) => (
@@ -213,10 +268,34 @@ const PostCard = <T extends ArtistPost | FanPost>({
                             </div>
                         )}
                     </div>
+                    <div className={styles.meta_row}>
+                        <button onClick={handleLike}>
+                            <img className={styles.like_icon}
+                                src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+                                alt={liked ? "좋아요 취소" : "좋아요"}
+                            />{" "}
+                            {likeCount}
+                        </button>
+                        <button onClick={goToDetail}>
+                            <img className={styles.like_icon}
+                                src="/images/icon/message.png"
+                                alt="댓글"
+                            />{" "}
+                            {commentCount}
+                        </button>
+                        <button onClick={handleScrap}>
+                            <img
+                                className={styles.like_icon}
+                                src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
+                                alt={scrapped ? "스크랩 취소" : "스크랩"}
+                            />
+                        </button>
+                    </div>
                 </>
             )
             }
 
+            {/* 
             <div className={styles.meta_row}>
                 <button onClick={handleLike}>
                     <img className={styles.like_icon}
@@ -239,9 +318,11 @@ const PostCard = <T extends ArtistPost | FanPost>({
                         alt={scrapped ? "스크랩 취소" : "스크랩"}
                     />
                     {/* {scrapped ? "🔖" : "📌"} */}
-                </button>
-            </div>
-        </div>
+            {/*} </button>
+            </div> */}
+
+
+        </div >
     );
 };
 

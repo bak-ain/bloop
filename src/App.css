@@ -217,8 +217,9 @@ button {
 
 /* 공통 */
 .day_span {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
+    color: var(--font-color-7);
 }
 
 .icon_num {
@@ -289,9 +290,9 @@ button {
 
 /* 아티스트 */
 .artist_top {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
-  line-height: 33px;
+  color: #fff;
 }
 
 .card_name {
@@ -299,6 +300,11 @@ button {
   font-weight: 600;
   line-height: 24px;
 }
+.card_p{
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 33px;
+} 
 
 /* 커뮤니티 */
 .fan_top_name {
@@ -483,7 +489,6 @@ button {
 
 main {
   padding-top: 180px;
-  padding-bottom: var(--wep-footer-pad);
   overflow: hidden;
 }
 
@@ -500,6 +505,7 @@ main {
   margin: 0 auto;
   padding: 0 40px;
   width: 100%;
+   padding-bottom: var(--wep-footer-pad);
 }
 
 #chatbase-bubble-button {
@@ -527,16 +533,20 @@ main {
 @media (max-width: 1024px) {
   main {
     padding-top: 80px;
-    padding-bottom: var(--wep-sec-pad);
+
   }
 
   .allura_h2 {
     font-size: 80px;
   }
-    .main_card_p {
+
+  .main_card_p {
     font-size: 20px;
   }
 
+  .inner {
+    padding-bottom: var(--wep-sec-pad);
+  }
 
 }
 
@@ -546,7 +556,7 @@ main {
     padding: 0 20px;
   }
 
-    .main_card_p {
+  .main_card_p {
     font-size: 18px;
   }
 
@@ -620,7 +630,8 @@ main {
     font-size: 28px;
     font-weight: 600;
   }
-    .allura_h2 {
+
+  .allura_h2 {
     font-size: 65px;
   }
 
@@ -629,6 +640,10 @@ main {
 @media (max-width:530px) {
   main {
     padding-top: 70px;
+
+  }
+
+  .inner {
     padding-bottom: var(--wep-sec-pad);
   }
 
@@ -661,7 +676,7 @@ main {
     font-weight: 600;
   }
 
-/*   .allura_h2 {
+  /*   .allura_h2 {
     font-size: 60px;
   } */
 
