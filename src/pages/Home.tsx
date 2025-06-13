@@ -21,26 +21,29 @@ const members: Member[] = [
 ];
 
 const MemberProfile = () => (
-    <section className={styles.memberProfile}>
-        <h2 className={styles.profileTitle}>Profile</h2>
-        <div className={styles.profileList}>
-            {members.map((m) => (
-                <div className={`${styles.profileCard} ${styles[m.en]}`} key={m.en}>
-                    <div className={styles.profileImg}>
-                        <img src={m.image} alt={m.name} />
-                        {/* 스티커 이미지 */}
-                        <img
-                            className={styles.sticker}
-                            src={m.sticker}
-                            alt="sticker"
-                        />
+    <section className={`${styles.memberProfile} inner`}>
+        <div className="inner">
+            <h2 className={`${styles.profileTitle} allura_h2`}>Profile</h2>
+            <div className={`${styles.profileList} `} >
+                {members.map((m) => (
+                    <div className={`${styles.profileCard} ${styles[m.en]}`} key={m.en}>
+                        <div className={styles.profileImg}>
+                            <img src={m.image} alt={m.name} />
+                            {/* 스티커 이미지 */}
+                            <img
+                                className={styles.sticker}
+                                src={m.sticker}
+                                alt="sticker"
+                            />
+                        </div>
+                        <div className={`${styles.profileName} main_card_p`}>
+                            {m.name} <span>({m.en})</span>
+                        </div>
                     </div>
-                    <div className={styles.profileName}>
-                        {m.name} <span>({m.en})</span>
-                    </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
+
     </section>
 );
 
@@ -79,7 +82,7 @@ const Home = () => {
                     <MemberProfile />
                     <section className={styles.schedule} style={{ position: "relative" }}>
                         <div className={styles.scheduleBg} />
-                        <h2 className={styles.scheduleTitle}>Schedule</h2>
+                        <h2 className={`${styles.scheduleTitle} allura_h2`}>Schedule</h2>
                         <div style={!isLogin ? { filter: "blur(3px)", pointerEvents: "none" } : {}}>
                             <Scheduler />
                         </div>
