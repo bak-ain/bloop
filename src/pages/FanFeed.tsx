@@ -11,20 +11,33 @@ import styles from "../components/FeedLayout.module.css";
 const FanFeed = () => {
     const { fanPosts, setFanPosts } = usePostList();
     const { fanLikedIds, fanScrappedIds, toggleLike, toggleScrap } = useLikedScrapped();
-    const [selectedPost, setSelectedPost] = useState<FanPost | null>(null);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [isUploadOpen, setIsUploadOpen] = useState(false);
-    const [isEditOpen, setIsEditOpen] = useState(false);
-    const [editPost, setEditPost] = useState<FanPost | null>(null);
 
-    const handleClosePopup = () => {
-        setSelectedPost(null);
-        setIsPopupOpen(false);
+    // 팝업 타입: 'detail' | 'edit' | 'upload' | null
+    const [popupType, setPopupType] = useState<'detail' | 'edit' | 'upload' | null>(null);
+    const [selectedPost, setSelectedPost] = useState<FanPost | null>(null);
+
+    // 디테일 열기
+    const openDetail = (post: FanPost) => {
+        setSelectedPost(post);
+        setPopupType('detail');
     };
-    // PostDetail(혹은 FanFeedPopup)에서
+
+    // 수정하기 클릭 시
     const handleEdit = (post: FanPost) => {
-        setEditPost(post);
-        setIsEditOpen(true);
+        setSelectedPost(post);
+        setPopupType('edit');
+    };
+
+    // 업로드 팝업 열기
+    const openUpload = () => {
+        setPopupType('upload');
+        setSelectedPost(null);
+    };
+
+    // 팝업 닫기
+    const handleClosePopup = () => {
+        setPopupType(null);
+        setSelectedPost(null);
     };
 
     return (
@@ -32,16 +45,14 @@ const FanFeed = () => {
             <div className={styles.fanFeedContainer}>
                 <button
                     className={styles.writeButton}
-                    onClick={() => setIsUploadOpen(true)}
+                    onClick={openUpload}
                 >
                     <img src="/images/editBtn.png" alt="글쓰기" />
                 </button>
                 <PopularPost
                     posts={fanPosts}
-                    onPostClick={post => {
-                        setSelectedPost(post);
-                        setIsPopupOpen(true);
-                    }} />
+                    onPostClick={openDetail}
+                />
                 <FeedLayout
                     className={styles.fanFeedLayout}
                     posts={fanPosts}
@@ -49,12 +60,10 @@ const FanFeed = () => {
                     scrappedIds={fanScrappedIds}
                     onLike={(id, defaultLikes, post) => toggleLike("fan", id, defaultLikes, post)}
                     onScrap={(id, post) => toggleScrap("fan", id, post)}
-                    onPostClick={post => {
-                        setSelectedPost(post);
-                        setIsPopupOpen(true);
-                    }}
+                    onPostClick={openDetail}
                 />
-                {isPopupOpen && selectedPost && (
+                {/* 디테일 팝업 */}
+                {popupType === 'detail' && selectedPost && (
                     <Popup
                         type="fanFeed"
                         data={selectedPost}
@@ -65,27 +74,28 @@ const FanFeed = () => {
                     />
                 )}
                 {/* 업로드 팝업 */}
-                {isUploadOpen && (
+                {popupType === 'upload' && (
                     <Popup
                         type="upload"
-                        onClose={() => setIsUploadOpen(false)}
+                        onClose={handleClosePopup}
                         onSubmit={(data: FanPost) => {
                             setFanPosts([data, ...fanPosts]);
-                            setIsUploadOpen(false);
+                            handleClosePopup();
                         }}
                     />
                 )}
-                {isEditOpen && editPost && (
+                {/* 수정 팝업 */}
+                {popupType === 'edit' && selectedPost && (
                     <Popup
                         type="edit"
-                        data={editPost}
-                        onClose={() => setIsEditOpen(false)}
+                        data={selectedPost}
+                        onClose={handleClosePopup}
                         onUpdate={(updatedPost: FanPost) => {
                             setFanPosts((prev) =>
                                 prev.map((p) => (p.id === updatedPost.id ? updatedPost : p))
                             );
                             setSelectedPost(updatedPost);
-                            setIsEditOpen(false);
+                            setPopupType('detail');
                         }}
                     />
                 )}

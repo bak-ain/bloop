@@ -26,11 +26,7 @@ function App() {
   const location = useLocation();
   const [posts, setPosts] = useState<any>(null);
 
-  useEffect(() => {
-    fetch("/data/posts.json")
-      .then(res => res.json())
-      .then(data => setPosts(data));
-  }, []);
+
 
   useEffect(() => {
     const shouldHide = location.pathname.startsWith("/admin");
@@ -51,6 +47,12 @@ function App() {
 
     return () => observer.disconnect();
   }, [location.pathname, posts]);
+  
+  useEffect(() => {
+    fetch("/data/posts.json")
+      .then(res => res.json())
+      .then(data => setPosts(data));
+  }, []);
   if (!posts) return null;
 
   return (

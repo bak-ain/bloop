@@ -10,31 +10,38 @@ const Login = () => {
     const [step, setStep] = useState<"select" | "form">("select");
     const [userType, setUserType] = useState<"fan" | "agency">("fan");
     const [loginInput, setLoginInput] = useState<FanLoginInput | AgencyLoginInput>({
-        id: "",
+        id: "", // 초기값 설정
         password: "",
         rememberMe: false,
         userType: "fan",
     });
     const navigate = useNavigate();
 
+
+
     // 팬/에이전시 선택
     const handleSelect = (type: "fan" | "agency") => {
         setUserType(type);
-        setLoginInput(prev => ({
-            ...prev,
+        setLoginInput({
+            id: type === "fan" ? "testfan" : "testagency",      // 팬/에이전시별 기본값
+            password: type === "fan" ? "1234" : "5678", // 팬/에이전시별 기본값
+            rememberMe: false,
             userType: type,
-        }));
+        });
         setStep("form");
     };
 
     // 탭 전환
     const handleTab = (type: "fan" | "agency") => {
         setUserType(type);
-        setLoginInput(prev => ({
-            ...prev,
+        setLoginInput({
+            id: type === "fan" ? "testfan" : "testagency",
+            password: type === "fan" ? "1234" : "5678",
+            rememberMe: false,
             userType: type,
-        }));
+        });
     };
+
 
     // 입력값 변경
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +66,8 @@ const Login = () => {
             if (userType === "fan") {
                 navigate("/");
             } else {
-                navigate("/admin");
+                // 어드민은 새로고침하면서 이동
+                window.location.replace("/admin");
             }
         } else {
             alert("아이디 또는 비밀번호가 올바르지 않습니다.");

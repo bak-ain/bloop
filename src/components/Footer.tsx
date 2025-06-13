@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={`${styles.wrap} inner`}>
-                <div className={styles.fLogo}>BLOOP</div>
+                <div className={styles.fLogo}><img src="/images/fLogo.png" alt="BLOOP"/></div>
                 <ul className={styles.use}>
                     {[
                         { label: "이용약관", href: "#" },
@@ -54,7 +54,7 @@ const Footer = () => {
                     </p>
                 </div>
                 </div>
-                <div className={styles.copy} style={{ marginTop: 24, fontSize: 16 }}>
+                <div className={styles.copy} >
                    <p> ©copyright BLOOP all rights reserved. </p>
                 </div>
             </div>

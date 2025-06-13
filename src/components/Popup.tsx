@@ -482,7 +482,7 @@ const EditPopup = ({
       media: images.map((url) => ({ type: "image", url })),
     };
     if (onSubmit) onSubmit(updatedPost);
-    onClose();
+    // onClose();
   };
 
   return (
@@ -614,7 +614,6 @@ const Popup = (props: PopupProps) => {
 
   return (
     <div className={styles.popupWrapper}>
-      <div className={styles.popupContent}>
         {type === 'artistFeed' && (
           <ArtistFeedPopup
             data={props.data}
@@ -634,8 +633,7 @@ const Popup = (props: PopupProps) => {
         )}
         {type === 'upload' && <UploadPopup onSubmit={props.onSubmit} onClose={onClose} />}
         {type === 'edit' && <EditPopup data={props.data} onClose={onClose} onSubmit={props.onUpdate} />}
-        <button onClick={onClose}>X</button>
-      </div>
+        <button className={styles.closeBtn} onClick={onClose}>X</button>
     </div>
   );
 };

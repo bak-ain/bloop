@@ -23,7 +23,8 @@ const defaultFan: FanSignupInput = {
   name: '',
   email: '',
   phone: '',
-  gender: 'male',
+  gender: 'female',
+  profileImage: '/images/profile_img.png', // 기본 프로필 이미지
   birth: { year: '', month: '', day: '' },
   agree: { privacy: false, communityPolicy: false, marketing: false, over14: false }
 };

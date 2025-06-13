@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
 import styles from './Mypage.module.css';
 import MyContentsCard from '../components/MyContentsCard';
@@ -39,7 +39,10 @@ function isOfficialContent(post: any): post is OfficialContent {
 const MyEcho = () => {
 
   const navigate = useNavigate();
-  const [tab, setTab] = useState<'written' | 'comment' | 'liked'>('written');
+  // 탭 상태 초기화 시 localStorage에서 읽어오기
+  const [tab, setTab] = useState<'written' | 'comment' | 'liked'>(() => {
+    return (localStorage.getItem("myEchoTab") as 'written' | 'comment' | 'liked') || 'written';
+  });
   const [popupOpen, setPopupOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState<ArtistPost | FanPost | null>(null);
   const [editMode, setEditMode] = useState(false);
@@ -57,14 +60,16 @@ const MyEcho = () => {
   } = useLikedScrapped();
   const { myComments, setMyComments } = useComment();
 
+  // ...생략...
   let items: any[] = [];
-  if (tab === 'written') items = written;
-  else if (tab === 'comment') items = myComments.length > 0 ? myComments : comments;
+  if (tab === 'written') items = written.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  else if (tab === 'comment') items = (myComments.length > 0 ? myComments : comments).slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   else if (tab === 'liked') items = [
     ...artistLikedPosts,
     ...fanLikedPosts,
     ...officialLikedPosts
-  ];
+  ].slice().sort((a, b) => new Date(b.date ?? '').getTime() - new Date(a.date ?? '').getTime());
+
   const [page, setPage] = useState(1);
   // 페이지네이션 적용
   const startIdx = (page - 1) * PAGE_SIZE;
@@ -72,6 +77,21 @@ const MyEcho = () => {
   const pagedItems = items.slice(startIdx, endIdx);
   const totalPages = Math.ceil(items.length / PAGE_SIZE);
 
+
+
+  const handleTabChange = (newTab: 'written' | 'comment' | 'liked') => {
+    setTab(newTab);
+    localStorage.setItem("myEchoTab", newTab);
+    setEditMode(false);
+    setCheckedIds([]);
+  };
+
+  // 페이지 이탈 시 localStorage에서 myPopTab 삭제
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("myEchoTab");
+    };
+  }, []);
 
   const handleCheck = (id: string) => {
     setCheckedIds(prev =>
@@ -113,7 +133,7 @@ const MyEcho = () => {
             <button
               key={t.key}
               className={`${styles.tabBtn} ${tab === t.key ? styles.active : ''}`}
-              onClick={() => { setTab(t.key as typeof tab); setEditMode(false); setCheckedIds([]); }}
+              onClick={() => handleTabChange(t.key as typeof tab)}
             >
               {t.label}
             </button>

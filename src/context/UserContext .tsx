@@ -20,10 +20,10 @@ const initialUsers: User[] = [
         nickname: "테스트팬",
         password: "1234",
         confirmPassword: "1234",
-        name: "홍길동",
+        name: "이소민",
         email: "testfan@naver.com",
         phone: "01012345678",
-        gender: "male",
+        gender: "female",
         birth: { year: "2000", month: "01", day: "01" },
         agree: { privacy: true, communityPolicy: true, marketing: false, over14: true },
         profileImage: "/images/profile_img.png" // 프로필 이미지 추가

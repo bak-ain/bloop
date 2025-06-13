@@ -61,15 +61,19 @@ export const CommentProvider = ({ children }: { children: React.ReactNode }) => 
 
         // 값이 있고, 파싱했을 때 빈 객체가 아니면 바로 세팅
         if (artist && fan) {
-            const parsedArtist = JSON.parse(artist);
-            const parsedFan = JSON.parse(fan);
-            const hasArtist = Object.keys(parsedArtist).length > 0;
-            const hasFan = Object.keys(parsedFan).length > 0;
-            if (hasArtist || hasFan) {
-                setArtistComments(parsedArtist);
-                setFanComments(parsedFan);
-                setLoading(false);
-                return;
+            try {
+                const parsedArtist = JSON.parse(artist);
+                const parsedFan = JSON.parse(fan);
+                const hasArtist = parsedArtist && Object.keys(parsedArtist).length > 0;
+                const hasFan = parsedFan && Object.keys(parsedFan).length > 0;
+                if (hasArtist || hasFan) {
+                    setArtistComments(parsedArtist);
+                    setFanComments(parsedFan);
+                    setLoading(false);
+                    return;
+                }
+            } catch (e) {
+                // 파싱 에러 시 fetch
             }
         }
 

@@ -14,13 +14,15 @@
 }
 
 /* 팝업 내용도 100vh에 맞게 */
-.popupContent {
+/* .popupContent {
     max-height: 100vh;
+    width: 100%;
     overflow: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+    position: relative;
+} */
 
 /* 모바일: 모달이 아니라 페이지 전체처럼 */
 @media (max-width: 768px) {
@@ -259,4 +261,16 @@
   margin-left: 4px;
   cursor: pointer;
   padding: 0;
+}
+
+.closeBtn{
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
 }

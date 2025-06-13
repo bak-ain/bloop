@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
 import styles from './Mypage.module.css';
 import MyContentsCard from '../components/MyContentsCard';
@@ -35,7 +35,13 @@ function isOfficialContent(post: any): post is OfficialContent {
 
 const MyPop = () => {
     const navigate = useNavigate();
-    const [tab, setTab] = useState<'scrap-official' | 'scrap-artist' | 'scrap-fan'>('scrap-official');
+    // 탭 상태를 localStorage에서 읽어오기
+    const [tab, setTab] = useState<'scrap-official' | 'scrap-artist' | 'scrap-fan'>(() => {
+        return (
+            (localStorage.getItem("myPopTab") as 'scrap-official' | 'scrap-artist' | 'scrap-fan') ||
+            'scrap-official'
+        );
+    });
     const [editMode, setEditMode] = useState(false);
     const [checkedIds, setCheckedIds] = useState<string[]>([]);
     const [popupOpen, setPopupOpen] = useState(false);
@@ -52,10 +58,33 @@ const MyPop = () => {
 
     const { artistPosts, setArtistPosts, fanPosts, setFanPosts } = usePostList();
 
+
     let items: any[] = [];
-    if (tab === 'scrap-fan') items = fanScrappedPosts;
-    else if (tab === 'scrap-artist') items = artistScrappedPosts;
-    else if (tab === 'scrap-official') items = officialScrappedPosts;
+    if (tab === 'scrap-fan') {
+        items = fanScrappedPosts.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    } else if (tab === 'scrap-artist') {
+        items = artistScrappedPosts.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    } else if (tab === 'scrap-official') {
+        items = officialScrappedPosts.slice().sort(
+            (a, b) =>
+                new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime()
+        );
+    }
+
+    // 탭 변경 핸들러
+    const handleTabChange = (newTab: 'scrap-official' | 'scrap-artist' | 'scrap-fan') => {
+        setTab(newTab);
+        localStorage.setItem("myPopTab", newTab);
+        setEditMode(false);
+        setCheckedIds([]);
+        setPage(1);
+    };
+    // 페이지 이탈 시 localStorage에서 myPopTab 삭제
+    useEffect(() => {
+        return () => {
+            localStorage.removeItem("myPopTab");
+        };
+    }, []);
 
     // 페이지네이션
     const [page, setPage] = useState(1);
@@ -101,14 +130,14 @@ const MyPop = () => {
         <Container>
             <div className={`${styles.myePopBg} ${styles.myBg}`} />
             <div className={`${styles.myePopWrap} inner`}>
-                 <h3 className={styles.myTitle}>MY POP</h3>
+                <h3 className={styles.myTitle}>MY POP</h3>
                 {/* 탭바 */}
                 <div className={styles.tabBar}>
                     {tabList.map((t) => (
                         <button
                             key={t.key}
                             className={`${styles.tabBtn} ${tab === t.key ? styles.active : ''}`}
-                            onClick={() => { setTab(t.key as typeof tab); setEditMode(false); setCheckedIds([]); setPage(1); }}
+                            onClick={() => handleTabChange(t.key as typeof tab)}
                         >
                             {t.label}
                         </button>
