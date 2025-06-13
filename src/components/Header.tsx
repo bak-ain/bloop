@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 const Header = () => {
     return (
         <header className={`${styles.header} inner`}>
+
             <h1>
                 <a href="/" className={styles.logo}>
                     <img src="/images/logo.png" alt="Logo" />

@@ -82,7 +82,7 @@
 
 .loginBtn {
     width: 100%;
-    height: 100%;   
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,7 +91,7 @@
     font: inherit;
     border: none;
     background: transparent;
-     color: #F88F91;
+    color: #F88F91;
 }
 
 .btnText {
@@ -140,3 +140,115 @@
     height: 100%;
     object-fit: cover1;
 }
+
+/* tabBar */
+.tabBar {
+    height: 95px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: var(--main-color);
+    display: none;
+}
+
+.tabItem {
+    padding-top: 10px;
+    /* flex: 1; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    gap: 6px;
+    ;
+    color: #FFF;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+}
+
+.tabItem img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+
+.blur {
+    width: 100vw;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+@media (max-width: 767px) {
+    .header {
+        height: 70px;
+    }
+    .tabBar{
+        display: flex;
+    }
+    .blur {
+        height: 70px;
+    }
+
+    .menu {
+        width: max-content;
+    }
+
+    .menu li {
+        display: none;
+    }
+
+    .menu li.login {
+        display: flex;
+        width: max-content;
+        background: none;
+        box-shadow: none;
+    }
+
+    .loginIcon {
+        width: 40px;
+        height: 40px;
+        background-size: 26px 26px;
+        background-position: 5px center;
+    }
+
+    .logoutIcon {
+        background-position: 8px center;
+    }
+
+    .btnText {
+        display: none;
+    }
+
+
+    .nav {
+        width: max-content;
+        background: none;
+        padding: 0;
+    }
+
+    .logo {
+        width: 100px;
+        height: 50px;
+    }
+}
+
+/* .tabHome img {
+    width: 35px;
+    height: 35px;
+}
+
+.tabMuse img {
+    width: 30px;
+    height: 30px;
+} */

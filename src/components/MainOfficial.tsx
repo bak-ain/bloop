@@ -12,7 +12,7 @@ interface MainOfficialProps {
 
 const MainOfficial = ({ contents }: MainOfficialProps) => (
   <section>
-    <h2 className={styles.mainOfficialTitle}>Contents</h2>
+    <h2 className={`${styles.mainOfficialTitle} allura_h2`}>Contents</h2>
     <Swiper
       modules={[Navigation, Pagination]}
       slidesPerView={3}
