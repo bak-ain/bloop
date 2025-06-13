@@ -258,8 +258,34 @@ button {
 
 .main_card_p {
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 600;
 }
+
+/* kkomi */
+
+.kkomi_day {
+  font-family: var(--day--font-family);
+  font-size: 24px;
+}
+
+.kkomi_sced {
+  font-family: var(--day--font-family);
+  font-size: 18px;
+}
+
+.kkomi_num {
+  font-family: var(--day--font-family);
+  font-size: 16px;
+}
+
+
+/* allura */
+.allura_h2 {
+  font-family: var(--title-font-family);
+  font-size: 100px;
+  color: var(--main-color);
+}
+
 
 /* 아티스트 */
 .artist_top {
@@ -426,29 +452,6 @@ button {
   font-weight: 400;
 }
 
-/* kkomi */
-
-.kkomi_day {
-  font-family: var(--day--font-family);
-  font-size: 24px;
-}
-
-.kkomi_sced {
-  font-family: var(--day--font-family);
-  font-size: 18px;
-}
-
-.kkomi_num {
-  font-family: var(--day--font-family);
-  font-size: 16px;
-}
-
-
-/* allura */
-.allura_h2 {
-  font-family: var(--title-font-family);
-  font-size: 100px;
-}
 
 
 /* 공통 레이아웃 */
@@ -527,18 +530,26 @@ main {
     padding-bottom: var(--wep-sec-pad);
   }
 
+  .allura_h2 {
+    font-size: 80px;
+  }
+    .main_card_p {
+    font-size: 20px;
+  }
+
+
 }
 
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {
   .inner {
-    width: 100vw;
     padding: 0 20px;
   }
 
-  .allura_h2 {
-    font-size: 80px;
+    .main_card_p {
+    font-size: 18px;
   }
+
 
   .pop_name {
     font-size: 20px;
@@ -609,6 +620,9 @@ main {
     font-size: 28px;
     font-weight: 600;
   }
+    .allura_h2 {
+    font-size: 65px;
+  }
 
 }
 
@@ -647,6 +661,10 @@ main {
     font-weight: 600;
   }
 
+/*   .allura_h2 {
+    font-size: 60px;
+  } */
+
 }
 
 
@@ -657,9 +675,7 @@ main {
     height: 46px;
   }
 
-  .allura_h2 {
-    font-size: 55px;
-  }
+
 
   .kkomi_day {
     font-size: 14px;
@@ -705,9 +721,7 @@ main {
     font-size: 20px;
   }
 
-  .main_card_p {
-    font-size: 16px;
-  }
+
 
   /* 아티스트 */
   .artist_top {
@@ -817,9 +831,9 @@ main {
   }
 
   .offic_h3 {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 22px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .offic_p {
