@@ -100,31 +100,31 @@ const PostCard = <T extends ArtistPost | FanPost>({
         <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
             {/* 아티스트 게시물 카드 */}
             {isArtist ? (
-                <div className={styles.profile_bubble_layout}>
-                    <img className={styles.profile_img} src={user.profileImage} alt={user.name} />
-                    <div className={styles.bubble_box} onClick={goToDetail}>
-                        <div className={styles.bubble_header}>
+                <div className={styles.a_profile_bubble_layout}>
+                    <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
+                    <div className={styles.a_bubble_box} onClick={goToDetail}>
+                        <div className={styles.a_bubble_header}>
                             <strong>
                                 {user.name}
                                 <img
-                                    className={styles.badge_img}
+                                    className={styles.a_badge_img}
                                     src={getBadgeImage('artist')}
                                     alt="artist badge"
                                 />
                             </strong>
                             <p className={styles.date}>{getDisplayDate(data.date)}</p>
                         </div>
-                        <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
+                        <p className={styles.a_desc} dangerouslySetInnerHTML={{ __html: data.description }} />
                         {data.media && (
-                            <div className={styles.media}>
+                            <div className={styles.a_media}>
                                 {data.media.slice(0, 2).map((m, i) =>
                                     m.type === "video" ? (
-                                        <video key={i} src={m.url} controls className={styles.media_item} />
+                                        <video key={i} src={m.url} controls className={styles.a_media_item} />
                                     ) : (
-                                        <div key={i} className={styles.media_item_wrapper}>
-                                            <img src={m.url} alt={`media-${i}`} className={styles.media_item} />
+                                        <div key={i} className={styles.a_media_item_wrapper}>
+                                            <img src={m.url} alt={`media-${i}`} className={styles.a_media_item} />
                                             {i === 1 && (data.media?.length ?? 0) > 2 && (
-                                                <div className={styles.media_overlay}>
+                                                <div className={styles.a_media_overlay}>
                                                     +{(data.media?.length ?? 0) - 2}
                                                 </div>
                                             )}
