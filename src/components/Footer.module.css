@@ -88,3 +88,8 @@
 .copy{
     color: #ddd;
 }
+@media (max-width: 767px){
+    .footer{
+        display: none;
+    }
+}

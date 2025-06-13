@@ -481,6 +481,7 @@ button {
 main {
   padding-top: 180px;
   padding-bottom: var(--wep-footer-pad);
+  overflow: hidden;
 }
 
 .home main {
@@ -531,7 +532,8 @@ main {
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {
   .inner {
-    padding: 0 16px;
+    width: 100vw;
+    padding: 0 20px;
   }
 
   .allura_h2 {
