@@ -122,6 +122,7 @@ export interface MemberCard {
   height: string;            // 신체 (예: 168cm 45kg)
   mbti: string;              // MBTI (예: ENTJ)
   stickerUrl?: string;      // 스티커 이미지 URL (선택)
+  popUpImageUrl?: string; // 프로필 팝업 이미지 URL (선택)
 }
 
 //나의활동&스크랩

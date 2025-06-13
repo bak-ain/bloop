@@ -533,7 +533,8 @@ main {
   .allura_h2 {
     font-size: 80px;
   }
-    .main_card_p {
+
+  .main_card_p {
     font-size: 20px;
   }
 
@@ -546,7 +547,7 @@ main {
     padding: 0 20px;
   }
 
-    .main_card_p {
+  .main_card_p {
     font-size: 18px;
   }
 
@@ -620,7 +621,8 @@ main {
     font-size: 28px;
     font-weight: 600;
   }
-    .allura_h2 {
+
+  .allura_h2 {
     font-size: 65px;
   }
 
@@ -661,7 +663,7 @@ main {
     font-weight: 600;
   }
 
-/*   .allura_h2 {
+  /*   .allura_h2 {
     font-size: 60px;
   } */
 

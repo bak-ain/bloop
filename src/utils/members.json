@@ -9,7 +9,8 @@
     "position": "리더 / 리드보컬",
     "height": "168cm 45kg",
     "mbti": "ENTJ",
-    "stickerUrl":"/images/cherry.png"
+    "stickerUrl":"/images/cherry.png",
+    "popUpImageUrl" : "/images/mainDoaP.png"
   },
   {
     "id": "arin",
@@ -21,7 +22,8 @@
     "position": "메인댄서",
     "height": "163cm 41kg",
     "mbti": "ISFP",
-    "stickerUrl":"/images/blingRed.png"
+    "stickerUrl":"/images/blingRed.png",
+    "popUpImageUrl": "/images/mainArinP.png"
 
   },
   {
@@ -34,7 +36,8 @@
     "position": "메인 래퍼",
     "height": "160cm 43kg",
     "mbti": "ENFP",
-    "stickerUrl":"/images/heartRed.png"
+    "stickerUrl":"/images/heartRed.png",
+    "popUpImageUrl": "/images/mainSeiP.png"
 
   },
   {
@@ -47,7 +50,8 @@
     "position": "비주얼 / 서브보컬",
     "height": "170cm 47kg",
     "mbti": "INTP",
-    "stickerUrl":"/images/ribbon.png"
+    "stickerUrl":"/images/ribbon.png",
+    "popUpImageUrl": "/images/mainLuhaP.png"
 
   }
 ]
