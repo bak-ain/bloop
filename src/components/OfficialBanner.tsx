@@ -18,9 +18,9 @@ const OfficialBanner = ({ highlights }: OfficialBannerProps) => {
   return (
     <div className={styles.bannerWrapper}>
       <Swiper
-        modules={[Navigation]}
-        navigation // Swiper가 기본 좌우 버튼을 자동 생성
-        // autoplay={{ delay: 3000, disableOnInteraction: false }}
+        modules={[Navigation, Autoplay]} // Autoplay 추가!
+        navigation
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
         loop
         className={styles.swiperWrapper}
       >
@@ -41,7 +41,7 @@ const OfficialBanner = ({ highlights }: OfficialBannerProps) => {
                 <div className={styles.bannerImgPlaceholder} />
               )}
               <div className={styles.bannerOverlay}>
-                <div 
+                <div
                   className={`${styles.bannerTitle}  office_h1_tit`}
                   dangerouslySetInnerHTML={{ __html: banner.title ?? "" }}
                 />

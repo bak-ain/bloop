@@ -192,3 +192,17 @@ section {
     z-index: 2;
     pointer-events: none;
 }
+
+@media (max-width: 1024px) {
+    .mainBanner {
+        height: 100vh;
+        background-image: url('/public/images/mainbanner_tap.png');
+    }
+}
+
+@media (max-width:656px) {
+    .mainBanner {
+        height: 100vh;
+        background-image: url('/public/images/mainvisual_mo.png');
+    }
+}

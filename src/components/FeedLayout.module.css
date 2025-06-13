@@ -1,7 +1,7 @@
-.writeButton{
+.writeButton {
     position: fixed;
-    bottom: 80px;
-    right: 1rem;
+    bottom: 9rem;
+    right: 3.7rem;
     background: transparent;
     width: 55px;
     height: 55px;
@@ -9,7 +9,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    z-index: 100;
 }
+
+.writeButton:hover {
+    transform: scale(1.07);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+     transition: 0.2s ease-in-out;
+}
+
 .writeButton img {
     width: 55px;
     height: auto;
@@ -40,4 +49,3 @@
     width: 30px;
     height: 30px;
 }
-

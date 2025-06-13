@@ -371,6 +371,7 @@ button {
 .offic_h2 {
   font-size: 28px;
   font-weight: 700;
+
 }
 
 .offic_h3 {
@@ -389,7 +390,7 @@ button {
 }
 
 .offic_p {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 26px;
 }
@@ -453,24 +454,25 @@ button {
 /* 공통 레이아웃 */
 
 .mainOfficialSwiper .swiper-slide {
-    transition: transform 0.3s, opacity 0.3s;
-    /* opacity: 0.5; */
-    width: 450px;
+  transition: transform 0.3s, opacity 0.3s;
+  /* opacity: 0.5; */
+  width: 450px;
 }
 
 .mainOfficialSwiper .swiper-slide.swiper-slide-active {
-    /* opacity: 1; */
-    transform: scale(1);
-    z-index: 2;
+  /* opacity: 1; */
+  transform: scale(1);
+  z-index: 2;
 }
 
 .mainOfficialSwiper .swiper-slide.swiper-slide-next,
 .mainOfficialSwiper .swiper-slide.swiper-slide-prev {
-    /* opacity: 0.8; */
-    transform: scale(0.92);
-    z-index: 1;
+  /* opacity: 0.8; */
+  transform: scale(0.92);
+  z-index: 1;
 }
-.container{
+
+.container {
   width: 100%;
   font-family: var(--main-font-family);
   position: relative;
@@ -478,15 +480,17 @@ button {
 
 main {
   padding-top: 100px;
-  padding-bottom: var( --wep-footer-pad);
+  padding-bottom: var(--wep-footer-pad);
 }
 
 .home main {
   padding-top: 0;
 }
-.official main{
+
+.official main {
   background: var(--font-color-1);
 }
+
 .inner {
   max-width: 1024px;
   margin: 0 auto;
@@ -499,7 +503,8 @@ main {
   background-size: cover !important;
   border-radius: 0% !important;
   background-color: transparent !important;
-  /* bottom: 115px !important; */
+  bottom: 4rem !important;
+  right: 3.7rem !important;
 }
 
 #chatbase-bubble-button img {
@@ -513,6 +518,14 @@ main {
 
 .react-calendar__navigation {
   display: none !important;
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding-top: 80px;
+    padding-bottom: var(--wep-sec-pad);
+  }
+
 }
 
 /* 반응형 레이아웃 */
@@ -589,14 +602,20 @@ main {
     font-size: 15px;
     font-weight: 400;
   }
+
   .offic_h2 {
-    font-size: 23px;
+    font-size: 28px;
     font-weight: 600;
   }
 
 }
 
 @media (max-width:530px) {
+  main {
+    padding-top: 70px;
+    padding-bottom: var(--wep-sec-pad);
+  }
+
   .office_tag {
     font-size: 15px;
   }
@@ -615,11 +634,16 @@ main {
     font-size: 20px;
     font-weight: 600;
   }
- .officeBtn {
+
+  .officeBtn {
     font-size: 14px;
     font-weight: 400;
   }
 
+  .offic_h2 {
+    font-size: 24px;
+    font-weight: 600;
+  }
 
 }
 
@@ -751,15 +775,12 @@ main {
   /*오피스 */
 
 
-  .offic_h3 {
-    font-size: 18px;
-    line-height: 23px;
-  }
+
 
   .offic_p {
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 23px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
   }
 
 
@@ -785,4 +806,55 @@ main {
     }
   }
 
+
+}
+
+@media (max-width: 402px) {
+  .offic_h2 {
+    font-size: 22px;
+  }
+
+  .offic_h3 {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
+  }
+
+  .offic_p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  .offic_h4 {
+    font-size: 18px;
+  }
+
+  .officeBtn {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+}
+
+/* 오피스 페이지 네이션 */
+
+.photoSwiper .swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  background: #d9d9d9;
+  opacity: 1;
+  margin: 0 10px;
+  border-radius: 50%;
+  z-index: 10000;
+  margin-top: 20px;
+  border: 0;
+}
+
+.photoSwiper .swiper-pagination-bullet-active {
+  background: #53a8ea;
+  width: 20px;
+  border-radius: 12px;
+  border: 0;
+  z-index: 10000;
 }

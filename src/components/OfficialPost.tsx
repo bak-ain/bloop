@@ -85,22 +85,38 @@ const OfficialPost = ({ data, index }: OfficialPostProps) => {
           onClick={handleClick}
         >
           <div className={styles.behindThumb}>
-            {data.media && data.media[0]?.url ? (
-              <img src={data.media[0].url} alt={data.title} />
+            {data.media && data.media[0] ? (
+              data.media[0].type === "video" ? (
+                data.media[0].thumbnail ? (
+                  <img
+                    src={data.media[0].thumbnail}
+                    alt={data.title}
+                    className={styles.officeImg}
+                  />
+                ) : (
+                  <div className={styles.behindThumbPlaceholder} />
+                )
+              ) : (
+                <img
+                  src={data.media[0].url}
+                  alt={data.title}
+                  className={styles.officeImg}
+                />
+              )
             ) : (
               <div className={styles.behindThumbPlaceholder} />
             )}
           </div>
           <div className={styles.behindInfo}>
+
             <div className={styles.behindTitleTop}>
-              <div className={`${styles.behindTitle} offic_h4`}>{data.title}
-              </div>
+              <div className={`${styles.behindTitle} offic_h4`}>{data.title}</div>
               <div
                 className={`${styles.behinbehindDescdTitle} offic_p`}
-                dangerouslySetInnerHTML={{ __html: data.description ?? "" }}/>
+                dangerouslySetInnerHTML={{ __html: data.description ?? "" }}
+              />
             </div>
             <button
-
               className={`${styles.behindDetailBtn}  officeBtn`}
               onClick={(e) => {
                 e.stopPropagation();
@@ -108,9 +124,9 @@ const OfficialPost = ({ data, index }: OfficialPostProps) => {
               }}
             >
               보러가기
-              <img src="/images/icon/office_icon.png" alt="go" className={`${styles.behindIcon}`} />
-
+              <img src="/images/icon/office_icon.png" alt="go" className={styles.behindIcon} />
             </button>
+
           </div>
         </div>
       );

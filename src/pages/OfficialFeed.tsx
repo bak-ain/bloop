@@ -56,14 +56,14 @@ const OfficialFeed = () => {
                         <h2 className="offic_h2">오피셜 포토</h2>
                         {isMobile ? (
                             <Swiper
-                                className={styles.photoSwiper}
+                                className={`${styles.photoSwiper} photoSwiper`}
                                 modules={[Pagination, Autoplay]}
                                 slidesPerView={2}
                                 spaceBetween={16}
-                                slidesPerGroup={2}   
+                                slidesPerGroup={2}
                                 pagination={{ clickable: true }}
-                                loop={true}
-                                autoplay={{ delay: 2500, disableOnInteraction: false }}
+                                loop={photos.length > 2}
+                                autoplay={photos.length > 2 ? { delay: 2000, disableOnInteraction: false } : false}
                                 style={{ paddingBottom: 32 }}
                             >
                                 {photos.map(post => (

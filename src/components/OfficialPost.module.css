@@ -10,7 +10,7 @@
   position: relative;
   padding-top: 100px;
   padding-bottom: 150px;
-   border-radius: 10px;
+  border-radius: 10px;
 }
 
 .bannerSwiper {
@@ -44,7 +44,6 @@
   transform: translateY(-50%);
 } */
 
-.swiperWrapper {}
 
 .swiperWrapper :global(.swiper-button-prev),
 .swiperWrapper :global(.swiper-button-next) {
@@ -89,7 +88,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .bannerTitle {
@@ -123,7 +122,6 @@
 
 .mediaThumb img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -161,7 +159,7 @@
 
 .officeImg {
   width: 100%;
-  aspect-ratio: 1/1;
+  /*   aspect-ratio: 1/1; */
   /* 정사각형 비율, 필요시 */
   object-fit: cover;
   display: block;
@@ -179,7 +177,7 @@
   overflow: hidden;
   min-height: 180px;
   max-height: 280px;
-  gap: 20px;
+  gap: 30px;
   width: 100%;
 }
 
@@ -199,7 +197,6 @@
 
 .behindThumb img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
   display: block;
   border-radius: 10px;
@@ -212,17 +209,18 @@
 }
 
 .behindInfo {
-  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 50px;
+  width: 50%;
 }
 
 .behindTitleTop {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
 .behindTitle {
@@ -236,12 +234,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   /* 원하는 줄 수로 변경 가능 */
   -webkit-box-orient: vertical;
   max-width: 80%;
-  white-space: normal;
 }
 
 .behindDetailBtn {
@@ -461,6 +458,11 @@
 }
 
 @media (max-width: 1024px) {
+  .bannerWrapper {
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+
   .detailWrapper {
     padding-block: 80px 150px;
   }
@@ -481,7 +483,7 @@
 
 
 @media (max-width: 767px) {
-  
+
   .bannerWrapper {
     padding-top: 80px;
     padding-bottom: 90px;
@@ -506,8 +508,19 @@
     line-clamp: 2;
     /* 원하는 줄 수로 변경 가능 */
     -webkit-box-orient: vertical;
-    max-width: 80%;
+    max-width: none;
+    width: 100%;
     white-space: normal;
+  }
+
+  .officeImg {
+
+    /*    max-width: 220px; */
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
   }
 
   .behindCard {
@@ -627,6 +640,9 @@
     gap: 5px;
   }
 
+  .detailTitle span {
+    display: block;
+  }
 
 
 
@@ -638,7 +654,23 @@
     padding-block: 50px 150px;
   }
 
+  .mediaThumb {
+    height: 120px;
+    width: 45%;
+  }
 
+  .behindInfo {
+    gap: 20px;
+  }
+
+  .officeImg {
+    height: 150px;
+  }
+
+  .behindDetailBtn {
+    width: 100px;
+    height: 30px;
+  }
 }
 
 @media (max-width: 320px) {

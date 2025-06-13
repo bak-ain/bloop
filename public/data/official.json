@@ -55,7 +55,7 @@
       ]
     }
   ],
-    "media": [
+  "media": [
     {
       "id": "m1",
       "type": "new",
@@ -271,6 +271,11 @@
       "isLiked": true,
       "media": [
         {
+          "type": "video",
+          "url": "/images/office/sei.mp4",
+          "thumbnail": "/images/office/vid2.jpg"
+        },
+        {
           "type": "image",
           "url": "/images/2.png"
         }
@@ -282,22 +287,20 @@
       "title": "아린의 연습실 브이로그",
       "description": "연습 도중 계속 웃느라 안무를 못 맞추던 날.<br />진지하게 맞추다 갑자기 ‘꺄악!’하고 뛰는 아린의 리액션에<br />멤버들도 스탭들도 모두 빵 터졌던 그 현장 그대로!",
       "descriptionDetail": "연습실의 땀과 웃음, 무대 뒤의 떨림까지 고스란히 담긴 첫 번째 정규 앨범.<br />함께 걷는 이 길 위, 팬과 함께 만드는 순간의 설렘을 지금 미리 만나보세요.",
+      "hashtag": "#하이비스 #GoTogether #첫정규 #티저공개 #앨범시작",
       "buttonText": "보러가기",
       "likes": 34,
       "isScrapped": true,
       "isLiked": true,
       "media": [
         {
-          "type": "image",
-          "url": "/images/4.png"
+          "type": "video",
+          "url": "/images/office/sei.mp4",
+          "thumbnail": "/images/office/vid2.jpg"
         },
         {
           "type": "image",
-          "url": "/images/5.png"
-        },
-        {
-          "type": "image",
-          "url": "/images/6.png"
+          "url": "/images/2.png"
         }
       ]
     },
@@ -307,11 +310,17 @@
       "title": "세이의 녹음실 속 고백",
       "description": "녹음이 끝난 후 조용히 말하던 세이.<br />헤드폰을 벗은 뒤의 그 작은 세아의 속삭임!",
       "descriptionDetail": "연습실의 땀과 웃음, 무대 뒤의 떨림까지 고스란히 담긴 첫 번째 정규 앨범.<br />함께 걷는 이 길 위, 팬과 함께 만드는 순간의 설렘을 지금 미리 만나보세요.",
+      "hashtag": "#하이비스 #GoTogether #첫정규 #티저공개 #앨범시작",
       "buttonText": "보러가기",
       "likes": 100,
       "isScrapped": true,
       "isLiked": true,
       "media": [
+        {
+          "type": "video",
+          "url": "/images/office/sei.mp4",
+          "thumbnail": "/images/office/vid2.jpg"
+        },
         {
           "type": "image",
           "url": "/images/2.png"
