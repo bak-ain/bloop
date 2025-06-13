@@ -10,8 +10,8 @@ const Login = () => {
     const [step, setStep] = useState<"select" | "form">("select");
     const [userType, setUserType] = useState<"fan" | "agency">("fan");
     const [loginInput, setLoginInput] = useState<FanLoginInput | AgencyLoginInput>({
-        id: "", // 초기값 설정
-        password: "",
+        id: "testfan", // 초기값 설정
+        password: "1234",
         rememberMe: false,
         userType: "fan",
     });
@@ -19,17 +19,7 @@ const Login = () => {
 
 
 
-    // 팬/에이전시 선택
-    const handleSelect = (type: "fan" | "agency") => {
-        setUserType(type);
-        setLoginInput({
-            id: type === "fan" ? "testfan" : "testagency",      // 팬/에이전시별 기본값
-            password: type === "fan" ? "1234" : "5678", // 팬/에이전시별 기본값
-            rememberMe: false,
-            userType: type,
-        });
-        setStep("form");
-    };
+
 
     // 탭 전환
     const handleTab = (type: "fan" | "agency") => {
@@ -77,29 +67,6 @@ const Login = () => {
     return (
         <Container>
             <div className={` ${styles.loginWrap} inner`}>
-                {step === "select" ? (
-                    <div className={styles.selectWrap}>
-                        <div className={styles.welcome}>
-                            <span className={styles.bloop}>BLOOP</span>에 오신 걸 환영합니다.{" "}
-                            <span className={styles.red}>사용자 유형을 선택해주세요.</span>
-                        </div>
-                        <div className={styles.selectRow}>
-                            <div className={styles.selectBox} onClick={() => handleSelect("fan")}>
-                                <div className={styles.userIcon}></div>
-                                <div className={styles.selectTitle}>Fan Account</div>
-                                <div className={styles.selectDesc}>아티스트와 소통하고 팬 활동을 시작하세요.</div>
-                                <button className={styles.selectBtn}>로그인하기</button>
-                            </div>
-                            <div className={styles.or}>OR</div>
-                            <div className={styles.selectBox} onClick={() => handleSelect("agency")}>
-                                <div className={styles.userIcon}></div>
-                                <div className={styles.selectTitle}>Agency Account</div>
-                                <div className={styles.selectDesc}>컨텐츠를 관리하고 페이지를 설계해보세요.</div>
-                                <button className={styles.selectBtn}>로그인하기</button>
-                            </div>
-                        </div>
-                    </div>
-                ) : (
                     <div className={styles.formWrap}>
                         <div className={styles.tabRow}>
                             <button
@@ -168,7 +135,6 @@ const Login = () => {
                             </span>
                         </div>
                     </div>
-                )}
             </div>
         </Container>
     );
