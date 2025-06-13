@@ -21,10 +21,10 @@ const members: Member[] = [
 ];
 
 const MemberProfile = () => (
-    <section className={`${styles.memberProfile} inner`}>
-        <div className="inner">
+    <section className={`${styles.memberProfile} `}>
             <h2 className={`${styles.profileTitle} allura_h2`}>Profile</h2>
-            <div className={`${styles.profileList} `} >
+       {/*  <div className="inner"> */}
+            <div className={`${styles.profileList} inner `} >
                 {members.map((m) => (
                     <div className={`${styles.profileCard} ${styles[m.en]}`} key={m.en}>
                         <div className={styles.profileImg}>
@@ -42,7 +42,7 @@ const MemberProfile = () => (
                     </div>
                 ))}
             </div>
-        </div>
+        {/* </div> */}
 
     </section>
 );

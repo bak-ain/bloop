@@ -86,7 +86,7 @@ section {
 
 .profileImg {
     width: 100%;
-    height: 24vh;
+    height: 23vh;
     background-image: url('/public/images/profileFrame.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -241,7 +241,7 @@ section {
 
 
     .home h2 {
-        margin-left: 0;
+        margin-left: 3vw;
     }
 
     .memberProfile {
@@ -275,7 +275,7 @@ section {
     }
 }
 
-@media (min-width:830px) {
+@media (max-width:900px) and(min-width:830px) {
     .profileImg {
         height: 15vh;
     }
@@ -327,7 +327,7 @@ section {
         height: 20vh;
     }
         .home h2 {
-        margin-left: 0vw;
+        margin-left: 4vw;
     }
 }
 
@@ -375,6 +375,7 @@ section {
 }
 
 @media (max-width: 402px) {
+
     /*     .mainBanner {
         height: 95vh;
         width: 100%;
