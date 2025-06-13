@@ -76,6 +76,7 @@ const Home = () => {
             <Container>
                 <div className={styles.mainBanner} />
                 <div className={styles.mainContent}>
+                    <MemberProfile />
                     <section className={styles.schedule} style={{ position: "relative" }}>
                         <div className={styles.scheduleBg} />
                         <h2 className={styles.scheduleTitle}>Schedule</h2>
