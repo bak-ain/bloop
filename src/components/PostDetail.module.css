@@ -19,7 +19,7 @@
   border-radius: 20px;
   z-index: 1000;
   position: relative;
-  padding: 30px 20px 15px 20px;
+  /* padding: 30px 20px 15px 20px; */
 }
 
 /* section {
@@ -27,19 +27,19 @@
   width: 60%;
 } */
 
-aside {
+/* aside {
   width: 40%;
-}
+} */
 
-/* .feed_content {
-  width: 80%;
+.feed_content {
+  width: 70%;
   height: 70%;
   background: #fff;
   border-radius: 20px;
   z-index: 1000;
   position: relative;
   padding: 30px 20px 15px 20px;
-} */
+}
 
 .badge_img {
   width: 20px;
@@ -160,7 +160,7 @@ aside {
 /* 팝업 이미지 */
 .media {
   width: 600px;
-  height: 480px;
+  height: 350px;
   overflow: hidden;
   border-radius: 10px;
   margin: 20px 0;
@@ -183,7 +183,7 @@ aside {
   font-size: 14px;
   color: #666;
   padding: 20px 0;
-  border-top: 1px solid #ccc;
+  /* border-top: 1px solid #ccc; */
 }
 
 .meta_row button {
@@ -206,4 +206,109 @@ aside {
   height: 30px;
 }
 
-/*  */
+/* 팝업 right 코멘트  */
+.comment_panel {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+
+.comment_content_row {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.badge_img {
+  width: 20px;
+  height: 20px;
+}
+
+.comment_meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.comment_meta button {
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.comment_meta .commentBtn {
+  color: var(--font-color-3);
+}
+
+.comment_meta .deleteBtn {
+  color: var(--main-color);
+}
+
+.comment_actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment_like_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment_like_box button {
+  background: none;
+}
+
+.comment_like_icon {
+  width: 30px;
+  height: 30px;
+}
+
+
+/* 댓글부분 */
+.comment_input {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment_input_field {
+  width: 80%;
+  height: 40px;
+  border-radius: 40px;
+  border: 0;
+  background: var(--bg-color-chat);
+  padding-left: 20px;
+}
+
+.smileBtn {
+  position: absolute;
+  top: 50%;
+  right: 22%;
+  transform: translateY(-50%);
+  background: none;
+}
+
+.smileBtn img {
+  width: 26px;
+  height: 26px;
+}
+
+.uploadBtn {
+  background: none;
+  padding-right: 20px;
+}
+
+.uploadBtn img {
+  width: 30px;
+  height: 30px;
+}
