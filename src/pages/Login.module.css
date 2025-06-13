@@ -114,8 +114,6 @@
     margin: 0 auto;
     background: #fff;
     border-radius: 14px;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-    padding: 48px 48px 36px 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
