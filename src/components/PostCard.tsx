@@ -100,10 +100,10 @@ const PostCard = <T extends ArtistPost | FanPost>({
         <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
             {/* 아티스트 게시물 카드 */}
             {isArtist ? (
-                <div className={styles.a_profile_bubble_layout}>
+                <div className={styles.profile_bubble_layout}>
                     <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
-                    <div className={styles.a_bubble_box} onClick={goToDetail}>
-                        <div className={styles.a_bubble_header}>
+                    <div className={styles.bubble_box} onClick={goToDetail}>
+                        <div className={styles.bubble_header}>
                             <strong>
                                 {user.name}
                                 <img
@@ -114,7 +114,7 @@ const PostCard = <T extends ArtistPost | FanPost>({
                             </strong>
                             <p className={styles.date}>{getDisplayDate(data.date)}</p>
                         </div>
-                        <p className={styles.a_desc} dangerouslySetInnerHTML={{ __html: data.description }} />
+                        <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
                         {data.media && (
                             <div className={styles.a_media}>
                                 {data.media.slice(0, 2).map((m, i) =>

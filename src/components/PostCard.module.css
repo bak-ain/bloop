@@ -119,6 +119,7 @@
   margin-bottom: 12px;
 }
 
+
 .media img,
 .media video {
   width: calc(50% - 4px);
@@ -155,12 +156,7 @@
   height: 30px;
 }
 
-.profile_bubble_layout {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 12px;
-}
+
 
 .profile_img {
   width: 60px;
@@ -194,6 +190,7 @@
 
   .media_item_wrapper {
     width: 100%;
+
   }
 
   .media_item {
@@ -210,6 +207,7 @@
 
   .media_item_wrapper {
     flex: 1;
+
   }
 
   .media_item {
@@ -255,7 +253,6 @@
   width: 50%;
   height: auto;
 }
-
 
 .popularCard {
   width: 100%;
@@ -319,8 +316,99 @@
 
 
 
-/* ===================================================== */
-/* 아티스트 부분 */
+
+
+
+
+
+
+
+
+
+
+/* ================= */
+
+.storyContainer {
+  display: flex;
+  height: 250px;
+  /* border: 1px solid #ddd; */
+}
+
+.storyCard {
+  flex: 1;
+}
+
+.storyCard .profileImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.storyImage {
+  width: 50%;
+  height: auto;
+}
+
+.a_badge_img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.a_media {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.a_media img,
+.a_media video {
+  width: calc(50% - 4px);
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+.a_media_item_wrapper {
+  position: relative;
+}
+
+.a_media_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+.a_profile_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile_bubble_layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
 /* 말풍선 상자 */
 .bubble_box {
   position: relative;
@@ -349,28 +437,10 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  background: cadetblue;
+  margin-bottom: 6px;
 }
 
 .badge_artist {
   color: #1da1f2;
   font-size: 14px;
 }
-
-
-
-
-
-
-
-/* ===================================== */
-/* ================반응형=============== */
-/* ===================================== */
-
-/* 
-@media (max-width: 1024px){}
-@media (max-width: 767px){}
-@media (max-width: 656px){}
-@media (max-width: 402px){}
-@media (max-width: 320px){}
-*/

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ArtistPost, FanPost, CommentPost, CommentInput } from "../types";
 import { getBadgeImage, getAvailableEmojis } from "../utils/badge";
 import styles from "./PostDetail.module.css";
@@ -7,7 +8,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
 import { useLikedScrapped } from "../context/LikedScrappedContext";
 import { useComment } from "../context/CommentContext";
-import { useUserContext } from "../context/UserContext "; // 추가
+import { useUserContext } from "../context/UserContext ";
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
@@ -21,6 +22,7 @@ interface PostDetailProps<T extends ArtistPost | FanPost> {
 }
 
 const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setPostList, onClose, onEdit }: PostDetailProps<T>) => {
+    const navigate = useNavigate();
     // 좋아요/스크랩 context 사용
     const {
         postLikeCounts,
@@ -189,6 +191,21 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
 
     return (
         <div className={styles.post_detail}>
+            {/* 모바일 헤더 */}
+            <div className={styles.mobile_header}>
+                <button
+                    className={styles.back_btn}
+                    onClick={() => {
+                        if (onClose) onClose();
+                        // 아티스트/팬 피드로 이동
+                        if (type === "artist") navigate("/muse");
+                        else navigate("/loop");
+                    }}
+                >
+                    <img src="/images/icon/back.png" alt="뒤로가기" />
+                </button>
+                <span className={styles.feed_tab}>{type === "artist" ? "아티스트" : "커뮤니티"}</span>
+            </div>
             <div className={styles.post_detail_all}>
                 <section className={`${styles.feed_content} ${styles.day_span}`}>
                     {data.user.userId === myUserId && (
