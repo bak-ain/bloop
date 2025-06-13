@@ -1,3 +1,34 @@
+.popularBanner {
+  width: 100%;
+  height: 570px;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+
+}
+
+.bannerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.popularTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 50px;
+}
+
+.popularTitle img {
+  width: 48px;
+  height: 43px;
+}
+
+
 /* 공통 카드 */
 .post_card_wrapper {
   padding-top: 0;
@@ -200,16 +231,41 @@
   justify-content: center;
 }
 
+.storyContainer {
+  display: flex;
+  height: 250px;
+  /* border: 1px solid #ddd; */
+}
 
+.storyCard {
+  flex: 1;
+}
 
+.storyCard .profileImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
+.storyImage {
+  width: 50%;
+  height: auto;
+}
 
 .popularCard {
+  width: 100%;
+  max-width: 280px;
+  min-height: 140px;
   background: #f5f6fa;
   border-radius: 12px;
   padding: 16px;
-  min-height: 120px;
   cursor: pointer;
+  border: 2px solid var(--font-color-3);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .popularCardHeader {
@@ -217,6 +273,8 @@
   align-items: center;
   margin-bottom: 8px;
 }
+
+.popularCardHeader img {}
 
 .popularCardAvatar {
   width: 35px;

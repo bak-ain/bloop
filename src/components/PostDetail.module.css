@@ -1,3 +1,5 @@
+
+
 .post_detail {
   position: fixed;
   top: 0;
@@ -28,9 +30,23 @@
   overflow-y: scroll;
 }
 
+<<<<<<< HEAD
+/* section {
+  padding: 0;
+  width: 60%;
+} */
 .post_detail_all section {
   width: 60%;
 }
+
+/* aside {
+  width: 40%;
+} */
+=======
+.post_detail_all section {
+  width: 60%;
+}
+>>>>>>> 764b2c4ebe1fdfd34477a27a8fc17d0e29864222
 
 .feed_content {
   width: 70%;

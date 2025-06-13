@@ -1,6 +1,5 @@
 .home {
     width: 100%;
-    /* overflow: hidden; */
 }
 
 main {
@@ -97,7 +96,7 @@ main {
     position: relative;
 }
 
-.profileImg img {
+.profileImg>img {
     width: 90%;
     object-fit: cover;
 }
@@ -106,28 +105,28 @@ main {
     position: absolute;
 }
 
-.DOA .sticker {
+.doa .sticker {
     width: 40px;
     height: 40px;
     left: 2%;
     top: -5%;
 }
 
-.ARIN .sticker {
+.arin .sticker {
     width: auto;
     height: 70px;
     bottom: -20%;
     right: -10%;
 }
 
-.SEI .sticker {
+.sei .sticker {
     width: 30px;
     height: auto;
     bottom: -8%;
     right: -5%;
 }
 
-.LUHA .sticker {
+.luha .sticker {
     width: 45px;
     height: auto;
     top: -5%;
@@ -209,6 +208,95 @@ main {
     pointer-events: none;
 }
 
+.profileModalOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.profileModal {
+    background: #fff;
+    width: 700px;
+    height: 680px;
+    padding: 50px;
+    border-radius: 30px;
+    position: relative;
+}
+
+.profileModalTop {
+    width: 100%;
+    /* height: 40vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 10px;
+    padding-block: 20px;
+}
+
+.profileModalName {
+    color: var(--main-color);
+    line-height: 150%;
+}
+
+.profileModalTop img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.profileModalDesc {
+    line-height: normal;
+}
+
+.profileModalInfo {
+    color: var(--font-color-7);
+    display: flex;
+    flex-wrap: wrap;
+    padding-inline: 30px;
+    padding-top: 30px;
+    gap: 20px 0;
+    border-top: 2px solid var(--main-color);
+
+
+}
+
+.profileModalInfo div {
+    display: flex;
+    gap: 15px;
+    width: 50%;
+    ;
+}
+
+.profileModalInfo span {
+    color: var(--font-color-3);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 20px;
+    height: 20px;
+    background-image: url('/public/images/icon/close.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 @media (max-width: 1620px) {
     .home h2 {
         margin-left: 8vw;
@@ -220,6 +308,8 @@ main {
         margin-left: 4vw;
     }
 }
+
+
 
 @media (max-width: 1024px) {
 
@@ -256,7 +346,7 @@ main {
         width: 85%;
     }
 
-    .ARIN .sticker {
+    .arin .sticker {
         width: auto;
         height: 50px;
         bottom: -10%;
@@ -267,6 +357,38 @@ main {
         gap: 15px;
     }
 
+}
+
+@media (max-width: 1023px) {
+    .profileModal {
+        width: 70vw;
+        height: 68vw;
+        padding: 4.5vw;
+    }
+
+    .profileModalName {
+        font-size: 30px;
+
+    }
+
+    .profileModalTop {
+        padding-block: 10px;
+    }
+
+    .profileModalInfo {
+        padding-inline: 2.7vw;
+        padding-top: 2vw;
+        gap: 1.8vw 0;
+    }
+
+    .profileModalInfo div {
+        gap: 1.4vw;
+    }
+
+    .closeBtn {
+        top: 4.5vw;
+        right: 4.5vw;
+    }
 }
 
 @media (max-width:950px) {
@@ -326,9 +448,21 @@ main {
     .profileImg {
         height: 20vh;
     }
-        .home h2 {
+
+    .home h2 {
         margin-left: 4vw;
     }
+
+    .profileModalOverlay {
+        background-color: transparent;
+    }
+    .profileModal{
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .profileModalTop {}
 }
 
 @media (max-width:600px) {
