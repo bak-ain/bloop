@@ -17,7 +17,7 @@
     background-color: #fff;
 }
 
-section {
+.home section {
     padding-block: var(--wep-sec-pad);
     width: 100%;
 }

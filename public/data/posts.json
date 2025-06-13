@@ -280,7 +280,7 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 6,
       "comment": 3,
-      "isScrapped": false,
+      "isScrapped": true,
       "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
@@ -299,7 +299,7 @@
       "hashtag": "#루하 #고막여친 #산책짤",
       "likes": 6,
       "comment": 3,
-      "isScrapped": false,
+      "isScrapped": true,
       "isLiked": false,
       "media": [
         { "type": "image", "url": "/images/2.png" }
@@ -319,7 +319,7 @@
       "likes": 6,
       "comment": 3,
       "isScrapped": false,
-      "isLiked": false,
+      "isLiked": true,
       "media": [
         { "type": "image", "url": "/images/2.png" }
       ]

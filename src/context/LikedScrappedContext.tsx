@@ -67,6 +67,7 @@ export const LikedScrappedProvider = ({
   const artistScrappedInit = posts?.artist?.filter(p => p.isScrapped).map(p => p.id) ?? [];
   const fanScrappedInit = posts?.fan?.filter(p => p.isScrapped).map(p => p.id) ?? [];
   const officialScrappedInit = posts?.official?.filter(p => p.isScrapped).map(p => p.id) ?? [];
+  
   // 2. localStorage에 값이 있으면 그걸 우선, 없으면 위에서 추출한 초기값 사용
   const [artistLikedIds, setArtistLikedIds] = useState<string[]>(
     () => JSON.parse(localStorage.getItem("artistLikedPosts") || JSON.stringify(artistLikedInit))
