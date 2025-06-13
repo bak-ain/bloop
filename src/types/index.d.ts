@@ -35,7 +35,7 @@ export interface ArtistPost extends BasePost {
 }
 
 export interface FanPost extends BasePost {
-  user: UserPreview & { badgeType: 'fan'; badgeLevel: 1 | 2 | 3 }; 
+  user: UserPreview & { badgeType: 'fan'; badgeLevel: 1 | 2 | 3 };
   // fan은 badgeLevel 필수
   // badgeType: 'fan'; // user로 대체
   // badgeLevel: 1 | 2 | 3; // user로 대체
@@ -112,9 +112,16 @@ export interface ScheduleDetail {
 
 //멤버프로필
 export interface MemberCard {
-  id: string;
-  name: string;
-  imageUrl: string;
+  id: string;                // 멤버 고유 ID
+  name: string;              // 이름 (한글/영문)
+  imageUrl: string;          // 프로필 이미지 URL
+  description: string;       // 한 줄 소개
+  birth: string;             // 생년월일 (YYYY.MM.DD)
+  age: number;               // 나이
+  position: string;          // 포지션 (예: 리더 / 리드보컬)
+  height: string;            // 신체 (예: 168cm 45kg)
+  mbti: string;              // MBTI (예: ENTJ)
+  stickerUrl?: string;      // 스티커 이미지 URL (선택)
 }
 
 //나의활동&스크랩
