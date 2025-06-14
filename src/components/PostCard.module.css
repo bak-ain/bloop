@@ -6,7 +6,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  /* z-index: -1; */
+  background: url('/public/images/communityBanner.png') no-repeat center center / cover;
 }
 
 .bannerImg {
@@ -15,9 +15,11 @@
   object-fit: cover;
   display: block;
 }
-.popularPostContainer{
+
+.popularPostContainer {
   padding-top: 200px;
 }
+
 .popularTitle {
   display: flex;
   align-items: center;
@@ -25,9 +27,11 @@
   padding-bottom: 50px;
   /* z-index: 10; */
 }
-.popularTitle h2{
+
+.popularTitle h2 {
   z-index: 2;
 }
+
 .popularTitle img {
   width: 48px;
   height: 43px;
@@ -47,7 +51,7 @@
   /* border: 3px solid var(--font-color-3); */
   font-family: 'Pretendard', sans-serif;
   line-height: 1.5;
-  border: 1px solid var(--font-color-7);
+  /* border: 1px solid var(--font-color-7); */
 }
 
 .post_card.artist {
@@ -261,6 +265,12 @@
   height: auto;
 }
 
+.popularPostContent {
+  width: 1024px;
+  margin: 0 auto;
+  position: relative;
+}
+
 .popularCardAll {
   width: 100%;
   display: flex;
@@ -317,61 +327,53 @@
 .popularCardDesc {
   margin-top: 8px;
 }
+/* 인기게시물 스와이퍼 */
 
-
-:global(.swiper) {
+.popularSwiperCon {
   position: relative;
-  width: 100%;
 }
 
-:global(.swiper-wrapper) {
-  padding: 0 40px;
+:global(.popularSwiper) {
+  width: 860px;
+  display: flex;
+  margin: 0 auto;
 }
 
-:global(.swiper-slide) {
-  width: 280px !important;   /* 원하는 카드 크기로 맞춰주세요 */
-  max-width: 280px !important;
-  min-width: 0 !important;
-  box-sizing: border-box;
+:global(.popularSwiper .swiper-wrapper) {}
+
+:global(.popularSwiper .swiper-slide) {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-/* :global(.swiper-slide:nth-child(n+4)) {
-  display: none !important;
-} */
-
-:global(.swiper-button-next),
-:global(.swiper-button-prev) {
+.popularSwiperCon button {
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
-  width: 30px !important;
-  height: 30px !important;
-  /* background: #fff;
-  border-radius: 50%; */
-  /* box-shadow: 0 2px 8px rgba(0,0,0,0.08); */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* border: 1px solid #bbb; */
-  /* opacity: 0.9; */
 }
 
-:global(.swiper-button-next) {
+.prevBtn {
+  background-image: url('/public/images/icon/page_le_on.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  left: 0;
+
+}
+
+.nextBtn {
+  background-image: url('/public/images/icon/page_ri_on.png');
+  background-size: cover;
+  background-repeat: no-repeat;
   right: 0;
 }
 
-:global(.swiper-button-prev) {
-  left: 0;
-}
 
-:global(.swiper-button-next)::after,
-:global(.swiper-button-prev)::after {
-  font-size: 30px !important;
-  color: var(--font-color-3);
-}
 
 
 
@@ -606,9 +608,9 @@
 
 
 /* =========== 반응형 =========== */
-/* @media (max-width: 1024px) {
+@media (max-width: 1024px) {
   .popularBanner {
     height: 570px;
-    background: url('/images/fan/communityBanner_t.png') no-repeat center center / cover;
+    background: url('/public/images/fan/communityBanner_t.png') no-repeat center center / cover;
   }
-} */
+}

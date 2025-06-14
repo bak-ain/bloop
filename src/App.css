@@ -511,7 +511,9 @@ footer .inner{
 .official main {
   background: var(--font-color-1);
 }
-
+.swiperPopular .swiper-wrapper{
+  /* width: 1024px; */
+}
 .inner {
   max-width: 1024px;
   margin: 0 auto;
