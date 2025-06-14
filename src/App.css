@@ -225,6 +225,7 @@ button {
 .icon_num {
   font-size: 16px;
   font-weight: 400;
+  font-family: var(--main-font-family);
 }
 
 .pagenation_num {
@@ -296,9 +297,11 @@ button {
 }
 
 .card_name {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
-  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .card_p {

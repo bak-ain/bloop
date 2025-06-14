@@ -96,10 +96,6 @@ const PostCard = <T extends ArtistPost | FanPost>({
     badgeLevel: 1
   };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ce43ac81fa2a1b2a15083309103262882cd4a294
   return (
     <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
       {/* 아티스트 게시물 카드 */}
@@ -161,7 +157,7 @@ const PostCard = <T extends ArtistPost | FanPost>({
           )
         }
         <div className={styles.a_meta_row}>
-          <button onClick={e => {
+          <button className={`icon_num`} onClick={e => {
             e.stopPropagation(); // 상세보기로 버블링 방지
             handleLike();
           }}>
@@ -171,14 +167,14 @@ const PostCard = <T extends ArtistPost | FanPost>({
             />{" "}
             {likeCount}
           </button>
-          <button onClick={goToDetail}>
+          <button className={`icon_num`} onClick={goToDetail}>
             <img className={styles.chat_icon}
               src="/images/icon/message.png"
               alt="댓글"
             />{" "}
             {commentCount}
           </button>
-          <button onClick={e => {
+          <button className={`icon_num`} onClick={e => {
             e.stopPropagation(); // 상세보기로 버블링 방지
             handleScrap();
           }}>
@@ -252,21 +248,21 @@ const PostCard = <T extends ArtistPost | FanPost>({
       )}
     </div>
     <div className={styles.meta_row}>
-      <button onClick={handleLike}>
+      <button className={`icon_num`} onClick={handleLike}>
         <img className={styles.like_icon}
           src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
           alt={liked ? "좋아요 취소" : "좋아요"}
         />{" "}
         {likeCount}
       </button>
-      <button onClick={goToDetail}>
+      <button className={`icon_num`} onClick={goToDetail}>
         <img className={styles.chat_icon}
           src="/images/icon/message.png"
           alt="댓글"
         />{" "}
         {commentCount}
       </button>
-      <button onClick={handleScrap}>
+      <button className={`icon_num`} onClick={handleScrap}>
         <img
           className={styles.pop_icon}
           src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}

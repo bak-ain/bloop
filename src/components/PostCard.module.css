@@ -77,8 +77,10 @@
   background: #ddd;
 }
 
-.profile_row .info {
-  flex: 1;
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
 
 .profile_row strong {
@@ -573,7 +575,7 @@
 .bubble_box {
   position: relative;
   background: #f5f5f5;
-  padding: 30px 30px 20px 30px;
+  padding: 20px 20px 15px 20px;
   border-radius: 20px;
   max-width: 100%;
   cursor: pointer;
@@ -582,7 +584,6 @@
   /* ← 들여쓰기 맞추기 */
   flex-direction: column;
   /* ← 들여쓰기 맞추기 */
-  gap: 8px;
   border: 2px solid #333;
   z-index: 2;
 }
@@ -591,7 +592,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-/*   margin-top: 12px; */
+  margin-top: 15px;
   width: 100%;
 }
 
