@@ -52,7 +52,7 @@
 }
 
 .popviewBtn {
-    padding-top: 100px;
+    /* padding-top: 100px; */
     display: flex;
     justify-content: flex-end;
 }

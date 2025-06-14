@@ -125,6 +125,7 @@
     height: 60px;
     margin-bottom: 60px;
     /* border-bottom: 1px solid #eee; */
+    margin-top: var(--wep-sec-pad);
 }
 
 .tabBtn {
@@ -298,6 +299,10 @@
     .loginWrap {
         padding-top: 200px;
     }
+
+    .tabRow {
+        margin-top: var(--tap-sec-pad);
+    }
 }
 
 @media (max-width: 767px) {
@@ -306,6 +311,7 @@
     }
 
     .tabRow {
+        width: 280px;
         height: 50px;
         margin-bottom: 50px;
     }
@@ -318,6 +324,10 @@
         font-size: 30px;
         margin-bottom: 40px;
     }
+
+    .loginBtn {
+        height: 58px;
+    }
 }
 
 @media (max-width: 656px) {
@@ -325,9 +335,28 @@
         padding-top: 100px;
     }
 
+    .tabRow {
+        width: 250px;
+        height: 45px;
+        margin-bottom: 40px;
+    }
+
+    .tabBtn {
+        font-size: 17px;
+        padding: 0;
+    }
+
     .loginTitle {
         font-size: 28px;
         margin-bottom: 35px;
+    }
+
+    .loginBtn {
+        margin-top: 35px;
+    }
+
+    .loginBtn {
+        height: 55px;
     }
 }
 
@@ -337,13 +366,25 @@
     }
 
     .tabRow {
+        width: clamp(200px, 30vw, 300px);
+        height: clamp(40px, 6vw, 60px);
+        margin-bottom: clamp(30px, 5vw, 60px);
+        /* width: 200px;
         height: 40px;
-        margin-bottom: 40px;
+        margin-bottom: 40px; */
+        margin-top: var(--movbile-sec-pad);
+    }
+
+    .tabBtn {
+        font-size: 16px;
+        padding: 0;
     }
 
     .loginTitle {
-        font-size: 24px;
+        /* font-size: 24px; */
         margin-bottom: 30px;
+        font-size: clamp(24px, 5vw, 40px);
+        transition: all 0.3s ease;
     }
 
     .loginForm {
@@ -352,5 +393,24 @@
 
     .loginBtn {
         margin-top: 30px;
+    }
+
+    .input {
+        border-bottom: 1px solid var(--main-color);
+        margin-bottom: 15px;
+    }
+
+    .input:focus {
+        border: 1px solid var(--main-color);
+    }
+
+    .loginBtn {
+        height: 50px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .join {
+        font-weight: 600;
     }
 }

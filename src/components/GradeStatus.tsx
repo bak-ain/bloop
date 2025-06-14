@@ -9,10 +9,12 @@ const GradeStatus = () => {
     <div className={styles.gradeWrap}>
       {/* 상단 안내 텍스트 */}
       <div className={styles.textWrap}>
-        <div className={styles.badge}>B</div>
-        <p className={styles.title}>
-          현재 <span className={styles.highlight}>BLING</span> 등급 이십니다.
-        </p>
+        <div className={styles.gradeInfo}>
+          <img className={styles.badge} src="/images/lv1.png" alt="badge" />
+          <p className={styles.title}>
+            현재 <span className={styles.highlight}>BLING</span> 등급 이십니다.
+          </p>
+        </div>
         <p className={styles.sub}>사용가능한 이모지는 총 3개입니다.</p>
       </div>
 

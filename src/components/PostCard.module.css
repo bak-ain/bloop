@@ -1,25 +1,34 @@
 /* 인기게시물 배경 */
-.popularBanner {
+.popularBannerContainer {
   width: 100%;
   height: 570px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  left: 0;
   top: 0;
-  background: url('/public/images/communityBanner.png') no-repeat center center / cover;
+  left: 0;
 }
 
-.bannerImg {
+.popularBanner {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  flex: 1;
+  background-image: url(../../public/images/fan/fanBanner.png);
+  background-size: cover;
+  background-position: center;
 }
 
-.popularPostContainer{
+.popularBanner_mini {
+  width: 100%;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../../public/images/fan/fanBanner_mini.png);
+}
+
+.popularPostContainer {
   height: 65vh;
 }
-
 
 .popularTitle {
   display: flex;
@@ -30,10 +39,10 @@
 }
 
 
+
 .popularTitle h2 {
   z-index: 2;
 }
-
 
 .popularTitle img {
   width: 48px;
@@ -50,7 +59,7 @@
 .post_card {
   /* background: #fff; */
   border-radius: 12px;
-  /*   padding: 20px; */
+  padding: 20px;
   /* border: 3px solid var(--font-color-3); */
   font-family: 'Pretendard', sans-serif;
   line-height: 1.5;
@@ -60,6 +69,7 @@
   background-color: #f7faff;
 }
  */
+
 .post_card.fan {
   background-color: #f9f9f9;
   border: 3px solid var(--font-color-3);
@@ -327,6 +337,7 @@
 .popularCardDesc {
   margin-top: 8px;
 }
+
 /* 인기게시물 스와이퍼 */
 
 .popularSwiperCon {
@@ -629,8 +640,51 @@
 
 
 @media (max-width: 1024px) {
-.popularBanner {
-    height: 570px;
-    background: url('/public/images/fan/communityBanner_t.png') no-repeat center center / cover;
+  .popularBanner {
+    background-image: url('/public/images/fan/fanBanner_t.png');
   }
-} 
+
+  .popularBanner_mini {
+    background-image: url('/public/images/fan/fanBanner_t_mini.png');
+  }
+
+}      
+
+@media (max-width: 767px) {
+  .popularPostContainer {
+    height: 62vh;
+  }
+
+  .popularPostContent {
+    width: 80%;
+  }
+}
+
+@media (max-width: 656px) {
+  .popularPostContainer {
+    height: 58vh;
+  }
+
+  .popularPostContent {
+    width: 656px;
+  }
+}
+
+@media (max-width: 402px) {
+  .popularBanner {
+    height: 350px;
+    background-image: url('/public/images/fan/fanBanner_m.png');
+  }
+
+  .popularBanner_mini {
+    background-image: url('/public/images/fan/fanBanner_m_mini.png');
+  }
+
+  .popularPostContainer {
+    height: 55vh;
+  }
+
+  .popularPostContent {
+    width: 402px;
+  }
+}
