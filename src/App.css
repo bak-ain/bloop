@@ -508,7 +508,7 @@ header.inner {
 }
 
 footer .inner {
-  padding-bottom: 0;
+    padding-bottom: 0;
 }
 
 .home main {
@@ -518,7 +518,9 @@ footer .inner {
 .official main {
   background: var(--font-color-1);
 }
-
+.swiperPopular .swiper-wrapper{
+  /* width: 1024px; */
+}
 .inner {
   max-width: 1024px;
   margin: 0 auto;
@@ -560,6 +562,7 @@ footer .inner {
 
   .all_p_t {
     padding-top: 80px;
+
   }
 
   .allura_h2 {
