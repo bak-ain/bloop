@@ -1,0 +1,74 @@
+[
+    {
+        "id": "story1",
+        "user": {
+            "id": "doa",
+            "name": "DOA",
+            "profileImage": "/images/mainDoaP.png",
+            "badgeType": "artist"
+        },
+        "date": "1일 전",
+        "thumbnail": "/images/artist/doaStory1.png",
+        "media": [
+            {
+                "type": "image",
+                "url": "/images/artist/doaStory2.png"
+            }
+        ],
+        "isStory": true
+    },
+    {
+        "id": "story2",
+        "user": {
+            "id": "arin",
+            "name": "ARIN",
+            "profileImage": "/images/mainArinP.png",
+            "badgeType": "artist"
+        },
+        "date": "1분 전",
+        "thumbnail":"/images/artist/arinStory1.png",
+        "media": [
+            {
+                "type": "image",
+                "url": "/images/artist/arinStory2.png"
+            }
+        ],
+        "isStory": true
+    },
+    {
+        "id": "story3",
+        "user": {
+            "id": "sei",
+            "name": "SEI",
+            "profileImage": "/images/mainSeiP.png",
+            "badgeType": "artist"
+        },
+        "date": "18시간 전",
+        "thumbnail": "/images/artist/seiStory1.png",
+        "media": [
+            {
+                "type": "image",
+                "url": "/images/artist/seiStory2.png"
+            }
+        ],
+        "isStory": true
+    },
+    {
+        "id": "story4",
+        "user": {
+            "id": "luha",
+            "name": "LUHA",
+            "profileImage": "/images/mainLuhaP.png",
+            "badgeType": "artist"
+        },
+        "date": "30분 전",
+        "media": [
+            {
+                "type": "image",
+                "url": "/images/artist/luhaStory2.png"
+            }
+        ],
+        "thumbnail": "/images/artist/luhaStory1.png",
+        "isStory": true
+    }
+]

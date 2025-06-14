@@ -4,28 +4,79 @@ import FeedLayout from "../components/FeedLayout";
 import Container from "../components/Container";
 import Popup from "../components/Popup";
 import ArtistStory from "../components/ArtistStrory";
-import { ArtistPost } from "../types";
-import { useState } from "react";
+import { ArtistPost, ArtistStoryPost } from "../types";
+import { useState, useEffect } from "react";
 import styles from "../components/FeedLayout.module.css";
+
+// StoryPopup 추가
+const StoryPopup = ({ story, onClose }: { story: ArtistStoryPost; onClose: () => void }) => {
+  // 팝업이 열릴 때 스크롤 막기
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+  // 공유 버튼 클릭 핸들러
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: `${story.user.name}의 스토리`,
+        url: window.location.href,
+      }).catch(() => { });
+    } else {
+      // fallback: 클립보드 복사
+      navigator.clipboard.writeText(window.location.href);
+      alert("링크가 복사되었습니다!");
+    }
+  };
+
+  return (
+    <div className={styles.storyPopupOverlay}>
+      <div className={styles.storyPopup}>
+        <button className={styles.closeBtn} onClick={onClose}>닫기</button>
+        <div className={styles.storyHeader}>
+          <div className={`${styles.storyPopUpProfile} ${story.user.name ? styles[story.user.name.toLowerCase()] : ""}`}>
+            <img src={story.user.profileImage} alt={story.user.name} className={styles.profileImg} />
+          </div>
+          <span className={styles.userName}>{story.user.name}</span>
+          <span className={styles.timeAgo}>{story.date}</span>
+          <button className={styles.shareBtn} onClick={handleShare}>공유</button>
+        </div>
+        <div className={styles.storyImageWrap}>
+          <img src={story.media[0].url} alt="" className={styles.storyImage} />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ArtistFeed = () => {
   const { artistPosts } = usePostList();
   const { artistLikedIds, artistScrappedIds, toggleLike, toggleScrap } = useLikedScrapped();
   const [selectedPost, setSelectedPost] = useState<ArtistPost | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedStory, setSelectedStory] = useState<ArtistStoryPost | null>(null);
 
   const handleClosePopup = () => {
     setSelectedPost(null);
     setIsPopupOpen(false);
   };
+  const handleCloseStoryPopup = () => {
+    setSelectedStory(null);
+  };
 
   return (
     <Container>
       <div className={styles.artistFeedContainer}>
-        <ArtistStory onStoryClick={(story) => {
-          setSelectedPost(story);
-          // setIsPopupOpen(true);
-        }} />
+        <ArtistStory
+          onStoryClick={(story) => {
+            setSelectedStory(story);
+          }}
+        />
+        {selectedStory && (
+          <StoryPopup story={selectedStory} onClose={handleCloseStoryPopup} />
+        )}
         <FeedLayout
           className={styles.artistFeedLayout}
           posts={artistPosts}

@@ -41,6 +41,7 @@ export interface ArtistStoryPost {
     type: 'image' | 'video';
     url: string;
   }[];
+  thumbnail: string; // 스토리 썸네일 (이미지)
   isStory: true; // 스토리 여부
 }
 
