@@ -407,11 +407,11 @@ button {
 
 }
 
-.offic_h3 {
+/* .offic_h3 {
   font-size: 18px;
   font-weight: 600;
 }
-
+ */
 .offic_h3 {
   font-size: 20px;
   font-weight: 600;
@@ -459,7 +459,11 @@ button {
   font-weight: 400;
 }
 
-
+/* 회원가입  */
+.join_p {
+  font-size: 20px;
+  font-weight: 400;
+}
 
 /* 공통 레이아웃 */
 
@@ -568,6 +572,10 @@ footer .inner{
 
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {
+  .join_p {
+    font-size: 16px;
+  }
+
   .inner {
     padding: 0 20px;
   }
