@@ -112,6 +112,11 @@ const Home = () => {
     .filter(item => item.type === "default" || item.type === "new")
     .map(item => {
       const key = item.id as CustomMainOfficialKey;
+      // 썸네일 추출 로직 추가
+      let thumbnail = item.media?.[0]?.url;
+      if (item.type === "new" && item.media?.[0]?.thumbnail) {
+        thumbnail = item.media[0].thumbnail;
+      }
       return {
         ...item,
         title: customMainOfficial[key]?.title ?? item.title,
@@ -120,6 +125,8 @@ const Home = () => {
           ...m,
           type: m.type === "image" || m.type === "video" ? m.type : "image",
         })),
+        // 썸네일 필드 추가
+        thumbnail,
       };
     });
 

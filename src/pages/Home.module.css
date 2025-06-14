@@ -159,37 +159,6 @@ main {
     opacity: 0.3;
 }
 
-.mainOfficialSwiper {
-    width: 1024px;
-}
-
-/* Swiper에서 활성화된(가운데) 슬라이드에 효과 app.css에서 진행 */
-
-
-.mainOfficialCard {
-    background: #222;
-    border-radius: 32px;
-    overflow: hidden;
-    /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2); */
-    text-align: center;
-    color: #fff;
-    position: relative;
-}
-
-.mainOfficialImg {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-}
-
-.mainOfficialText {
-    padding: 24px 16px 32px 16px;
-}
-
-.mainOfficialTitle {
-    text-align: left;
-    margin-bottom: 32px;
-}
 
 .blurOverlay {
     position: absolute;
@@ -296,6 +265,107 @@ main {
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+/* 메인오피셜 */
+.mainOfficialSwiper {
+    width: 1024px;
+}
+
+
+/* Swiper에서 활성화된(가운데) 슬라이드에 효과 app.css에서 진행 */
+
+
+.mainOfficialCard {
+    background: #222;
+    border-radius: 32px;
+    overflow: hidden;
+    /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2); */
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.mainOfficialImg {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.mainOfficialText {
+    padding: 24px 16px 32px 16px;
+}
+
+.mainOfficialTitle {
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.mainOfficial {
+    /* position: relative; */
+}
+
+.mainOfficialSwiperWrapper {
+    position: relative;
+    width: 62%;
+    margin: 0 auto;
+}
+
+.mainOfficialSwiper {
+    /* height: 390px; */
+    position: relative;
+    padding-bottom: 60px;
+    /* 페이지네이션 공간 확보 */
+}
+
+.mainOfficialPrev,
+.mainOfficialNext {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.mainOfficialPrev {
+    left: 0px;
+    background-image: url('/public/images/icon/mainPageLe.png');
+}
+
+.mainOfficialNext {
+    right: 0;
+    background-image: url('/public/images/icon/mainPageRi.png');
+}
+
+.mainOfficialPagination {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.mainOfficialBullet {
+    width: 8px;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    opacity: 0.7;
+    margin: 0 3px;
+    transition: background 0.2s;
+}
+
+.mainOfficialBulletActive {
+    background: #ff6fcb;
+    opacity: 1;
 }
 
 @media (max-width: 1620px) {
@@ -502,6 +572,7 @@ main {
         gap: 4vw;
         /* flex-direction: column; */
     }
+
     .profileModalName {
         margin-top: 10vh;
     }
