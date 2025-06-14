@@ -29,10 +29,7 @@ const PopularPost = ({ posts, onPostClick }: PopularPostProps) => {
 
   return (
     <>
-      <div className={styles.popularBanner}>
-        <img src="/images/communityBanner.png" alt="배너" className={styles.bannerImg} />
-      </div>
-      <div className="inner">
+      <div className={` ${styles.popularPostContainer} con`}>
         <div className={styles.popularTitle}>
           <h2 className="h3_tit">TOP LOOP</h2>
           <img src="/images/icon/sticker1.png" alt="눈스티커" />
