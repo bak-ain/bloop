@@ -18,9 +18,9 @@ const GradeStatus = () => {
 
       {/* 이모지 리스트 */}
       <div className={styles.emojiRow}>
-        <EmojiCard img="/images/emoji_pop.png" label="POP!" />
-        <EmojiCard img="/images/emoji_love.png" label="LOVE" />
-        <EmojiCard img="/images/emoji_hello.png" label="HELLO" />
+        <img src="/images/emoji1.png" alt="POP!" />
+        <img src="/images/emoji2.png" alt="LOVE" />
+        <img src="/images/emoji3.png" alt="HELLO" />
       </div>
 
       {/* 버튼 영역 */}
