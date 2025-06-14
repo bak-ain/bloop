@@ -96,7 +96,10 @@ const PostCard = <T extends ArtistPost | FanPost>({
     badgeLevel: 1
   };
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> ce43ac81fa2a1b2a15083309103262882cd4a294
   return (
     <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
       {/* 아티스트 게시물 카드 */}
