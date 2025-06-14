@@ -41,6 +41,7 @@
   /* border: 3px solid var(--font-color-3); */
   font-family: 'Pretendard', sans-serif;
   line-height: 1.5;
+  border: 1px solid var(--font-color-7);
 }
 
 .post_card.artist {
@@ -48,7 +49,7 @@
 }
 
 .post_card.fan {
-  background-color: #fff9fb;
+  background-color: #f9f9f9;
 }
 
 .profile_row {
@@ -253,6 +254,12 @@
   height: auto;
 }
 
+.popularCardAll {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .popularCard {
   width: 100%;
   max-width: 280px;
@@ -266,6 +273,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin: 0 auto;
 }
 
 .popularCardHeader {
@@ -304,7 +312,59 @@
 }
 
 
+:global(.swiper) {
+  position: relative;
+  width: 100%;
+}
 
+:global(.swiper-wrapper) {
+  padding: 0 40px;
+}
+
+:global(.swiper-slide) {
+  width: 280px !important;   /* 원하는 카드 크기로 맞춰주세요 */
+  max-width: 280px !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+/* :global(.swiper-slide:nth-child(n+4)) {
+  display: none !important;
+} */
+
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 30px !important;
+  height: 30px !important;
+  /* background: #fff;
+  border-radius: 50%; */
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.08); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid #bbb; */
+  /* opacity: 0.9; */
+}
+
+:global(.swiper-button-next) {
+  right: 0;
+}
+
+:global(.swiper-button-prev) {
+  left: 0;
+}
+
+:global(.swiper-button-next)::after,
+:global(.swiper-button-prev)::after {
+  font-size: 30px !important;
+  color: var(--font-color-3);
+}
 
 
 
@@ -486,25 +546,29 @@
 
 /* 말풍선 상자 */
 .bubble_box {
-   position: relative;
+  position: relative;
   background: #f5f5f5;
   padding: 30px 30px 20px 30px;
   border-radius: 14px;
   max-width: 100%;
   cursor: pointer;
   width: 100%;
-  display: flex;           /* ← 들여쓰기 맞추기 */
-  flex-direction: column;  /* ← 들여쓰기 맞추기 */
-  gap: 8px;  
-  border: 3px solid #333;   
-  z-index: 1;            
+  display: flex;
+  /* ← 들여쓰기 맞추기 */
+  flex-direction: column;
+  /* ← 들여쓰기 맞추기 */
+  gap: 8px;
+  border: 3px solid #333;
+  z-index: 1;
 }
+
 .bubble_tail {
- flex-shrink: 0;
-  align-self: flex-start;   /* 위에서부터 정렬 */
-  margin-top: 18px; 
-  z-index: 2; 
-  
+  flex-shrink: 0;
+  align-self: flex-start;
+  /* 위에서부터 정렬 */
+  margin-top: 18px;
+  z-index: 2;
+
 }
 
 .a_meta_row {
@@ -531,3 +595,14 @@
   width: 30px;
   height: 30px;
 }
+
+
+
+
+/* =========== 반응형 =========== */
+/* @media (max-width: 1024px) {
+  .popularBanner {
+    height: 570px;
+    background: url('/images/fan/communityBanner_t.png') no-repeat center center / cover;
+  }
+} */

@@ -225,7 +225,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                     <div className={styles.profile_row}>
                         <img className={styles.profile_img} src={data.user.profileImage} alt={data.user.name} />
                         <div className={styles.info}>
-                            <strong>
+                            <strong className={styles.card_name}>
                                 {data.user.name}
                                 <img
                                     className={styles.badge_img}
