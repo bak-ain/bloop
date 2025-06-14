@@ -102,25 +102,15 @@ const PostCard = <T extends ArtistPost | FanPost>({
             {isArtist ? (
                 <div className={styles.profile_bubble_layout}>
                     <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
-                    {/* <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
+                   {/*  <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
                         <path
                             d="M17,0 L5,15 L17,30 Z"
                             fill="#f5f5f5"
-                            
                             strokeWidth="2"
                             strokeLinejoin="round"
                             strokeLinecap="round"
                         />
                     </svg> */}
-                    <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
-                        <path
-                            d="M20,2 Q-10,15 20,28 Z"
-                            fill="#f5f5f5"
-                            stroke="#322828"
-                            strokeWidth="2"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
 
                     <div className={styles.bubble_box} onClick={goToDetail}>
                         <div className={styles.infoTop}>

@@ -40,7 +40,7 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
 
     return (
         <div className={`${styles.feedContain} ${className ?? ""}`}>
-            <div className={`${styles.feedLayout} ${styles.inner} inner`}>
+           
                 <div className={styles.popviewBtn}>
                     {/* <div style={{ marginBottom: 16 }}> */}
                     <button className={`${styles.popView} btn_txt`}
@@ -122,7 +122,7 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
                         </button>
                     </div>
                 )}
-            </div>
+           
 
         </div>
     );
