@@ -1,18 +1,27 @@
 .feedContain {
-    background-color: #F9F9F9;
-}
-
-.feedLayout {
     width: 100%;
     display: flex;
     flex-direction: column;
 
 }
 
+.artistFeedContainer,
+.fanFeedContainer {
+    background-color: #F9F9F9;
+    position: relative;
+}
 
+/* .feedLayout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 .inner {
     padding-left: 80px;
     padding-right: 80px;
+} */
+.artistFeedLayout .feedLayout {
+    padding: 0 80px;
 }
 
 .writeButton {
@@ -128,3 +137,4 @@
     gap: 100px;
     padding-top: 50px;
 }
+

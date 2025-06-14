@@ -208,17 +208,17 @@ const Join = () => {
             Agency
           </button>
         </div>
-        <div className={styles.joinTitle}>회원가입</div>
+        <div className={`${styles.joinTitle} h3_tit`}>회원가입</div>
         <form className={styles.joinForm} onSubmit={handleSubmit}>
           {userType === 'fan' ? (
             <>
-              <label>아이디*<input name="id" value={fanInput.id} onChange={handleChange} required placeholder="Enter your ID" /></label>
-              <label>닉네임*<input name="nickname" value={fanInput.nickname} onChange={handleChange} required placeholder="Enter your Nickname" /></label>
-              <label>비밀번호*<input name="password" type="password" value={fanInput.password} onChange={handleChange} required placeholder="Enter your password" /></label>
-              <label>비밀번호확인*<input name="confirmPassword" type="password" value={fanInput.confirmPassword} onChange={handleChange} required placeholder="Enter your password one more time." /></label>
-              <label>이름*<input name="name" value={fanInput.name} onChange={handleChange} required placeholder="Enter your name" /></label>
-              <label>
-                이메일*
+              <label className={`join_p`}>아이디<span className={styles.red_star}>*</span><input name="id" value={fanInput.id} onChange={handleChange} required placeholder="Enter your ID" /></label>
+              <label className={`join_p`}>닉네임 <span className={styles.red_star}>*</span><input name="nickname" value={fanInput.nickname} onChange={handleChange} required placeholder="Enter your Nickname" /></label>
+              <label className={`join_p`}>비밀번호 <span className={styles.red_star}>*</span><input name="password" type="password" value={fanInput.password} onChange={handleChange} required placeholder="Enter your password" /></label>
+              <label className={`join_p`}>비밀번호확인 <span className={styles.red_star}>*</span><input name="confirmPassword" type="password" value={fanInput.confirmPassword} onChange={handleChange} required placeholder="Enter your password one more time." /></label>
+              <label className={`join_p`}>이름 <span className={styles.red_star}>*</span><input name="name" value={fanInput.name} onChange={handleChange} required placeholder="Enter your name" /></label>
+              <label className={`join_p`}>
+                이메일 <span className={styles.red_star} >*</span>
                 <div className={styles.emailInputWrap}>
                   <input
                     type="text"
@@ -262,14 +262,14 @@ const Join = () => {
                   )}
                 </div>
               </label>
-              <label>휴대폰*<input name="phone" value={fanInput.phone} onChange={handleChange} required placeholder="Enter your phone number" /></label>
+              <label className={`join_p`}>휴대폰 <span className={styles.red_star}>*</span><input name="phone" value={fanInput.phone} onChange={handleChange} required placeholder="Enter your phone number" /></label>
               <div className={styles.row}>
-                <span>성별</span>
+                <span className={`join_p`}>성별</span>
                 <label><input type="radio" checked={fanInput.gender === 'male'} onChange={() => handleGender('male')} /> 남성</label>
                 <label><input type="radio" checked={fanInput.gender === 'female'} onChange={() => handleGender('female')} /> 여성</label>
               </div>
               <div className={styles.row}>
-                <span>생년월일</span>
+                <span className={`join_p`}>생년월일</span>
                 <input
                   name="birth.year"
                   value={fanInput.birth.year}
@@ -318,10 +318,10 @@ const Join = () => {
                 )}
               </div>
               <div className={styles.agreeBox}>
-                <label><input type="checkbox" name="agree.privacy" checked={fanInput.agree.privacy} onChange={handleChange} required /> 개인정보 수집/이용 동의 (필수)</label>
-                <label><input type="checkbox" name="agree.communityPolicy" checked={fanInput.agree.communityPolicy} onChange={handleChange} required /> 커뮤니티 운영 정책 동의 (필수)</label>
-                <label><input type="checkbox" name="agree.marketing" checked={!!fanInput.agree.marketing} onChange={handleChange} /> 이벤트 관련 광고 및 정보 수신 동의 (선택)</label>
-                <label><input type="checkbox" name="agree.over14" checked={fanInput.agree.over14} onChange={handleChange} required /> 본인은 만 14세 이상입니다 (필수)</label>
+                <label className={`join_p`}><input type="checkbox" name="agree.privacy" checked={fanInput.agree.privacy} onChange={handleChange} required /> 개인정보 수집/이용 동의 (필수)</label>
+                <label className={`join_p`}><input type="checkbox" name="agree.communityPolicy" checked={fanInput.agree.communityPolicy} onChange={handleChange} required /> 커뮤니티 운영 정책 동의 (필수)</label>
+                <label className={`join_p`}><input type="checkbox" name="agree.marketing" checked={!!fanInput.agree.marketing} onChange={handleChange} /> 이벤트 관련 광고 및 정보 수신 동의 (선택)</label>
+                <label className={`join_p`}><input type="checkbox" name="agree.over14" checked={fanInput.agree.over14} onChange={handleChange} required /> 본인은 만 14세 이상입니다 (필수)</label>
               </div>
             </>
           ) : (

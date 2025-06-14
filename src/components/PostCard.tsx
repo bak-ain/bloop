@@ -96,6 +96,53 @@ const PostCard = <T extends ArtistPost | FanPost>({
     badgeLevel: 1
   };
 
+    // 최신 좋아요 수 동기화
+    useEffect(() => {
+        setLikeCount(postLikeCounts[data.id] ?? data.likes);
+    }, [postLikeCounts, data.id, data.likes]);
+
+    // 최신 댓글 수 동기화
+    const { artistPosts, fanPosts } = usePostList();
+    useEffect(() => {
+        if (isArtist) {
+            const found = artistPosts.find((p) => p.id === data.id);
+            if (found && found.comment !== commentCount) {
+                setCommentCount(found.comment);
+            }
+        } else {
+            const found = fanPosts.find((p) => p.id === data.id);
+            if (found && found.comment !== commentCount) {
+                setCommentCount(found.comment);
+            }
+        }
+        // eslint-disable-next-line
+    }, [artistPosts, fanPosts, data.id, isArtist]);
+
+    const handleLike = () => {
+        onLike();
+        // setLiked와 setLikeCount는 context에서 동기화되므로 별도 setState 불필요
+    };
+
+    const handleScrap = () => {
+        onScrap();
+        // setScrapped는 context에서 동기화되므로 별도 setState 불필요
+    };
+
+    // user가 없을 때 기본값 처리
+    const user = data.user ?? {
+        name: "알 수 없음",
+        profileImage: "/images/3.png",
+        badgeType: "fan" as const,
+        badgeLevel: 1
+    };
+
+    return (
+        <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
+            {/* 아티스트 게시물 카드 */}
+            {isArtist ? (
+                <div className={styles.profile_bubble_layout}>
+                    <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
+                   {/*  <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
   return (
     <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
       {/* 아티스트 게시물 카드 */}
@@ -106,21 +153,11 @@ const PostCard = <T extends ArtistPost | FanPost>({
                         <path
                             d="M17,0 L5,15 L17,30 Z"
                             fill="#f5f5f5"
-                            
                             strokeWidth="2"
                             strokeLinejoin="round"
                             strokeLinecap="round"
                         />
                     </svg> */}
-          <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
-            <path
-              d="M20,2 Q-10,15 20,28 Z"
-              fill="#f5f5f5"
-              stroke="#322828"
-              strokeWidth="2"
-              strokeLinejoin="round"
-            />
-          </svg>
 
           <div className={styles.bubble_box} onClick={goToDetail}>
             <div className={styles.infoTop}>

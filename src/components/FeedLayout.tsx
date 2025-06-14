@@ -59,17 +59,17 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
                     </button>
                 </div>
                 <div className={styles.feed}>
-                {paged.map(post => (
-                    <PostCard
-                        key={post.id}
-                        data={post}
-                        likedPostIds={likedIds}
-                        scrappedPostIds={scrappedIds}
-                        onLike={() => onLike(post.id, post.likes, post)}
-                        onScrap={() => onScrap(post.id, post)}
-                        onClick={() => onPostClick(post)}
-                    />
-                ))}
+                    {paged.map(post => (
+                        <PostCard
+                            key={post.id}
+                            data={post}
+                            likedPostIds={likedIds}
+                            scrappedPostIds={scrappedIds}
+                            onLike={() => onLike(post.id, post.likes, post)}
+                            onScrap={() => onScrap(post.id, post)}
+                            onClick={() => onPostClick(post)}
+                        />
+                    ))}
                 </div>
                 {/* 페이지네이션 */}
                 {totalPages > 1 && (

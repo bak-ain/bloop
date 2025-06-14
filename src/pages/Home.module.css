@@ -218,7 +218,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .profileModal {
@@ -261,19 +261,20 @@ main {
     color: var(--font-color-7);
     display: flex;
     flex-wrap: wrap;
-    padding-inline: 30px;
-    padding-top: 30px;
-    gap: 20px 0;
+    padding-left: 30px;
+    padding-top: 20px;
+    gap: 10px 0;
     border-top: 2px solid var(--main-color);
-
-
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 144%;
 }
 
 .profileModalInfo div {
     display: flex;
     gap: 15px;
     width: 50%;
-    ;
+    align-items: center;
 }
 
 .profileModalInfo span {
@@ -376,13 +377,13 @@ main {
     }
 
     .profileModalInfo {
-        padding-inline: 2.7vw;
+        padding-left: 2.7vw;
         padding-top: 2vw;
-        gap: 1.8vw 0;
+        /* gap: 1.8vw 0; */
     }
 
     .profileModalInfo div {
-        gap: 1.4vw;
+        gap: 1vw;
     }
 
     .closeBtn {
@@ -412,6 +413,16 @@ main {
 
     .profileImg {
         height: 17vh;
+    }
+
+    .profileModalInfo {
+        font-size: 17px;
+        justify-content: space-between;
+        line-height: 120%;
+    }
+
+    .profileModalInfo div {
+        width: 45%;
     }
 }
 
@@ -456,13 +467,30 @@ main {
     .profileModalOverlay {
         background-color: transparent;
     }
-    .profileModal{
+
+    .profileModal {
         width: 100%;
         height: 100%;
         border-radius: 0;
+        /* display: flex;
+        flex-direction: column;
+        gap: 10vh; */
     }
 
     .profileModalTop {}
+
+    .profileModalName {
+        margin-top: 10vh;
+    }
+
+    .profileModalInfo div {
+        width: 100%;
+        /* font-size: ; */
+    }
+
+    .profileModalInfo span {
+        font-size: 18px;
+    }
 }
 
 @media (max-width:600px) {

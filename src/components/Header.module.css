@@ -10,6 +10,7 @@
     z-index: 1000;
 }
 
+
 .nav {
     width: 680px;
     height: 60px;
@@ -193,9 +194,11 @@
     .header {
         height: 70px;
     }
-    .tabBar{
+
+    .tabBar {
         display: flex;
     }
+
     .blur {
         height: 70px;
     }

@@ -25,7 +25,7 @@ const MemberProfileModal = ({ member, onClose }: MemberProfileModalProps) => (
 
         <div className={`${styles.profileModalDesc} main_card_p`}>{member.description}</div>
       </div>
-      <div className={`${styles.profileModalInfo} .btn_txt`}>
+      <div className={`${styles.profileModalInfo}`}>
         <div>
           <span>생년월일</span> {member.birth} ({member.age}세)
         </div>

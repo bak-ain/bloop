@@ -219,7 +219,7 @@ button {
 .day_span {
   font-size: 18px;
   font-weight: 400;
-    color: var(--font-color-7);
+  color: var(--font-color-7);
 }
 
 .icon_num {
@@ -300,11 +300,12 @@ button {
   font-weight: 600;
   line-height: 24px;
 }
-.card_p{
+
+.card_p {
   font-size: 20px;
   font-weight: 500;
   line-height: 33px;
-} 
+}
 
 /* 커뮤니티 */
 .fan_top_name {
@@ -406,11 +407,11 @@ button {
 
 }
 
-.offic_h3 {
+/* .offic_h3 {
   font-size: 18px;
   font-weight: 600;
 }
-
+ */
 .offic_h3 {
   font-size: 20px;
   font-weight: 600;
@@ -458,7 +459,11 @@ button {
   font-weight: 400;
 }
 
-
+/* 회원가입  */
+.join_p {
+  font-size: 20px;
+  font-weight: 400;
+}
 
 /* 공통 레이아웃 */
 
@@ -492,6 +497,13 @@ main {
   overflow: hidden;
 }
 
+header.inner {
+  padding-bottom: 0;
+}
+footer .inner{
+    padding-bottom: 0;
+}
+
 .home main {
   padding-top: 0;
 }
@@ -505,7 +517,14 @@ main {
   margin: 0 auto;
   padding: 0 40px;
   width: 100%;
-   padding-bottom: var(--wep-footer-pad);
+  padding-bottom: var(--wep-footer-pad);
+}
+
+.con {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
 }
 
 #chatbase-bubble-button {
@@ -545,6 +564,7 @@ main {
   }
 
   .inner {
+    max-width: 100%;
     padding-bottom: var(--wep-sec-pad);
   }
 
@@ -552,7 +572,15 @@ main {
 
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {
+  .join_p {
+    font-size: 16px;
+  }
+
   .inner {
+    padding: 0 20px;
+  }
+
+  .con {
     padding: 0 20px;
   }
 
