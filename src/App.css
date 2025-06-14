@@ -238,6 +238,15 @@ button {
   font-weight: 400;
 }
 
+.btnBlue {
+  border-radius: 5px;
+  background: var(--point-color-blue);
+  color: #fff;
+  padding: 12px 80px;
+  line-height: 150%;
+  box-sizing: border-box;
+}
+
 .h3_tit {
   font-size: 40px;
   font-weight: 700;
@@ -255,7 +264,7 @@ button {
 
 .main_card_h2 {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .main_card_p {
@@ -474,6 +483,9 @@ button {
 }
 
 /* 공통 레이아웃 */
+.mainOfficialSwiper .swiper-wrapper {
+  height: 350px;
+}
 
 .mainOfficialSwiper .swiper-slide {
   transition: transform 0.3s, opacity 0.3s;
@@ -483,14 +495,14 @@ button {
 
 .mainOfficialSwiper .swiper-slide.swiper-slide-active {
   /* opacity: 1; */
-  transform: scale(1.1);
+  transform: scale(1);
   z-index: 2;
 }
 
 .mainOfficialSwiper .swiper-slide.swiper-slide-next,
 .mainOfficialSwiper .swiper-slide.swiper-slide-prev {
   /* opacity: 0.8; */
-  transform: scale(0.92);
+  transform: scale(0.9);
   z-index: 1;
 }
 
@@ -653,6 +665,11 @@ footer .inner,
     max-width: 100%;
     padding-bottom: var(--wep-sec-pad);
   }
+
+  .mainOfficialSwiper .swiper-wrapper {
+    height: 250px;
+  }
+}
 
   .popular-swiper-prev {
     left: 10px;
@@ -868,6 +885,15 @@ footer .inner,
 }
 
 
+  .all_p_t {
+    padding-top: 80px;
+
+  }
+
+  .mainOfficialSwiper .swiper-wrapper {
+    height: 350px;
+  }
+}
 
 @media (max-width:530px) {
 
@@ -1066,6 +1092,9 @@ footer .inner,
 }
 
 @media (max-width: 402px) {
+  .btnBlue{
+    padding: 10px 66px;
+  }
   .offic_h2 {
     font-size: 22px;
   }
@@ -1091,6 +1120,12 @@ footer .inner,
     font-weight: 400;
   }
 
+}
+
+@media (max-width: 375px) {
+  .mainOfficialSwiper .swiper-wrapper {
+    height: 300px;
+  }
 }
 
 /* 오피스 페이지 네이션 */

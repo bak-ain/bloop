@@ -101,11 +101,24 @@ const Home = () => {
   const { user } = useUserContext();
   const isLogin = !!user;
   const { officialPosts } = usePostList();
-  type CustomMainOfficialKey = "h1" | "h2" | "h3";
+
+  type CustomMainOfficialKey = "h1" | "h2" | "h3" | "m1" | "m2" | "m3";
   const customMainOfficial: Record<CustomMainOfficialKey, { title: string; description: string }> = {
-    h1: { title: "하이비스 데뷔 첫 풀 앨범‘STARSEED’", description: "만족스러운 콘서트를 위해!" },
+    h1: { title: "데뷔 2주년 팬미팅 ", description: "팬쇼케이스 RE:MEMBER 개최" },
     h2: { title: "도아 솔로 출격 !", description: "미니 1 집 ‘FLASHPOINT’ 발매" },
-    h3: { title: "데뷔 2주년 팬미팅 ", description: "팬쇼케이스 RE:MEMBER 개최" },
+    h3: { title: "하이비스 콘서트 STARSEED", description: "만족스러운 콘서트를 위해!" },
+    m1: {
+      title: "DREAM M/V 티저 선공개",
+      description: "DREAM M/V 티저 선공개",
+    },
+    m2: {
+      title: "Go Together 티저 공개",
+      description: "순간의 설렘을 지금 미리 만나보세요.",
+    },
+    m3: {
+      title: "Go Together 티저 공개",
+      description: "팬과 함께 만드는 순간의 설렘!",
+    },
   };
 
   const officialDefaultList = officialPosts
