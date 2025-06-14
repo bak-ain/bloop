@@ -47,124 +47,126 @@ const Mypage = () => {
 
     return (
         <Container>
-            <div className={`${styles.mypageWrap} inner`}>
-                <div className={styles.profileSection}>
-                    <div className={styles.profileCard}>
-                        <div className={styles.profileTop}>
-                            <img
-                                src={userPreview.profileImage}
-                                alt={userPreview.name}
-                                className={styles.profileImg}
-                            />
-                            {userPreview.badgeType === "fan" && (
+            <div className="all_p_t">
+                <div className={`${styles.mypageWrap}  inner`}>
+                    <div className={styles.profileSection}>
+                        <div className={styles.profileCard}>
+                            <div className={styles.profileTop}>
                                 <img
-                                    className={styles.badge_img}
-                                    src={getBadgeImage(
-                                        userPreview.badgeType,
-                                        userPreview.badgeLevel
-                                    )}
-                                    alt="badge"
+                                    src={userPreview.profileImage}
+                                    alt={userPreview.name}
+                                    className={styles.profileImg}
                                 />
-                            )}
-                        </div>
-                        <div className={styles.profileInfo}>
-                            <p className={styles.profileName}>{userPreview.name} 님</p>
-                            <span className={styles.profileId}>@{userPreview.userId}</span>
+                                {userPreview.badgeType === "fan" && (
+                                    <img
+                                        className={styles.badge_img}
+                                        src={getBadgeImage(
+                                            userPreview.badgeType,
+                                            userPreview.badgeLevel
+                                        )}
+                                        alt="badge"
+                                    />
+                                )}
+                            </div>
+                            <div className={styles.profileInfo}>
+                                <p className={styles.profileName}>{userPreview.name} 님</p>
+                                <span className={styles.profileId}>@{userPreview.userId}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className={styles.levelSection}>
-                    <div className={styles.levelCard}>
-                        <div className={styles.levelInfo}>
-                            <div className={styles.levelLabel}>
-                                현재 {userPreview.name}님의 등급은
+                    <div className={styles.levelSection}>
+                        <div className={styles.levelCard}>
+                            <div className={styles.levelInfo}>
+                                <div className={styles.levelLabel}>
+                                    현재 {userPreview.name}님의 등급은
+                                </div>
+                                <div className={styles.levelName}>
+                                    <span>BLING</span>
+                                </div>
+                                <div className={styles.levelDesc}>
+                                    다음 등급까지 게시물 <b>{mockLevel.remaining.posts}개</b>, 댓글 <b>{mockLevel.remaining.comments}개</b> 남았습니다.
+                                </div>
+                                <button
+                                    className={styles.levelBtn}
+                                    onClick={() => navigate("/levelguide")}
+                                >
+                                    등급안내
+                                </button>
                             </div>
-                            <div className={styles.levelName}>
-                                <span>BLING</span>
-                            </div>
-                            <div className={styles.levelDesc}>
-                                다음 등급까지 게시물 <b>{mockLevel.remaining.posts}개</b>, 댓글 <b>{mockLevel.remaining.comments}개</b> 남았습니다.
-                            </div>
-                            <button
-                                className={styles.levelBtn}
-                                onClick={() => navigate("/levelguide")}
-                            >
-                                등급안내
-                            </button>
-                        </div>
-                        <div className={styles.levelProgressWrap}>
-                            <div className={styles.levelProgressCircle}>
-                                <svg width="110" height="110">
-                                    <circle
-                                        cx="55"
-                                        cy="55"
-                                        r="48"
-                                        stroke="#e0e0e0"
-                                        strokeWidth="8"
-                                        fill="none"
-                                    />
-                                    <circle
-                                        cx="55"
-                                        cy="55"
-                                        r="48"
-                                        stroke="#2196f3"
-                                        strokeWidth="8"
-                                        fill="none"
-                                        strokeDasharray={2 * Math.PI * 48}
-                                        strokeDashoffset={2 * Math.PI * 48 * (1 - mockLevel.progress / 100)}
-                                        strokeLinecap="round"
-                                        style={{ transition: "stroke-dashoffset 0.5s" }}
-                                    />
-                                </svg>
-                                <div className={styles.levelProgressInner}>
-                                    <img
-                                        src={getLevelBadgeIcon(mockLevel.nextLevel ?? mockLevel.currentLevel)}
-                                        alt={mockLevel.nextLevel ?? mockLevel.currentLevel}
-                                        className={styles.levelBadge}
-                                    />
-                                    <div className={styles.levelProgressPercent}>{mockLevel.progress}%</div>
+                            <div className={styles.levelProgressWrap}>
+                                <div className={styles.levelProgressCircle}>
+                                    <svg width="110" height="110">
+                                        <circle
+                                            cx="55"
+                                            cy="55"
+                                            r="48"
+                                            stroke="#e0e0e0"
+                                            strokeWidth="8"
+                                            fill="none"
+                                        />
+                                        <circle
+                                            cx="55"
+                                            cy="55"
+                                            r="48"
+                                            stroke="#2196f3"
+                                            strokeWidth="8"
+                                            fill="none"
+                                            strokeDasharray={2 * Math.PI * 48}
+                                            strokeDashoffset={2 * Math.PI * 48 * (1 - mockLevel.progress / 100)}
+                                            strokeLinecap="round"
+                                            style={{ transition: "stroke-dashoffset 0.5s" }}
+                                        />
+                                    </svg>
+                                    <div className={styles.levelProgressInner}>
+                                        <img
+                                            src={getLevelBadgeIcon(mockLevel.nextLevel ?? mockLevel.currentLevel)}
+                                            alt={mockLevel.nextLevel ?? mockLevel.currentLevel}
+                                            className={styles.levelBadge}
+                                        />
+                                        <div className={styles.levelProgressPercent}>{mockLevel.progress}%</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className={styles.fanMbtiSection}>
-                    <div className={styles.fanMbtiCard}>
-                        <img
-                            src="/images/icon/heart_icon.png"
-                            alt="하트마스터"
-                            className={styles.heartIcon}
-                        />
-                        <h3 className={styles.fanMbtiTitle}>하트마스터</h3>
-                        <p className={styles.fanMbtiDesc}>
-                            하루 평균 좋아요 5개가 넘어가는 당신은 반응만으로도 진심이 느껴지는 팬이에요!
-                        </p>
+                    <div className={styles.fanMbtiSection}>
+                        <div className={styles.fanMbtiCard}>
+                            <img
+                                src="/images/icon/heart_icon.png"
+                                alt="하트마스터"
+                                className={styles.heartIcon}
+                            />
+                            <h3 className={styles.fanMbtiTitle}>하트마스터</h3>
+                            <p className={styles.fanMbtiDesc}>
+                                하루 평균 좋아요 5개가 넘어가는 당신은 반응만으로도 진심이 느껴지는 팬이에요!
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div className={styles.menuSection}>
-                    <div className={styles.menuGrid}>
-                        <div
-                            className={styles.menuItem}
-                            onClick={() => navigate("/myecho")}
-                        >
-                            <img src="/images/icon/echo.png" alt="My Echo" className={styles.menuIcon} />
-                            <span className={styles.menuLabel}>My Echo</span>
-                        </div>
-                        <div className={styles.menuDivider} />
-                        <div
-                            className={styles.menuItem}
-                            onClick={() => navigate("/mypop")}
-                        >
-                            <img src="/images/icon/pop_on_icon.png" alt="My POP!" className={styles.menuIcon} />
-                            <span className={styles.menuLabel}>My POP!</span>
-                        </div>
-                        <div className={styles.menuDivider} />
-                        <div
-                            className={styles.menuItem}
-                            onClick={() => navigate("/mymood")}
-                        >
-                            <img src="/images/icon/mood.png" alt="My Mood" className={styles.menuIcon} />
-                            <span className={styles.menuLabel}>My Mood</span>
+                    <div className={styles.menuSection}>
+                        <div className={styles.menuGrid}>
+                            <div
+                                className={styles.menuItem}
+                                onClick={() => navigate("/myecho")}
+                            >
+                                <img src="/images/icon/echo.png" alt="My Echo" className={styles.menuIcon} />
+                                <span className={styles.menuLabel}>My Echo</span>
+                            </div>
+                            <div className={styles.menuDivider} />
+                            <div
+                                className={styles.menuItem}
+                                onClick={() => navigate("/mypop")}
+                            >
+                                <img src="/images/icon/pop_on_icon.png" alt="My POP!" className={styles.menuIcon} />
+                                <span className={styles.menuLabel}>My POP!</span>
+                            </div>
+                            <div className={styles.menuDivider} />
+                            <div
+                                className={styles.menuItem}
+                                onClick={() => navigate("/mymood")}
+                            >
+                                <img src="/images/icon/mood.png" alt="My Mood" className={styles.menuIcon} />
+                                <span className={styles.menuLabel}>My Mood</span>
+                            </div>
                         </div>
                     </div>
                 </div>

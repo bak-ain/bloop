@@ -55,7 +55,6 @@
     padding-top: 100px;
     display: flex;
     justify-content: flex-end;
-    margin-top: 200px;
 }
 
 .popView {
@@ -138,3 +137,8 @@
     padding-top: 50px;
 }
 
+
+@media (max-width: 1024px) {
+
+
+}

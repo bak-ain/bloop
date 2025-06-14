@@ -23,6 +23,7 @@
   z-index: 1000;
   position: relative;
   /* padding: 30px 20px 15px 20px; */
+  margin: 0;
 }
 
 .body_wrapper {
