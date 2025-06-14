@@ -30,8 +30,11 @@ const PopularPost = ({ posts, onPostClick }: PopularPostProps) => {
   return (
     <>
       <div className={`${styles.popularPostContainer} all_p_t`}>
-        <div className={styles.popularBanner}>
+        <div className={`${styles.popularBannerContainer}`}>
+          <div className={`${styles.popularBanner}`}></div>
+          <div className={`${styles.popularBanner_mini}`}></div>
         </div>
+        
         <div className={`${styles.popularPostContent}`}>
           <div className={styles.popularTitle}>
             <h2 className="h3_tit">TOP LOOP</h2>
