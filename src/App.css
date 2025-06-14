@@ -493,15 +493,19 @@ button {
 }
 
 main {
-  padding-top: 180px;
   overflow: hidden;
+}
+
+.all_p_t {
+  padding-top: 180px;
 }
 
 header.inner {
   padding-bottom: 0;
 }
-footer .inner{
-    padding-bottom: 0;
+
+footer .inner {
+  padding-bottom: 0;
 }
 
 .home main {
@@ -550,9 +554,9 @@ footer .inner{
 }
 
 @media (max-width: 1024px) {
-  main {
-    padding-top: 80px;
 
+  .all_p_t {
+    padding-top: 80px;
   }
 
   .allura_h2 {
@@ -666,7 +670,7 @@ footer .inner{
 }
 
 @media (max-width:530px) {
-  main {
+  .all_p_t {
     padding-top: 70px;
 
   }

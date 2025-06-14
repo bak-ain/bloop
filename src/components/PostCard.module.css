@@ -15,9 +15,11 @@
   object-fit: cover;
   display: block;
 }
-.popularPostContainer{
+
+.popularPostContainer {
   padding-top: 200px;
 }
+
 .popularTitle {
   display: flex;
   align-items: center;
@@ -25,9 +27,11 @@
   padding-bottom: 50px;
   /* z-index: 10; */
 }
-.popularTitle h2{
+
+.popularTitle h2 {
   z-index: 2;
 }
+
 .popularTitle img {
   width: 48px;
   height: 43px;
@@ -43,17 +47,16 @@
 .post_card {
   /* background: #fff; */
   border-radius: 12px;
-  padding: 20px;
+  /*   padding: 20px; */
   /* border: 3px solid var(--font-color-3); */
   font-family: 'Pretendard', sans-serif;
   line-height: 1.5;
-  border: 1px solid var(--font-color-7);
 }
 
-.post_card.artist {
+/* .post_card.artist {
   background-color: #f7faff;
 }
-
+ */
 .post_card.fan {
   background-color: #f9f9f9;
   border: 3px solid var(--font-color-3);
@@ -239,11 +242,7 @@
   justify-content: center;
 }
 
-.storyContainer {
-  display: flex;
-  height: 250px;
-  /* border: 1px solid #ddd; */
-}
+
 
 .storyCard {
   flex: 1;
@@ -329,7 +328,8 @@
 }
 
 :global(.swiper-slide) {
-  width: 280px !important;   /* 원하는 카드 크기로 맞춰주세요 */
+  width: 280px !important;
+  /* 원하는 카드 크기로 맞춰주세요 */
   max-width: 280px !important;
   min-width: 0 !important;
   box-sizing: border-box;
@@ -399,6 +399,8 @@
   flex-direction: column;
   /* border: 1px solid #ddd; */
   /* position: relative; */
+  height: 65vh;
+  position: relative;
 
 }
 
@@ -409,7 +411,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 65vh;
+  height: 100%;
 }
 
 .banner {
@@ -432,8 +434,7 @@
   display: flex;
   width: 100%;
   z-index: 10;
-  height: 40vh;
-  padding-top: 3%;
+  padding-top: 13%;
   justify-content: space-between;
   gap: 10px;
 
@@ -543,20 +544,37 @@
   margin-right: 20px;
 }
 
+
+/* 말풍선 상자 */
+
+/* PostCard.module.css 예시 */
 .profile_bubble_layout {
   display: flex;
   align-items: flex-start;
-  /* gap: 10px; */
+  position: relative;
+  gap: 10px;
   margin-bottom: 12px;
   background-color: #F9F9F9;
 }
 
-/* 말풍선 상자 */
+.bubble_tail {
+  flex-shrink: 0;
+  align-self: flex-start;
+  position: absolute;
+  left: 65px;
+  /* bubble_box 왼쪽에 붙도록 조정 */
+  top: 5px;
+  /* bubble_box의 중간쯤에 맞추기 */
+  z-index: 3;
+  pointer-events: none;
+  margin-top: 18px;
+}
+
 .bubble_box {
   position: relative;
   background: #f5f5f5;
   padding: 30px 30px 20px 30px;
-  border-radius: 14px;
+  border-radius: 20px;
   max-width: 100%;
   cursor: pointer;
   width: 100%;
@@ -565,24 +583,15 @@
   flex-direction: column;
   /* ← 들여쓰기 맞추기 */
   gap: 8px;
-  border: 3px solid #333;
-  z-index: 1;
-}
-
-.bubble_tail {
-  flex-shrink: 0;
-  align-self: flex-start;
-  /* 위에서부터 정렬 */
-  margin-top: 18px;
+  border: 2px solid #333;
   z-index: 2;
-
 }
 
 .a_meta_row {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
-  margin-top: 12px;
+  gap: 10px;
+/*   margin-top: 12px; */
   width: 100%;
 }
 
@@ -598,17 +607,53 @@
 }
 
 
-.a_meta_row button img {
+
+
+.like_icon {
   width: 30px;
   height: 30px;
 }
 
+.chat_icon {
+  width: 30px;
+  height: 30px;
+}
+
+.pop_icon {
+  width: 32px;
+  height: 32px;
+}
 
 
-/* =========== 반응형 =========== */
-/* @media (max-width: 1024px) {
-  .popularBanner {
+
+
+@media (max-width: 1024px) {
+
+  /*   .popularBanner {
     height: 570px;
     background: url('/images/fan/communityBanner_t.png') no-repeat center center / cover;
+  } */
+
+
+
+  /* 아티스트 */
+  .storyContainer {
+    height: 40vh;
+
+
   }
-} */
+
+  .banner {
+    width: 100%;
+    flex: 1;
+    background-image: url(../../public/images/artist/top_banner_tap.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .storyContent {
+    padding-top: 20%;
+  }
+
+
+}
