@@ -2,6 +2,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-image: url(../../public/images/artist/bg.jpg);
+    background-size: contain;
+    background-position: center;
+   /*  background-repeat: no-repeat; */
 
 }
 
@@ -52,7 +56,7 @@
 }
 
 .popviewBtn {
-    /* padding-top: 100px; */
+    padding-top: 100px;
     display: flex;
     justify-content: flex-end;
 }
@@ -133,12 +137,20 @@
 .feed {
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 60px;
     padding-top: 50px;
 }
 
 
 @media (max-width: 1024px) {
+    .feedContain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../../public/images/artist/bg_tap.jpg);
+    background-size: contain;
+    background-position: center;
+   /*  background-repeat: no-repeat; */
 
-
+}
 }
