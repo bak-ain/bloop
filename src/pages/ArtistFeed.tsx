@@ -43,7 +43,7 @@ const StoryPopup = ({ story, onClose }: { story: ArtistStoryPost; onClose: () =>
         }}
       >
         <div className={styles.storyPopupContent}>
-          <button className={styles.closeBtn} onClick={onClose}>닫기</button>
+          <button className={styles.closeBtn} onClick={onClose}>X</button>
           <div className={styles.storyHeader}>
             <div className={styles.storyHeaderLeft}>
               <div className={`${styles.storyPopUpProfile} ${story.user.name ? styles[story.user.name.toLowerCase()] : ""}`}>

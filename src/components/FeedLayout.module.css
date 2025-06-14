@@ -157,37 +157,33 @@
     max-width: 640px;
     width: 90vw;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    position: relative;
+
     color: #fff;
 }
 
 .storyPopupContent {
     width: 640px;
     height: 700px;
-    padding: 30px 20px;
+    padding: 25px 20px;
 }
 
 .closeBtn {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    background: #444;
-    color: #fff;
+    top: 30px;
+    right: 60px;
+    background: none;
     border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
+    color: #fff;
+    font-size: 24px;
     cursor: pointer;
-    z-index: 2;
-    display: none;
+    z-index: 1001;
+
 }
 
 .storyHeader {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 18px;
     justify-content: space-between;
 }
 
@@ -223,10 +219,13 @@
     cursor: pointer;
     background: transparent;
 }
-.shareBtn img{
-    width: 30px;
-    height: 30px;
+
+.shareBtn img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 10px;
 }
+
 .storyImageWrap {
     width: 100%;
     margin-top: 10px;
@@ -260,5 +259,37 @@
         background-position: center;
         /*  background-repeat: no-repeat; */
 
+    }
+
+
+}
+
+@media (max-width: 767px) {
+    .storyPopupOverlay {
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .storyPopup {
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .storyPopupContent {
+        width: 100vw;
+        height: 100vh;
+        padding: 20px 10px;
+        box-sizing: border-box;
+    }
+
+    .closeBtn {
+        top: 20px;
+        right: 20px;
     }
 }
