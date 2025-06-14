@@ -16,9 +16,8 @@
   display: block;
 }
 
-
-.popularPostContainer  {
-  padding-top: 200px;
+.popularPostContainer{
+  height: 65vh;
 }
 
 
@@ -30,7 +29,6 @@
   /* z-index: 10; */
 }
 
-.popularTitle h2 {
 
 .popularTitle h2 {
   z-index: 2;
@@ -630,9 +628,8 @@
 
 
 @media (max-width: 1024px) {
-
-  /*   .popularBanner {
+.popularBanner {
     height: 570px;
     background: url('/public/images/fan/communityBanner_t.png') no-repeat center center / cover;
   }
-}
+} 

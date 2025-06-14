@@ -29,7 +29,7 @@ const PopularPost = ({ posts, onPostClick }: PopularPostProps) => {
 
   return (
     <>
-      <div className={styles.popularPostContainer}>
+      <div className={`${styles.popularPostContainer} all_p_t`}>
         <div className={styles.popularBanner}>
         </div>
         <div className={`${styles.popularPostContent}`}>
