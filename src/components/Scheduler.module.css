@@ -77,7 +77,9 @@
     background: transparent;
 
 }
-
+:global(.react-calendar__tile:enabled:focus) {
+    background: transparent;
+}
 .react-calendar__month-view__weekdays__weekday {
     font-size: 1.1rem;
     font-weight: 600;

@@ -24,7 +24,7 @@ const ArtistFeed = () => {
       <div className={styles.artistFeedContainer}>
         <ArtistStory onStoryClick={(story) => {
           setSelectedPost(story);
-          setIsPopupOpen(true);
+          // setIsPopupOpen(true);
         }} />
         <FeedLayout
           className={styles.artistFeedLayout}

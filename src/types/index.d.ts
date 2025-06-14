@@ -33,6 +33,16 @@ export interface ArtistPost extends BasePost {
   // badgeLevel?: never;   // user로 대체
   isStory?: boolean;
 }
+export interface ArtistStoryPost {
+  id: string;
+  user: UserPreview & { badgeType: 'artist' }; // 스토리 작성자 정보
+  date: string;
+  media: {
+    type: 'image' | 'video';
+    url: string;
+  }[];
+  isStory: true; // 스토리 여부
+}
 
 export interface FanPost extends BasePost {
   user: UserPreview & { badgeType: 'fan'; badgeLevel: 1 | 2 | 3 };

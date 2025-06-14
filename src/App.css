@@ -503,13 +503,12 @@ main {
   padding-top: 180px;
 }
 
-header.inner {
+header.inner,
+footer .inner,
+.tabBar.inner {
   padding-bottom: 0;
 }
 
-footer .inner {
-    padding-bottom: 0;
-}
 
 .home main {
   padding-top: 0;
@@ -518,9 +517,11 @@ footer .inner {
 .official main {
   background: var(--font-color-1);
 }
-.swiperPopular .swiper-wrapper{
+
+.swiperPopular .swiper-wrapper {
   /* width: 1024px; */
 }
+
 .inner {
   max-width: 1024px;
   margin: 0 auto;
@@ -543,6 +544,7 @@ footer .inner {
   background-color: transparent !important;
   bottom: 4rem !important;
   right: 3.7rem !important;
+  z-index: 999 !important;
 }
 
 #chatbase-bubble-button img {
@@ -560,10 +562,6 @@ footer .inner {
 
 @media (max-width: 1024px) {
 
-  .all_p_t {
-    padding-top: 80px;
-
-  }
 
   .allura_h2 {
     font-size: 80px;
@@ -673,6 +671,18 @@ footer .inner {
     font-size: 65px;
   }
 
+}
+
+@media (max-width: 767px) {
+  #chatbase-bubble-button {
+    bottom: 120px !important;
+    right: 30px !important;
+  }
+
+  .all_p_t {
+    padding-top: 80px;
+
+  }
 }
 
 @media (max-width:530px) {

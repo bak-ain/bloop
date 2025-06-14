@@ -477,8 +477,31 @@ main {
         gap: 10vh; */
     }
 
-    .profileModalTop {}
+    .profileModalTop {
+        /* gap: 5vh; */
+        padding-block: 3vh;
+        gap: 3vh;
+    }
 
+    .profileModalDesc {
+        /* font-size: 20px; */
+    }
+
+
+
+    .profileModalInfo {
+        padding-left: 10vw;
+        padding-top: 4vh;
+        gap: 2vh 0;
+        font-size: 18px;
+        line-height: 140%;
+    }
+
+    .profileModalInfo div {
+        width: 100%;
+        gap: 4vw;
+        /* flex-direction: column; */
+    }
     .profileModalName {
         margin-top: 10vh;
     }
@@ -489,7 +512,7 @@ main {
     }
 
     .profileModalInfo span {
-        font-size: 18px;
+        font-size: 17px;
     }
 }
 

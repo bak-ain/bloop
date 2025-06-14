@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useSchedule } from "../context/ScheduleContext";
@@ -9,6 +9,17 @@ const Scheduler = () => {
   const { events, details, loading, error } = useSchedule();
   const [popupEvent, setPopupEvent] = useState<ScheduleEvent | null>(null);
   const [activeStartDate, setActiveStartDate] = useState(new Date());
+  // 팝업이 열릴 때 스크롤 막기
+  useEffect(() => {
+    if (popupEvent) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [popupEvent]);
 
   // 날짜별로 이벤트 매핑
   const scheduleMap = useMemo(() => {

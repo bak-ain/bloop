@@ -25,7 +25,7 @@ const GradeStatus = () => {
 
       {/* 버튼 영역 */}
       <div className={styles.buttonRow}>
-        <button className={styles.primaryBtn} onClick={() => navigate("/grade-info")}>
+        <button className={styles.primaryBtn} onClick={() => navigate("/levelguide")}>
           등급안내 보러가기
         </button>
         <button className={styles.secondaryBtn} onClick={() => navigate("/")}>

@@ -5,7 +5,6 @@ import styles from "./PostCard.module.css";
 const ArtistStory = ({ onStoryClick }: { onStoryClick: (story: ArtistPost) => void }) => {
     const { artistPosts } = usePostList();
     const storyList = artistPosts.filter(post => post.isStory);
-    console.log("storyList", storyList);
 
     return (
         <div className={`${styles.storyContainer} `}>

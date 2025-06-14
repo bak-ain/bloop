@@ -16,7 +16,7 @@ const TabBar = () => {
     };
 
     return (
-        <nav className={`${styles.tabBar} inner`}>
+        <nav className={`${styles.tabBar} tabBar inner`}>
             <NavLink to="/" className={`${styles.tabItem} ${styles.tabHome}`}>
                 {({ isActive }) => (
                     <>

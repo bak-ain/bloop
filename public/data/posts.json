@@ -87,7 +87,7 @@
       "comment": 3,
       "isScrapped": false,
       "isLiked": false,
-      "isStory": true,
+      "isStory": false,
       "media": [
         { "type": "image", "url": "/images/1.png" },
         { "type": "image", "url": "/images/2.png" },
@@ -107,7 +107,7 @@
       "comment": 3,
       "isScrapped": true,
       "isLiked": false,
-      "isStory": true,
+      "isStory": false,
       "media": [
         { "type": "image", "url": "/images/1.png" },
         { "type": "image", "url": "/images/2.png" },
@@ -127,7 +127,7 @@
       "comment": 3,
       "isScrapped": false,
       "isLiked": false,
-      "isStory": true,
+      "isStory": false,
       "media": [
         { "type": "image", "url": "/images/1.png" },
         { "type": "image", "url": "/images/2.png" },
@@ -147,7 +147,7 @@
       "comment": 3,
       "isScrapped": true,
       "isLiked": false,
-      "isStory": true,
+      "isStory": false,
       "media": [
         { "type": "image", "url": "/images/1.png" },
         { "type": "image", "url": "/images/2.png" },

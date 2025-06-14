@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "../components/Container";
 import Scheduler from "../components/Scheduler";
 import MainOfficial from "../components/MainOfficial";
@@ -13,35 +13,45 @@ interface MemberProfileModalProps {
   member: MemberCard;
   onClose: () => void;
 }
-const MemberProfileModal = ({ member, onClose }: MemberProfileModalProps) => (
-  <div className={styles.profileModalOverlay}>
-    <div className={styles.profileModal}>
-      <button className={styles.closeBtn} onClick={onClose}></button>
-      <div className={`${styles.profileModalName} h3_tit`}>
-        <b>{member.name}</b>
-      </div>
-      <div className={styles.profileModalTop}>
-        <img src={member.popUpImageUrl} alt={member.name} />
+const MemberProfileModal = ({ member, onClose }: MemberProfileModalProps) => {
+  useEffect(() => {
+    // 모달이 열릴 때 스크롤 막기
+    document.body.style.overflow = "hidden";
+    return () => {
+      // 모달이 닫힐 때 스크롤 복구
+      document.body.style.overflow = "";
+    };
+  }, []);
 
-        <div className={`${styles.profileModalDesc} main_card_p`}>{member.description}</div>
-      </div>
-      <div className={`${styles.profileModalInfo}`}>
-        <div>
-          <span>생년월일</span> {member.birth} ({member.age}세)
+  return (
+    <div className={styles.profileModalOverlay}>
+      <div className={styles.profileModal}>
+        <button className={styles.closeBtn} onClick={onClose}></button>
+        <div className={`${styles.profileModalName} h3_tit`}>
+          <b>{member.name}</b>
         </div>
-        <div>
-          <span>포지션</span> {member.position}
+        <div className={styles.profileModalTop}>
+          <img src={member.popUpImageUrl} alt={member.name} />
+          <div className={`${styles.profileModalDesc} main_card_p`}>{member.description}</div>
         </div>
-        <div>
-          <span>신체</span> {member.height}
-        </div>
-        <div>
-          <span>MBTI</span> {member.mbti}
+        <div className={`${styles.profileModalInfo}`}>
+          <div>
+            <span>생년월일</span> {member.birth} ({member.age}세)
+          </div>
+          <div>
+            <span>포지션</span> {member.position}
+          </div>
+          <div>
+            <span>신체</span> {member.height}
+          </div>
+          <div>
+            <span>MBTI</span> {member.mbti}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // 멤버 프로필 리스트
 const MemberProfile = () => {
@@ -99,7 +109,7 @@ const Home = () => {
   };
 
   const officialDefaultList = officialPosts
-    .filter(item => item.type === "default")
+    .filter(item => item.type === "default" || item.type === "new")
     .map(item => {
       const key = item.id as CustomMainOfficialKey;
       return {
