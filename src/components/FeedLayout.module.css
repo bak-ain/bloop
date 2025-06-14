@@ -207,7 +207,12 @@
     border: 2px solid #ff6fcb;
 }
 
-
+.badgeImg {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    margin-left: 6px;
+}
 
 .timeAgo {
     color: #Fff;

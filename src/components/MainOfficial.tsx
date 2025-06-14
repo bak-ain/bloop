@@ -11,32 +11,48 @@ interface MainOfficialProps {
 }
 
 const MainOfficial = ({ contents }: MainOfficialProps) => (
-  <section>
+  <section className={styles.mainOfficial}>
     <h2 className={`${styles.mainOfficialTitle} allura_h2`}>Contents</h2>
-    <Swiper
-      modules={[Navigation, Pagination]}
-      slidesPerView={3}
-      centeredSlides
-      spaceBetween={0}
-      navigation
-      pagination={{ clickable: true }}
-      loop={contents.length > 2}
-      initialSlide={1} 
-      loopAdditionalSlides={2}
-      className={`${styles.mainOfficialSwiper} mainOfficialSwiper`}
-    >
-      {contents.map(content => (
-        <SwiperSlide key={content.id}>
-          <div className={styles.mainOfficialCard}>
-            <img src={content.media?.[0]?.url} alt={content.title} className={styles.mainOfficialImg} />
-            <div className={styles.mainOfficialContent}>
-              <h3 dangerouslySetInnerHTML={{ __html: content.title || "" }} />
-              <p >{content.description}</p>
+    <div className={styles.mainOfficialSwiperWrapper}>
+      <Swiper
+        modules={[Navigation, Pagination]}
+        slidesPerView={3}
+        centeredSlides
+        spaceBetween={0}
+        navigation={{
+          nextEl: `.${styles.mainOfficialNext}`,
+          prevEl: `.${styles.mainOfficialPrev}`,
+        }}
+        pagination={{
+          clickable: true,
+          el: `.${styles.mainOfficialPagination}`,
+          bulletClass: `swiper-pagination-bullet ${styles.mainOfficialBullet}`,
+          bulletActiveClass: `swiper-pagination-bullet-active ${styles.mainOfficialBulletActive}`,
+        }}
+        loop={contents.length > 2}
+        initialSlide={1}
+        className={`${styles.mainOfficialSwiper} mainOfficialSwiper`}
+      >
+        {contents.map(content => (
+          <SwiperSlide key={content.id}>
+            <div className={styles.mainOfficialCard}>
+              <img
+                src={content.media?.[0]?.thumbnail || content.media?.[0]?.url}
+                alt={content.title}
+                className={styles.mainOfficialImg}
+              />
+              <div className={styles.mainOfficialContent}>
+                <h3 dangerouslySetInnerHTML={{ __html: content.title || "" }} />
+                <p >{content.description}</p>
+              </div>
             </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <button className={styles.mainOfficialPrev} aria-label="이전"></button>
+      <div className={styles.mainOfficialPagination}></div>
+      <button className={styles.mainOfficialNext} aria-label="다음"></button>
+    </div>
   </section>
 );
 
