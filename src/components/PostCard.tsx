@@ -96,217 +96,60 @@ const PostCard = <T extends ArtistPost | FanPost>({
     badgeLevel: 1
   };
 
-    // 최신 좋아요 수 동기화
-    useEffect(() => {
-        setLikeCount(postLikeCounts[data.id] ?? data.likes);
-    }, [postLikeCounts, data.id, data.likes]);
-
-    // 최신 댓글 수 동기화
-    const { artistPosts, fanPosts } = usePostList();
-    useEffect(() => {
-        if (isArtist) {
-            const found = artistPosts.find((p) => p.id === data.id);
-            if (found && found.comment !== commentCount) {
-                setCommentCount(found.comment);
-            }
-        } else {
-            const found = fanPosts.find((p) => p.id === data.id);
-            if (found && found.comment !== commentCount) {
-                setCommentCount(found.comment);
-            }
-        }
-        // eslint-disable-next-line
-    }, [artistPosts, fanPosts, data.id, isArtist]);
-
-    const handleLike = () => {
-        onLike();
-        // setLiked와 setLikeCount는 context에서 동기화되므로 별도 setState 불필요
-    };
-
-    const handleScrap = () => {
-        onScrap();
-        // setScrapped는 context에서 동기화되므로 별도 setState 불필요
-    };
-
-    // user가 없을 때 기본값 처리
-    const user = data.user ?? {
-        name: "알 수 없음",
-        profileImage: "/images/3.png",
-        badgeType: "fan" as const,
-        badgeLevel: 1
-    };
-
-    return (
-        <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
-            {/* 아티스트 게시물 카드 */}
-            {isArtist ? (
-                <div className={styles.profile_bubble_layout}>
-                    <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
-                   {/*  <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
+  
   return (
     <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
       {/* 아티스트 게시물 카드 */}
-      {isArtist ? (
-        <div className={styles.profile_bubble_layout}>
-          <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
-          {/* <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
-                        <path
-                            d="M17,0 L5,15 L17,30 Z"
-                            fill="#f5f5f5"
-                            strokeWidth="2"
-                            strokeLinejoin="round"
-                            strokeLinecap="round"
-                        />
-                    </svg> */}
-
-          <div className={styles.bubble_box} onClick={goToDetail}>
-            <div className={styles.infoTop}>
-              <div className={styles.info}>
-                <strong className="card_name">
-                  {user.name}
-                  <img
-                    className={styles.a_badge_img}
-                    src={getBadgeImage('artist')}
-                    alt="artist badge"
-                  />
-                </strong>
-                <p className={`day_span`}>{getDisplayDate(data.date)}</p>
-              </div>
-              <p className={`card_p`} dangerouslySetInnerHTML={{ __html: data.description }} />
-            </div>
-
-
-            {data.media && (
-              <div className={styles.a_media}>
-                {data.media.slice(0, 2).map((m, i) =>
-                  m.type === "video" ? (
-                    <video key={i} src={m.url} controls className={styles.a_media_item} />
-                  ) : (
-                    <div key={i} className={styles.a_media_item_wrapper}>
-                      <img src={m.url} alt={`media-${i}`} className={styles.a_media_item} />
-                      {i === 1 && (data.media?.length ?? 0) > 2 && (
-                        <div className={styles.a_media_overlay}>
-                          +{(data.media?.length ?? 0) - 2}
-                        </div>
-                      )}
-                    </div>
-                  )
-                )}
-              </div>
-            )}
-            <div className={styles.a_meta_row}>
-              <button onClick={e => {
-                e.stopPropagation(); // 상세보기로 버블링 방지
-                handleLike();
-              }}
-              >
-                <img className={styles.like_icon}
-                  src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
-                  alt={liked ? "좋아요 취소" : "좋아요"}
-                />{" "}
-                {likeCount}
-              </button>
-              <button onClick={goToDetail}>
-                <img className={styles.like_icon}
-                  src="/images/icon/message.png"
-                  alt="댓글"
-                />{" "}
-                {commentCount}
-              </button>
-              <button onClick={e => {
-                e.stopPropagation(); // 상세보기로 버블링 방지
-                handleScrap();
-              }}>
-                <img
-                  className={styles.like_icon}
-                  src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
-                  alt={scrapped ? "스크랩 취소" : "스크랩"}
-                />
-              </button>
-            </div>
-          </div>
-
-        </div>
-      ) : (
-        <>
-          {/* 팬게시물카드 */}
-          <div className={styles.profile_row}>
-            <img className={styles.profile_img} src={user.profileImage} alt={user.name} />
+    {isArtist ? (
+      <div className={styles.profile_bubble_layout}>
+        <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
+        {/* <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
+              <path
+                  d="M17,0 L5,15 L17,30 Z"
+                  fill="#f5f5f5"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+              />
+          </svg> */}
+        <div className={styles.bubble_box} onClick={goToDetail}>
+          <div className={styles.infoTop}>
             <div className={styles.info}>
               <strong className="card_name">
                 {user.name}
                 <img
-                  className={styles.badge_img}
-                  src={getBadgeImage(
-                    'fan',
-                    user.badgeType === "fan" ? user.badgeLevel : undefined
-                  )}
-                  alt={
-                    user.badgeType === "fan"
-                      ? `fan badge Lv.${user.badgeLevel}`
-                      : "fan badge"
-                  }
+                  className={styles.a_badge_img}
+                  src={getBadgeImage('artist')}
+                  alt="artist badge"
                 />
               </strong>
               <p className={`day_span`}>{getDisplayDate(data.date)}</p>
             </div>
-          </div>
-          <div className={styles.body_wrapper} onClick={goToDetail}>
             <p className={`card_p`} dangerouslySetInnerHTML={{ __html: data.description }} />
-            {data.hashtag && (
-              <div className={styles.hashtags}>
-                {data.hashtag.split(" ").map((tag, i) => (
-                  <span key={i} className={styles.tag}>{tag}</span>
-                ))}
-              </div>
-            )}
-            {/* {data.media && (
-                            <div className={styles.media}>
-                                {data.media.slice(0, 2).map((m, i) =>
-                                    m.type === "video" ? (
-                                        <video key={i} src={m.url} controls className={styles.media_item} />
-                                    ) : (
-                                        <div key={i} className={styles.media_item_wrapper}>
-                                            <img src={m.url} alt={`media-${i}`} className={styles.media_item} />
-                                            {i === 1 && (data.media?.length ?? 0) > 2 && (
-                                                <div className={styles.media_overlay}>
-                                                    +{(data.media?.length ?? 0) - 2}
-                                                </div>
-                                            )}
-                                        </div>
-                                    )
-                                )}
-                            </div>
-                        )} */}
-            {data.media && (
-              <div
-                className={`${styles.media} ${data.media.length === 1 ? styles.single : styles.multi
-                  }`}
-              >
-                {data.media.slice(0, 2).map((m, i) =>
-                  m.type === "video" ? (
-                    <video key={i} src={m.url} controls className={styles.media_item} />
-                  ) : (
-                    <div key={i} className={styles.media_item_wrapper}>
-                      <img
-                        src={m.url}
-                        alt={`media-${i}`}
-                        className={styles.media_item}
-                      />
-                      {/* 🔽 이 부분을 아래처럼 바꿔줘야 해 */}
-                      {i === 1 && (data.media?.length ?? 0) > 2 && (
-                        <div className={styles.media_overlay}>
-                          +{(data.media?.length ?? 0) - 2}
-                        </div>
-                      )}
-                    </div>
-                  )
-                )}
-              </div>
-            )}
           </div>
-          <div className={styles.meta_row}>
-            <button onClick={handleLike}>
+          {data.media && (
+            <div className={styles.a_media}>
+              {data.media.slice(0, 2).map((m, i) =>
+                m.type === "video" ? (
+                  <video key={i} src={m.url} controls className={styles.a_media_item} />
+                ) : (
+                  <div key={i} className={styles.a_media_item_wrapper}>
+                    <img src={m.url} alt={`media-${i}`} className={styles.a_media_item} />
+                    {i === 1 && (data.media?.length ?? 0) > 2 && (
+                      <div className={styles.a_media_overlay}>
+                        +{(data.media?.length ?? 0) - 2}
+                      </div>
+                    )}
+                  </div>
+                )
+              )}
+            </div>
+          )}
+          <div className={styles.a_meta_row}>
+            <button onClick={e => {
+              e.stopPropagation(); // 상세보기로 버블링 방지
+              handleLike();
+            }}>
               <img className={styles.like_icon}
                 src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
                 alt={liked ? "좋아요 취소" : "좋아요"}
@@ -320,7 +163,10 @@ const PostCard = <T extends ArtistPost | FanPost>({
               />{" "}
               {commentCount}
             </button>
-            <button onClick={handleScrap}>
+            <button onClick={e => {
+              e.stopPropagation(); // 상세보기로 버블링 방지
+              handleScrap();
+            }}>
               <img
                 className={styles.like_icon}
                 src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
@@ -328,38 +174,93 @@ const PostCard = <T extends ArtistPost | FanPost>({
               />
             </button>
           </div>
-        </>
-      )
-      }
-
-      {/* 
-            <div className={styles.meta_row}>
-                <button onClick={handleLike}>
-                    <img className={styles.like_icon}
-                        src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
-                        alt={liked ? "좋아요 취소" : "좋아요"}
-                    />{" "}
-                    {likeCount}
-                </button>
-                <button onClick={goToDetail}>
-                    <img className={styles.like_icon}
-                        src="/images/icon/message.png"
-                        alt="댓글"
-                    />{" "}
-                    {commentCount}
-                </button>
-                <button onClick={handleScrap}>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* 팬게시물카드 */}
+        <div className={styles.profile_row}>
+          <img className={styles.profile_img} src={user.profileImage} alt={user.name} />
+          <div className={styles.info}>
+            <strong className="card_name">
+              {user.name}
+              <img
+                className={styles.badge_img}
+                src={getBadgeImage(
+                  'fan',
+                  user.badgeType === "fan" ? user.badgeLevel : undefined
+                )}
+                alt={
+                  user.badgeType === "fan"
+                    ? `fan badge Lv.${user.badgeLevel}`
+                    : "fan badge"
+                }
+              />
+            </strong>
+            <p className={`day_span`}>{getDisplayDate(data.date)}</p>
+          </div>
+        </div>
+        <div className={styles.body_wrapper} onClick={goToDetail}>
+          <p className={`card_p`} dangerouslySetInnerHTML={{ __html: data.description }} />
+          {data.hashtag && (
+            <div className={styles.hashtags}>
+              {data.hashtag.split(" ").map((tag, i) => (
+                <span key={i} className={styles.tag}>{tag}</span>
+              ))}
+            </div>
+          )}
+          {data.media && (
+            <div
+              className={`${styles.media} ${data.media.length === 1 ? styles.single : styles.multi
+                }`}
+            >
+              {data.media.slice(0, 2).map((m, i) =>
+                m.type === "video" ? (
+                  <video key={i} src={m.url} controls className={styles.media_item} />
+                ) : (
+                  <div key={i} className={styles.media_item_wrapper}>
                     <img
-                        className={styles.like_icon}
-                        src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
-                        alt={scrapped ? "스크랩 취소" : "스크랩"}
+                      src={m.url}
+                      alt={`media-${i}`}
+                      className={styles.media_item}
                     />
-                    {/* {scrapped ? "🔖" : "📌"} */}
-      {/*} </button>
-            </div> */}
-
-
-    </div >
+                    {i === 1 && (data.media?.length ?? 0) > 2 && (
+                      <div className={styles.media_overlay}>
+                        +{(data.media?.length ?? 0) - 2}
+                      </div>
+                    )}
+                  </div>
+                )
+              )}
+            </div>
+          )}
+        </div>
+        <div className={styles.meta_row}>
+          <button onClick={handleLike}>
+            <img className={styles.like_icon}
+              src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+              alt={liked ? "좋아요 취소" : "좋아요"}
+            />{" "}
+            {likeCount}
+          </button>
+          <button onClick={goToDetail}>
+            <img className={styles.like_icon}
+              src="/images/icon/message.png"
+              alt="댓글"
+            />{" "}
+            {commentCount}
+          </button>
+          <button onClick={handleScrap}>
+            <img
+              className={styles.like_icon}
+              src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
+              alt={scrapped ? "스크랩 취소" : "스크랩"}
+            />
+          </button>
+        </div>
+      </>
+    )}
+  </div>
   );
 };
 
