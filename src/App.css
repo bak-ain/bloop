@@ -217,8 +217,9 @@ button {
 
 /* 공통 */
 .day_span {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
+  color: var(--font-color-7);
 }
 
 .icon_num {
@@ -258,20 +259,52 @@ button {
 
 .main_card_p {
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 600;
 }
+
+/* kkomi */
+
+.kkomi_day {
+  font-family: var(--day--font-family);
+  font-size: 24px;
+}
+
+.kkomi_sced {
+  font-family: var(--day--font-family);
+  font-size: 18px;
+}
+
+.kkomi_num {
+  font-family: var(--day--font-family);
+  font-size: 16px;
+}
+
+
+/* allura */
+.allura_h2 {
+  font-family: var(--title-font-family);
+  font-size: 100px;
+  color: var(--main-color);
+}
+
 
 /* 아티스트 */
 .artist_top {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
-  line-height: 33px;
+  color: #fff;
 }
 
 .card_name {
   font-size: 24px;
   font-weight: 600;
   line-height: 24px;
+}
+
+.card_p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 33px;
 }
 
 /* 커뮤니티 */
@@ -374,11 +407,11 @@ button {
 
 }
 
-.offic_h3 {
+/* .offic_h3 {
   font-size: 18px;
   font-weight: 600;
 }
-
+ */
 .offic_h3 {
   font-size: 20px;
   font-weight: 600;
@@ -426,30 +459,11 @@ button {
   font-weight: 400;
 }
 
-/* kkomi */
-
-.kkomi_day {
-  font-family: var(--day--font-family);
-  font-size: 24px;
+/* 회원가입  */
+.join_p {
+  font-size: 20px;
+  font-weight: 400;
 }
-
-.kkomi_sced {
-  font-family: var(--day--font-family);
-  font-size: 18px;
-}
-
-.kkomi_num {
-  font-family: var(--day--font-family);
-  font-size: 16px;
-}
-
-
-/* allura */
-.allura_h2 {
-  font-family: var(--title-font-family);
-  font-size: 100px;
-}
-
 
 /* 공통 레이아웃 */
 
@@ -479,9 +493,19 @@ button {
 }
 
 main {
-  padding-top: 180px;
-  padding-bottom: var(--wep-footer-pad);
   overflow: hidden;
+}
+
+.all_p_t {
+  padding-top: 180px;
+}
+
+header.inner {
+  padding-bottom: 0;
+}
+
+footer .inner {
+  padding-bottom: 0;
 }
 
 .home main {
@@ -493,6 +517,14 @@ main {
 }
 
 .inner {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  padding-bottom: var(--wep-footer-pad);
+}
+
+.con {
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 40px;
@@ -522,8 +554,21 @@ main {
 }
 
 @media (max-width: 1024px) {
-  main {
+
+  .all_p_t {
     padding-top: 80px;
+  }
+
+  .allura_h2 {
+    font-size: 80px;
+  }
+
+  .main_card_p {
+    font-size: 20px;
+  }
+
+  .inner {
+    max-width: 100%;
     padding-bottom: var(--wep-sec-pad);
   }
 
@@ -531,14 +576,22 @@ main {
 
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {
+  .join_p {
+    font-size: 16px;
+  }
+
   .inner {
-    width: 100vw;
     padding: 0 20px;
   }
 
-  .allura_h2 {
-    font-size: 80px;
+  .con {
+    padding: 0 20px;
   }
+
+  .main_card_p {
+    font-size: 18px;
+  }
+
 
   .pop_name {
     font-size: 20px;
@@ -610,11 +663,19 @@ main {
     font-weight: 600;
   }
 
+  .allura_h2 {
+    font-size: 65px;
+  }
+
 }
 
 @media (max-width:530px) {
-  main {
+  .all_p_t {
     padding-top: 70px;
+
+  }
+
+  .inner {
     padding-bottom: var(--wep-sec-pad);
   }
 
@@ -647,6 +708,10 @@ main {
     font-weight: 600;
   }
 
+  /*   .allura_h2 {
+    font-size: 60px;
+  } */
+
 }
 
 
@@ -657,9 +722,7 @@ main {
     height: 46px;
   }
 
-  .allura_h2 {
-    font-size: 55px;
-  }
+
 
   .kkomi_day {
     font-size: 14px;
@@ -705,9 +768,7 @@ main {
     font-size: 20px;
   }
 
-  .main_card_p {
-    font-size: 16px;
-  }
+
 
   /* 아티스트 */
   .artist_top {
@@ -817,9 +878,9 @@ main {
   }
 
   .offic_h3 {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 22px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .offic_p {

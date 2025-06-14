@@ -110,7 +110,7 @@
 }
 
 .formWrap {
-    width: 420px;
+    width: 500px;
     margin: 0 auto;
     background: #fff;
     border-radius: 14px;
@@ -121,9 +121,10 @@
 
 .tabRow {
     display: flex;
-    width: 100%;
-    margin-bottom: 36px;
-    border-bottom: 2px solid #eee;
+    width: 300px;
+    height: 60px;
+    margin-bottom: 60px;
+    /* border-bottom: 1px solid #eee; */
 }
 
 .tabBtn {
@@ -133,25 +134,30 @@
     font-size: 20px;
     font-weight: 500;
     color: #888;
+    background: #f3f3f3;
     padding: 16px 0 12px 0;
     cursor: pointer;
-    border-bottom: 2px solid transparent;
+    /* border-bottom: 1px solid #eee; */
+    /* border-top: 2px solid transparent; */
     transition: color 0.2s, border 0.2s;
 }
 
 .tabBtn.active {
     color: #d8232a;
     font-weight: 700;
-    border-bottom: 2px solid #d8232a;
+    border-top: 2px solid #d8232a;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: none;
     background: #fff;
 }
 
 .loginTitle {
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
-    color: #222;
-    margin-bottom: 36px;
-    margin-top: 10px;
+    color: var(--font-color-1);
+    margin-bottom: 50px;
+    /* margin-top: 10px; */
     text-align: center;
 }
 
@@ -159,16 +165,16 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 30px;
 }
 
 .input {
     width: 100%;
-    font-size: 17px;
-    padding: 14px 16px;
+    font-size: 16px;
+    padding: 12px;
     border: none;
-    border-bottom: 2px solid #d8232a;
-    background: #faf9f9;
+    border-bottom: 2px solid var(--main-color);
+    /* background: #faf9f9; */
     outline: none;
     margin-bottom: 0;
     color: #222;
@@ -176,7 +182,7 @@
 }
 
 .input:focus {
-    border-bottom: 2px solid #b71c1c;
+    border-bottom: 2px solid var(--main-color);
     background: #fff;
 }
 
@@ -184,35 +190,85 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 15px;
-    color: #444;
-    margin-bottom: 8px;
+    font-size: 16px;
+    color: #555;
+    /* margin-bottom: 8px; */
 }
 
 .checkboxLabel {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    cursor: pointer;
     gap: 6px;
-    font-size: 15px;
+    font-size: 16px;
+    position: relative;
+}
+
+.checkboxLabel input[type="checkbox"] {
+    appearance: none;
+    /* 기본 체크박스 스타일 제거 */
+    -webkit-appearance: none;
+    /* 크롬/사파리용 */
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #888;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 2;
+    opacity: 0;
+}
+
+.customCheck {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid #888;
+    background: #fff;
+    display: inline-block;
+    position: relative;
+    margin-right: 6px;
+    box-sizing: border-box;
+}
+
+.checkboxLabel input[type="checkbox"]:checked+.customCheck::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: var(--main-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .optionLinks {
-    color: #888;
-    font-size: 15px;
+    /* color: #888; */
+    font-size: 16px;
     cursor: pointer;
     user-select: none;
+
 }
 
 .loginBtn {
     width: 100%;
-    background: #d8232a;
+    height: 60px;
+    background: var(--main-color);
     color: #fff;
     border: none;
     border-radius: 8px;
     font-size: 18px;
     font-weight: 600;
-    padding: 16px 0;
-    margin-top: 10px;
+    /* padding: 16px 0; */
+    margin-top: 40px;
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -222,15 +278,79 @@
 }
 
 .joinRow {
-    margin-top: 28px;
-    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    /*  text-align: start; */
     color: #888;
     font-size: 16px;
 }
 
 .join {
-    color: #d8232a;
+    color: var(--point-color-red);
     font-weight: 700;
     margin-left: 6px;
     cursor: pointer;
+}
+
+
+/* ================ 반응형 ================ */
+@media (max-width: 1024px) {
+    .loginWrap {
+        padding-top: 200px;
+    }
+}
+
+@media (max-width: 767px) {
+    .loginWrap {
+        padding-top: 150px;
+    }
+
+    .tabRow {
+        height: 50px;
+        margin-bottom: 50px;
+    }
+
+    .tabBtn {
+        padding: 12px 0 10px 0;
+    }
+
+    .loginTitle {
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 656px) {
+    .loginWrap {
+        padding-top: 100px;
+    }
+
+    .loginTitle {
+        font-size: 28px;
+        margin-bottom: 35px;
+    }
+}
+
+@media (max-width: 402px) {
+    .loginWrap {
+        padding-top: 80px;
+    }
+
+    .tabRow {
+        height: 40px;
+        margin-bottom: 40px;
+    }
+
+    .loginTitle {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .loginForm {
+        gap: 10px;
+    }
+
+    .loginBtn {
+        margin-top: 30px;
+    }
 }

@@ -1,0 +1,79 @@
+.gradeWrap {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff4f4;
+}
+
+.badge {
+  font-size: 28px;
+  background: #ffcc55;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+
+.highlight {
+  color: #f6a801;
+  font-weight: 700;
+}
+
+.sub {
+  margin-top: 8px;
+  color: #888;
+  font-size: 16px;
+}
+
+.emojiRow {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 40px 0;
+}
+
+.emojiCard img {
+  width: 100px;
+}
+
+.emojiCard p {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.primaryBtn {
+  background: #d8232a;
+  color: white;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondaryBtn {
+  background: #f3f3f3;
+  color: #555;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}

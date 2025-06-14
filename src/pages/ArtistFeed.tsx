@@ -21,31 +21,33 @@ const ArtistFeed = () => {
 
   return (
     <Container>
-      <ArtistStory onStoryClick={(story) => {
-        setSelectedPost(story);
-        setIsPopupOpen(true);
-      }} />
-      <FeedLayout
-        className={styles.artistFeedLayout}
-        posts={artistPosts}
-        likedIds={artistLikedIds}
-        scrappedIds={artistScrappedIds}
-        onLike={(id, defaultLikes, post) => toggleLike("artist", id, defaultLikes,  post)}
-        onScrap={(id, post) => toggleScrap("artist", id,  post)}
-        onPostClick={post => {
-          setSelectedPost(post);
+      <div className={styles.artistFeedContainer}>
+        <ArtistStory onStoryClick={(story) => {
+          setSelectedPost(story);
           setIsPopupOpen(true);
-        }}
-      />
-      {isPopupOpen && selectedPost && (
-        <Popup
-          type="artistFeed"
-          data={selectedPost}
-          onClose={handleClosePopup}
-          postList={artistPosts}
-          setPostList={() => {}}
+        }} />
+        <FeedLayout
+          className={styles.artistFeedLayout}
+          posts={artistPosts}
+          likedIds={artistLikedIds}
+          scrappedIds={artistScrappedIds}
+          onLike={(id, defaultLikes, post) => toggleLike("artist", id, defaultLikes, post)}
+          onScrap={(id, post) => toggleScrap("artist", id, post)}
+          onPostClick={post => {
+            setSelectedPost(post);
+            setIsPopupOpen(true);
+          }}
         />
-      )}
+        {isPopupOpen && selectedPost && (
+          <Popup
+            type="artistFeed"
+            data={selectedPost}
+            onClose={handleClosePopup}
+            postList={artistPosts}
+            setPostList={() => { }}
+          />
+        )}
+      </div>
     </Container>
   );
 };

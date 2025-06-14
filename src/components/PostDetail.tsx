@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ArtistPost, FanPost, CommentPost, CommentInput } from "../types";
 import { getBadgeImage, getAvailableEmojis } from "../utils/badge";
 import styles from "./PostDetail.module.css";
@@ -7,7 +8,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
 import { useLikedScrapped } from "../context/LikedScrappedContext";
 import { useComment } from "../context/CommentContext";
-import { useUserContext } from "../context/UserContext "; // 추가
+import { useUserContext } from "../context/UserContext ";
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
@@ -21,6 +22,7 @@ interface PostDetailProps<T extends ArtistPost | FanPost> {
 }
 
 const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setPostList, onClose, onEdit }: PostDetailProps<T>) => {
+    const navigate = useNavigate();
     // 좋아요/스크랩 context 사용
     const {
         postLikeCounts,
@@ -189,8 +191,23 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
 
     return (
         <div className={styles.post_detail}>
+            {/* 모바일 헤더 */}
+            <div className={styles.mobile_header}>
+                <button
+                    className={styles.back_btn}
+                    onClick={() => {
+                        if (onClose) onClose();
+                        // 아티스트/팬 피드로 이동
+                        if (type === "artist") navigate("/muse");
+                        else navigate("/loop");
+                    }}
+                >
+                    <img src="/images/icon/back.png" alt="뒤로가기" />
+                </button>
+                <span className={styles.feed_tab}>{type === "artist" ? "아티스트" : "커뮤니티"}</span>
+            </div>
             <div className={styles.post_detail_all}>
-                <section className={styles.feed_content}>
+                <section className={`${styles.feed_content} ${styles.day_span}`}>
                     {data.user.userId === myUserId && (
                         <div className={styles.more_menu_wrapper}>
                             <button
@@ -208,7 +225,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                     <div className={styles.profile_row}>
                         <img className={styles.profile_img} src={data.user.profileImage} alt={data.user.name} />
                         <div className={styles.info}>
-                            <strong>
+                            <strong className={styles.card_name}>
                                 {data.user.name}
                                 <img
                                     className={styles.badge_img}
@@ -223,23 +240,23 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                         </div>
                     </div>
 
-                <div className={styles.body_wrapper}>
-                    <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
-                    {data.hashtag && (
-                        <div className={styles.hashtags}>
-                            {data.hashtag.split(" ").map((tag, i) => <span key={i} className={styles.tag}>{tag}</span>)}
-                        </div>
-                    )}
-                    {data.media && (
-                        <div className={styles.media}>
-                            {data.media.map((m, i) =>
-                                m.type === "video"
-                                    ? <video key={i} src={m.url} controls className={styles.media_item} />
-                                    : <img key={i} src={m.url} alt={`media-${i}`} className={styles.media_item} />
-                            )}
-                        </div>
-                    )}
-                </div>
+                    <div className={styles.body_wrapper}>
+                        <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
+                        {data.hashtag && (
+                            <div className={styles.hashtags}>
+                                {data.hashtag.split(" ").map((tag, i) => <span key={i} className={styles.tag}>{tag}</span>)}
+                            </div>
+                        )}
+                        {data.media && (
+                            <div className={styles.media}>
+                                {data.media.map((m, i) =>
+                                    m.type === "video"
+                                        ? <video key={i} src={m.url} controls className={styles.media_item} />
+                                        : <img key={i} src={m.url} alt={`media-${i}`} className={styles.media_item} />
+                                )}
+                            </div>
+                        )}
+                    </div>
 
                     <div className={styles.meta_row}>
                         <button onClick={handleToggleLike}>
@@ -270,7 +287,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                         {comments.map((c) => (
                             <div key={c.id} className={styles.comment_item}>
                                 <img src={c.user.profileImage} alt={c.user.name} className={styles.comment_avatar} />
-                                <div>
+                                {/* <div className={styles.comment_content}>
                                     <strong>
                                         {c.user.name}
                                         <img className={styles.badge_img} src={getBadgeImage(c.user.badgeType, c.user.badgeLevel)} alt="badge" />
@@ -279,7 +296,10 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                                     {c.emoji && <img src={c.emoji} className={styles.comment_emoji} />}
                                     <div className={styles.comment_meta}>
                                         <span>{getDisplayDate(c.date)}</span>
-                                        <button onClick={() => toggleReplyInput(c.id, c.user.name)}>답글 달기</button>
+                                        <button className={styles.commentBtn} onClick={() => toggleReplyInput(c.id, c.user.name)}>답글 달기</button>
+                                        <button className={styles.deleteBtn}
+                                            onClick={() => setConfirmDelete({ type: "comment", id: c.id })}> 삭제
+                                        </button>
                                         {c.editable && (
                                             <button
                                                 className={styles.delete}
@@ -290,7 +310,13 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                                         )}
                                     </div>
                                     <div className={styles.comment_actions}>
-                                        <button onClick={() => handleCommentLike(c.id)}>{likedCommentIds.includes(c.id) ? "❤️" : "🤍"}</button>
+                                        <button onClick={() => handleCommentLike(c.id)}>
+                                            <img
+                                                src={likedCommentIds.includes(c.id) ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+                                                alt={likedCommentIds.includes(c.id) ? "좋아요 취소" : "좋아요"}
+                                                className={styles.comment_like_icon}
+                                            />
+                                        </button>
                                         <span>{c.likes}</span>
                                     </div>
                                     {c.replies && c.replies.length > 0 && (
@@ -326,6 +352,37 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                                         </div>
                                     )}
 
+                                </div> */}
+                                <div className={styles.comment_content_row}>
+                                    {/* 왼쪽 영역: 유저 정보 + 내용 + 삭제 버튼 */}
+                                    <div className={styles.comment_main}>
+                                        <strong>
+                                            {c.user.name}
+                                            <img className={styles.badge_img} src={getBadgeImage(c.user.badgeType, c.user.badgeLevel)} alt="badge" />
+                                        </strong>
+                                        <p>{c.content}</p>
+                                        {c.emoji && <img src={c.emoji} className={styles.comment_emoji} />}
+                                        <div className={styles.comment_meta}>
+                                            <span>{getDisplayDate(c.date)}</span>
+                                            <button className={styles.commentBtn} onClick={() => toggleReplyInput(c.id, c.user.name)}>답글 달기</button>
+                                            <button className={styles.deleteBtn} onClick={() => setConfirmDelete({ type: "comment", id: c.id })}>삭제</button>
+                                            {c.editable && (
+                                                <button className={styles.delete} onClick={() => setConfirmDelete({ type: "comment", id: c.id })}>삭제</button>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* 오른쪽 영역: 좋아요 */}
+                                    <div className={styles.comment_like_box}>
+                                        <button onClick={() => handleCommentLike(c.id)}>
+                                            <img
+                                                src={likedCommentIds.includes(c.id) ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+                                                alt={likedCommentIds.includes(c.id) ? "좋아요 취소" : "좋아요"}
+                                                className={styles.comment_like_icon}
+                                            />
+                                        </button>
+                                        <span>{c.likes}</span>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -359,13 +416,18 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
 
                     <div className={styles.comment_input}>
                         <input
+                            className={`${styles.comment_input_field} ${styles.day_span}`}
                             type="text"
                             value={input.content}
                             onChange={(e) => setInput({ ...input, content: e.target.value })}
                             placeholder="댓글을 입력하세요"
                         />
-                        <button onClick={() => setShowStickerPicker((prev) => !prev)}>😀</button>
-                        <button onClick={handleSubmitComment}>등록</button>
+                        <button className={styles.smileBtn} onClick={() => setShowStickerPicker((prev) => !prev)}>
+                            <img src="/images/icon/smile.png" alt="스티커 선택" />
+                        </button>
+                        <button className={styles.uploadBtn} onClick={handleSubmitComment}>
+                            <img src="/images/icon/upload.png" alt="등록" />
+                        </button>
                     </div>
                 </aside>
             </div>

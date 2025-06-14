@@ -54,7 +54,8 @@ const Login = () => {
         if (found) {
             setUser(found); // 로그인 유저 저장!
             if (userType === "fan") {
-                navigate("/");
+                navigate("/grade-status");
+                /* navigate("/"); */
             } else {
                 // 어드민은 새로고침하면서 이동
                 window.location.replace("/admin");
@@ -113,11 +114,12 @@ const Login = () => {
                                         name="rememberMe"
                                         checked={!!loginInput.rememberMe}
                                         onChange={handleChange}
-                                    />{" "}
+                                    />
+                                    <span className={styles.customCheck}></span>
                                     아이디 저장
                                 </label>
                                 <span className={styles.optionLinks}>
-                                    아이디 찾기&nbsp;|&nbsp;비밀번호찾기
+                                    아이디 찾기&nbsp;&nbsp;|&nbsp;&nbsp;비밀번호찾기
                                 </span>
                             </div>
                             <button type="submit" className={styles.loginBtn}>

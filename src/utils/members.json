@@ -1,0 +1,57 @@
+[
+  {
+    "id": "doa",
+    "name": "도아 (DOA)",
+    "imageUrl": "/images/mainDoa.jpg",
+    "description": "명랑하고 밝지만 카리스마 있는 빛나는 리더 도아",
+    "birth": "2004.08.16",
+    "age": 22,
+    "position": "리더 / 리드보컬",
+    "height": "168cm 45kg",
+    "mbti": "ENTJ",
+    "stickerUrl":"/images/cherry.png",
+    "popUpImageUrl" : "/images/mainDoaP.png"
+  },
+  {
+    "id": "arin",
+    "name": "아린 (ARIN)",
+    "imageUrl": "/images/mainArin.jpg",
+    "description": "무대 위의 눈빛 킬러 반전 매력이 가득한 아린",
+    "birth": "2006.02.07",
+    "age": 20,
+    "position": "메인댄서",
+    "height": "163cm 41kg",
+    "mbti": "ISFP",
+    "stickerUrl":"/images/blingRed.png",
+    "popUpImageUrl": "/images/mainArinP.png"
+
+  },
+  {
+    "id": "sei",
+    "name": "세이 (SEI)",
+    "imageUrl": "/images/mainSei.jpg",
+    "description": "랩 가사 한 줄에도 진심을 담은 팬 바보 세이",
+    "birth": "2005.10.24",
+    "age": 21,
+    "position": "메인 래퍼",
+    "height": "160cm 43kg",
+    "mbti": "ENFP",
+    "stickerUrl":"/images/heartRed.png",
+    "popUpImageUrl": "/images/mainSeiP.png"
+
+  },
+  {
+    "id": "luha",
+    "name": "루하 (LUHA)",
+    "imageUrl": "/images/mainLuha.jpg",
+    "description": "무뚝뚝하지만 알고보면 귀여운 막내 루하",
+    "birth": "2007.09.08",
+    "age": 19,
+    "position": "비주얼 / 서브보컬",
+    "height": "170cm 47kg",
+    "mbti": "INTP",
+    "stickerUrl":"/images/ribbon.png",
+    "popUpImageUrl": "/images/mainLuhaP.png"
+
+  }
+]

@@ -1,6 +1,35 @@
-.mainBanner {
+.home {
     width: 100%;
+}
+
+main {
+    /*  overflow: hidden; */
+}
+
+.mainBanner {
+    /*     width: 100%;
+    min-width: 100vw;
+    background-image: url('/public/images/mainBanner.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+    /*   width: 100%;
     height: 100vh;
+    min-height: 320px;
+    max-height: 900px;
+    background-image: url('/public/images/mainBanner.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    transition: height 0.3s; */
+
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* 원하는 비율로 조정 */
+    min-height: 220px;
+    max-height: 100vh;
+    height: 60vw;
+    /* 화면 너비에 따라 높이를 조정 */
     background-image: url('/public/images/mainBanner.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,7 +38,6 @@
 
 .mainContent {
     width: 100%;
-    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,21 +45,16 @@
     background-color: #fff;
 }
 
-section {
+.home section {
     padding-block: var(--wep-sec-pad);
     width: 100%;
 }
 
 .home h2 {
-    font-family: var(--title-font-family);
-    font-size: 100px;
-    color: var(--main-color);
-    font-style: normal;
-    font-weight: 400;
+
     margin-bottom: var(--wep-tit-pad);
     text-align: left;
-    margin-left: 300px;
-    /* line-height: normal; */
+    margin-left: 15vw;
 }
 
 .memberProfile {
@@ -39,6 +62,7 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 150px 0;
 }
 
 .memberProfile h2 {
@@ -51,8 +75,7 @@ section {
 }
 
 .profileCard {
-    width: 241px;
-    height: 300px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -61,10 +84,10 @@ section {
 }
 
 .profileImg {
-    width: 241px;
-    height: 241px;
+    width: 100%;
+    height: 23vh;
     background-image: url('/public/images/profileFrame.png');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
@@ -73,9 +96,8 @@ section {
     position: relative;
 }
 
-.profileImg img {
-    width: 215px;
-    height: auto;
+.profileImg>img {
+    width: 90%;
     object-fit: cover;
 }
 
@@ -83,39 +105,35 @@ section {
     position: absolute;
 }
 
-.DOA .sticker {
+.doa .sticker {
     width: 40px;
     height: 40px;
-    left: -19px;
-    top: -5px;
+    left: 2%;
+    top: -5%;
 }
 
-.ARIN .sticker {
+.arin .sticker {
     width: auto;
     height: 70px;
-    bottom: -32px;
-    right: -30px;
+    bottom: -20%;
+    right: -10%;
 }
 
-.SEI .sticker {
+.sei .sticker {
     width: 30px;
     height: auto;
-    bottom: -13px;
-    right: -10px;
+    bottom: -8%;
+    right: -5%;
 }
 
-.LUHA .sticker {
+.luha .sticker {
     width: 45px;
     height: auto;
-    top: -13px;
-    left: -15px;
+    top: -5%;
+    left: -8%;
 }
 
 .profileName {
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    /* line-height: normal; */
     color: var(--font-color-3);
     padding-left: 10px;
 }
@@ -169,9 +187,6 @@ section {
 }
 
 .mainOfficialTitle {
-    font-family: 'Dancing Script', cursive;
-    color: #b13b5a;
-    font-size: 3rem;
     text-align: left;
     margin-bottom: 32px;
 }
@@ -193,16 +208,352 @@ section {
     pointer-events: none;
 }
 
-@media (max-width: 1024px) {
-    .mainBanner {
-        height: 100vh;
-        background-image: url('/public/images/mainbanner_tap.png');
+.profileModalOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.profileModal {
+    background: #fff;
+    width: 700px;
+    height: 680px;
+    padding: 50px;
+    border-radius: 30px;
+    position: relative;
+}
+
+.profileModalTop {
+    width: 100%;
+    /* height: 40vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 10px;
+    padding-block: 20px;
+}
+
+.profileModalName {
+    color: var(--main-color);
+    line-height: 150%;
+}
+
+.profileModalTop img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.profileModalDesc {
+    line-height: normal;
+}
+
+.profileModalInfo {
+    color: var(--font-color-7);
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 30px;
+    padding-top: 20px;
+    gap: 10px 0;
+    border-top: 2px solid var(--main-color);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 144%;
+}
+
+.profileModalInfo div {
+    display: flex;
+    gap: 15px;
+    width: 50%;
+    align-items: center;
+}
+
+.profileModalInfo span {
+    color: var(--font-color-3);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 20px;
+    height: 20px;
+    background-image: url('/public/images/icon/close.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1620px) {
+    .home h2 {
+        margin-left: 8vw;
     }
 }
 
-@media (max-width:656px) {
+@media (max-width: 1440px) {
+    .home h2 {
+        margin-left: 4vw;
+    }
+}
+
+
+
+@media (max-width: 1024px) {
+
+    /*     .mainBanner {
+        height: 100vw;
+        width: 100%;
+        background-image: url('/public/images/mainbanner_tap.png');
+        background-size: contain;
+        background-position: top center;
+    } */
+    .mainBanner {
+        height: 100vw;
+        min-height: 220px;
+        max-height: 1500px;
+        background-image: url('/public/images/mainbanner_tap.png');
+        background-size: cover;
+        background-position: top center;
+    }
+
+
+    .home h2 {
+        margin-left: 3vw;
+    }
+
+    .memberProfile {
+        padding: 100px 0;
+    }
+
+    .profileImg {
+        height: 17vh;
+    }
+
+    .profileImg img {
+        width: 85%;
+    }
+
+    .arin .sticker {
+        width: auto;
+        height: 50px;
+        bottom: -10%;
+        right: -10%;
+    }
+
+    .profileCard {
+        gap: 15px;
+    }
+
+}
+
+@media (max-width: 1023px) {
+    .profileModal {
+        width: 70vw;
+        height: 68vw;
+        padding: 4.5vw;
+    }
+
+    .profileModalName {
+        font-size: 30px;
+
+    }
+
+    .profileModalTop {
+        padding-block: 10px;
+    }
+
+    .profileModalInfo {
+        padding-left: 2.7vw;
+        padding-top: 2vw;
+        /* gap: 1.8vw 0; */
+    }
+
+    .profileModalInfo div {
+        gap: 1vw;
+    }
+
+    .closeBtn {
+        top: 4.5vw;
+        right: 4.5vw;
+    }
+}
+
+@media (max-width:950px) {
+    .profileImg {
+        height: 14vh;
+    }
+}
+
+@media (max-width:900px) and(min-width:830px) {
+    .profileImg {
+        height: 15vh;
+    }
+}
+
+@media (max-width:768px) {
+
+
+    .memberProfile {
+        padding: 50px 0;
+    }
+
+    .profileImg {
+        height: 17vh;
+    }
+
+    .profileModalInfo {
+        font-size: 17px;
+        justify-content: space-between;
+        line-height: 120%;
+    }
+
+    .profileModalInfo div {
+        width: 45%;
+    }
+}
+
+@media (max-width:767px) {
+    .mainBanner {
+        height: 100vw;
+        min-height: 220px;
+        max-height: 1500px;
+        background-image: url('/public/images/mainvisual_mo.png');
+    }
+
+    .memberProfile {
+        padding: 50px 0;
+    }
+
+    .profileList {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0;
+        /* gap 제거 */
+    }
+
+    .profileCard {
+        width: calc(50% - 8px);
+        /* 카드 사이에 16px 간격을 주고 싶으면 -8px */
+        min-width: 140px;
+        max-width: 100%;
+        flex: none;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .profileImg {
+        height: 20vh;
+    }
+
+    .home h2 {
+        margin-left: 4vw;
+    }
+
+    .profileModalOverlay {
+        background-color: transparent;
+    }
+
+    .profileModal {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        /* display: flex;
+        flex-direction: column;
+        gap: 10vh; */
+    }
+
+    .profileModalTop {}
+
+    .profileModalName {
+        margin-top: 10vh;
+    }
+
+    .profileModalInfo div {
+        width: 100%;
+        /* font-size: ; */
+    }
+
+    .profileModalInfo span {
+        font-size: 18px;
+    }
+}
+
+@media (max-width:600px) {
     .mainBanner {
         height: 100vh;
+        min-height: 500px;
+        width: 100%;
         background-image: url('/public/images/mainvisual_mo.png');
+        background-size: cover;
+    }
+
+
+    .profileCard {
+        gap: 10px;
+    }
+}
+
+@media (max-width:530px) {
+    /*     .mainBanner {
+        height: 80vh;
+        width: 100%;
+        background-image: url('/public/images/mainvisual_mo.png');
+        background-size: contain;
+    } */
+
+    /*     .mainBanner {
+        height: 50vw;
+        min-height: 160px;
+        max-height: 400px;
+        background-image: url('/public/images/mainvisual_mo.png');
+        background-size: cover;
+        background-position: top center;
+    } */
+
+    .mainBanner {
+        height: 100vh;
+        min-height: 500px;
+        width: 100%;
+        background-image: url('/public/images/mainvisual_mo.png');
+        background-size: cover;
+    }
+
+
+}
+
+@media (max-width: 402px) {
+
+    /*     .mainBanner {
+        height: 95vh;
+        width: 100%;
+        background-image: url('/public/images/mainvisual_mo.png');
+        background-size: cover;
+    } */
+    /*     .mainBanner {
+        height: 40vw;
+        min-height: 120px;
+        max-height: 300px;
+        background-image: url('/public/images/mainvisual_mo.png');
+        background-size: cover;
+        background-position: top center;
+    } */
+
+    .profileImg {
+        height: 25vh;
     }
 }

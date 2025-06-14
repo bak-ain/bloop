@@ -14,6 +14,9 @@ import MyMood from './pages/MyMood';
 import LevelGuide from './pages/LevelGuide';
 import OfficialPostDetail from './pages/OfficialPostDetail';
 import ScrollToTop from "./components/ScrollToTop";
+/* 은님추가 */
+import GradeStatus from './components/GradeStatus';
+/* -------- */
 import { PostListProvider } from "./context/PostListContext";
 import { LikedScrappedProvider } from "./context/LikedScrappedContext";
 import { CommentProvider } from './context/CommentContext';
@@ -67,6 +70,9 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/join" element={<Join />} />
+                  {/* 은님추가 */}
+                  <Route path="/grade-status" element={<GradeStatus />} />
+                  {/* -------- */}
                   <Route path="/official" element={<OfficialFeed />} />
                   <Route path="/official/:id" element={<OfficialPostDetail />} />
                   <Route path="/muse" element={<ArtistFeed />} />

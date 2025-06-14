@@ -1,3 +1,5 @@
+
+
 .post_detail {
   position: fixed;
   top: 0;
@@ -13,33 +15,47 @@
 
 .post_detail_all {
   display: flex;
+  /* flex-direction: column; */
   width: 70%;
-  height: 60%;
+  height: 80%;
   background: #fff;
   border-radius: 20px;
   z-index: 1000;
   position: relative;
-  padding: 30px 20px 15px 20px;
+  /* padding: 30px 20px 15px 20px; */
+  margin: 0;
+}
+
+.body_wrapper {
+  width: 100%;
+  height: 80%;
+  overflow-y: scroll;
 }
 
 /* section {
   padding: 0;
   width: 60%;
 } */
-
-aside {
-  width: 40%;
+.post_detail_all section {
+  width: 60%;
 }
 
-/* .feed_content {
-  width: 80%;
-  height: 70%;
+/* aside {
+  width: 40%;
+} */
+
+.feed_content {
+  width: 70%;
+  height: 100%;
   background: #fff;
   border-radius: 20px;
   z-index: 1000;
   position: relative;
   padding: 30px 20px 15px 20px;
-} */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .badge_img {
   width: 20px;
@@ -131,8 +147,8 @@ aside {
 }
 
 .profile_img {
-  width: 35px;
-  height: 35px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 10px;
@@ -159,18 +175,18 @@ aside {
 
 /* 팝업 이미지 */
 .media {
-  width: 600px;
-  height: 480px;
-  overflow: hidden;
-  border-radius: 10px;
-  margin: 20px 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .media_item {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* border: 3px solid #333; */
+  border-radius: 10px;
   display: block;
 }
 
@@ -179,11 +195,11 @@ aside {
 .meta_row {
   display: flex;
   justify-content: flex-start;
+  align-items: flex-end;
   gap: 16px;
   font-size: 14px;
   color: #666;
-  padding: 20px 0;
-  border-top: 1px solid #ccc;
+  margin-top: auto;
 }
 
 .meta_row button {
@@ -206,4 +222,127 @@ aside {
   height: 30px;
 }
 
-/*  */
+/* 팝업 right 코멘트  */
+.comment_panel {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+
+.comment_content_row {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.badge_img {
+  width: 20px;
+  height: 20px;
+}
+
+.comment_meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.comment_meta button {
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.comment_meta .commentBtn {
+  color: var(--font-color-3);
+}
+
+.comment_meta .deleteBtn {
+  color: var(--main-color);
+}
+
+.comment_actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment_like_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment_like_box button {
+  background: none;
+}
+
+.comment_like_icon {
+  width: 30px;
+  height: 30px;
+}
+
+
+/* 댓글부분 */
+.comment_input {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment_input_field {
+  width: 80%;
+  height: 40px;
+  border-radius: 40px;
+  border: 0;
+  background: var(--bg-color-chat);
+  padding-left: 20px;
+}
+
+.smileBtn {
+  position: absolute;
+  top: 50%;
+  right: 22%;
+  transform: translateY(-50%);
+  background: none;
+}
+
+.smileBtn img {
+  width: 26px;
+  height: 26px;
+}
+
+.uploadBtn {
+  background: none;
+  padding-right: 20px;
+}
+
+.uploadBtn img {
+  width: 30px;
+  height: 30px;
+}
+
+
+
+
+.mobile_header {
+  display: none;
+}
+.back_btn{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .mobile_header {
+    display: flex;
+  }
+
+}
