@@ -96,53 +96,6 @@ const PostCard = <T extends ArtistPost | FanPost>({
     badgeLevel: 1
   };
 
-    // 최신 좋아요 수 동기화
-    useEffect(() => {
-        setLikeCount(postLikeCounts[data.id] ?? data.likes);
-    }, [postLikeCounts, data.id, data.likes]);
-
-    // 최신 댓글 수 동기화
-    const { artistPosts, fanPosts } = usePostList();
-    useEffect(() => {
-        if (isArtist) {
-            const found = artistPosts.find((p) => p.id === data.id);
-            if (found && found.comment !== commentCount) {
-                setCommentCount(found.comment);
-            }
-        } else {
-            const found = fanPosts.find((p) => p.id === data.id);
-            if (found && found.comment !== commentCount) {
-                setCommentCount(found.comment);
-            }
-        }
-        // eslint-disable-next-line
-    }, [artistPosts, fanPosts, data.id, isArtist]);
-
-    const handleLike = () => {
-        onLike();
-        // setLiked와 setLikeCount는 context에서 동기화되므로 별도 setState 불필요
-    };
-
-    const handleScrap = () => {
-        onScrap();
-        // setScrapped는 context에서 동기화되므로 별도 setState 불필요
-    };
-
-    // user가 없을 때 기본값 처리
-    const user = data.user ?? {
-        name: "알 수 없음",
-        profileImage: "/images/3.png",
-        badgeType: "fan" as const,
-        badgeLevel: 1
-    };
-
-    return (
-        <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
-            {/* 아티스트 게시물 카드 */}
-            {isArtist ? (
-                <div className={styles.profile_bubble_layout}>
-                    <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
-                   {/*  <svg width="17" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
   return (
     <div className={`${styles.post_card} ${isArtist ? styles.artist : styles.fan}`}>
       {/* 아티스트 게시물 카드 */}
@@ -260,24 +213,6 @@ const PostCard = <T extends ArtistPost | FanPost>({
                 ))}
               </div>
             )}
-            {/* {data.media && (
-                            <div className={styles.media}>
-                                {data.media.slice(0, 2).map((m, i) =>
-                                    m.type === "video" ? (
-                                        <video key={i} src={m.url} controls className={styles.media_item} />
-                                    ) : (
-                                        <div key={i} className={styles.media_item_wrapper}>
-                                            <img src={m.url} alt={`media-${i}`} className={styles.media_item} />
-                                            {i === 1 && (data.media?.length ?? 0) > 2 && (
-                                                <div className={styles.media_overlay}>
-                                                    +{(data.media?.length ?? 0) - 2}
-                                                </div>
-                                            )}
-                                        </div>
-                                    )
-                                )}
-                            </div>
-                        )} */}
             {data.media && (
               <div
                 className={`${styles.media} ${data.media.length === 1 ? styles.single : styles.multi
@@ -293,7 +228,6 @@ const PostCard = <T extends ArtistPost | FanPost>({
                         alt={`media-${i}`}
                         className={styles.media_item}
                       />
-                      {/* 🔽 이 부분을 아래처럼 바꿔줘야 해 */}
                       {i === 1 && (data.media?.length ?? 0) > 2 && (
                         <div className={styles.media_overlay}>
                           +{(data.media?.length ?? 0) - 2}
@@ -331,34 +265,6 @@ const PostCard = <T extends ArtistPost | FanPost>({
         </>
       )
       }
-
-      {/* 
-            <div className={styles.meta_row}>
-                <button onClick={handleLike}>
-                    <img className={styles.like_icon}
-                        src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
-                        alt={liked ? "좋아요 취소" : "좋아요"}
-                    />{" "}
-                    {likeCount}
-                </button>
-                <button onClick={goToDetail}>
-                    <img className={styles.like_icon}
-                        src="/images/icon/message.png"
-                        alt="댓글"
-                    />{" "}
-                    {commentCount}
-                </button>
-                <button onClick={handleScrap}>
-                    <img
-                        className={styles.like_icon}
-                        src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
-                        alt={scrapped ? "스크랩 취소" : "스크랩"}
-                    />
-                    {/* {scrapped ? "🔖" : "📌"} */}
-      {/*} </button>
-            </div> */}
-
-
     </div >
   );
 };
