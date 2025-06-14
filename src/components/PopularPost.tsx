@@ -29,47 +29,53 @@ const PopularPost = ({ posts, onPostClick }: PopularPostProps) => {
 
   return (
     <>
-      <div className={styles.popularPostContainer}>
+      <div className={`${styles.popularPostContainer} all_p_t`}>
         <div className={styles.popularBanner}>
-          <img src="/images/communityBanner.png" alt="배너" className={styles.bannerImg} />
         </div>
-        <div className={`${styles.popularPostContent} con`}>
+        <div className={`${styles.popularPostContent}`}>
           <div className={styles.popularTitle}>
             <h2 className="h3_tit">TOP LOOP</h2>
             <img src="/images/icon/sticker1.png" alt="눈스티커" />
           </div>
-
-          <Swiper
-            spaceBetween={10}
-            slidesPerView={Math.min(3, popularPosts.length)}
-            navigation
-            loop={popularPosts.length > 3}
-          >
-            {popularPosts.map(post => (
-              <SwiperSlide key={post.id}>
-                <div className={styles.popularCardAll}>
-                  <div
-                    className={styles.popularCard}
-                    onClick={() => onPostClick(post)}
-                  >
-                    <div className={styles.popularCardHeader}>
-                      <img src={post.user.profileImage} alt={post.user.name} className={styles.popularCardAvatar} />
-                      <div className="styles.popularCardInfo">
-                        <span className={styles.popularCardName}>{post.user.name}</span>
-                        <img
-                          src={getBadgeImage(post.user.badgeType, post.user.badgeLevel)}
-                          alt="badge"
-                          className={styles.popularCardBadge}
-                        />
-                        <div className={styles.popularCardDate}>{post.date}</div>
+          <div className={styles.popularSwiperCon}>
+            <button className={styles.prevBtn + " custom-swiper-prev"} aria-label="이전"></button>
+            <button className={styles.nextBtn + " custom-swiper-next"} aria-label="다음"></button>
+            <Swiper
+              className={`${styles.popularSwiper} popularSwiper`}
+              spaceBetween={10}
+              slidesPerView={Math.min(3, popularPosts.length)}
+              navigation={{
+                nextEl: ".custom-swiper-next",
+                prevEl: ".custom-swiper-prev"
+              }}
+              loop={popularPosts.length > 3}
+            >
+              {popularPosts.map(post => (
+                <SwiperSlide key={post.id}>
+                  <div className={styles.popularCardAll}>
+                    <div
+                      className={styles.popularCard}
+                      onClick={() => onPostClick(post)}
+                    >
+                      <div className={styles.popularCardHeader}>
+                        <img src={post.user.profileImage} alt={post.user.name} className={styles.popularCardAvatar} />
+                        <div className="styles.popularCardInfo">
+                          <span className={styles.popularCardName}>{post.user.name}</span>
+                          <img
+                            src={getBadgeImage(post.user.badgeType, post.user.badgeLevel)}
+                            alt="badge"
+                            className={styles.popularCardBadge}
+                          />
+                          <div className={styles.popularCardDate}>{post.date}</div>
+                        </div>
                       </div>
+                      <div className={styles.popularCardDesc}>{post.description}</div>
                     </div>
-                    <div className={styles.popularCardDesc}>{post.description}</div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </>

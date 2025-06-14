@@ -225,6 +225,7 @@ button {
 .icon_num {
   font-size: 16px;
   font-weight: 400;
+  font-family: var(--main-font-family);
 }
 
 .pagenation_num {
@@ -296,9 +297,11 @@ button {
 }
 
 .card_name {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
-  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .card_p {
@@ -493,14 +496,18 @@ button {
 }
 
 main {
-  padding-top: 180px;
   overflow: hidden;
+}
+
+.all_p_t {
+  padding-top: 180px;
 }
 
 header.inner {
   padding-bottom: 0;
 }
-footer .inner{
+
+footer .inner {
     padding-bottom: 0;
 }
 
@@ -511,7 +518,9 @@ footer .inner{
 .official main {
   background: var(--font-color-1);
 }
-
+.swiperPopular .swiper-wrapper{
+  /* width: 1024px; */
+}
 .inner {
   max-width: 1024px;
   margin: 0 auto;
@@ -550,7 +559,8 @@ footer .inner{
 }
 
 @media (max-width: 1024px) {
-  main {
+
+  .all_p_t {
     padding-top: 80px;
 
   }
@@ -666,7 +676,7 @@ footer .inner{
 }
 
 @media (max-width:530px) {
-  main {
+  .all_p_t {
     padding-top: 70px;
 
   }

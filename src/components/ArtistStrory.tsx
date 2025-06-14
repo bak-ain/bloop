@@ -8,13 +8,13 @@ const ArtistStory = ({ onStoryClick }: { onStoryClick: (story: ArtistPost) => vo
     console.log("storyList", storyList);
 
     return (
-        <div className={`${styles.storyContainer}`}>
+        <div className={`${styles.storyContainer} `}>
             <div className={`${styles.aBannerContainer}`}>
                 <div className={`${styles.banner}`}></div>
                 <div className={`${styles.banner_mini}`}></div>
             </div>
 
-            <div className={`${styles.storyContent} con`}>
+            <div className={`${styles.storyContent} inner`}>
                 {storyList.map(story => (
                     <div className={styles.storyCard} key={story.id} onClick={() => onStoryClick(story)}>
                         {/* user가 undefined일 수 있으니 옵셔널 체이닝 처리 */}

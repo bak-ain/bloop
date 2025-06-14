@@ -71,34 +71,36 @@ const LEVELS = [
 const LevelGuide = () => {
   return (
     <Container>
-      <div className={`${styles.levelGuideWrap} inner`}>
-        <h3 className={styles.levelGuideTitle}>등급 안내</h3>
-        <h4 className={styles.levelGuideSubtitle}>팬심이 자라나는 순간, BLOOP 등급으로 기록해요</h4>
-        <div className={styles.levelGrid}>
-          {LEVELS.map((level) => (
-            <div className={styles.levelCard} key={level.key}>
-              <div className={styles.levelBadgeWrap}>
-                <img src={level.badge} alt={level.name} className={styles.levelBadgeImg} />
-              </div>
-              <div className={styles.levelName} style={{ color: level.color }}>
-                {level.name}
-              </div>
-              <div className={styles.levelDesc}>{level.desc}</div>
-              <div className={styles.levelDetail}>{level.detail}</div>
-              <div className={styles.levelCondition}>
-                가입 조건<br />
-                {level.condition}
-              </div>
-              <div className={styles.levelEmojis}>
-                <div className={styles.levelEmojiLabel}>사용 가능 이모지</div>
-                <div className={styles.levelEmojiList}>
-                  {level.emojis.map((emoji, idx) => (
-                    <img src={emoji} alt={`emoji${idx + 1}`} key={emoji} className={styles.levelEmojiImg} />
-                  ))}
+      <div className="all_p_t">
+        <div className={`${styles.levelGuideWrap} inner`}>
+          <h3 className={styles.levelGuideTitle}>등급 안내</h3>
+          <h4 className={styles.levelGuideSubtitle}>팬심이 자라나는 순간, BLOOP 등급으로 기록해요</h4>
+          <div className={styles.levelGrid}>
+            {LEVELS.map((level) => (
+              <div className={styles.levelCard} key={level.key}>
+                <div className={styles.levelBadgeWrap}>
+                  <img src={level.badge} alt={level.name} className={styles.levelBadgeImg} />
+                </div>
+                <div className={styles.levelName} style={{ color: level.color }}>
+                  {level.name}
+                </div>
+                <div className={styles.levelDesc}>{level.desc}</div>
+                <div className={styles.levelDetail}>{level.detail}</div>
+                <div className={styles.levelCondition}>
+                  가입 조건<br />
+                  {level.condition}
+                </div>
+                <div className={styles.levelEmojis}>
+                  <div className={styles.levelEmojiLabel}>사용 가능 이모지</div>
+                  <div className={styles.levelEmojiList}>
+                    {level.emojis.map((emoji, idx) => (
+                      <img src={emoji} alt={`emoji${idx + 1}`} key={emoji} className={styles.levelEmojiImg} />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </Container>
