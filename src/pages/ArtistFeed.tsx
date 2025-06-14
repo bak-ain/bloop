@@ -33,18 +33,31 @@ const StoryPopup = ({ story, onClose }: { story: ArtistStoryPost; onClose: () =>
 
   return (
     <div className={styles.storyPopupOverlay}>
-      <div className={styles.storyPopup}>
-        <button className={styles.closeBtn} onClick={onClose}>닫기</button>
-        <div className={styles.storyHeader}>
-          <div className={`${styles.storyPopUpProfile} ${story.user.name ? styles[story.user.name.toLowerCase()] : ""}`}>
-            <img src={story.user.profileImage} alt={story.user.name} className={styles.profileImg} />
+      <div
+        className={styles.storyPopup}
+        style={{
+          backgroundImage: `url(${story.media[0].url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className={styles.storyPopupContent}>
+          <button className={styles.closeBtn} onClick={onClose}>닫기</button>
+          <div className={styles.storyHeader}>
+            <div className={styles.storyHeaderLeft}>
+              <div className={`${styles.storyPopUpProfile} ${story.user.name ? styles[story.user.name.toLowerCase()] : ""}`}>
+                <img src={story.user.profileImage} alt={story.user.name} className={styles.profileImg} />
+              </div>
+              <div className={styles.storyHeaderTxt}>
+                 <span className={`{${styles.userName}} card_name`}>{story.user.name}</span>
+              <span className={`${styles.timeAgo} day_span`}>{story.date}</span>
+              </div>
+             
+            </div>
+
+            <button className={styles.shareBtn} onClick={handleShare}><img src="/images/icon/share_icon_w.png" alt="share" /></button>
           </div>
-          <span className={styles.userName}>{story.user.name}</span>
-          <span className={styles.timeAgo}>{story.date}</span>
-          <button className={styles.shareBtn} onClick={handleShare}>공유</button>
-        </div>
-        <div className={styles.storyImageWrap}>
-          <img src={story.media[0].url} alt="" className={styles.storyImage} />
         </div>
       </div>
     </div>

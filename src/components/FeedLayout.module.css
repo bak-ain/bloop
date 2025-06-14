@@ -4,8 +4,8 @@
     flex-direction: column;
     background-image: url(../../public/images/artist/bg.jpg);
     background-size: contain;
-    background-position: center;
-   /*  background-repeat: no-repeat; */
+    background-position: bottom;
+    /*  background-repeat: no-repeat; */
 
 }
 
@@ -25,7 +25,8 @@
     padding-right: 80px;
 } */
 .artistFeedLayout .feedLayout {
-    padding: 0 80px;
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
 .writeButton {
@@ -152,13 +153,18 @@
 .storyPopup {
     background: #222;
     border-radius: 16px;
-    padding: 32px 24px 24px 24px;
     min-width: 340px;
-    max-width: 420px;
+    max-width: 640px;
     width: 90vw;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     position: relative;
     color: #fff;
+}
+
+.storyPopupContent {
+    width: 640px;
+    height: 700px;
+    padding: 30px 20px;
 }
 
 .closeBtn {
@@ -174,6 +180,7 @@
     font-size: 16px;
     cursor: pointer;
     z-index: 2;
+    display: none;
 }
 
 .storyHeader {
@@ -181,39 +188,45 @@
     align-items: center;
     gap: 12px;
     margin-bottom: 18px;
+    justify-content: space-between;
+}
+
+.storyHeaderLeft {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.storyHeaderTxt {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
 
 .profileImg {
-    width: 44px;
-    height: 44px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #ff6fcb;
 }
 
-.userName {
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-right: 8px;
-}
+
 
 .timeAgo {
-    font-size: 0.95rem;
-    color: #bbb;
-    margin-left: auto;
+    color: #Fff;
+
 }
 
 .shareBtn {
-    background: #ff6fcb;
-    color: #fff;
     border: none;
-    border-radius: 18px;
-    padding: 6px 16px;
-    margin-left: 10px;
     cursor: pointer;
-    font-size: 0.95rem;
+    background: transparent;
 }
-
+.shareBtn img{
+    width: 30px;
+    height: 30px;
+}
 .storyImageWrap {
     width: 100%;
     margin-top: 10px;
@@ -239,13 +252,13 @@
 
 @media (max-width: 1024px) {
     .feedContain {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background-image: url(../../public/images/artist/bg_tap.jpg);
-    background-size: contain;
-    background-position: center;
-   /*  background-repeat: no-repeat; */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-image: url(../../public/images/artist/bg_tap.jpg);
+        background-size: contain;
+        background-position: center;
+        /*  background-repeat: no-repeat; */
 
-}
+    }
 }
