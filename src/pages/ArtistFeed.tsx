@@ -44,23 +44,29 @@ const StoryPopup = ({ story, onClose }: { story: ArtistStoryPost; onClose: () =>
         }}
       >
         <div className={styles.storyPopupContent}>
-          <button className={styles.closeBtn} onClick={onClose}>X</button>
           <div className={styles.storyHeader}>
             <div className={styles.storyHeaderLeft}>
               <div className={`${styles.storyPopUpProfile} ${story.user.name ? styles[story.user.name.toLowerCase()] : ""}`}>
                 <img src={story.user.profileImage} alt={story.user.name} className={styles.profileImg} />
               </div>
               <div className={styles.storyHeaderTxt}>
-                <span className={`{${styles.userName}} card_name`}>{story.user.name}<img
-                  src={getBadgeImage(story.user.badgeType)}
-                  alt="badge"
-                  className={styles.badgeImg}/></span>
+                <span className={`{${styles.userName}} card_name`}>{story.user.name}
+                  <img
+                    src={getBadgeImage(story.user.badgeType)}
+                    alt="badge"
+                    className={styles.badgeImg}
+                  />
+                </span>
                 <span className={`${styles.timeAgo} day_span`}>{story.date}</span>
               </div>
-
             </div>
-
-            <button className={styles.shareBtn} onClick={handleShare}><img src="/images/icon/share_icon_w.png" alt="share" /></button>
+            {/* 공유 버튼과 닫기 버튼을 같은 부모에 넣음 */}
+            <div className={styles.storyHeaderRight}>
+              <button className={styles.shareBtn} onClick={handleShare}>
+                <img src="/images/icon/share_icon_w.png" alt="share" />
+              </button>
+              <button className={styles.closeBtn} onClick={onClose}>X</button>
+            </div>
           </div>
         </div>
       </div>

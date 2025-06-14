@@ -290,6 +290,11 @@ button {
 
 
 /* 아티스트 */
+.artist_h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
 .artist_top {
   font-size: 22px;
   font-weight: 600;
@@ -560,6 +565,79 @@ footer .inner,
   display: none !important;
 }
 
+/* 아티스트 */
+
+
+:global(.swiper-slide) {
+  overflow: visible !important;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.artist-swiper-prev,
+.artist-swiper-next {
+  position: absolute;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.85;
+  background: transparent;
+}
+
+.artist-swiper-prev {
+  left: 30px;
+  background-image: url('/public/images/icon/page_le_on.png');
+  background-size: contain;
+}
+
+.artist-swiper-next {
+  right: 30px;
+  background-image: url('/public/images/icon/page_ri_on.png');
+  background-size: contain;
+}
+
+
+
+/* 인기 게시물 */
+.popular-swiper-prev,
+.popular-swiper-next {
+  position: absolute;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  color: #222;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  opacity: 0.85;
+  background: transparent;
+}
+
+.popular-swiper-prev {
+  left: -20px;
+  background-image: url('/public/images/icon/page_le_on.png');
+  background-size: contain;
+}
+
+.popular-swiper-next {
+  right: -20px;
+  background-image: url('/public/images/icon/page_ri_on.png');
+  background-size: contain;
+}
+
+/* .popular-swiper-pagination {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: none;
+}
+ */
 @media (max-width: 1024px) {
 
 
@@ -576,10 +654,54 @@ footer .inner,
     padding-bottom: var(--wep-sec-pad);
   }
 
+  .popular-swiper-prev {
+    left: 10px;
+    background-image: url('/public/images/icon/page_le_on.png');
+    background-size: contain;
+  }
+
+  .popular-swiper-next {
+    right: 10px;
+    background-image: url('/public/images/icon/page_ri_on.png');
+    background-size: contain;
+  }
+
+
 }
 
+@media (min-width: 768px) {
+  .popular-swiper-pagination {
+    display: none !important;
+  }
+}
+
+/* .swiper-pagination {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: none;
+}
+ */
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {
+
+  /*   .artist-swiper-prev,
+  .artist-swiper-next {
+    top: 65%;
+    transform: translateY(-50%);
+
+  } */
+
+  .artist-swiper-prev {
+    left: 30px;
+  }
+  .artist-swiper-next {
+    right: 30px;
+  }
+
+
   .join_p {
     font-size: 16px;
   }
@@ -674,22 +796,81 @@ footer .inner,
 }
 
 @media (max-width: 767px) {
-  #chatbase-bubble-button {
-    bottom: 120px !important;
-    right: 30px !important;
+
+  .artist_h1 {
+    font-size: 24px;
+    font-weight: 700;
   }
 
+  .popular-swiper-prev,
+  .popular-swiper-next {
+    display: none !important;
+  }
+
+  .popular-swiper-pagination {
+    /*   position: absolute;
+  left:150px !important;
+  top: 4.3% !important; */
+    /* transform: translateY(-50%); */
+    /* transform: translateX(-50%); */
+    z-index: 300 !important;
+    display: flex !important;
+    padding-top: 16px;
+    /* 원하는 만큼 여백 */
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* .popular-swiper-pagination .swiper-pagination-bullet {
+  background: #ccc !important;
+  opacity: 1 !important;
+}*/
+  .popular-swiper-pagination .swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    background: #ccc !important;
+    opacity: 1 !important;
+    margin: 0 4px !important;
+  }
+
+  .popular-swiper-pagination .swiper-pagination-bullet-active {
+    background: #ff6600 !important;
+    opacity: 1 !important;
+  }
   .all_p_t {
-    padding-top: 80px;
+  padding-top: 100px;
 
-  }
+}
 }
 
-@media (max-width:530px) {
-  .all_p_t {
-    padding-top: 70px;
 
-  }
+
+
+
+#chatbase-bubble-button {
+  bottom: 120px !important;
+  right: 30px !important;
+}
+
+
+
+
+.popular-swiper-prev {
+  left: 2px;
+  background-image: url('/public/images/icon/page_le_on.png');
+  background-size: contain;
+}
+
+.popular-swiper-next {
+  right: 2px;
+  background-image: url('/public/images/icon/page_ri_on.png');
+  background-size: contain;
+}
+
+
+
+@media (max-width:530px) {
+
 
   .inner {
     padding-bottom: var(--wep-sec-pad);
@@ -752,11 +933,7 @@ footer .inner,
     font-size: 10px;
   }
 
-  /* 공통 */
-  .h3_tit {
-    font-size: 24px;
-    line-height: 33px;
-  }
+
 
   .card_p {
     font-size: 16px;
