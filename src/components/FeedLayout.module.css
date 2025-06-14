@@ -133,6 +133,101 @@
 .paginationBtn:last-of-type {
   margin-right: 45px;
 } */
+/* 스토리팝업 */
+/* StoryPopup.module.css 예시 */
+
+.storyPopupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.storyPopup {
+    background: #222;
+    border-radius: 16px;
+    padding: 32px 24px 24px 24px;
+    min-width: 340px;
+    max-width: 420px;
+    width: 90vw;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    position: relative;
+    color: #fff;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.storyHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.profileImg {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff6fcb;
+}
+
+.userName {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-right: 8px;
+}
+
+.timeAgo {
+    font-size: 0.95rem;
+    color: #bbb;
+    margin-left: auto;
+}
+
+.shareBtn {
+    background: #ff6fcb;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    padding: 6px 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.storyImageWrap {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.storyImage {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
 
 .feed {
     display: flex;
