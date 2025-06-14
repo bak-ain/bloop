@@ -5,9 +5,7 @@
     color: #fff;
     font-family: var(--main-font-family);
 }
-.footer .inner{
-    padding-bottom: 0;
-}
+
 .footer p {
     font-size: 16px;
     font-style: normal;

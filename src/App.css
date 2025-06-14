@@ -496,6 +496,9 @@ main {
 header.inner {
   padding-bottom: 0;
 }
+footer .inner{
+    padding-bottom: 0;
+}
 
 .home main {
   padding-top: 0;

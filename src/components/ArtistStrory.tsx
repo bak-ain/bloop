@@ -14,7 +14,7 @@ const ArtistStory = ({ onStoryClick }: { onStoryClick: (story: ArtistPost) => vo
                 <div className={`${styles.banner_mini}`}></div>
             </div>
 
-            <div className={`${styles.storyContent} inner`}>
+            <div className={`${styles.storyContent} con`}>
                 {storyList.map(story => (
                     <div className={styles.storyCard} key={story.id} onClick={() => onStoryClick(story)}>
                         {/* user가 undefined일 수 있으니 옵셔널 체이닝 처리 */}

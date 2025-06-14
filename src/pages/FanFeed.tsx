@@ -43,9 +43,6 @@ const FanFeed = () => {
     return (
         <Container>
             <div className={styles.fanFeedContainer}>
-                <div className={styles.popularBanner}>
-                    <img src="/images/communityBanner.png" alt="배너" className={styles.bannerImg} />
-                </div>
                 <button
                     className={styles.writeButton}
                     onClick={openUpload}
