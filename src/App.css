@@ -759,9 +759,7 @@ footer .inner,
   }
 
 
-  .join_p {
-    font-size: 16px;
-  }
+
 
   .inner {
     padding: 0 20px;
@@ -854,7 +852,13 @@ footer .inner,
 }
 
 @media (max-width: 767px) {
-
+  .h3_tit {
+  font-size: 24px;
+  font-weight: 700;
+}
+  .join_p {
+    font-size: 16px;
+  }
   .inner {
     padding: 0 20px;
   }
@@ -936,7 +940,7 @@ footer .inner,
 
 
   .all_p_t {
-    padding-top: 80px;
+    padding-top: 150px;
 
   }
 
