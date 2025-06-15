@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Container from '../components/Container';
-import styles from './Mypage.module.css';
+import styles from './Mymood.module.css';
 import { FanProfileEditable } from '../types';
 import { getBadgeImage } from '../utils/badge';
 import { useUserContext } from "../context/UserContext ";
@@ -139,12 +139,12 @@ const MyMood = () => {
       <div className={`${styles.myeMoodWrap} inner`}>
         <h3 className={styles.myTitle}>MY MOOD</h3>
         {/* 프로필 영역 */}
-        <div className={styles.profileTop}>
+        <div className={styles.myeMoodProfileTop}>
           <div className={styles.profileImgWrap}>
             <img
               src={editMode ? form.profileImage : profile.profileImage}
               alt="프로필"
-              className={styles.profileImg}
+              className={styles.myeMoodProfileImg}
             />
             {editMode && (
               <>

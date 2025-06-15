@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
-import styles from './Mypage.module.css';
+import styles from './Myecho.module.css';
 import MyContentsCard from '../components/MyContentsCard';
 import { useMyContent } from '../context/MyContentContext';
 import { useLikedScrapped } from '../context/LikedScrappedContext';

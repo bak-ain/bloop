@@ -1,7 +1,8 @@
 import { OfficialContent } from "../types";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination,EffectCoverflow } from "swiper/modules";
+import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
+import React, { useRef, useEffect, useState } from "react";
 import styles from "../pages/Home.module.css";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -15,6 +16,22 @@ interface MainOfficialProps {
 
 const MainOfficial = ({ contents }: MainOfficialProps) => {
   const navigate = useNavigate();
+  const swiperRef = useRef<any>(null);
+  const [effect, setEffect] = useState<"coverflow" | "slide">(
+    window.innerWidth < 767 ? "coverflow" : "slide"
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newEffect = window.innerWidth < 767 ? "coverflow" : "slide";
+      setEffect(newEffect);
+      if (swiperRef.current && swiperRef.current.swiper) {
+        swiperRef.current.swiper.update();
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section className={styles.mainOfficial}>
@@ -22,11 +39,13 @@ const MainOfficial = ({ contents }: MainOfficialProps) => {
       <div className={styles.mainOfficialCon}>
         <div className={styles.mainOfficialSwiperWrapper}>
           <Swiper
+            key={effect}
+            ref={swiperRef}
             modules={[Navigation, Pagination, EffectCoverflow]}
-            slidesPerView={1.2}
+            slidesPerView={effect === "coverflow" ? 1.2 : 3}
             centeredSlides
             spaceBetween={0}
-            effect="coverflow"
+            effect={effect}
             coverflowEffect={{
               rotate: 0,
               stretch: 40,
@@ -47,12 +66,6 @@ const MainOfficial = ({ contents }: MainOfficialProps) => {
             loop={contents.length > 2}
             initialSlide={1}
             className={`${styles.mainOfficialSwiper} mainOfficialSwiper`}
-            breakpoints={{
-              767: {
-                slidesPerView: 3,
-                effect: "slide",
-              }
-            }}
           >
             {contents.map(content => (
               <SwiperSlide key={content.id}>

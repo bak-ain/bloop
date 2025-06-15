@@ -30,65 +30,117 @@ const Scheduler = () => {
     });
     return map;
   }, [events]);
-  // 스티커 정보 매핑 (날짜별)
-  // 1. stickerMap 구조 변경
-  const stickerMap: Record<string, { src: string; className: string }> = {
-    "2025-06-01": { src: "/images/calenderSt1.png", className: styles.sticker_0601 },
-    "2025-06-04": { src: "/images/calenderSt4.png", className: styles.sticker_0604 },
-    "2025-06-06": { src: "/images/calenderSt2.png", className: styles.sticker_0606 },
-    "2025-06-10": { src: "/images/calenderSt6.png", className: styles.sticker_0610 },
-    "2025-06-11": { src: "/images/calenderSt7.png", className: styles.sticker_0611 },
-    "2025-06-14": { src: "/images/calenderSt5.png", className: styles.sticker_0614 },
-    "2025-06-19": { src: "/images/calenderSt8.png", className: styles.sticker_0619 },
-    "2025-06-24": { src: "/images/calenderSt3.png", className: styles.sticker_0624 },
-    "2025-06-27": { src: "/images/calenderSt9.png", className: styles.sticker_0627 },
-    "2025-06-28": { src: "/images/calenderSt10.png", className: styles.sticker_0628 },
+
+
+  // 타입별 여러 스티커 배열로 변경
+  const typeStickerMap: Record<
+    NonNullable<ScheduleEvent["type"]>,
+    { srcs: string[]; classNames: string[] }
+  > = {
+    공연: {
+      srcs: ["/images/calenderSt1.png", "/images/calenderSt5.png"],
+      classNames: [styles.performance1, styles.performance2],
+    },
+    방송: {
+      srcs: ["/images/calenderSt7.png", "/images/calenderSt3.png"],
+      classNames: [styles.broadcast1, styles.broadcast2],
+    },
+    팬미팅: {
+      srcs: ["/images/calenderSt4.png", "/images/calenderSt8.png", "/images/calenderSt2.png"],
+      classNames: [styles.fanmeeting1, styles.fanmeeting2, styles.fanmeeting3],
+    },
+    팬사인회: {
+      srcs: ["/images/calenderSt6.png", "/images/calenderSt2.png"],
+      classNames: [styles.fansign1, styles.fansign2],
+    },
+    기타: {
+      srcs: ["/images/calenderSt10.png", "/images/calenderSt9.png"],
+      classNames: [styles.etc1, styles.etc2],
+    },
   };
+  // 타입별 전체 등장 순서 계산
+  const typeGlobalCount: Record<string, number> = {};
+  events.forEach(ev => {
+    if (!ev.type) return;
+    if (!typeGlobalCount[ev.type]) typeGlobalCount[ev.type] = 0;
+    typeGlobalCount[ev.type]++;
+  });
+  // 날짜순 정렬
+  const sortedEvents = [...events].sort((a, b) => a.date.localeCompare(b.date));
 
-  // 각 셀에 일정 표시
+  // 각 이벤트의 타입별 순서 인덱스 매핑 (날짜순)
+  const eventTypeOrderMap: Record<string, number> = {};
+  const typeOrderCounter: Record<string, number> = {};
+  sortedEvents.forEach(ev => {
+    if (!ev.type) return;
+    if (!typeOrderCounter[ev.type]) typeOrderCounter[ev.type] = 0;
+    eventTypeOrderMap[ev.id] = typeOrderCounter[ev.type];
+    typeOrderCounter[ev.type]++;
+  });
+
+
   function tileContent({ date }: { date: Date }) {
-
-    const stickerClassMap: Record<string, string> = {
-      "0601": styles.sticker_0601,
-      "0604": styles.sticker_0604,
-      "0606": styles.sticker_0606,
-      "0610": styles.sticker_0610,
-      "0611": styles.sticker_0611,
-      "0614": styles.sticker_0614,
-      "0619": styles.sticker_0619,
-      "0624": styles.sticker_0624,
-      "0627": styles.sticker_0627,
-      "0628": styles.sticker_0628,
-    };
-
     const ymd = date.toISOString().slice(0, 10);
-    const stickerObj = stickerMap[ymd];
     const dayEvents = scheduleMap[ymd];
     if (!dayEvents) return null;
+
+    // 이전 날짜의 마지막 이벤트 타입
+    const prevDate = new Date(date);
+    prevDate.setDate(prevDate.getDate() - 1);
+    const prevYmd = prevDate.toISOString().slice(0, 10);
+    const prevDayEvents = scheduleMap[prevYmd];
+    const prevLastEventType = prevDayEvents?.[prevDayEvents.length - 1]?.type;
+
+    // 다음 날짜의 첫 번째 이벤트 타입
+    const nextDate = new Date(date);
+    nextDate.setDate(nextDate.getDate() + 1);
+    const nextYmd = nextDate.toISOString().slice(0, 10);
+    const nextDayEvents = scheduleMap[nextYmd];
+    const nextFirstEventType = nextDayEvents?.[0]?.type;
+
     return (
       <div className={styles.dayEventList}>
-        {stickerObj && (
-          <img
-            src={stickerObj.src}
-            alt="스티커"
-            className={`${styles.stickerImg} ${stickerObj.className}`}
-          />
-        )}
-        {dayEvents.map(ev => (
-          <div
-            key={ev.id}
-            className={styles.dayEvent}
-            onClick={e => {
-              e.stopPropagation();
-              setPopupEvent(ev);
-            }}
-          >
-            {ev.title}
-          </div>
-        ))}
+        {dayEvents.map((ev, idx) => {
+          if (!ev.type || !typeStickerMap[ev.type]) return null;
+
+          // 첫번째 일정이고 이전 날짜의 마지막 일정 타입과 다를 때
+          const isFirst =
+            idx === 0 && ev.type !== prevLastEventType;
+
+          // 마지막 일정이고 다음 날짜의 첫 일정 타입과 다를 때
+          const isLast =
+            idx === dayEvents.length - 1 && ev.type !== nextFirstEventType;
+
+          // 이 이벤트의 타입별 전체 등장 순서
+          const order = eventTypeOrderMap[ev.id] ?? 0;
+          const stickerArr = typeStickerMap[ev.type].srcs;
+          const stickerSrc = stickerArr[order % stickerArr.length];
+
+          return (
+            <div
+              key={ev.id}
+              className={styles.dayEvent}
+              onClick={e => {
+                e.stopPropagation();
+                setPopupEvent(ev);
+              }}
+            >
+              {(isFirst || isLast) && (
+                <img
+                  src={stickerSrc}
+                  alt={ev.type}
+                  className={`${styles.stickerImg} ${typeStickerMap[ev.type].classNames[order % typeStickerMap[ev.type].classNames.length]}`}
+                  style={{ marginRight: 4, verticalAlign: "middle" }}
+                />
+              )}
+              {ev.title}
+            </div>
+          );
+        })}
       </div>
     );
   }
+
 
   if (loading) return <div className={styles.loading}>일정 불러오는 중...</div>;
   if (error) return <div className={styles.error}>{error}</div>;
@@ -145,27 +197,28 @@ const Scheduler = () => {
               onClick={() => setPopupEvent(null)}
               aria-label="닫기"
             >
-              ×
             </button>
-            <h3 className={styles.popupTitle}>{popupEvent.title}</h3>
-            {details[popupEvent.id]?.imageUrl && (
-              <img
-                src={details[popupEvent.id]?.imageUrl}
-                alt={popupEvent.title}
-                className={styles.popupImage}
-              />
-            )}
-            <p className={styles.popupDesc}>
-              {details[popupEvent.id]?.description || "상세 내용 없음"}
-            </p>
+            <h3 className={`${styles.popupTitle} h3_tit`}>{popupEvent.title}</h3>
+            <div className={styles.popupTop}>
+              {details[popupEvent.id]?.imageUrl && (
+                <img
+                  src={details[popupEvent.id]?.imageUrl}
+                  alt={popupEvent.title}
+                  className={styles.popupImage}
+                />
+              )}
+              <p className={styles.popupDesc}>
+                {details[popupEvent.id]?.description || "상세 내용 없음"}
+              </p>
+            </div>
             <div className={styles.popupInfoRow}>
-              <div>
+              <div className={styles.popupInfo}>
                 <div className={styles.popupInfoLabel}>날짜/시간</div>
                 <div className={styles.popupInfoValue}>
                   {details[popupEvent.id]?.datetime || "-"}
                 </div>
               </div>
-              <div>
+              <div className={styles.popupInfo}>
                 <div className={styles.popupInfoLabel}>장소</div>
                 <div className={styles.popupInfoValue}>
                   {details[popupEvent.id]?.location || "-"}
@@ -175,6 +228,11 @@ const Scheduler = () => {
           </div>
         </div>
       )}
+      <div className={styles.schedulerInfo}>
+        <p className={styles.schedulerInfoText}>
+          ※ 원하시는 일정을 클릭하면, 세부 정보를 확인하실 수 있습니다.
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,27 @@
+/* my echo */
+.tabBar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tabBtn {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    border-radius: 24px;
+    background: #f5f6fa;
+    color: #888;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.tabBtn.active {
+    background: #b3dcff;
+    color: #222;
+    font-weight: bold;
+    box-shadow: 0 2px 0 #7ecbff inset;
+}
+

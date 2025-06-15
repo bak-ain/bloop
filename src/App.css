@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
 
 /* reset */
 
@@ -169,6 +170,7 @@ button {
   --main-font-family: "Pretendard", sans-serif;
   --day--font-family: 'KNPSKkomi', sans-serif;
   --title-font-family: "Allura", cursive;
+  --level-font-family: "Baloo 2", cursive;
 
   /* color */
   --main-color: #DB3155;
@@ -245,12 +247,23 @@ button {
   padding: 12px 80px;
   line-height: 150%;
   box-sizing: border-box;
+  cursor: pointer;
+}
+
+.btnBlueS {
+  border-radius: 5px;
+  background: var(--point-color-blue);
+  color: #fff;
+  padding: 12px 45px;
+  line-height: 150%;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 .h3_tit {
   font-size: 40px;
   font-weight: 700;
-  line-height: 60px;
+  line-height: 150%;
 }
 
 /* 전체 카드 안 큰 내용 */
@@ -686,6 +699,14 @@ footer .inner,
 
 }
 
+@media screen and (max-width: 820px) {
+  .btnBlueS {
+    padding: 8px 30px;
+    font-size: 14px;
+  }
+
+}
+
 @media (min-width: 768px) {
   .popular-swiper-pagination {
     display: none !important;
@@ -714,6 +735,7 @@ footer .inner,
   .artist-swiper-prev {
     left: 30px;
   }
+
   .artist-swiper-next {
     right: 30px;
   }
@@ -723,9 +745,6 @@ footer .inner,
     font-size: 16px;
   }
 
-  .inner {
-    padding: 0 20px;
-  }
 
   .con {
     padding: 0 20px;
@@ -814,6 +833,10 @@ footer .inner,
 
 @media (max-width: 767px) {
 
+  .inner {
+    padding: 0 20px;
+  }
+
   .artist_h1 {
     font-size: 24px;
     font-weight: 700;
@@ -854,35 +877,36 @@ footer .inner,
     background: #ff6600 !important;
     opacity: 1 !important;
   }
+
   .all_p_t {
-  padding-top: 100px;
+    padding-top: 100px;
 
-}
-
-
+  }
 
 
 
 
-#chatbase-bubble-button {
-  bottom: 120px !important;
-  right: 30px !important;
-}
+
+
+  #chatbase-bubble-button {
+    bottom: 120px !important;
+    right: 30px !important;
+  }
 
 
 
 
-.popular-swiper-prev {
-  left: 2px;
-  background-image: url('/public/images/icon/page_le_on.png');
-  background-size: contain;
-}
+  .popular-swiper-prev {
+    left: 2px;
+    background-image: url('/public/images/icon/page_le_on.png');
+    background-size: contain;
+  }
 
-.popular-swiper-next {
-  right: 2px;
-  background-image: url('/public/images/icon/page_ri_on.png');
-  background-size: contain;
-}
+  .popular-swiper-next {
+    right: 2px;
+    background-image: url('/public/images/icon/page_ri_on.png');
+    background-size: contain;
+  }
 
 
   .all_p_t {
@@ -1092,9 +1116,10 @@ footer .inner,
 }
 
 @media (max-width: 402px) {
-  .btnBlue{
+  .btnBlue {
     padding: 10px 66px;
   }
+
   .offic_h2 {
     font-size: 22px;
   }

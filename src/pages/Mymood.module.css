@@ -1,0 +1,172 @@
+/* my mood */
+/* 프로필 상단 */
+.myeMoodProfileTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 32px;
+}
+
+.profileImgWrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.myeMoodProfileImg {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.cameraBtn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: #4a4a4a;
+    border-radius: 50%;
+    border: none;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cameraBtn img {
+    width: 22px;
+    height: 22px;
+}
+
+.profileNameRow {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.profileBadge {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.profileBadge img {
+    width: 32px;
+    height: 32px;
+}
+
+.profileNickname {
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+    letter-spacing: -1px;
+}
+
+/* 정보 박스 */
+.infoBox {
+    background: #f8eaff;
+    border: 2px solid #bcaaff;
+    border-radius: 18px;
+    margin: 36px 0 0 0;
+    padding: 36px 32px 32px 32px;
+    position: relative;
+}
+
+.infoTab {
+    position: absolute;
+    top: -22px;
+    left: 24px;
+    background: #bcaaff;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 16px 16px 0 0;
+    padding: 8px 36px;
+    letter-spacing: -1px;
+}
+
+.infoRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.infoLabel {
+    flex: 0 0 110px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+    letter-spacing: -0.5px;
+}
+
+.infoValue {
+    font-size: 18px;
+    color: #222;
+    margin-left: 18px;
+    word-break: break-all;
+}
+
+.infoInput {
+    font-size: 18px;
+    padding: 8px 14px;
+    border: 1.5px solid #d2c6f7;
+    border-radius: 8px;
+    outline: none;
+    margin-left: 18px;
+    width: 320px;
+    background: #fff;
+}
+
+.birthInputWrap {
+    display: flex;
+    align-items: center;
+    margin-left: 18px;
+}
+
+.birthInput {
+    width: 70px;
+    font-size: 18px;
+    padding: 8px 8px;
+    border: 1.5px solid #d2c6f7;
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    text-align: center;
+}
+
+.birthInput+span {
+    margin: 0 8px;
+    font-size: 18px;
+    color: #888;
+}
+
+/* 버튼 영역 */
+.btnWrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 38px;
+}
+
+.saveBtn,
+.editBtn {
+    background: #4da3e6;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 0;
+    width: 220px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.saveBtn:hover,
+.editBtn:hover {
+    background: #3689c9;
+}

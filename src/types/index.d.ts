@@ -47,9 +47,6 @@ export interface ArtistStoryPost {
 
 export interface FanPost extends BasePost {
   user: UserPreview & { badgeType: 'fan'; badgeLevel: 1 | 2 | 3 };
-  // fan은 badgeLevel 필수
-  // badgeType: 'fan'; // user로 대체
-  // badgeLevel: 1 | 2 | 3; // user로 대체
 }
 
 // 댓글용
@@ -105,7 +102,7 @@ export interface ScheduleEvent {
   date: string;
   title: string;
   description?: string;
-  type?: '공연' | '방송' | '팬미팅' | '기타';
+  type?: '공연' | '방송' | '팬미팅' |'팬사인회'| '기타';
 }
 
 export interface ScheduleDay {

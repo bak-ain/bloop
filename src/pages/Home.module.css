@@ -468,13 +468,14 @@ main {
         width: 30px;
         height: 30px;
     }
-     .mainOfficialContent h3{
+
+    .mainOfficialContent h3 {
         line-height: 120%;
         margin-bottom: 5px;
-     }
+    }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 900px) {
     .profileModal {
         width: 70vw;
         height: 68vw;
@@ -692,6 +693,11 @@ main {
 
     .profileCard {
         gap: 10px;
+    }
+
+    .home h2 {
+
+        margin-bottom: var(--mobile-tit-pad);
     }
 }
 
