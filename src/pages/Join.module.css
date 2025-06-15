@@ -1,32 +1,43 @@
 .joinWrap {
-  width: 655px;
   margin: 0 auto;
   background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 200px;
 }
 
+.joincon {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.join_con {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: center;
+}
 
 .tabRow {
   display: flex;
   gap: 0;
   margin-bottom: 60px;
   width: 300px;
+  height: 60px;
 }
 
 .tabBtn {
   flex: 1;
-  border: 1.5px solid #ddd;
   border-bottom: none;
   /* border-top: 3px solid transparent; */
-  background: #fff;
-  color: #888;
+  background: var(--font-color-light_gary);
+  color: var(--font-color-7);
   position: relative;
   z-index: 1;
-  padding: 20px 36px 20px 36px;
-  font-size: 1.2rem;
+  font-size: 20px;
+  font-weight: 400;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
   outline: none;
   cursor: pointer;
@@ -39,6 +50,7 @@
   background: #fff;
   color: var(--main-color);
   z-index: 2;
+  font-weight: 600;
 }
 
 .tabBtn:not(.active) {
@@ -49,21 +61,32 @@
 
 
 
-
 .joinTitle {
-  color: #222;
-  text-align: center;
-  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
+.joinP {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  align-items: end;
+  font-weight: 400;
+}
 
+label {
+  display: flex;
+  justify-content: space-between;
+}
 
 
 .joinForm {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 55px;
 }
 
 .joinForm label {
@@ -71,24 +94,26 @@
   color: #444;
   margin-bottom: 0;
   gap: 4px;
+
 }
 
 .red_star {
   color: var(--main-color);
 }
 
-.joinForm input[type="text"],
-.joinForm input[type="password"],
-.joinForm input[type="email"] {
-  width: 100%;
+.joinForm input {
+  width: 50%;
   /*   font-size: 17px; */
-  padding: 12px 14px;
+  padding: 5px 10px;
   border: none;
   border-bottom: 2px solid var(--main-color);
-  background: #faf9f9;
+  background: transparent;
   outline: none;
   color: #222;
   transition: border 0.2s;
+  font-size: 18px;
+  font-weight: 400;
+
 }
 
 .joinForm input:focus {
@@ -96,20 +121,28 @@
   background: #fff;
 }
 
+.joinBtn_txt {
+  font-size: 18px;
+  font-weight: 400;
+  background: transparent;
+
+
+}
+
 .row {
   display: flex;
   align-items: center;
   gap: 12px;
   color: #444;
+  justify-content: space-between;
 }
 
-.agreeBox {
+.genderRadio {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
-  color: #666;
+  gap: 35px;
+  width: 50%;
 }
+
 
 .joinBtn {
   width: 340px;
@@ -130,13 +163,13 @@
   background: var(--point-color-red);
 }
 
-.emailInputWrap {
+/* .emailInputWrap {
   display: flex;
   align-items: center;
   gap: 6px;
   margin-top: 4px;
-}
-
+} */
+/* 
 .emailInput {
   font-size: 16px;
   padding: 8px 6px;
@@ -185,8 +218,13 @@
 .emailDomainItem:hover {
   background: #f5f5f5;
 }
+ */
 
-.birthSelectBtn {
+.gen {
+  width: auto !important;
+}
+
+/* .birthSelectBtn {
   background: #eee;
   border: none;
   border-radius: 4px;
@@ -200,4 +238,303 @@
   margin-left: 8px;
   font-size: 15px;
   padding: 4px 8px;
+} */
+.birthInput {
+  width: 50%;
+  font-size: 16px;
+  padding: 5px 10px;
+  border: none;
+  border-bottom: 2px solid var(--main-color);
+  background: transparent;
+  outline: none;
+  color: #222;
+  transition: border 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.birthInput input {
+  flex: 1;
+  border: none;
+  border-bottom: none;
+  text-align: center;
+}
+
+.birthInput input,
+.birthInput input:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent;
+}
+
+.em {}
+
+.emailInputTit {
+  display: flex;
+  padding: 0;
+  border: none;
+  border-bottom: 2px solid var(--main-color);
+  align-items: center;
+  justify-content: end;
+  width: 50%;
+}
+
+
+
+.emailInputDomain {
+  display: flex;
+  border: none;
+  position: relative;
+}
+
+.emailInputDomain input {
+  width: 80px !important;
+  padding: 0;
+  border: none;
+}
+
+.emailDomainList {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: absolute;
+  right: 0;
+  top: 50px;
+}
+
+.noBorder {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.emailInputTit {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+  gap: 10px;
+}
+
+.emailInputTit input {
+  width: 60% !important;
+  /*   width: 80px !important; */
+  padding-left: 10px;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.emailInputDomain {
+  display: flex;
+  align-items: center;
+  /*  padding: 5px 10px;
+  border: none;
+  border-bottom: 2px solid var(--main-color); */
+  position: relative;
+  width: auto;
+  background: transparent;
+}
+
+.emailInputDomain input {
+  width: 80 !important;
+  /*   width: 80px !important; */
+  padding: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.emailSelectBtn {
+  background: none;
+  border: none;
+  color: #444;
+  cursor: pointer;
+  padding: 0 4px;
+  white-space: nowrap;
+  margin-left: 2px;
+  height: 28px;
+}
+
+.noBorder {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.emailDomainList {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: absolute;
+  right: 0;
+  top: 38px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  z-index: 10;
+  width: 120px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  list-style: none;
+  padding: 0;
+}
+
+.emailDomainItem {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.emailDomainItem:hover {
+  background: #f5f5f5;
+}
+
+/* Join.module.css에 추가 또는 수정 */
+.emailInputTit input,
+.emailInputDomain input {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent;
+}
+
+/* input:focus에도 보더/아웃라인이 생기지 않게 */
+.emailInputTit input:focus,
+.emailInputDomain input:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.agreeSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.agreeBox {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.circleCheck {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #888;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: #fff;
+  position: relative;
+  cursor: pointer;
+}
+
+.circleCheck:checked::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #1976d2;
+  border-radius: 50%;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+}
+
+.agreeAllRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  color: #444;
+}
+
+.agreeBox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: start;
+}
+
+.agreeBox input {
+  width: auto;
+}
+
+.agreeSubDesc {
+  display: flex;
+  justify-content: start;
+}
+
+.agreeSubDesc {
+  display: flex;
+  padding-left: 15px;
+}
+
+.agreeSubDesc2 {
+  display: flex;
+}
+
+.agreeRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  color: #444;
+}
+
+.agreeSubOptions {
+  display: flex;
+  padding-left: 10px;
+  gap: 35px;
+}
+
+
+@media (max-width: 1024px) {
+
+  .joinWrap {
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 200px;
+  }
+  .joincon {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+}
+
+@media (max-width: 767px) {
+  .tabBtn {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+  .tabRow {
+  display: flex;
+  gap: 0;
+  margin-bottom: 60px;
+  width: 250px;
+  height: 45px;
+}
+.joinForm input {
+  font-size: 15px;
+  font-weight: 400;
+width: 60%;
+}
+.joinP {
+  display: none;
+}
+.emailInputTit {
+  width: 60%;
+
+}
+
 }
