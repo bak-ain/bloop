@@ -82,14 +82,16 @@ const FanFeedPopup = ({
 );
 
 const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void; onClose: () => void }) => {
-  const [hashtag, setHashtag] = useState("");
-  const [images, setImages] = useState<string[]>([]);
-  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const editorRef = useRef<HTMLDivElement>(null);
   const [hashtagInput, setHashtagInput] = useState("");
   const [hashtags, setHashtags] = useState<string[]>([]);
+  const [hashtag, setHashtag] = useState("");
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [selectedEmojis, setSelectedEmojis] = useState<string[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const editorRef = useRef<HTMLDivElement>(null);
   const { user } = useUserContext();
+  const [images, setImages] = useState<string[]>([]);
+
 
   const handleHashtagInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHashtagInput(e.target.value);
@@ -244,123 +246,138 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
     localStorage.removeItem("fanUploadTemp");
   };
 
+
+
+
+  /* 새 게시물 작성 */
   return (
     <div className={styles.uploadPopupWrapper}>
       <h2 className={styles.uploadPopupTitle}>새 게시물</h2>
-      <div className={styles.uploadPopupTextareaBox}>
-        <div
-          ref={editorRef}
-          className={styles.uploadPopupEditor}
-          contentEditable
-          suppressContentEditableWarning
-          data-placeholder="내용을 입력해주세요."
-          style={{
-            minHeight: 120,
-            border: "1px solid #e0e0e0",
-            borderRadius: 12,
-            padding: 30,
-            fontSize: "1rem",
-            marginBottom: 24,
-            background: "#fafbfc",
-            outline: "none",
-          }}
-        />
-      </div>
-      <div className={styles.uploadPopupHashtagBox}>
-        {hashtags.map((tag, idx) => (
-          <span className={styles.uploadPopupHashtag} key={tag}>
-            #{tag}
-            <button
-              type="button"
-              className={styles.uploadPopupHashtagRemove}
-              onClick={() => handleRemoveHashtag(idx)}
-            >
-              ×
-            </button>
-          </span>
-        ))}
-        <input
-          className={styles.uploadPopupInput}
-          placeholder="# 태그를 입력해주세요."
-          value={hashtagInput}
-          onChange={handleHashtagInput}
-          onKeyDown={handleHashtagKeyDown}
-        />
-      </div>
-      <div className={styles.uploadPopupFileBox}>
-        <button
-          type="button"
-          className={styles.uploadPopupFileBtn}
-          onClick={() => fileInputRef.current?.click()}
-        >
-          파일 선택
-        </button>
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/*"
-          multiple
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-        />
-      </div>
-      <div className={styles.uploadPopupImageList}>
-        {images.map((img, idx) => (
-          <div key={idx} className={styles.uploadPopupImageItem}>
-            <img
-              src={img}
-              alt={`preview-${idx}`}
-              className={styles.uploadPopupImage}
+      <div className={styles.uploadPopupCon}>
+        <div className={styles.uploadPopupConTop}>
+          <div className={styles.uploadPopupTextareaBox}>
+            <div
+              ref={editorRef}
+              className={styles.uploadPopupEditor}
+              contentEditable
+              suppressContentEditableWarning
+              data-placeholder="내용을 입력해주세요."
+            /* style={{
+              minHeight: 120,
+              border: "1px solid #e0e0e0",
+              borderRadius: 12,
+              padding: 30,
+              fontSize: "1rem",
+              marginBottom: 24,
+              background: "#fafbfc",
+              outline: "none",
+            }} */
+
             />
-            <button
-              onClick={() => handleRemoveImage(idx)}
-              className={styles.uploadPopupRemoveBtn}
-              type="button"
-            >
-              ×
-            </button>
+
           </div>
-        ))}
-      </div>
-      <div className={styles.uploadPopupBtnBox}>
-        <button
-          type="button"
-          className={styles.uploadPopupEmojiBtn}
-          onClick={() => setShowEmojiPicker((prev) => !prev)}
-        >
-          😀
-        </button>
-        {showEmojiPicker && (
-          <div className={styles.uploadPopupEmojiPicker}>
-            {Array.from({ length: Math.ceil(emojis.length / 3) }).map((_, rowIdx) => (
-              <div className={styles.uploadPopupEmojiRow} key={rowIdx}>
-                {emojis.slice(rowIdx * 3, rowIdx * 3 + 3).map((emoji, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    className={styles.uploadPopupEmoji}
-                    onClick={() => handleEmojiInsert(emoji)}
-                  >
-                    <img src={emoji} alt={`emoji${rowIdx * 3 + i + 1}`} />
-                  </button>
-                ))}
+
+
+
+          <div className={styles.uploadPopupHashtagBox}>
+            {hashtags.map((tag, idx) => (
+              <span className={styles.uploadPopupHashtag} key={tag}>
+                #{tag}
+                <button
+                  type="button"
+                  className={styles.uploadPopupHashtagRemove}
+                  onClick={() => handleRemoveHashtag(idx)}
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+            <input
+              className={styles.uploadPopupInput}
+              placeholder="# 태그를 입력해주세요."
+              value={hashtagInput}
+              onChange={handleHashtagInput}
+              onKeyDown={handleHashtagKeyDown}
+            />
+          </div>
+          <div className={styles.uploadPopupFileBox}>
+            <button
+              type="button"
+              className={styles.uploadPopupFileBtn}
+              onClick={() => fileInputRef.current?.click()}
+            >
+              파일 선택
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              multiple
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+          </div>
+          <div className={styles.uploadPopupImageList}>
+            {images.map((img, idx) => (
+              <div key={idx} className={styles.uploadPopupImageItem}>
+                <img
+                  src={img}
+                  alt={`preview-${idx}`}
+                  className={styles.uploadPopupImage}
+                />
+                <button
+                  onClick={() => handleRemoveImage(idx)}
+                  className={styles.uploadPopupRemoveBtn}
+                  type="button"
+                >
+                  ×
+                </button>
               </div>
             ))}
           </div>
-        )}
-        <button
-          onClick={handleTempSave}
-          className={styles.uploadPopupTempBtn}
-          type="button"
-        >
-          임시저장
-        </button>
-        <button
-          onClick={handleUpload}
-          className={styles.uploadPopupSubmitBtn}
-        >
-          등록
-        </button>
+        </div>
+        <div className={styles.uploadPopupBtnBox}>
+          <button
+            type="button"
+            className={styles.uploadPopupEmojiBtn}
+            onClick={() => setShowEmojiPicker((prev) => !prev)}
+          >
+            <img src="/images/icon/smile.png" alt="스마일" />
+          </button>
+          {showEmojiPicker && (
+            <div className={styles.uploadPopupEmojiPicker}>
+              {Array.from({ length: Math.ceil(emojis.length / 3) }).map((_, rowIdx) => (
+                <div className={styles.uploadPopupEmojiRow} key={rowIdx}>
+                  {emojis.slice(rowIdx * 3, rowIdx * 3 + 3).map((emoji, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      className={styles.uploadPopupEmoji}
+                      onClick={() => handleEmojiInsert(emoji)}
+                    >
+                      <img src={emoji} alt={`emoji${rowIdx * 3 + i + 1}`} />
+                    </button>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+          <div className={styles.uploadPopupBtnBoxRight}>
+            <button
+              onClick={handleTempSave}
+              className={styles.uploadPopupTempBtn}
+              type="button"
+            >
+              임시저장
+            </button>
+            <button
+              onClick={handleUpload}
+              className={styles.uploadPopupSubmitBtn}
+            >
+              등록
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -475,6 +492,7 @@ const EditPopup = ({
   const handleEdit = () => {
     const editor = editorRef.current;
     const description = editor?.innerHTML || "";
+
     const updatedPost: FanPost = {
       ...data,
       description,
@@ -488,113 +506,124 @@ const EditPopup = ({
   return (
     <div className={styles.uploadPopupWrapper}>
       <h2 className={styles.uploadPopupTitle}>게시물 수정</h2>
-      <div className={styles.uploadPopupTextareaBox}>
-        <div
-          ref={editorRef}
-          className={styles.uploadPopupEditor}
-          contentEditable
-          suppressContentEditableWarning
-          data-placeholder="내용을 입력해주세요."
-          style={{
-            minHeight: 120,
-            border: "1px solid #e0e0e0",
-            borderRadius: 12,
-            padding: 30,
-            fontSize: "1rem",
-            marginBottom: 24,
-            background: "#fafbfc",
-            outline: "none",
-          }}
-        />
-      </div>
-      <div className={styles.uploadPopupHashtagBox}>
-        {hashtags.map((tag, idx) => (
-          <span className={styles.uploadPopupHashtag} key={tag}>
-            #{tag}
-            <button
-              type="button"
-              className={styles.uploadPopupHashtagRemove}
-              onClick={() => handleRemoveHashtag(idx)}
-            >
-              ×
-            </button>
-          </span>
-        ))}
-        <input
-          className={styles.uploadPopupInput}
-          placeholder="# 태그를 입력해주세요."
-          value={hashtagInput}
-          onChange={handleHashtagInput}
-          onKeyDown={handleHashtagKeyDown}
-        />
-      </div>
-      <div className={styles.uploadPopupFileBox}>
-        <button
-          type="button"
-          className={styles.uploadPopupFileBtn}
-          onClick={() => document.getElementById("edit-file-input")?.click()}
-        >
-          파일 선택
-        </button>
-        <input
-          id="edit-file-input"
-          type="file"
-          accept="image/*"
-          multiple
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-        />
-      </div>
-      <div className={styles.uploadPopupImageList}>
-        {images.map((img, idx) => (
-          <div key={idx} className={styles.uploadPopupImageItem}>
-            <img
-              src={img}
-              alt={`preview-${idx}`}
-              className={styles.uploadPopupImage}
-            />
-            <button
-              onClick={() => handleRemoveImage(idx)}
-              className={styles.uploadPopupRemoveBtn}
-              type="button"
-            >
-              ×
-            </button>
+      <div className={styles.uploadPopupCon}>
+        <div className={styles.uploadPopupConTop}>
+          <div className={styles.uploadPopupTextareaBox}>
+            <div
+              ref={editorRef}
+              className={styles.uploadPopupEditor}
+              contentEditable
+              suppressContentEditableWarning
+              data-placeholder="내용을 입력해주세요."
+
+            /* style={{
+              minHeight: 120,
+              border: "1px solid #e0e0e0",
+              borderRadius: 12,
+              padding: 30,
+              fontSize: "1rem",
+              marginBottom: 24,
+              background: "#fafbfc",
+              outline: "none",
+            }} */
+            ></div>
+
+            {/* 에디터 아래에만 이모지 이미지 표시 */}
+            {/* <div className={styles.uploadPopupEmoji}>
+              <img src="/images/emoji/emoji1.png" alt="이모티콘" />
+            </div> */}
           </div>
-        ))}
-      </div>
-      <div className={styles.uploadPopupBtnBox}>
-        <button
-          type="button"
-          className={styles.uploadPopupEmojiBtn}
-          onClick={() => setShowEmojiPicker((prev) => !prev)}
-        >
-          😀
-        </button>
-        {showEmojiPicker && (
-          <div className={styles.uploadPopupEmojiPicker}>
-            {Array.from({ length: Math.ceil(emojis.length / 3) }).map((_, rowIdx) => (
-              <div className={styles.uploadPopupEmojiRow} key={rowIdx}>
-                {emojis.slice(rowIdx * 3, rowIdx * 3 + 3).map((emoji, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    className={styles.uploadPopupEmoji}
-                    onClick={() => handleEmojiInsert(emoji)}
-                  >
-                    <img src={emoji} alt={`emoji${rowIdx * 3 + i + 1}`} />
-                  </button>
-                ))}
+
+          <div className={styles.uploadPopupHashtagBox}>
+            {hashtags.map((tag, idx) => (
+              <span className={styles.uploadPopupHashtag} key={tag}>
+                #{tag}
+                <button
+                  type="button"
+                  className={styles.uploadPopupHashtagRemove}
+                  onClick={() => handleRemoveHashtag(idx)}
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+            <input
+              className={styles.uploadPopupInput}
+              placeholder="# 태그를 입력해주세요."
+              value={hashtagInput}
+              onChange={handleHashtagInput}
+              onKeyDown={handleHashtagKeyDown}
+            />
+          </div>
+          <div className={styles.uploadPopupFileBox}>
+            <button
+              type="button"
+              className={styles.uploadPopupFileBtn}
+              onClick={() => document.getElementById("edit-file-input")?.click()}
+            >
+              파일 선택
+            </button>
+            <input
+              id="edit-file-input"
+              type="file"
+              accept="image/*"
+              multiple
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+          </div>
+          <div className={styles.uploadPopupImageList}>
+            {images.map((img, idx) => (
+              <div key={idx} className={styles.uploadPopupImageItem}>
+                <img
+                  src={img}
+                  alt={`preview-${idx}`}
+                  className={styles.uploadPopupImage}
+                />
+                <button
+                  onClick={() => handleRemoveImage(idx)}
+                  className={styles.uploadPopupRemoveBtn}
+                  type="button"
+                >
+                  ×
+                </button>
               </div>
             ))}
           </div>
-        )}
-        <button
-          onClick={handleEdit}
-          className={styles.uploadPopupSubmitBtn}
-        >
-          수정 완료
-        </button>
+        </div>
+        <div className={styles.uploadPopupBtnBox}>
+          <button
+            type="button"
+            className={styles.uploadPopupEmojiBtn}
+            onClick={() => setShowEmojiPicker((prev) => !prev)}
+          >
+            <img src="/images/icon/smile.png" alt="스마일" />
+          </button>
+          {showEmojiPicker && (
+            <div className={styles.uploadPopupEmojiPicker}>
+              {Array.from({ length: Math.ceil(emojis.length / 3) }).map((_, rowIdx) => (
+                <div className={styles.uploadPopupEmojiRow} key={rowIdx}>
+                  {emojis.slice(rowIdx * 3, rowIdx * 3 + 3).map((emoji, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      className={styles.uploadPopupEmoji}
+                      onClick={() => handleEmojiInsert(emoji)}
+                    >
+                      <img src={emoji} alt={`emoji${rowIdx * 3 + i + 1}`} />
+                    </button>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+          <button
+            onClick={handleEdit}
+            className={styles.uploadPopupSubmitBtn}
+          >
+            수정 완료
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -614,26 +643,26 @@ const Popup = (props: PopupProps) => {
 
   return (
     <div className={styles.popupWrapper}>
-        {type === 'artistFeed' && (
-          <ArtistFeedPopup
-            data={props.data}
-            onClose={onClose}
-            postList={props.postList}
-            setPostList={props.setPostList}
-          />
-        )}
-        {type === 'fanFeed' && (
-          <FanFeedPopup
-            data={props.data}
-            onClose={onClose}
-            postList={props.postList}
-            setPostList={props.setPostList}
-            onEdit={props.onEdit}
-          />
-        )}
-        {type === 'upload' && <UploadPopup onSubmit={props.onSubmit} onClose={onClose} />}
-        {type === 'edit' && <EditPopup data={props.data} onClose={onClose} onSubmit={props.onUpdate} />}
-        <button className={styles.closeBtn} onClick={onClose}>X</button>
+      {type === 'artistFeed' && (
+        <ArtistFeedPopup
+          data={props.data}
+          onClose={onClose}
+          postList={props.postList}
+          setPostList={props.setPostList}
+        />
+      )}
+      {type === 'fanFeed' && (
+        <FanFeedPopup
+          data={props.data}
+          onClose={onClose}
+          postList={props.postList}
+          setPostList={props.setPostList}
+          onEdit={props.onEdit}
+        />
+      )}
+      {type === 'upload' && <UploadPopup onSubmit={props.onSubmit} onClose={onClose} />}
+      {type === 'edit' && <EditPopup data={props.data} onClose={onClose} onSubmit={props.onUpdate} />}
+      <button className={styles.closeBtn} onClick={onClose}>X</button>
     </div>
   );
 };
