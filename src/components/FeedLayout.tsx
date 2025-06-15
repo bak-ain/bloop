@@ -88,7 +88,7 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
                                         : "/images/icon/page_le_on.png"
                                 }
                                 alt="이전"
-                                style={{ width: 35, height: 35 }}
+                                
                             />
                         </button>
                         {[1, 2, 3].map(i => (
@@ -117,7 +117,7 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
                                         : "/images/icon/page_ri_on.png "
                                 }
                                 alt="다음"
-                                style={{ width: 35, height: 35 }}
+                              
                             />
                         </button>
                     </div>
