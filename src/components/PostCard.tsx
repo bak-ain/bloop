@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArtistPost, FanPost } from "../types";
 import { getBadgeImage } from "../utils/badge";
 import styles from "./PostCard.module.css";
@@ -88,92 +88,101 @@ const PostCard = <T extends ArtistPost | FanPost>({
     badgeType: "fan" as const,
     badgeLevel: 1
   };
-
-  if (isArtist) {
-    return (
-      <div className={`${styles.post_card} ${styles.artist}`}>
-        <div className={styles.profile_bubble_layout}>
+  function useIsMobile(breakpoint = 767) {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+      const check = () => setIsMobile(window.innerWidth <= breakpoint);
+      check();
+      window.addEventListener("resize", check);
+      return () => window.removeEventListener("resize", check);
+    }, [breakpoint]);
+    return isMobile;
+  }
+  const isMobile = useIsMobile();
+ 
+if (isArtist) {
+  return (
+    <div className={`${styles.post_card} ${styles.artist}`}>
+      <div className={styles.profile_bubble_layout}>
+        {/* PC: 프로필 바깥, 모바일: 프로필 bubble_box > info 안 */}
+        {!isMobile && (
           <div className={`${styles.a_profile} ${user.name ? styles[user.name.toLowerCase()] : ""}`}>
             <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
           </div>
-          <svg width="34" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
-            <path
-              d="M20,0 L5,15 L20,30 Z"
-              fill="#f5f5f5"
-              stroke="#333333"
-              strokeWidth="2"
-              strokeLinejoin="round"
-              strokeLinecap="round"
-            />
-            <rect
-              x="18.5" y="-2" width="5" height="38"
-              fill="#f5f5f5"
-              stroke="none"
-              rx="2"
-              ry="2"
-            />
-          </svg>
-          <div className={styles.bubble_box} onClick={goToDetail}>
-            <div className={styles.infoTop}>
-              <div className={styles.info}>
+        )}
+        <svg width="34" height="30" viewBox="0 0 17 30" className={styles.bubble_tail}>
+          {/* ... */}
+        </svg>
+        <div className={styles.bubble_box} onClick={goToDetail}>
+          <div className={styles.infoTop}>
+            <div className={styles.info}>
+              {/* 모바일일 때만 프로필을 info 안에 렌더링 */}
+              {isMobile && (
+                <div className={`${styles.a_profile} ${user.name ? styles[user.name.toLowerCase()] : ""}`}>
+                  <img className={styles.a_profile_img} src={user.profileImage} alt={user.name} />
+                </div>
+              )}
+              <div className={styles.infoTxt}>
                 <strong className="card_name">
-                  {user.name}
-                  <img
-                    className={styles.a_badge_img}
-                    src={getBadgeImage('artist')}
-                    alt="artist badge"
-                  />
-                </strong>
-                <p className="day_span">{getDisplayDate(data.date)}</p>
-              </div>
-              <p className="card_p" dangerouslySetInnerHTML={{ __html: data.description }} />
-            </div>
-            {data.media && (
-              <div className={styles.a_media}>
-                {data.media.slice(0, 2).map((m, i) =>
-                  m.type === "video" ? (
-                    <video key={i} src={m.url} controls className={styles.a_media_item} />
-                  ) : (
-                    <div key={i} className={styles.a_media_item_wrapper}>
-                      <img src={m.url} alt={`media-${i}`} className={styles.a_media_item} />
-                      {i === 1 && (data.media?.length ?? 0) > 2 && (
-                        <div className={styles.a_media_overlay}>
-                          +{(data.media?.length ?? 0) - 2}
-                        </div>
-                      )}
-                    </div>
-                  )
-                )}
-              </div>
-            )}
-            <div className={styles.a_meta_row}>
-              <button className="icon_num" onClick={handleLike}>
-                <img className={styles.like_icon}
-                  src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
-                  alt={liked ? "좋아요 취소" : "좋아요"}
-                />{" "}
-                {likeCount}
-              </button>
-              <button className="icon_num" onClick={goToDetail}>
-                <img className={styles.chat_icon}
-                  src="/images/icon/message.png"
-                  alt="댓글"
-                />{" "}
-                {commentCount}
-              </button>
-              <button className="icon_num" onClick={handleScrap}>
+                {user.name}
                 <img
-                  className={styles.pop_icon}
-                  src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
-                  alt={scrapped ? "스크랩 취소" : "스크랩"}
+                  className={styles.a_badge_img}
+                  src={getBadgeImage('artist')}
+                  alt="artist badge"
                 />
-              </button>
+              </strong>
+              <p className="day_span">{getDisplayDate(data.date)}</p>
+              </div>
+              
             </div>
+            <p className="card_p" dangerouslySetInnerHTML={{ __html: data.description }} />
+          </div>
+          {data.media && (
+            <div className={styles.a_media}>
+              {data.media.slice(0, 2).map((m, i) =>
+                m.type === "video" ? (
+                  <video key={i} src={m.url} controls className={styles.a_media_item} />
+                ) : (
+                  <div key={i} className={styles.a_media_item_wrapper}>
+                    <img src={m.url} alt={`media-${i}`} className={styles.a_media_item} />
+                    {i === 1 && (data.media?.length ?? 0) > 2 && (
+                      <div className={styles.a_media_overlay}>
+                        +{(data.media?.length ?? 0) - 2}
+                      </div>
+                    )}
+                  </div>
+                )
+              )}
+            </div>
+          )}
+          <div className={styles.a_meta_row}>
+             <button className="icon_num" onClick={handleLike}>
+          <img className={styles.like_icon}
+            src={liked ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+            alt={liked ? "좋아요 취소" : "좋아요"}
+          />{" "}
+          {likeCount}
+        </button>
+        <button className="icon_num" onClick={goToDetail}>
+          <img className={styles.chat_icon}
+            src="/images/icon/message.png"
+            alt="댓글"
+          />{" "}
+          {commentCount}
+        </button>
+        <button className="icon_num" onClick={handleScrap}>
+          <img
+            className={styles.pop_icon}
+            src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
+            alt={scrapped ? "스크랩 취소" : "스크랩"}
+          />
+        </button>
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   // 팬 게시물 카드
   return (

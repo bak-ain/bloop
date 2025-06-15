@@ -85,7 +85,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 0;
+    padding-top: 100px;
     border-radius: 12px;
 }
 
@@ -125,7 +125,11 @@
     margin-left: 20px;
 }
 
-.paginationBtn img {}
+.paginationBtn img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
 
 /* .paginationArrow + .paginationBtn {
   margin-left: 45px;
@@ -202,7 +206,7 @@
 .storyHeaderRight {
     display: flex;
     align-items: center;
-/*     gap: 10px; */
+    /*     gap: 10px; */
     position: relative;
     margin-bottom: 0;
 }
@@ -263,6 +267,10 @@
 
 
 @media (max-width: 1024px) {
+    .pagination {
+        padding-top: 80px
+    }
+
     .feedContain {
         width: 100%;
         display: flex;
@@ -278,9 +286,49 @@
 }
 
 @media (max-width: 767px) {
+    .pagination {
+        padding-top: 50px
+    }
+
+    /* .paginationBtn img {
+    width: ;
+} */
+    .feedContain {
+        background-image: none !important;
+    }
+
     .storyPopupOverlay {
         align-items: stretch;
         justify-content: stretch;
+    }
+
+    .artistFeedLayout .feedLayout {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .popView {
+        width: 110px;
+        height: 35px;
+        padding:  0 7px;
+    }
+
+    .popView img {
+        width: 26px;
+        height: 26px;
+    }
+
+    .popviewBtn {
+        padding-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .feed {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding-top: 20px;
     }
 
     .storyPopup {
@@ -313,7 +361,7 @@
         height: 20px;
     }
 
- /*    .shareBtn img {
+    /*    .shareBtn img {
         margin-bottom: 0;
     } */
 }

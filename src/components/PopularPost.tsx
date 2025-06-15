@@ -59,9 +59,10 @@ const PopularPost = ({ posts, onPostClick }: PopularPostProps) => {
                 }}
                 spaceBetween={8}
                 loop={popularPosts.length > 3}
+                slidesPerGroup={2}
                 breakpoints={{
-                  0: { slidesPerView: 2 },
-                  768: { slidesPerView: 3 }
+                  0: { slidesPerView: 2, slidesPerGroup: 2 },
+                  768: { slidesPerView: 3, slidesPerGroup: 2 }
                 }}
               >
                 {popularPosts.map(post => (
@@ -75,16 +76,18 @@ const PopularPost = ({ posts, onPostClick }: PopularPostProps) => {
                         <div className={styles.popularCardHeader}>
                           <img src={post.user.profileImage} alt={post.user.name} className={styles.popularCardAvatar} />
                           <div className={styles.popularCardInfo}>
-                            <span className={styles.popularCardName}>{post.user.name}</span>
-                            <img
-                              src={getBadgeImage(post.user.badgeType, post.user.badgeLevel)}
-                              alt="badge"
-                              className={styles.popularCardBadge}
-                            />
-                            <div className={styles.popularCardDate}>{post.date}</div>
+                            <div className={styles.popularCardPro}>
+                              <span className={`${styles.popularCardName} fan_top_name`}>{post.user.name}</span>
+                              <img
+                                src={getBadgeImage(post.user.badgeType, post.user.badgeLevel)}
+                                alt="badge"
+                                className={styles.popularCardBadge}
+                              />
+                            </div>
+                            <div className={`${styles.popularCardDate} fan_top_day`}>{post.date}</div>
                           </div>
                         </div>
-                        <div className={styles.popularCardDesc}>{post.description}</div>
+                        <div className={`${styles.popularCardDesc} fan_top_p`}>{post.description}</div>
                       </div>
                     </div>
                   </SwiperSlide>

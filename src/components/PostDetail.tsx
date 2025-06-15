@@ -213,7 +213,9 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                             <button
                                 className={styles.more_btn}
                                 onClick={() => setShowMoreMenu((prev) => !prev)}
-                            >⋯</button>
+                            >
+                                <img src="/images/icon/more.png" alt="더보기"/>
+                            </button>
                             {showMoreMenu && (
                                 <div className={styles.more_menu}>
                                     <button onClick={() => { setShowMoreMenu(false); onEdit?.(data); }}>수정하기</button>
@@ -369,9 +371,9 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                                                 <span>{getDisplayDate(c.date)}</span>
                                                 <button className={styles.commentBtn} onClick={() => toggleReplyInput(c.id, c.user.name)}>답글 달기</button>
                                                 <button className={styles.deleteBtn} onClick={() => setConfirmDelete({ type: "comment", id: c.id })}>삭제</button>
-                                                {c.editable && (
+                                                {/* {c.editable && (
                                                     <button className={styles.delete} onClick={() => setConfirmDelete({ type: "comment", id: c.id })}>삭제</button>
-                                                )}
+                                                )} */}
                                             </div>
                                         </div>
 
@@ -407,7 +409,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                             </div>
                         </div>
                     )}
-                    
+
 
                     <div className={styles.comment_input}>
                         <input

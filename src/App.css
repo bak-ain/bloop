@@ -225,9 +225,10 @@ button {
 }
 
 .icon_num {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
   font-family: var(--main-font-family);
+  padding: 0;
 }
 
 .pagenation_num {
@@ -346,11 +347,13 @@ button {
 .fan_top_day {
   font-size: 14px;
   font-weight: 400;
+  color: var(--font-color-darkgray);
 }
 
 .fan_top_p {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 500;
+  line-height: 26px;
 }
 
 /* 팝업 */
@@ -624,7 +627,24 @@ footer .inner,
   background-size: contain;
 }
 
+.artist-swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 12px;
+  gap: 6px;
+}
 
+.artist-swiper-pagination .swiper-pagination-bullet {
+  background: #ccc !important;
+  opacity: 1 !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.artist-swiper-pagination .swiper-pagination-bullet-active {
+  background: var(--point-color-yellow) !important;
+}
 
 /* 인기 게시물 */
 .popular-swiper-prev,
@@ -663,6 +683,8 @@ footer .inner,
   display: none;
 }
  */
+
+
 @media (max-width: 1024px) {
 
 
@@ -708,20 +730,16 @@ footer .inner,
 }
 
 @media (min-width: 768px) {
-  .popular-swiper-pagination {
+  /*   .popular-swiper-pagination {
     display: none !important;
-  }
+  } */
 }
 
-/* .swiper-pagination {
-  position: absolute;
-  left: 50%;
-  bottom: 8px;
-  transform: translateX(-50%);
-  z-index: 10;
+.popular-swiper-pagination {
+
   display: none;
 }
- */
+
 /* 반응형 레이아웃 */
 @media (max-width: 768px) {
 
@@ -745,6 +763,10 @@ footer .inner,
     font-size: 16px;
   }
 
+  .inner {
+    padding: 0 20px;
+    padding-bottom: var(--wep-footer-pad);
+  }
 
   .con {
     padding: 0 20px;
@@ -847,44 +869,48 @@ footer .inner,
     display: none !important;
   }
 
+  .all_p_t {
+    padding-top: 100px;
+
+  }
+
   .popular-swiper-pagination {
-    /*   position: absolute;
-  left:150px !important;
-  top: 4.3% !important; */
-    /* transform: translateY(-50%); */
-    /* transform: translateX(-50%); */
-    z-index: 300 !important;
-    display: flex !important;
-    padding-top: 16px;
-    /* 원하는 만큼 여백 */
+    min-height: 24px;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
+    display: flex;
+    position: absolute;
+    left: 50% !important;
+    bottom: -40px !important;
+    transform: translateX(-50%);
+  }
+
+  .popular-swiper-pagination .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    background: #222 !important;
+    opacity: 1 !important;
+    margin: 0 4px !important;
   }
 
   /* .popular-swiper-pagination .swiper-pagination-bullet {
   background: #ccc !important;
   opacity: 1 !important;
 }*/
-  .popular-swiper-pagination .swiper-pagination-bullet {
-    width: 10px !important;
-    height: 10px !important;
-    background: #ccc !important;
-    opacity: 1 !important;
-    margin: 0 4px !important;
-  }
+
 
   .popular-swiper-pagination .swiper-pagination-bullet-active {
-    background: #ff6600 !important;
-    opacity: 1 !important;
-  }
-
-  .all_p_t {
-    padding-top: 100px;
-
+    background: var(--point-color-yellow) !important;
   }
 
 
-
+  /* 아티스트 */
+  .artist_top {
+    font-size: 21px;
+    line-height: 33px;
+    font-weight: 500;
+  }
 
 
 
@@ -995,7 +1021,7 @@ footer .inner,
   }
 
   .icon_num {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .pagenation_num {
@@ -1013,11 +1039,6 @@ footer .inner,
 
 
 
-  /* 아티스트 */
-  .artist_top {
-    font-size: 16px;
-    line-height: 33px;
-  }
 
   .card_name {
     font-size: 18px;
@@ -1035,7 +1056,7 @@ footer .inner,
 
   .fan_top_p {
     font-size: 14px;
-    line-height: 20;
+    line-height: 20px;
   }
 
   /* 팝업 */
