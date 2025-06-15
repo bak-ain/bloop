@@ -236,6 +236,8 @@ button {
   font-weight: 600;
 }
 
+/* 버튼 */
+
 .btn_txt {
   font-size: 18px;
   font-weight: 400;
@@ -245,10 +247,14 @@ button {
   border-radius: 5px;
   background: var(--point-color-blue);
   color: #fff;
+  /* width: 220px; */
   padding: 12px 80px;
-  line-height: 150%;
+  /* line-height: 150%; */
   box-sizing: border-box;
   cursor: pointer;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .btnBlueS {
@@ -256,10 +262,25 @@ button {
   background: var(--point-color-blue);
   color: #fff;
   padding: 12px 45px;
-  line-height: 150%;
+  /* line-height: 150%; */
   box-sizing: border-box;
   cursor: pointer;
 }
+
+.btnWhite {
+  border-radius: 5px;
+  border: 1px solid var(--font-color-7);
+  background: #fff;
+  color: var(--font-color-7);
+  font-size: 16px;
+  font-weight: 600;
+  width: 80px;
+  padding-block: 10px;
+}
+
+
+
+
 
 .h3_tit {
   font-size: 40px;
@@ -989,6 +1010,18 @@ footer .inner,
 
 
 @media (max-width:450px) {
+  .btnWhite {
+    width: 70px;
+    padding-block: 8px;
+    font-size: 14px;
+  }
+
+  .btnBlue {
+    /* width: 175px; */
+    padding: 10px 60px;
+    font-size: 16px;
+  }
+
   .layout header {
     font-size: 1rem;
     white-space: nowrap;
@@ -1137,9 +1170,6 @@ footer .inner,
 }
 
 @media (max-width: 402px) {
-  .btnBlue {
-    padding: 10px 66px;
-  }
 
   .offic_h2 {
     font-size: 22px;

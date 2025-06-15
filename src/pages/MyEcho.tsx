@@ -125,27 +125,29 @@ const MyEcho = () => {
   return (
     <Container>
       <div className={`${styles.myechoBg} ${styles.myBg}`} />
-      <div className={`${styles.myechoWrap} inner`}>
-        <h3 className={styles.myTitle}>MY ECHO</h3>
-        {/* 탭바 */}
-        <div className={styles.tabBar}>
-          {tabList.map((t) => (
-            <button
-              key={t.key}
-              className={`${styles.tabBtn} ${tab === t.key ? styles.active : ''}`}
-              onClick={() => handleTabChange(t.key as typeof tab)}
-            >
-              {t.label}
-            </button>
-          ))}
+      <div className={`${styles.myWrap} inner`}>
+        <h3 className={`${styles.myTitle} ${styles.myEchoTitle} h3_tit`}>MY ECHO</h3>
+        <div className={`${styles.tabContainer}`}>
+          {/* 탭바 */}
+          <div className={styles.tabBar}>
+            {tabList.map((t) => (
+              <button
+                key={t.key}
+                className={`${styles.tabBtn} ${tab === t.key ? styles.active : ''}`}
+                onClick={() => handleTabChange(t.key as typeof tab)}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
         </div>
         {/* 카드 개수 & 편집/삭제 버튼 */}
         <div className={styles.cardHeaderRow}>
           <span className={styles.cardCount}>
-            {tabLabel} {cardCount > 0 ? `${cardCount}개` : '없음'}
+            {tabLabel} <b>{cardCount > 0 ? `${cardCount}` : '0'}</b>
           </span>
           <button
-            className={styles.editBtn}
+            className={` ${styles.editBtn} btnWhite`}
             onClick={() => {
               if (editMode && checkedIds.length > 0) handleDelete();
               else setEditMode(e => !e);

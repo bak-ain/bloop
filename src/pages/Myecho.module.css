@@ -1,27 +1,130 @@
 /* my echo */
-.tabBar {
+.myechoBg {
+    background-image: url(/public/images/mypage/myechoBg.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center 87%;
+}
+
+.myeWrap {
+    padding-top: 200px;
+}
+
+.myEchoTitle {
+    background-image: url(/public/images/icon/echoB.png);
+    background-repeat: no-repeat;
+    background-size: 50px auto;
+    background-position: center right;
+    padding-right: 70px;
+}
+
+.myTitle {
+    width: max-content;
+}
+
+.tabContainer {
+    padding: 180px 0 30px 0;
     display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabBar {
+    width: max-content;
+    display: flex;
+    padding: 8px 10px;
+    justify-content: space-between;
+    background: #F2F3F7;
+    border-radius: 30px;
+
 }
 
 .tabBtn {
-    flex: 1;
-    padding: 10px 0;
+    /* flex: 1; */
+    padding: 10px 68px;
     border: none;
-    border-radius: 24px;
-    background: #f5f6fa;
-    color: #888;
-    font-size: 1.1rem;
-    font-weight: 500;
+    color: #6A6A6A;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    font-weight: 400;
+    text-align: center;
+    font-size: 20px;
+    background: none;
+
 }
 
 .tabBtn.active {
-    background: #b3dcff;
-    color: #222;
-    font-weight: bold;
-    box-shadow: 0 2px 0 #7ecbff inset;
+    background-color: #b3dcff;
+    background-image:
+        url(/public/images/mypage/buttonLine.svg),
+        linear-gradient(to bottom right, rgba(65, 157, 223, 0.10) 0%, rgba(65, 157, 223, 0.60) 50%),
+        linear-gradient(to bottom left, rgba(65, 157, 223, 0.10) 0%, rgba(65, 157, 223, 0.60) 50%),
+        linear-gradient(to top left, rgba(65, 157, 223, 0.10) 0%, rgba(65, 157, 223, 0.60) 50%),
+        linear-gradient(to top right, rgba(65, 157, 223, 0.10) 0%, rgba(65, 157, 223, 0.60) 50%);
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position:
+        center,
+        bottom right,
+        bottom left,
+        top left,
+        top right;
+    background-size:
+        cover,
+        50% 50%,
+        50% 50%,
+        50% 50%,
+        50% 50%;
+    color: var(--font-1, #1F1F1F);
+    font-weight: 500;
+    border-radius: 30px;
+    box-shadow: 3px 3px 0.5px -3.5px #FFF inset, 2px 2px 1px -2px #B3B3B3 inset, -2px -2px 1px -2px #B3B3B3 inset, 0px 0px 0px 1px #999 inset, 0px 0px 22px 0px rgba(255, 255, 255, 0.50) inset;
+    backdrop-filter: blur(22.5px);
 }
 
+.cardHeaderRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.cardCount {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.cardCount b {
+    font-weight: 600;
+}
+
+.myBg {
+    width: 100%;
+    height: 335px;
+    background-color: #FFF39C;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+/* my pop */
+.myePopBg {
+    background-color: #FFE9A2;
+    background-image: url(/public/images/mypage/mypopBg.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+/* my mood banner */
+.myeMoodBg {
+    background-color: #FFD3AC;
+    background-image: url(/public/images/mypage/myMoodBg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@media (max-width: 767px) {
+    .myeWrap {
+        padding-top: 100px;
+    }
+}
