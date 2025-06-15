@@ -337,10 +337,27 @@
     font-size: 28px;
   }
 
-  .uploadPopupSubmitBtn {
-    width: 140px;
+  .uploadPopupBtnBoxRight {
+    gap: 10px;
+  }
+
+  .uploadPopupBtnBoxRight button {
+    font-size: 16px;
+  }
+
+  .uploadPopupTempBtn {
+    width: 130px;
     height: 42px;
-    line-height: 42px;
+  }
+
+  .uploadPopupSubmitBtn {
+    width: 130px;
+    height: 42px;
+  }
+
+  .uploadPopupEmojiBtn img {
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -355,9 +372,19 @@
     font-size: 24px;
   }
 
+  .uploadPopupBtnBoxRight {
+    gap: 5px;
+  }
+
+  .uploadPopupTempBtn {
+    width: 120px;
+    height: 40px;
+  }
+
   .uploadPopupSubmitBtn {
     width: 120px;
     height: 40px;
-    line-height: 40px;
   }
+
+  
 }
