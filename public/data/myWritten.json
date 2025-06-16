@@ -3,39 +3,52 @@
     "id": "w1",
     "viewType": "written",
     "type": "community",
-    "description": "다들 이사진 봤어요 ? ㅠㅠ 역시 우리 도아는 .... 어쩌면 저렇게 블링블링....",
-    "date": "2025-05-29 17:52",
-    "likes": 1,
-    "comments": 22,
+    "description": "아린이 브이앱 때문에 웃다가 광대 나갔다ㅋㅋ 사랑해",
+    "date": "2025.06.18 17:52",
+    "likes": 89,
+    "comments": 25,
     "editable": true,
     "imageUrls": [
-      "/images/10.png"
+      "/images/my/w1.png"
     ]
   },
     {
     "id": "w2",
     "viewType": "written",
     "type": "community",
-    "description": "다들 이사진 봤어요 ? ㅠㅠ 역시 우리 도아는 .... 어쩌면 저렇게 블링블링....",
-    "date": "2025-05-29 17:52",
-    "likes": 1,
-    "comments": 22,
+    "description": "바다 보고 세이 생각났어. 여름 세이는 무조건이야 !!",
+    "date": "2025.06.10 13:08",
+    "likes": 87,
+    "comments": 56,
     "editable": true,
     "imageUrls": [
-      "/images/6.png"
+      "/images/my/w2.png"
     ]
   },
     {
     "id": "w3",
     "viewType": "written",
     "type": "community",
-    "description": "다들 이사진 봤어요 ? ㅠㅠ 역시 우리 도아는 .... 어쩌면 저렇게 블링블링....",
-    "date": "2025-05-29 17:52",
-    "likes": 1,
-    "comments": 22,
+    "description": "우리 애옹이가 오늘 하이비스 영상 보고 기분 좋아졌대요 ㅎㅎ",
+    "date": "2025.06.06 09:27",
+    "likes": 160,
+    "comments": 38,
     "editable": true,
     "imageUrls": [
-      "/images/1.png"
+      "/images/my/w3.png"
+    ]
+  },
+      {
+    "id": "w4",
+    "viewType": "written",
+    "type": "community",
+    "description": "다들 이사진 봤어요 ? ㅠㅠ 역시 우리 도아는 .... 어쩌면 저렇게 블링블링....",
+    "date": "2025.06.11 14:08",
+    "likes": 101,
+    "comments": 23,
+    "editable": true,
+    "imageUrls": [
+      "/images/my/w4.png"
     ]
   }
 ]

@@ -4,7 +4,7 @@
       "id": "a1",
       "user": {
         "name": "SEI",
-        "profileImage": "/images/profiles/SEI.png",
+        "profileImage": "/images/profiles/SEI_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.27",
@@ -25,7 +25,7 @@
       "id": "a2",
       "user": {
         "name": "LUHA",
-        "profileImage": "/images/profiles/LUHA.png",
+        "profileImage": "/images/profiles/LUHA_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.26",
@@ -50,7 +50,7 @@
       "id": "a3",
       "user": {
         "name": "ARIN",
-        "profileImage": "/images/profiles/ARIN.png",
+        "profileImage": "/images/profiles/ARIN_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.24",
@@ -79,7 +79,7 @@
       "id": "a4",
       "user": {
         "name": "DOA",
-        "profileImage": "/images/profiles/DOA.png",
+        "profileImage": "/images/profiles/DOA_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.24",
@@ -100,7 +100,7 @@
       "id": "a5",
       "user": {
         "name": "SEI",
-        "profileImage": "/images/profiles/SEI.png",
+        "profileImage": "/images/profiles/SEI_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.23",
@@ -121,7 +121,7 @@
       "id": "a6",
       "user": {
         "name": "ARIN",
-        "profileImage": "/images/profiles/ARIN.png",
+        "profileImage": "/images/profiles/ARIN_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.22",
@@ -146,7 +146,7 @@
       "id": "a7",
       "user": {
         "name": "ARIN",
-        "profileImage": "/images/profiles/ARIN.png",
+        "profileImage": "/images/profiles/ARIN_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.21",
@@ -175,7 +175,7 @@
       "id": "a8",
       "user": {
         "name": "SEI",
-        "profileImage": "/images/profiles/SEI.png",
+        "profileImage": "/images/profiles/SEI_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.21",
@@ -196,7 +196,7 @@
       "id": "a9",
       "user": {
         "name": "DOA",
-        "profileImage": "/images/profiles/DOA.png",
+        "profileImage": "/images/profiles/DOA_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.20",
@@ -217,7 +217,7 @@
       "id": "a10",
       "user": {
         "name": "LUHA",
-        "profileImage": "/images/profiles/LUHA.png",
+        "profileImage": "/images/profiles/LUHA_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.19",
@@ -242,7 +242,7 @@
       "id": "a11",
       "user": {
         "name": "ARIN",
-        "profileImage": "/images/profiles/ARIN.png",
+        "profileImage": "/images/profiles/ARIN_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.19",
@@ -271,7 +271,7 @@
       "id": "a12",
       "user": {
         "name": "SEI",
-        "profileImage": "/images/profiles/SEI.png",
+        "profileImage": "/images/profiles/SEI_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.17",
@@ -292,7 +292,7 @@
       "id": "a13",
       "user": {
         "name": "DOA",
-        "profileImage": "/images/profiles/DOA.png",
+        "profileImage": "/images/profiles/DOA_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.13",
@@ -313,7 +313,7 @@
       "id": "a14",
       "user": {
         "name": "LUHA",
-        "profileImage": "/images/profiles/LUHA.png",
+        "profileImage": "/images/profiles/LUHA_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.10",
@@ -334,7 +334,7 @@
       "id": "a15",
       "user": {
         "name": "LUHA",
-        "profileImage": "/images/profiles/LUHA.png",
+        "profileImage": "/images/profiles/LUHA_full.png",
         "badgeType": "artist"
       },
       "date": "2025.06.07",
@@ -356,8 +356,8 @@
     {
       "id": "f1",
       "user": {
-        "name": "loop_boy",
-        "profileImage": "/images/fan/ff1.png",
+        "name": "@testfan",
+        "profileImage": "public/images/my/me",
         "badgeType": "fan",
         "badgeLevel": 1
       },
@@ -478,8 +478,8 @@
     {
       "id": "f6",
       "user": {
-        "name": "mintmint",
-        "profileImage": "/images/fan/ff6.png",
+        "name": "@testfan",
+        "profileImage": "public/images/my/me",
         "badgeType": "fan",
         "badgeLevel": 1
       },
@@ -504,8 +504,8 @@
     {
       "id": "f7",
       "user": {
-        "name": "seashell_j",
-        "profileImage": "/images/fan/ff7.png",
+        "name": "@testfan",
+        "profileImage": "public/images/my/me",
         "badgeType": "fan",
         "badgeLevel": 3
       },
@@ -648,8 +648,8 @@
     {
       "id": "f13",
       "user": {
-        "name": "puppy_m",
-        "profileImage": "/images/fan/ff13.png",
+        "name": "@testfan",
+        "profileImage": "public/images/my/me",
         "badgeType": "fan",
         "badgeLevel": 2
       },
