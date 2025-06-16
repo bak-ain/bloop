@@ -57,7 +57,7 @@ const StoryPopup = ({ story, onClose }: { story: ArtistStoryPost; onClose: () =>
                     className={styles.badgeImg}
                   />
                 </span>
-                <span className={`${styles.timeAgo} day_span`}>{story.date}</span>
+                <span className={`${styles.timeAgo} day_span_2`}>{story.date}</span>
               </div>
             </div>
             {/* 공유 버튼과 닫기 버튼을 같은 부모에 넣음 */}
@@ -65,7 +65,7 @@ const StoryPopup = ({ story, onClose }: { story: ArtistStoryPost; onClose: () =>
               <button className={styles.shareBtn} onClick={handleShare}>
                 <img src="/images/icon/share_icon_w.png" alt="share" />
               </button>
-              <button className={styles.closeBtn} onClick={onClose}>X</button>
+              <button className={styles.closeBtn} onClick={onClose}><img src="/images/icon/close_w.png" alt="close" /></button>
             </div>
           </div>
         </div>
