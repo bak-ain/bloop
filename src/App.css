@@ -223,9 +223,13 @@ button {
   font-weight: 400;
   color: var(--font-color-7);
 }
-
+.day_span_2{
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--font-color-7);
+}
 .icon_num {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   font-family: var(--main-font-family);
   padding: 0;
@@ -289,12 +293,12 @@ button {
 }
 
 /* 전체 카드 안 큰 내용 */
-.card_p {
+/* .card_p {
   font-size: 20px;
   font-weight: 500;
   line-height: 33;
 }
-
+ */
 /* main */
 
 .main_card_h2 {
@@ -340,13 +344,13 @@ button {
 }
 
 .artist_top {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   color: #fff;
 }
 
 .card_name {
-  font-size: 23px;
+  font-size: 20px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -367,7 +371,7 @@ button {
 
 /* 커뮤니티 */
 .fan_top_name {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
 }
 
@@ -378,9 +382,9 @@ button {
 }
 
 .fan_top_p {
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 500;
-  line-height: 26px;
+  line-height: 23px;
 }
 
 /* 팝업 */
@@ -658,7 +662,7 @@ footer .inner,
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 12px;
+  padding-top: 50px;
   gap: 6px;
 }
 
@@ -879,6 +883,17 @@ footer .inner,
 }
 
 @media (max-width: 767px) {
+  .day_span_2{
+    font-size: 14px;
+  }
+  .artist-swiper-pagination{
+    padding-top: 12px;
+  }
+  .fan_top_p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
   .h3_tit {
     font-size: 24px;
     font-weight: 700;
@@ -940,7 +955,7 @@ footer .inner,
 
   /* 아티스트 */
   .artist_top {
-    font-size: 21px;
+    font-size: 18px;
     line-height: 33px;
     font-weight: 500;
   }
@@ -952,7 +967,10 @@ footer .inner,
     right: 30px !important;
   }
 
-
+  /* 커뮤니티 */
+  .fan_top_name {
+    font-size: 16px;
+  }
 
 
   .popular-swiper-prev {
@@ -969,7 +987,7 @@ footer .inner,
 
 
   .all_p_t {
-    padding-top: 150px;
+    padding-top: 120px;
 
   }
 
@@ -1095,19 +1113,13 @@ footer .inner,
     line-height: 24px;
   }
 
-  /* 커뮤니티 */
-  .fan_top_name {
-    font-size: 16px;
-  }
+
 
   .fan_top_day {
     font-size: 10px;
   }
 
-  .fan_top_p {
-    font-size: 14px;
-    line-height: 20px;
-  }
+
 
   /* 팝업 */
 
