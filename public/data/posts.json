@@ -357,7 +357,7 @@
       "id": "f1",
       "user": {
         "name": "@testfan",
-        "profileImage": "public/images/my/me",
+        "profileImage": "/images/my/me.png",
         "badgeType": "fan",
         "badgeLevel": 1
       },
@@ -479,7 +479,7 @@
       "id": "f6",
       "user": {
         "name": "@testfan",
-        "profileImage": "public/images/my/me",
+        "profileImage": "/images/my/me.png",
         "badgeType": "fan",
         "badgeLevel": 1
       },
@@ -505,9 +505,9 @@
       "id": "f7",
       "user": {
         "name": "@testfan",
-        "profileImage": "public/images/my/me",
+        "profileImage": "/images/my/me.png",
         "badgeType": "fan",
-        "badgeLevel": 3
+        "badgeLevel": 1
       },
       "date": "2025.06.10",
       "description": "바다 보고 세이 생각났어. 여름 세이는 무조건이야 !!",
@@ -649,9 +649,9 @@
       "id": "f13",
       "user": {
         "name": "@testfan",
-        "profileImage": "public/images/my/me",
+        "profileImage": "/images/my/me.png",
         "badgeType": "fan",
-        "badgeLevel": 2
+        "badgeLevel": 1
       },
       "date": "2025.06.06",
       "description": "우리 애옹이가 오늘 하이비스 영상 보고 기분 좋아졌대요 ㅎㅎ",
