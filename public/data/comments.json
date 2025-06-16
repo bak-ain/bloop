@@ -1291,5 +1291,355 @@
     "likes": 5,
     "comments": 0,
     "isLiked": false
+  },
+  {
+    "id": "71",
+    "postId": "f1",
+    "postType": "fan",
+    "user": {
+      "name": "BLOOMIE",
+      "profileImage": "/images/artist/u1.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "BLOOMIE"
+    },
+    "content": "아린이 브이앱 진짜 무슨 영화였어요…",
+    "date": "2025.06.18",
+    "likes": 6,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "72",
+    "postId": "f1",
+    "postType": "fan",
+    "user": {
+      "name": "Loopin_dream",
+      "profileImage": "/images/artist/u2.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "Loopin_dream"
+    },
+    "content": "아린 언니 웃는 거 반칙이야 진짜… 🌙✨",
+    "date": "2025.06.18",
+    "likes": 0,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "73",
+    "postId": "f1",
+    "postType": "fan",
+    "user": {
+      "name": "Arinnight",
+      "profileImage": "/images/artist/u3.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "Arinnight"
+    },
+    "content": "나 너 웃음소리 때문에 심장 도둑맞았어… ",
+    "date": "2025.06.18",
+    "likes": 1,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "74",
+    "postId": "f1",
+    "postType": "fan",
+    "user": {
+      "name": "LOOPY",
+      "profileImage": "/images/artist/u4.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "LOOPY"
+    },
+    "content": "아련+심쿵+웃김+심멎=완벽",
+    "date": "2025.06.18",
+    "likes": 3,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "75",
+    "postId": "f1",
+    "postType": "fan",
+    "user": {
+      "name": "Vocalfan_0914",
+      "profileImage": "/images/artist/u5.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "Vocalfan_0914"
+    },
+    "content": "브이앱 끝나고 멍하니 화면만 봤어요 ㅠㅠ",
+    "emoji": "/images/emoji/emoji9.png",
+    "date": "2025.06.18",
+    "likes": 5,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "76",
+    "postId": "f2",
+    "postType": "fan",
+    "user": {
+      "name": "BLOOMIE",
+      "profileImage": "/images/artist/u1.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "BLOOMIE"
+    },
+    "content": "루하 표정 하나에 감정선 다 흔들림... ",
+    "date": "2025.06.17",
+    "likes": 6,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "77",
+    "postId": "f2",
+    "postType": "fan",
+    "user": {
+      "name": "Loopin_dream",
+      "profileImage": "/images/artist/u2.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "Loopin_dream"
+    },
+    "content": "야광봉 흔드는 내 손이 오늘 제일 열일했어 ㅋㅎ",
+    "date": "2025.06.17",
+    "likes": 0,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "78",
+    "postId": "f2",
+    "postType": "fan",
+    "user": {
+      "name": "Arinnight",
+      "profileImage": "/images/artist/u3.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "Arinnight"
+    },
+    "content": "이 밤 루하 덕분에 찬란했어요 ㅠㅠㅠ",
+    "emoji": "/images/emoji/emoji2.png",
+    "date": "2025.06.17",
+    "likes": 1,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "79",
+    "postId": "f2",
+    "postType": "fan",
+    "user": {
+      "name": "LOOPY",
+      "profileImage": "/images/artist/u4.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "LOOPY"
+    },
+    "content": "너 보면서 나도 같이 빛난 기분이야 ✨🌸",
+    "date": "2025.06.17",
+    "likes": 3,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "80",
+    "postId": "f2",
+    "postType": "fan",
+    "user": {
+      "name": "Vocalfan_0914",
+      "profileImage": "/images/artist/u5.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "Vocalfan_0914"
+    },
+    "content": "눈 마주친 줄 알았잖아… 내 쪽 봤지… 맞지…?!",
+    "date": "2025.06.17",
+    "likes": 5,
+    "comments": 0,
+    "isLiked": false
+  },
+
+
+
+
+  {
+    "id": "81",
+    "postId": "f3",
+    "postType": "fan",
+    "user": {
+      "name": "BLOOMIE",
+      "profileImage": "/images/artist/u1.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "BLOOMIE"
+    },
+    "content": "나도 갔다왔어요! 세이 생일카페 진짜 사랑 가득한 공간이었어요 🎂🌼",
+    "date": "2025.06.17",
+    "likes": 6,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "82",
+    "postId": "f3",
+    "postType": "fan",
+    "user": {
+      "name": "Loopin_dream",
+      "profileImage": "/images/artist/u2.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "Loopin_dream"
+    },
+    "content": "세이 생일이라는 이유만으로 하루 종일 기분이 좋았던 날… 생일 축하해 세이야! 🎉💛",
+    "date": "2025.06.17",
+    "likes": 0,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "83",
+    "postId": "f3",
+    "postType": "fan",
+    "user": {
+      "name": "Arinnight",
+      "profileImage": "/images/artist/u3.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "Arinnight"
+    },
+    "content": "생카 사진도 예쁘고 분위기 미쳤다… 세이 너무 사랑받아서 나까지 뭉클했어 ㅠㅠ 🎈",
+    "emoji": "/images/emoji/emoji2.png",
+    "date": "2025.06.17",
+    "likes": 1,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "84",
+    "postId": "f3",
+    "postType": "fan",
+    "user": {
+      "name": "LOOPY",
+      "profileImage": "/images/artist/u4.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "LOOPY"
+    },
+    "content": "세이 생일은 팬들에겐 축제 그 자체… 오늘 하루 세이 생각만 했어요 🥹🫶","date": "2025.06.17",
+    "likes": 3,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "85",
+    "postId": "f3",
+    "postType": "fan",
+    "user": {
+      "name": "Vocalfan_0914",
+      "profileImage": "/images/artist/u5.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "Vocalfan_0914"
+    },
+    "content": "세이 덕분에 우리도 특별한 하루였어! 생일 축하해, 너라는 존재가 선물이야 🎁🌸",
+    "date": "2025.06.17",
+    "likes": 5,
+    "comments": 0,
+    "isLiked": false
+  },
+
+
+
+   {
+    "id": "86",
+    "postId": "f4",
+    "postType": "fan",
+    "user": {
+      "name": "BLOOMIE",
+      "profileImage": "/images/artist/u1.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "BLOOMIE"
+    },
+    "content": "우와 나도 도아 따라 만들었는데 냉장고 열 때마다 뿌듯해요! 🍋💛",
+    "emoji": "/images/emoji/emoji5.png",
+    "date": "2025.06.16",
+    "likes": 6,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "87",
+    "postId": "f4",
+    "postType": "fan",
+    "user": {
+      "name": "Loopin_dream",
+      "profileImage": "/images/artist/u2.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "Loopin_dream"
+    },
+    "content": "브이로그 진짜 힐링 그 자체… 도아 덕분에 나도 건강 챙기게 돼요 🍯🌿",
+    "date": "2025.06.16",
+    "likes": 0,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "88",
+    "postId": "f4",
+    "postType": "fan",
+    "user": {
+      "name": "Arinnight",
+      "profileImage": "/images/artist/u3.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "Arinnight"
+    },
+    "content": "레몬청도 예쁘고 글씨체까지 귀엽고 정성 한가득이네… 진짜 팬 사랑 뭉클해요 😭✨",
+    "date": "2025.06.16",
+    "likes": 1,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "89",
+    "postId": "f4",
+    "postType": "fan",
+    "user": {
+      "name": "LOOPY",
+      "profileImage": "/images/artist/u4.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "LOOPY"
+    },
+    "content": "도아는 뭐든 다 잘해… 요리도 분위기도 다 챙기면 어떡해요 🍋🫶",
+    "date": "2025.06.16",
+    "likes": 3,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "90",
+    "postId": "f4",
+    "postType": "fan",
+    "user": {
+      "name": "Vocalfan_0914",
+      "profileImage": "/images/artist/u5.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "Vocalfan_0914"
+    },
+    "content": "도아가 만든 것도 예쁘지만 팬이 따라한 것도 완전 감동이에요… 같이 건강하자요 💛🍵",
+    "date": "2025.06.16",
+    "likes": 5,
+    "comments": 0,
+    "isLiked": false
   }
 ]
