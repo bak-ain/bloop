@@ -274,10 +274,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-<<<<<<< HEAD
-=======
- /*  padding-inline: 80px; */
->>>>>>> c623af1b44b9a6241be0fa0e240274b2937457ea
+  padding-inline: 80px;
 }
 
 
@@ -840,19 +837,17 @@
 
 
 @media (max-width: 767px) {
-<<<<<<< HEAD
   .body_wrapper>p>img {
     width: 120px;
     height: 120px;
     border: none;
-=======
+  }
   .popularTitle {
     padding-bottom: 30px;
   }
 
   .popularCardInfo {
     gap: 2px;
->>>>>>> c623af1b44b9a6241be0fa0e240274b2937457ea
   }
 
   .badge_img {
