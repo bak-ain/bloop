@@ -11,6 +11,11 @@
   justify-content: center;
 }
 
+/* 포스트 디테일에서 보여지는 이모지 크기조절 */
+.body_wrapper>p>img{
+  width: 50px;
+}
+
 /* PostDetail.module.css 예시 */
 .reply_toggle_row {
 

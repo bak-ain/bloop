@@ -67,11 +67,12 @@
 }
 
 /* 정보 박스 */
-.infoBoxWrap{
+.infoBoxWrap {
     display: flex;
     flex-direction: column;
     gap: 80px;
 }
+
 .sectionBorder {
     position: absolute;
     left: 0;
@@ -93,14 +94,18 @@
     flex-direction: column;
     justify-content: center;
     padding: 50px;
+    gap: 30px;
     /* align-items: center; */
 }
-.infoBoxLogin{
-    /* height: 230px; */
+
+.infoBoxLogin {
+    height: 325px;
 }
-.infoBoxProfile{
-    height: 490px;
+
+.infoBoxProfile {
+    height: 580px;
 }
+
 .infoTab {
     position: absolute;
     top: -22px;
@@ -114,60 +119,122 @@
 }
 
 .infoRow {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 22px;
+    color: var(--font-color-3);
+}
+
+.infoRow> :last-child {
+    width: 60%;
 }
 
 .infoLabel {
-    flex: 0 0 110px;
-    font-size: 18px;
     font-weight: 600;
-    color: #444;
-    letter-spacing: -0.5px;
 }
 
 .infoValue {
-    font-size: 18px;
-    color: #222;
-    margin-left: 18px;
     word-break: break-all;
 }
 
 .infoInput {
-    font-size: 18px;
-    padding: 8px 14px;
-    border: 1.5px solid #d2c6f7;
-    border-radius: 8px;
+    padding: 10px 20px;
+    border: 1px solid #C7E7FF;
+    border-radius: 10px;
     outline: none;
-    margin-left: 18px;
-    width: 320px;
+    /* width: 320px; */
     background: #fff;
+}
+
+.emailInputWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border: 1px solid #C7E7FF;
+    border-radius: 10px;
+    position: relative;
+}
+
+.emailInput {
+    border: 0;
+    background: 0;
+    outline: none;
+    /* padding: 10px 20px;
+    border: 1px solid #C7E7FF;
+    border-radius: 10px; */
+}
+
+.emailDomainList {
+    position: absolute;
+    top: 80%;
+    right: -1px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    /* margin-top: 2px; */
+    z-index: 10;
+    width: 120px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    list-style: none;
+    padding: 0;
+}
+
+.emailDomainItem {
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.genderOptions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.emailSelectBtn {
+    width: 30%;
+    border: 0;
+    background: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: inherit;
+}
+input{
+    color: inherit;
 }
 
 .birthInputWrap {
     display: flex;
     align-items: center;
     margin-left: 18px;
+    border: 1px solid #C7E7FF;
+    border-radius: 10px;
+    background: #fff;
+    justify-content: space-between;
+    padding: 10px 20px;
 }
 
 .birthInput {
     width: 70px;
-    font-size: 18px;
-    padding: 8px 8px;
-    border: 1.5px solid #d2c6f7;
-    border-radius: 8px;
+    border: 0;
     outline: none;
-    background: #fff;
+    background: 0;
     text-align: center;
 }
 
 .birthInput+span {
     margin: 0 8px;
-    font-size: 18px;
     color: #888;
 }
-
+.birthSelectBtn{
+    background: 0;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
 /* 버튼 영역 */
 .btnWrap {
     display: flex;
