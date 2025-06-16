@@ -137,7 +137,7 @@ const MyMood = () => {
   return (
     <Container>
       <div className={`${styles2.myeMoodBg} ${styles2.myBg}`} />
-      <div className={`${styles2.myeWrap} inner`}>
+      <div className={`${styles2.myWrap} inner`}>
         <h3 className={`${styles2.myTitle} h3_tit`}>MY MOOD</h3>
         {/* 프로필 영역 */}
         <div className={styles.myeMoodProfileTop}>
@@ -321,7 +321,7 @@ const MyMood = () => {
                     className={`${styles.emailSelectBtn} `}
                     onClick={() => setShowDomainSelect(v => !v)}
                   >
-                    @ 선택하기
+                     선택하기
                   </button>
                   {showDomainSelect && (
                     <ul className={styles.emailDomainList}>

@@ -1,4 +1,9 @@
 /* 인기게시물 배경 */
+
+/* 포스트카드에서 보여지는 이모지 크기 조절 */
+.body_wrapper>p>img{
+  /* width: 50px; */
+}
 .popularBannerContainer {
   width: 100%;
   height: 570px;
