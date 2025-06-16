@@ -129,7 +129,7 @@ const MyPop = () => {
     return (
         <Container>
             <div className={`${styles.myePopBg} ${styles.myBg}`} />
-            <div className={`${styles.myeWrap} inner`}>
+            <div className={`${styles.myWrap} inner`}>
                 <h3 className={`${styles.myTitle} h3_tit`}>MY POP</h3>
                 {/* 탭바 */}
                 <div className={`${styles.tabContainer}`}>

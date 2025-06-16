@@ -363,6 +363,12 @@ button {
   line-height: 33px;
 }
 
+.card_p2 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 33px;
+}
+
 /* 커뮤니티 */
 .fan_top_name {
   font-size: 19px;
@@ -1069,6 +1075,11 @@ footer .inner,
 
 
   .card_p {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .card_p2 {
     font-size: 16px;
     line-height: 25px;
   }

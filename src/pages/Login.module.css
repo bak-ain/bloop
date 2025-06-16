@@ -330,6 +330,12 @@
     }
 }
 
+@media (max-width: 720px) {
+    .loginWrap {
+        padding-top: 120px;
+    }
+}
+
 @media (max-width: 656px) {
     .loginWrap {
         padding-top: 100px;

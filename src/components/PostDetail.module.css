@@ -11,6 +11,11 @@
   justify-content: center;
 }
 
+/* 포스트 디테일에서 보여지는 이모지 크기조절 */
+.body_wrapper>p>img{
+  width: 50px;
+}
+
 /* PostDetail.module.css 예시 */
 .reply_toggle_row {
 
@@ -29,11 +34,11 @@
 /* 답글(대댓글) 리스트가 댓글 아래로 자연스럽게 펼쳐지도록 스타일 추가 */
 .reply_list {
   width: 100%;
-  margin-left: 30px;
+  margin-left: 20px;
   margin-top: 8px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 15px;
   animation: replyFadeIn 0.3s;
   /* position: absolute;
   right: 0;
@@ -42,11 +47,23 @@
 
 .reply_item {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
+  justify-content: space-between;
   gap: 10px;
   border-radius: 10px;
   /* padding: 12px 16px; */
   position: relative;
+}
+
+.reply_item_left {
+  display: flex;
+  gap: 10px;
+}
+
+.reply_item_info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .post_detail_all {
@@ -125,8 +142,8 @@
 }
 
 .more_btn {
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border: none;
   cursor: pointer;
   padding: 0;
@@ -144,7 +161,7 @@
 .more_menu {
   position: absolute;
   right: 0;
-  top: 50px;
+  top: 64px;
   background: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -642,6 +659,11 @@
   .sticker_picker button {
     width: 70%;
   }
+
+  .more_btn {
+    width: 38px;
+    height: 38px;
+  }
 }
 
 @media (max-width: 656px) {
@@ -703,6 +725,11 @@
   .emoji_preview {
     bottom: -35%;
     right: 35%;
+  }
+
+  .more_btn {
+    width: 35px;
+    height: 35px;
   }
 }
 

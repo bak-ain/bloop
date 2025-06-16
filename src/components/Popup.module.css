@@ -292,6 +292,14 @@
   z-index: 1001;
 }
 
+/* 이모지 클래스 */
+.emojiImg {
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
 
 /* ======================================== */
 /* ================ 반응형 ================ */
@@ -372,6 +380,10 @@
     font-size: 24px;
   }
 
+  .uploadPopupEditor img {
+    width: 80%;
+  }
+
   .uploadPopupBtnBoxRight {
     gap: 5px;
   }
@@ -386,5 +398,5 @@
     height: 40px;
   }
 
-  
+
 }
