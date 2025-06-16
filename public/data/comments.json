@@ -15,7 +15,26 @@
     "date": "2025.08.27",
     "likes": 3,
     "comments": 0,
-    "isLiked": false
+    "isLiked": false,
+    "replies": [
+      {
+        "id": "101",
+        "postId": "a1",
+        "postType": "artist",
+        "user": {
+          "name": "Loopin_dream",
+          "profileImage": "/images/artist/u2.png",
+          "badgeType": "fan",
+          "badgeLevel": 2,
+          "userId": "Loopin_dream"
+        },
+        "content": "진짜 인정이요!!",
+        "date": "2025.08.27",
+        "likes": 1,
+        "comments": 0,
+        "isLiked": false
+      }
+    ]
   },
   {
     "id": "2",
