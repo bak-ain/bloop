@@ -275,6 +275,7 @@
   justify-content: center;
   border-radius: 10px;
   padding-inline: 80px;
+  padding-inline: 80px;
 }
 
 
@@ -841,8 +842,7 @@
     width: 120px;
     height: 120px;
     border: none;
-  }
-
+=======
   .popularTitle {
     padding-bottom: 30px;
   }
