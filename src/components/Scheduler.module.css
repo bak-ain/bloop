@@ -411,6 +411,9 @@
 }
 
 @media screen and (max-width: 430px) {
+    .schedulerWrapper {
+        padding: 0 20px;
+    }
     .calendar {
         width: 100%;
     }
@@ -433,8 +436,8 @@
     :global(.react-calendar__month-view__days) {}
 
     :global(.react-calendar__tile) {
-        height: 74px;
-        padding: 5px;
+        height: 80px;
+        padding:  5px;
     }
 
     :global(.react-calendar__month-view__weekdays__weekday) {
@@ -451,7 +454,8 @@
     }
 
     .dayEvent {
-        font-size: 12px;
+        font-size: 10px;
+        line-height: 1.2;
     }
 
     .schedulerInfo {

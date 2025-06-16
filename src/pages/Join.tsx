@@ -16,30 +16,30 @@ const EMAIL_DOMAINS = [
 
 const defaultFan: FanSignupInput = {
   userType: 'fan',
-  id: '',
-  nickname: '',
-  password: '',
-  confirmPassword: '',
-  name: '',
-  email: '',
-  phone: '',
+  id: 'testfan',
+  nickname: '테스트팬',
+  password: '1234',
+  confirmPassword: '1234',
+  name: '이소민',
+  email: 'testfan@naver.com',
+  phone: '010-1234-5678',
   gender: 'female',
   profileImage: '/images/profile_img.png', // 기본 프로필 이미지
-  birth: { year: '', month: '', day: '' },
-  agree: { privacy: false, communityPolicy: false, marketing: false, over14: false }
+  birth: { year: '2000', month: '01', day: '01' },
+  agree: { privacy: true, communityPolicy: true, marketing: true, over14: true }
 };
 
 const defaultAgency: AgencySignupInput = {
-  userType: 'agency',
-  company: '',
-  artistName: '',
-  id: '',
-  password: '',
-  confirmPassword: '',
-  name: '',
-  email: '',
-  phone: '',
-  agree: { privacy: false, uploadResponsibility: false, marketing: false, over14: false }
+  userType: "agency",
+  company: "테스트기획사",
+  artistName: "테스트아티스트",
+  id: "testagency",
+  password: "5678",
+  confirmPassword: "5678",
+  name: "김기획",
+  email: "testagency@daum.net",
+  phone: "010-8765-4321",
+  agree: { privacy: true, uploadResponsibility: true, marketing: false, over14: true }
 };
 
 const parseEmail = (email: string) => {
@@ -56,10 +56,10 @@ const Join = () => {
   const [agencyInput, setAgencyInput] = useState<AgencySignupInput>({ ...defaultAgency });
   const [showDomainSelect, setShowDomainSelect] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const { addUser } = useUserContext();
-  const navigate = useNavigate();
   const fanEmailDomainInputRef = useRef<HTMLInputElement>(null);
   const agencyEmailDomainInputRef = useRef<HTMLInputElement>(null);
+  const { addUser, setUser } = useUserContext(); // setUser 추가
+  const navigate = useNavigate();
   // 이메일 도메인 선택
   const handleDomainSelect = (domain: string) => {
     setShowDomainSelect(false);
@@ -185,16 +185,24 @@ const Join = () => {
         return;
       }
       addUser({ ...fanInput });
-      alert('회원가입이 완료되었습니다.');
-      navigate('/login?type=fan');
+      if (window.confirm('회원가입이 완료되었습니다.\n로그인하시겠어요?')) {
+        setUser({ ...fanInput }); // 바로 로그인 처리
+        navigate('/');
+      } else {
+        navigate('/login?type=fan');
+      }
     } else {
       if (agencyInput.password !== agencyInput.confirmPassword) {
         alert('비밀번호가 일치하지 않습니다.');
         return;
       }
       addUser({ ...agencyInput });
-      alert('회원가입이 완료되었습니다.');
-      navigate('/login?type=agency');
+      if (window.confirm('회원가입이 완료되었습니다.\n로그인하시겠어요?')) {
+        setUser({ ...agencyInput }); // 바로 로그인 처리
+        navigate('/admin');
+      } else {
+        navigate('/login?type=agency');
+      }
     }
   };
 
@@ -223,466 +231,466 @@ const Join = () => {
               <h1 className={`h3_tit`}>회원가입</h1>
               <p className={`${styles.joinP} `}> <span className={styles.red_star}>*</span> 필수입력사항</p>
             </div>
-          <form className={styles.joinForm} onSubmit={handleSubmit}>
-            {userType === 'fan' ? (
-              <>
-              
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>아이디<span className={styles.red_star}>*</span></div> <input name="id" value={fanInput.id} onChange={handleChange} required placeholder="Enter your ID" /></label>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>닉네임<span className={styles.red_star}>*</span></div><input name="nickname" value={fanInput.nickname} onChange={handleChange} required placeholder="Enter your Nickname" /></label>
-                <label className={`join_p`}>
-                  <div className={`${styles.joinTit}`}>비밀번호<span className={styles.red_star}>*</span></div>
-                  <input name="password" type="password" value={fanInput.password} onChange={handleChange} required placeholder="Enter your password" />
-                </label>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>비밀번호 확인<span className={styles.red_star}>*</span></div><input name="confirmPassword" type="password" value={fanInput.confirmPassword} onChange={handleChange} required placeholder="Enter your password one more time." /></label>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>이름<span className={styles.red_star}>*</span></div><input name="name" value={fanInput.name} onChange={handleChange} required placeholder="Enter your name" /></label>
-                <div className={styles.em}>
+            <form className={styles.joinForm} onSubmit={handleSubmit}>
+              {userType === 'fan' ? (
+                <>
+
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>아이디<span className={styles.red_star}>*</span></div> <input name="id" value={fanInput.id} onChange={handleChange} required placeholder="Enter your ID" /></label>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>닉네임<span className={styles.red_star}>*</span></div><input name="nickname" value={fanInput.nickname} onChange={handleChange} required placeholder="Enter your Nickname" /></label>
                   <label className={`join_p`}>
-                    <div className={styles.eTit}>
-                      이메일<span className={styles.red_star}>*</span>
-                    </div>
-                    <div className={styles.emailInputTit}>
-                      <input
-                        type="text"
-                        name="emailLocal"
-                        value={fanEmailLocal}
-                        onChange={handleChange}
-                        className={styles.emailInput}
-                        required
-                      />
-                      <span>@</span>
-                      <span className={`${styles.emailInputDomain} ${fanEmailDomain === '직접입력' ? styles.noBorder : ''}`}>
+                    <div className={`${styles.joinTit}`}>비밀번호<span className={styles.red_star}>*</span></div>
+                    <input name="password" type="password" value={fanInput.password} onChange={handleChange} required placeholder="Enter your password" />
+                  </label>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>비밀번호 확인<span className={styles.red_star}>*</span></div><input name="confirmPassword" type="password" value={fanInput.confirmPassword} onChange={handleChange} required placeholder="Enter your password one more time." /></label>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>이름<span className={styles.red_star}>*</span></div><input name="name" value={fanInput.name} onChange={handleChange} required placeholder="Enter your name" /></label>
+                  <div className={styles.em}>
+                    <label className={`join_p`}>
+                      <div className={styles.eTit}>
+                        이메일<span className={styles.red_star}>*</span>
+                      </div>
+                      <div className={styles.emailInputTit}>
                         <input
-                          ref={fanEmailDomainInputRef}
                           type="text"
-                          name="emailDomain"
-                          value={
-                            fanEmailDomain && fanEmailDomain !== '직접입력'
-                              ? fanEmailDomain // ← @ 없이 도메인만
-                              : fanEmailDomain === '직접입력'
-                                ? ''
-                                : fanEmailDomain
-                          }
+                          name="emailLocal"
+                          value={fanEmailLocal}
                           onChange={handleChange}
                           className={styles.emailInput}
                           required
-                          readOnly={fanEmailDomain !== '직접입력' && EMAIL_DOMAINS.includes(fanEmailDomain)}
-                          placeholder={fanEmailDomain === '직접입력' ? '도메인을 입력하세요' : ''}
-                          style={{ border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent' }}
                         />
-                        <button
-                          type="button"
-                          className={`${styles.emailSelectBtn} ${styles.joinBtn_txt}`}
-                          onClick={() => setShowDomainSelect(v => !v)}
-                          tabIndex={-1}
-                        >
-                          선택하기
-                        </button>
-                        {showDomainSelect && (
-                          <ul className={styles.emailDomainList}>
-                            {EMAIL_DOMAINS.map(domain => (
-                              <li
-                                key={domain}
-                                className={styles.emailDomainItem}
-                                onClick={() => handleDomainSelect(domain)}
-                              >
-                                @{domain}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </span>
-                    </div>
-                  </label>
-                </div>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>휴대폰<span className={styles.red_star}>*</span></div><input name="phone" value={fanInput.phone} onChange={handleChange} required placeholder="Enter your phone number" /></label>
-                <div className={styles.row}>
-                  <span className={`join_p`}>성별</span>
-                  <div className={styles.genderRadio}>
-                    <label>
-                      <input type="radio" checked={fanInput.gender === 'male'} onChange={() => handleGender('male')} className={`${styles.gen}`} /> 남성</label>
-                    <label>
-                      <input type="radio" checked={fanInput.gender === 'female'} onChange={() => handleGender('female')} className={`${styles.gen}`} /> 여성</label>
-                  </div>
-
-                </div>
-                <div className={styles.row}>
-                  <span className={`join_p`}>생년월일</span>
-                  <div className={styles.birthInput}>
-                    <input
-                      name="birth.year"
-                      value={fanInput.birth.year}
-                      onChange={handleChange}
-                      placeholder="YYYY"
-                      maxLength={4}
-                      style={{ width: 60 }}
-                    />
-                    /
-                    <input
-                      name="birth.month"
-                      value={fanInput.birth.month}
-                      onChange={handleChange}
-                      placeholder="MM"
-                      maxLength={2}
-                      style={{ width: 40 }}
-                    />
-                    /
-                    <input
-                      name="birth.day"
-                      value={fanInput.birth.day}
-                      onChange={handleChange}
-                      placeholder="DD"
-                      maxLength={2}
-                      style={{ width: 40 }}
-                    />
-                  </div>
-
-
-
-                </div>
-                <div className={styles.agreeSection}>
-                  <div className={styles.agreeTitle}>
-                    이용약관동의<span className={styles.red_star}>*</span>
-                  </div>
-                  <div className={styles.agreeBox}>
-                    {/* 전체동의 */}
-                    <div className={styles.agreeAllRow}>
-                      <label className={styles.circleLabel}>
-
-                        <input
-                          type="checkbox"
-                          checked={
-                            fanInput.agree.privacy &&
-                            fanInput.agree.communityPolicy &&
-                            fanInput.agree.marketing &&
-                            fanInput.agree.over14
-                          }
-                          onChange={e => {
-                            const checked = e.target.checked;
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: {
-                                privacy: checked,
-                                communityPolicy: checked,
-                                marketing: checked,
-                                over14: checked,
-                              },
-                            }));
-                          }}
-                          className={styles.circleRadio}
-                        />
-                        <span className={styles.agreeAllText}>전체동의합니다.</span>
-
-                      </label>
-                      <div className={styles.agreeSubDesc2}>
-                        선택항목에 동의하지 않은 경우도 회원가입이 가능합니다.
-                      </div>
-                    </div>
-
-                    {/* 개인정보 수집/이용 동의 */}
-                    <div className={styles.agreeRow}>
-                      <label className={styles.circleLabel}>
-                        <input
-                          type="checkbox"
-                          checked={fanInput.agree.privacy}
-                          onChange={e =>
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: { ...prev.agree, privacy: e.target.checked },
-                            }))
-                          }
-                          className={styles.circleRadio}
-                          required
-                        />
-                        개인정보 수집/이용 동의 (필수)
-                      </label>
-                    </div>
-
-                    {/* 커뮤니티 운영 정책 동의 */}
-                    <div className={styles.agreeRow}>
-                      <label className={styles.circleLabel}>
-                        <input
-                          type="checkbox"
-                          checked={fanInput.agree.communityPolicy}
-                          onChange={e =>
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: { ...prev.agree, communityPolicy: e.target.checked },
-                            }))
-                          }
-                          className={styles.circleRadio}
-                          required
-                        />
-                        커뮤니티 운영 정책 동의 (필수)
-                      </label>
-                      <div className={styles.agreeSubDesc}>
-                        게시글/댓글 작성 시 준수해야 할 커뮤니티 규칙에 동의합니다.
-                      </div>
-                    </div>
-
-                    {/* 광고 및 정보 수신 동의 (선택) */}
-                    <div className={styles.agreeRow}>
-                      <label className={styles.circleLabel}>
-                        <input
-                          type="checkbox"
-                          checked={!!fanInput.agree.marketing}
-                          onChange={e =>
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: { ...prev.agree, marketing: e.target.checked },
-                            }))
-                          }
-                          className={styles.circleRadio}
-                        />
-                        블루프 관련 광고 및 정보 수신 동의 (선택)
-                      </label>
-                      <div className={styles.agreeSubOptions}>
-                        <label className={styles.circleLabel}>
+                        <span>@</span>
+                        <span className={`${styles.emailInputDomain} ${fanEmailDomain === '직접입력' ? styles.noBorder : ''}`}>
                           <input
-                            type="checkbox"
-                            checked={!!fanInput.agree}
-                            onChange={e =>
-                              setFanInput(prev => ({
-                                ...prev,
-                                agree: { ...prev.agree, sms: e.target.checked },
-                              }))
+                            ref={fanEmailDomainInputRef}
+                            type="text"
+                            name="emailDomain"
+                            value={
+                              fanEmailDomain && fanEmailDomain !== '직접입력'
+                                ? fanEmailDomain // ← @ 없이 도메인만
+                                : fanEmailDomain === '직접입력'
+                                  ? ''
+                                  : fanEmailDomain
                             }
-                            className={styles.circleRadio}
-                            disabled={!fanInput.agree.marketing}
+                            onChange={handleChange}
+                            className={styles.emailInput}
+                            required
+                            readOnly={fanEmailDomain !== '직접입력' && EMAIL_DOMAINS.includes(fanEmailDomain)}
+                            placeholder={fanEmailDomain === '직접입력' ? '도메인을 입력하세요' : ''}
+                            style={{ border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent' }}
                           />
-                          SMS
-                        </label>
-                        <label className={styles.circleLabel}>
-                          <input
-                            type="checkbox"
-                            checked={!!fanInput.agree}
-                            onChange={e =>
-                              setFanInput(prev => ({
-                                ...prev,
-                                agree: { ...prev.agree, email: e.target.checked },
-                              }))
-                            }
-                            className={styles.circleRadio}
-                            disabled={!fanInput.agree.marketing}
-                          />
-                          이메일
-                        </label>
+                          <button
+                            type="button"
+                            className={`${styles.emailSelectBtn} ${styles.joinBtn_txt}`}
+                            onClick={() => setShowDomainSelect(v => !v)}
+                            tabIndex={-1}
+                          >
+                            선택하기
+                          </button>
+                          {showDomainSelect && (
+                            <ul className={styles.emailDomainList}>
+                              {EMAIL_DOMAINS.map(domain => (
+                                <li
+                                  key={domain}
+                                  className={styles.emailDomainItem}
+                                  onClick={() => handleDomainSelect(domain)}
+                                >
+                                  @{domain}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </span>
                       </div>
+                    </label>
+                  </div>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>휴대폰<span className={styles.red_star}>*</span></div><input name="phone" value={fanInput.phone} onChange={handleChange} required placeholder="Enter your phone number" /></label>
+                  <div className={styles.row}>
+                    <span className={`join_p`}>성별</span>
+                    <div className={styles.genderRadio}>
+                      <label>
+                        <input type="radio" checked={fanInput.gender === 'male'} onChange={() => handleGender('male')} className={`${styles.gen}`} /> 남성</label>
+                      <label>
+                        <input type="radio" checked={fanInput.gender === 'female'} onChange={() => handleGender('female')} className={`${styles.gen}`} /> 여성</label>
                     </div>
 
-                    {/* 만 14세 이상 동의 */}
-                    <div className={styles.agreeRow}>
-                      <label className={styles.circleLabel}>
-                        <input
-                          type="checkbox"
-                          checked={fanInput.agree.over14}
-                          onChange={e =>
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: { ...prev.agree, over14: e.target.checked },
-                            }))
-                          }
-                          className={styles.circleRadio}
-                          required
-                        />
-                        본인은 만 14세 이상입니다 (필수)
-                      </label>
-                    </div>
                   </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>회사명<span className={styles.red_star}>*</span></div><input name="company" value={agencyInput.company} onChange={handleChange} required placeholder="Enter your company" /></label>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>아티스트명<span className={styles.red_star}>*</span></div><input name="artistName" value={agencyInput.artistName} onChange={handleChange} required placeholder="Enter your artist" /></label>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>아이디<span className={styles.red_star}>*</span></div><input name="id" value={agencyInput.id} onChange={handleChange} required placeholder="Enter your ID" /></label>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>비밀번호<span className={styles.red_star}>*</span></div><input name="password" type="password" value={agencyInput.password} onChange={handleChange} required placeholder="Enter your password" /></label>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>비밀번호 확인<span className={styles.red_star}>*</span></div><input name="confirmPassword" type="password" value={agencyInput.confirmPassword} onChange={handleChange} required placeholder="Enter your password one more time." /></label>
-                <label className={`join_p`}><div className={`${styles.joinTit}`}>이름<span className={styles.red_star}>*</span></div><input name="name" value={agencyInput.name} onChange={handleChange} required placeholder="Enter your name" /></label>
-                <div className={styles.em}>
-                  <label className={`join_p`}>
-                    <div className={`${styles.joinTit}`}>이메일<span className={styles.red_star}>*</span></div>
-                    <div className={styles.emailInputTit}>
+                  <div className={styles.row}>
+                    <span className={`join_p`}>생년월일</span>
+                    <div className={styles.birthInput}>
                       <input
-                        type="text"
-                        name="emailLocal"
-                        value={agencyEmailLocal}
+                        name="birth.year"
+                        value={fanInput.birth.year}
                         onChange={handleChange}
-                        className={styles.emailInput}
-                        required
+                        placeholder="YYYY"
+                        maxLength={4}
+                        style={{ width: 60 }}
                       />
-                      <span>@</span>
-                      <span className={`${styles.emailInputDomain} ${agencyEmailDomain === '직접입력' ? styles.noBorder : ''}`}>
+                      /
+                      <input
+                        name="birth.month"
+                        value={fanInput.birth.month}
+                        onChange={handleChange}
+                        placeholder="MM"
+                        maxLength={2}
+                        style={{ width: 40 }}
+                      />
+                      /
+                      <input
+                        name="birth.day"
+                        value={fanInput.birth.day}
+                        onChange={handleChange}
+                        placeholder="DD"
+                        maxLength={2}
+                        style={{ width: 40 }}
+                      />
+                    </div>
+
+
+
+                  </div>
+                  <div className={styles.agreeSection}>
+                    <div className={styles.agreeTitle}>
+                      이용약관동의<span className={styles.red_star}>*</span>
+                    </div>
+                    <div className={styles.agreeBox}>
+                      {/* 전체동의 */}
+                      <div className={styles.agreeAllRow}>
+                        <label className={styles.circleLabel}>
+
+                          <input
+                            type="checkbox"
+                            checked={
+                              fanInput.agree.privacy &&
+                              fanInput.agree.communityPolicy &&
+                              fanInput.agree.marketing &&
+                              fanInput.agree.over14
+                            }
+                            onChange={e => {
+                              const checked = e.target.checked;
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: {
+                                  privacy: checked,
+                                  communityPolicy: checked,
+                                  marketing: checked,
+                                  over14: checked,
+                                },
+                              }));
+                            }}
+                            className={styles.circleRadio}
+                          />
+                          <span className={styles.agreeAllText}>전체동의합니다.</span>
+
+                        </label>
+                        <div className={styles.agreeSubDesc2}>
+                          선택항목에 동의하지 않은 경우도 회원가입이 가능합니다.
+                        </div>
+                      </div>
+
+                      {/* 개인정보 수집/이용 동의 */}
+                      <div className={styles.agreeRow}>
+                        <label className={styles.circleLabel}>
+                          <input
+                            type="checkbox"
+                            checked={fanInput.agree.privacy}
+                            onChange={e =>
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: { ...prev.agree, privacy: e.target.checked },
+                              }))
+                            }
+                            className={styles.circleRadio}
+                            required
+                          />
+                          개인정보 수집/이용 동의 (필수)
+                        </label>
+                      </div>
+
+                      {/* 커뮤니티 운영 정책 동의 */}
+                      <div className={styles.agreeRow}>
+                        <label className={styles.circleLabel}>
+                          <input
+                            type="checkbox"
+                            checked={fanInput.agree.communityPolicy}
+                            onChange={e =>
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: { ...prev.agree, communityPolicy: e.target.checked },
+                              }))
+                            }
+                            className={styles.circleRadio}
+                            required
+                          />
+                          커뮤니티 운영 정책 동의 (필수)
+                        </label>
+                        <div className={styles.agreeSubDesc}>
+                          게시글/댓글 작성 시 준수해야 할 커뮤니티 규칙에 동의합니다.
+                        </div>
+                      </div>
+
+                      {/* 광고 및 정보 수신 동의 (선택) */}
+                      <div className={styles.agreeRow}>
+                        <label className={styles.circleLabel}>
+                          <input
+                            type="checkbox"
+                            checked={!!fanInput.agree.marketing}
+                            onChange={e =>
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: { ...prev.agree, marketing: e.target.checked },
+                              }))
+                            }
+                            className={styles.circleRadio}
+                          />
+                          블루프 관련 광고 및 정보 수신 동의 (선택)
+                        </label>
+                        <div className={styles.agreeSubOptions}>
+                          <label className={styles.circleLabel}>
+                            <input
+                              type="checkbox"
+                              checked={!!fanInput.agree}
+                              onChange={e =>
+                                setFanInput(prev => ({
+                                  ...prev,
+                                  agree: { ...prev.agree, sms: e.target.checked },
+                                }))
+                              }
+                              className={styles.circleRadio}
+                              disabled={!fanInput.agree.marketing}
+                            />
+                            SMS
+                          </label>
+                          <label className={styles.circleLabel}>
+                            <input
+                              type="checkbox"
+                              checked={!!fanInput.agree}
+                              onChange={e =>
+                                setFanInput(prev => ({
+                                  ...prev,
+                                  agree: { ...prev.agree, email: e.target.checked },
+                                }))
+                              }
+                              className={styles.circleRadio}
+                              disabled={!fanInput.agree.marketing}
+                            />
+                            이메일
+                          </label>
+                        </div>
+                      </div>
+
+                      {/* 만 14세 이상 동의 */}
+                      <div className={styles.agreeRow}>
+                        <label className={styles.circleLabel}>
+                          <input
+                            type="checkbox"
+                            checked={fanInput.agree.over14}
+                            onChange={e =>
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: { ...prev.agree, over14: e.target.checked },
+                              }))
+                            }
+                            className={styles.circleRadio}
+                            required
+                          />
+                          본인은 만 14세 이상입니다 (필수)
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>회사명<span className={styles.red_star}>*</span></div><input name="company" value={agencyInput.company} onChange={handleChange} required placeholder="Enter your company" /></label>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>아티스트명<span className={styles.red_star}>*</span></div><input name="artistName" value={agencyInput.artistName} onChange={handleChange} required placeholder="Enter your artist" /></label>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>아이디<span className={styles.red_star}>*</span></div><input name="id" value={agencyInput.id} onChange={handleChange} required placeholder="Enter your ID" /></label>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>비밀번호<span className={styles.red_star}>*</span></div><input name="password" type="password" value={agencyInput.password} onChange={handleChange} required placeholder="Enter your password" /></label>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>비밀번호 확인<span className={styles.red_star}>*</span></div><input name="confirmPassword" type="password" value={agencyInput.confirmPassword} onChange={handleChange} required placeholder="Enter your password one more time." /></label>
+                  <label className={`join_p`}><div className={`${styles.joinTit}`}>이름<span className={styles.red_star}>*</span></div><input name="name" value={agencyInput.name} onChange={handleChange} required placeholder="Enter your name" /></label>
+                  <div className={styles.em}>
+                    <label className={`join_p`}>
+                      <div className={`${styles.joinTit}`}>이메일<span className={styles.red_star}>*</span></div>
+                      <div className={styles.emailInputTit}>
                         <input
-                          ref={agencyEmailDomainInputRef}
                           type="text"
-                          name="emailDomain"
-                          value={
-                            fanEmailDomain && fanEmailDomain !== '직접입력'
-                              ? fanEmailDomain // ← @ 없이 도메인만
-                              : fanEmailDomain === '직접입력'
-                                ? ''
-                                : fanEmailDomain
-                          }
+                          name="emailLocal"
+                          value={agencyEmailLocal}
                           onChange={handleChange}
                           className={styles.emailInput}
                           required
-                          readOnly={agencyEmailDomain !== '직접입력' && EMAIL_DOMAINS.includes(agencyEmailDomain)}
-                          placeholder={agencyEmailDomain === '직접입력' ? '도메인을 입력하세요' : ''}
-                          style={{ border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent' }}
                         />
-                        <button
-                         type="button"
-                          className={`${styles.emailSelectBtn} ${styles.joinBtn_txt}`}
-                          onClick={() => setShowDomainSelect(v => !v)}
-                          tabIndex={-1}
-                        >
-                          선택하기
-                        </button>
-                        {showDomainSelect && (
-                          <ul className={styles.emailDomainList}>
-                            {EMAIL_DOMAINS.map(domain => (
-                              <li
-                                key={domain}
-                                className={styles.emailDomainItem}
-                                onClick={() => handleDomainSelect(domain)}
-                              >
-                                @{domain}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </span>
-                    </div>
-                  </label>
-                </div>
-               <div className={styles.agreeSection}>
-                  <div className={styles.agreeTitle}>
-                    이용약관동의<span className={styles.red_star}>*</span>
+                        <span>@</span>
+                        <span className={`${styles.emailInputDomain} ${agencyEmailDomain === '직접입력' ? styles.noBorder : ''}`}>
+                          <input
+                            ref={agencyEmailDomainInputRef}
+                            type="text"
+                            name="emailDomain"
+                            value={
+                              fanEmailDomain && fanEmailDomain !== '직접입력'
+                                ? fanEmailDomain // ← @ 없이 도메인만
+                                : fanEmailDomain === '직접입력'
+                                  ? ''
+                                  : fanEmailDomain
+                            }
+                            onChange={handleChange}
+                            className={styles.emailInput}
+                            required
+                            readOnly={agencyEmailDomain !== '직접입력' && EMAIL_DOMAINS.includes(agencyEmailDomain)}
+                            placeholder={agencyEmailDomain === '직접입력' ? '도메인을 입력하세요' : ''}
+                            style={{ border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent' }}
+                          />
+                          <button
+                            type="button"
+                            className={`${styles.emailSelectBtn} ${styles.joinBtn_txt}`}
+                            onClick={() => setShowDomainSelect(v => !v)}
+                            tabIndex={-1}
+                          >
+                            선택하기
+                          </button>
+                          {showDomainSelect && (
+                            <ul className={styles.emailDomainList}>
+                              {EMAIL_DOMAINS.map(domain => (
+                                <li
+                                  key={domain}
+                                  className={styles.emailDomainItem}
+                                  onClick={() => handleDomainSelect(domain)}
+                                >
+                                  @{domain}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </span>
+                      </div>
+                    </label>
                   </div>
-                  <div className={styles.agreeBox}>
-                    {/* 전체동의 */}
-                    <div className={styles.agreeAllRow}>
-                      <label className={styles.circleLabel}>
+                  <div className={styles.agreeSection}>
+                    <div className={styles.agreeTitle}>
+                      이용약관동의<span className={styles.red_star}>*</span>
+                    </div>
+                    <div className={styles.agreeBox}>
+                      {/* 전체동의 */}
+                      <div className={styles.agreeAllRow}>
+                        <label className={styles.circleLabel}>
 
-                        <input
-                          type="checkbox"
-                          checked={
-                            fanInput.agree.privacy &&
-                            fanInput.agree.communityPolicy &&
-                            fanInput.agree.marketing &&
-                            fanInput.agree.over14
-                          }
-                          onChange={e => {
-                            const checked = e.target.checked;
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: {
-                                privacy: checked,
-                                communityPolicy: checked,
-                                marketing: checked,
-                                over14: checked,
-                              },
-                            }));
-                          }}
-                          className={styles.circleRadio}
-                        />
-                        <span className={styles.agreeAllText}>전체동의합니다.</span>
+                          <input
+                            type="checkbox"
+                            checked={
+                              fanInput.agree.privacy &&
+                              fanInput.agree.communityPolicy &&
+                              fanInput.agree.marketing &&
+                              fanInput.agree.over14
+                            }
+                            onChange={e => {
+                              const checked = e.target.checked;
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: {
+                                  privacy: checked,
+                                  communityPolicy: checked,
+                                  marketing: checked,
+                                  over14: checked,
+                                },
+                              }));
+                            }}
+                            className={styles.circleRadio}
+                          />
+                          <span className={styles.agreeAllText}>전체동의합니다.</span>
 
-                      </label>
-                      <div className={styles.agreeSubDesc2}>
-                        선택항목에 동의하지 않은 경우도 회원가입이 가능합니다.
+                        </label>
+                        <div className={styles.agreeSubDesc2}>
+                          선택항목에 동의하지 않은 경우도 회원가입이 가능합니다.
+                        </div>
                       </div>
-                    </div>
 
-                    {/* 개인정보 수집/이용 동의 */}
-                    <div className={styles.agreeRow}>
-                      <label className={styles.circleLabel}>
-                        <input
-                          type="checkbox"
-                          checked={fanInput.agree.privacy}
-                          onChange={e =>
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: { ...prev.agree, privacy: e.target.checked },
-                            }))
-                          }
-                          className={styles.circleRadio}
-                          required
-                        />
-                        개인정보 수집/이용 동의 (필수)
-                      </label>
-                    </div>
-
-                    {/* 커뮤니티 운영 정책 동의 */}
-                    <div className={styles.agreeRow}>
-                      <label className={styles.circleLabel}>
-                        <input
-                          type="checkbox"
-                          checked={fanInput.agree.communityPolicy}
-                          onChange={e =>
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: { ...prev.agree, communityPolicy: e.target.checked },
-                            }))
-                          }
-                          className={styles.circleRadio}
-                          required
-                        />
-                       아티스트 콘텐츠 업로드 및 저작권 책임 동의 (필수)
-                      </label>
-                      <div className={styles.agreeSubDesc}>
-                       업로드하는 콘텐츠에 대한 저작권 및 운영 책임이 기획사에 있음을 확인하고 동의합니다.
+                      {/* 개인정보 수집/이용 동의 */}
+                      <div className={styles.agreeRow}>
+                        <label className={styles.circleLabel}>
+                          <input
+                            type="checkbox"
+                            checked={fanInput.agree.privacy}
+                            onChange={e =>
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: { ...prev.agree, privacy: e.target.checked },
+                              }))
+                            }
+                            className={styles.circleRadio}
+                            required
+                          />
+                          개인정보 수집/이용 동의 (필수)
+                        </label>
                       </div>
-                    </div>
 
-                    {/* 광고 및 정보 수신 동의 (선택) */}
-                    <div className={styles.agreeRow}>
-                      <label className={styles.circleLabel}>
-                        <input
-                          type="checkbox"
-                          checked={!!fanInput.agree.marketing}
-                          onChange={e =>
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: { ...prev.agree, marketing: e.target.checked },
-                            }))
-                          }
-                          className={styles.circleRadio}
-                        />
-                        운영 리포트 수신 동의 (선택)
-                      </label>
-                       <div className={styles.agreeSubDesc}>
-                       월간 팬 활동 리포트, 콘텐츠 조회수 통계 등을 이메일로 수신하겠습니다.
+                      {/* 커뮤니티 운영 정책 동의 */}
+                      <div className={styles.agreeRow}>
+                        <label className={styles.circleLabel}>
+                          <input
+                            type="checkbox"
+                            checked={fanInput.agree.communityPolicy}
+                            onChange={e =>
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: { ...prev.agree, communityPolicy: e.target.checked },
+                              }))
+                            }
+                            className={styles.circleRadio}
+                            required
+                          />
+                          아티스트 콘텐츠 업로드 및 저작권 책임 동의 (필수)
+                        </label>
+                        <div className={styles.agreeSubDesc}>
+                          업로드하는 콘텐츠에 대한 저작권 및 운영 책임이 기획사에 있음을 확인하고 동의합니다.
+                        </div>
                       </div>
-                    </div>
 
-                    {/* 만 14세 이상 동의 */}
-                    <div className={styles.agreeRow}>
-                      <label className={styles.circleLabel}>
-                        <input
-                          type="checkbox"
-                          checked={fanInput.agree.over14}
-                          onChange={e =>
-                            setFanInput(prev => ({
-                              ...prev,
-                              agree: { ...prev.agree, over14: e.target.checked },
-                            }))
-                          }
-                          className={styles.circleRadio}
-                          required
-                        />
-                        본인은 만 14세 이상입니다 (필수)
-                      </label>
+                      {/* 광고 및 정보 수신 동의 (선택) */}
+                      <div className={styles.agreeRow}>
+                        <label className={styles.circleLabel}>
+                          <input
+                            type="checkbox"
+                            checked={!!fanInput.agree.marketing}
+                            onChange={e =>
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: { ...prev.agree, marketing: e.target.checked },
+                              }))
+                            }
+                            className={styles.circleRadio}
+                          />
+                          운영 리포트 수신 동의 (선택)
+                        </label>
+                        <div className={styles.agreeSubDesc}>
+                          월간 팬 활동 리포트, 콘텐츠 조회수 통계 등을 이메일로 수신하겠습니다.
+                        </div>
+                      </div>
+
+                      {/* 만 14세 이상 동의 */}
+                      <div className={styles.agreeRow}>
+                        <label className={styles.circleLabel}>
+                          <input
+                            type="checkbox"
+                            checked={fanInput.agree.over14}
+                            onChange={e =>
+                              setFanInput(prev => ({
+                                ...prev,
+                                agree: { ...prev.agree, over14: e.target.checked },
+                              }))
+                            }
+                            className={styles.circleRadio}
+                            required
+                          />
+                          본인은 만 14세 이상입니다 (필수)
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </>
-            )}
-            
-          </form>
-          <button className={styles.joinBtn} type="submit">회원가입완료하기</button>
+                </>
+              )}
+
+            </form>
+            <button className={styles.joinBtn} type="submit" onClick={handleSubmit}>회원가입완료하기</button>
           </div>
-          
+
         </div>
 
       </div>

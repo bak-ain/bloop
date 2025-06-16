@@ -1,6 +1,16 @@
 import styles from './Admin.module.css';
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from '../context/UserContext ';
 
 const Admin = () => {
+    const navigate = useNavigate();
+    const { setUser } = useUserContext();
+
+    const handleLogout = () => {
+        setUser(null);
+        alert('로그아웃 되었습니다');
+        navigate('/');
+    };
     return (
         <div className={`${styles.wrap}`}>
             <header className={styles.header}>
@@ -8,11 +18,20 @@ const Admin = () => {
                     <img src="../images/dash/logo.jpg" alt="bloop logo" className={styles.logoIcon} />
                     <span className={styles.logoText}>BLOOP</span>
                 </div>
-                <button className={styles.menuToggle}>
-                    <span />
-                    <span />
-                    <span />
-                </button>
+                <div className={styles.menuWrap}>
+                    <button
+                        type="button"
+                        onClick={handleLogout}
+                        className={styles.AdminlogoutBtnM}
+                    >
+                        <img src="../images/dash/logout_icon.png" alt="로그아웃" />
+                    </button>
+                    <button className={styles.menuToggle}>
+                        <span />
+                        <span />
+                        <span />
+                    </button>
+                </div>
             </header>
             <header className={`${styles.ad_header}`}>
                 <div>
@@ -32,7 +51,16 @@ const Admin = () => {
                         </ul>
                     </nav>
                 </div>
-                <h2> <a href="#"><img src="../images/dash/logout_icon.png" alt="로그아웃" />로그아웃</a></h2>
+                <h2>
+                    <button
+                        type="button"
+                        onClick={handleLogout}
+                        className={styles.AdminlogoutBtn}
+                    >
+                        <img src="../images/dash/logout_icon.png" alt="로그아웃" />
+                        로그아웃
+                    </button>
+                </h2>
             </header>
             <div className={`${styles.contents}`}>
                 <div className={`${styles.top}`}>
@@ -196,15 +224,15 @@ const Admin = () => {
                                         <p className={` ${styles.p_txt_2}`}>등급별 가입 분포</p>
                                         <img src="../images/dash/donut.jpg" alt="등급 가입 도넛 그래프" />
                                         <div className={styles.rank_stats}>
-                                            <div  className={`${styles.card_info} ${styles.borderRight}`}>
+                                            <div className={`${styles.card_info} ${styles.borderRight}`}>
                                                 <strong className={styles.p_txt_1}>3,450명</strong>
                                                 <span className={styles.up}>12% <img src="../images/dash/up_blue.png" alt="up" /></span>
                                             </div>
-                                            <div  className={`${styles.card_info} ${styles.borderRight}  }`}>
+                                            <div className={`${styles.card_info} ${styles.borderRight}  }`}>
                                                 <strong className={styles.p_txt_1}>2,820명</strong>
                                                 <span className={styles.up}>10% <img src="../images/dash/up_blue.png" alt="up" /></span>
                                             </div>
-                                            <div  className={`${styles.card_info} ${styles.borderRight} ${styles.second}`}>
+                                            <div className={`${styles.card_info} ${styles.borderRight} ${styles.second}`}>
                                                 <strong className={styles.p_txt_1}>5,690명</strong>
                                                 <span className={styles.up}>18% <img src="../images/dash/up_light_blue.png" alt="down" /></span>
                                             </div>

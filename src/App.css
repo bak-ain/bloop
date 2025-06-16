@@ -535,7 +535,9 @@ button {
   /* opacity: 0.5; */
   /* width: 400px !important; */
 }
-
+.swiper-3d .swiper-slide-shadow{
+  background: 0 !important;
+}
 .mainOfficialSwiper .swiper-slide.swiper-slide-active {
   /* opacity: 1; */
   transform: scale(1);

@@ -22,7 +22,7 @@ const initialUsers: User[] = [
         confirmPassword: "1234",
         name: "이소민",
         email: "testfan@naver.com",
-        phone: "01012345678",
+        phone: "010-1234-5678",
         gender: "female",
         birth: { year: "2000", month: "01", day: "01" },
         agree: { privacy: true, communityPolicy: true, marketing: false, over14: true },
@@ -37,7 +37,7 @@ const initialUsers: User[] = [
         confirmPassword: "5678",
         name: "김기획",
         email: "testagency@daum.net",
-        phone: "01087654321",
+        phone: "010-8765-4321",
         agree: { privacy: true, uploadResponsibility: true, marketing: false, over14: true },
         profileImage: "/images/profile_img.png" // 프로필 이미지 추가
     }

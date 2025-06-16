@@ -211,13 +211,40 @@
 .ad_header>div h1 a p {
     text-transform: uppercase;
 }
+.menuWrap{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.AdminlogoutBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 16px;
+}
 
+.AdminlogoutBtnM {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 16px;
+}
+.AdminlogoutBtnM img {
+    width: 26px;
+}
 .ad_header h2 a {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    gap: 20px;
+
 }
 
 .ad_header h2 img {
@@ -790,9 +817,11 @@
     background-color: #7CB3E0;
     /* 진한 핑크/레드 */
 }
-.second .up img{
+
+.second .up img {
     transform: rotate(180deg);
 }
+
 .rank_stats div .up {
     font-size: 16px;
     font-weight: 500;
@@ -1532,6 +1561,10 @@
         display: none;
     }
 
+    .AdminlogoutBtnM {
+        display: block;
+    }
+
     .contents .con1 {
         display: flex;
         flex-direction: column;
@@ -1759,7 +1792,8 @@
     .pagination {
         margin-top: 50px;
     }
-    .chart_bottom{
+
+    .chart_bottom {
         gap: 40px;
     }
 }

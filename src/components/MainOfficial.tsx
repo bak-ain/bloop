@@ -1,6 +1,6 @@
 import { OfficialContent } from "../types";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
+import { Navigation, Pagination, EffectCoverflow, EffectCards } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
 import React, { useRef, useEffect, useState } from "react";
 import styles from "../pages/Home.module.css";
@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
+import "swiper/css/effect-cards";
 
 interface MainOfficialProps {
   contents: OfficialContent[];
@@ -17,13 +18,13 @@ interface MainOfficialProps {
 const MainOfficial = ({ contents }: MainOfficialProps) => {
   const navigate = useNavigate();
   const swiperRef = useRef<any>(null);
-  const [effect, setEffect] = useState<"coverflow" | "slide">(
-    window.innerWidth < 767 ? "coverflow" : "slide"
+  const [effect, setEffect] = useState<"cards" | "slide">(
+    window.innerWidth < 767 ? "cards" : "slide"
   );
 
   useEffect(() => {
     const handleResize = () => {
-      const newEffect = window.innerWidth < 767 ? "coverflow" : "slide";
+      const newEffect = window.innerWidth < 767 ? "cards" : "slide";
       setEffect(newEffect);
       if (swiperRef.current && swiperRef.current.swiper) {
         swiperRef.current.swiper.update();
@@ -41,18 +42,19 @@ const MainOfficial = ({ contents }: MainOfficialProps) => {
           <Swiper
             key={effect}
             ref={swiperRef}
-            modules={[Navigation, Pagination, EffectCoverflow]}
-            slidesPerView={effect === "coverflow" ? 1.2 : 3}
+            modules={[Navigation, Pagination, EffectCards]}
+            slidesPerView={effect === "cards" ? 1 : 3}
             centeredSlides
             spaceBetween={0}
             effect={effect}
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 40,
-              depth: 120,
-              modifier: 1,
-              slideShadows: false,
-            }}
+            cardsEffect={effect === "cards" ? { perSlideOffset: 8, perSlideRotate: 2 } : undefined}
+            // coverflowEffect={{
+            //   rotate: 0,
+            //   stretch: 40,
+            //   depth: 120,
+            //   modifier: 1,
+            //   slideShadows: false,
+            // }}
             navigation={{
               nextEl: `.${styles.mainOfficialNext}`,
               prevEl: `.${styles.mainOfficialPrev}`,
