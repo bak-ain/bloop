@@ -250,7 +250,7 @@
       "descriptionDetail": "걸그룹 HIBIS(하이비스)의 멤버 세이가 컴백을 앞두고 공개한 콘셉트 이미지가 무대 위 강렬한 카리스마로 팬들의 뜨거운 반응을 얻고 있다. 공개된 사진 속 세이는 조명이 비추는 무대 위에서 카키 컬러의 크롭 점퍼와 와이드 카고 팬츠를 완벽하게 소화하며 힙한 스트리트 감성과 독보적인 퍼포먼스 아우라를 동시에 뽐냈다.</br>특히 정면을 향해 마이크를 쥐고 선 그의 강렬한 눈빛은 이번 컴백 콘셉트가 단순한 ‘귀여움’이나 ‘청순’이 아닌,</br>HIBIS의 새로운 파워 무드임을 강하게 암시한다.</br>소속사 관계자는 “이번 활동에서 세이는 퍼포머로서의 면모를 전면에 내세우며 무대 위에서 자신만의 언어를</br>전하고자 했다”며 “뮤직비디오와 본 무대에서 보여질 파워풀한 아린의 모습도 기대해 달라”고 전했다.",
       "hashtag": "세이 퍼포먼스티저 세이무드 무대장악력 스트리트크러시",
       "likes": 296,
-      "isScrapped": false,
+      "isScrapped": true,
       "isLiked": false,
       "media": [
         {
@@ -296,7 +296,7 @@
       "buttonText": "보러가기",
       "likes": 156,
       "isScrapped": true,
-      "isLiked": false,
+      "isLiked": true,
       "media": [
         {
           "type": "video",
@@ -333,7 +333,7 @@
       "buttonText": "보러가기",
       "likes": 105,
       "isScrapped": false,
-      "isLiked": false,
+      "isLiked": true,
       "media": [
         {
           "type": "video",

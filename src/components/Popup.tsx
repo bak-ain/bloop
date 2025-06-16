@@ -156,7 +156,7 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
       }
     }
 
-    // 이미지 이모지 삽입
+    // 이미지 이모지 삽입 업로드팝업 이모지
     const img = document.createElement("img");
     img.src = emoji;
     img.alt = "emoji";
@@ -459,6 +459,7 @@ const EditPopup = ({
         selection.addRange(range);
       }
     }
+    // 수정팝업 이모지
     const img = document.createElement("img");
     img.src = emoji;
     img.alt = "emoji";

@@ -1,9 +1,12 @@
 /* 인기게시물 배경 */
 
 /* 포스트카드에서 보여지는 이모지 크기 조절 */
-.body_wrapper>p>img{
-  /* width: 50px; */
+.body_wrapper>p>img {
+  width: 150px;
+  height: 150px;
+  border: none;
 }
+
 .popularBannerContainer {
   width: 100%;
   height: 570px;
@@ -137,7 +140,7 @@
 
 .hashtags {
   color: var(--point-color-blue);
-  font-size: 19px;
+  font-size: 17px;
   margin-bottom: 15px;
   font-weight: 500;
   line-height: 33px;
@@ -194,8 +197,8 @@
 
 
 .profile_img {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -221,17 +224,21 @@
 }
 
 .single {
-  display: block;
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  height: 480px;
 
   .media_item_wrapper {
-    width: 100%;
+   height: 100%;
 
   }
 
   .media_item {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
+    border-radius: 15px;
+    object-fit:cover;
+    height: 100%;
   }
 }
 
@@ -266,7 +273,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-      border-radius: 10px;
+  border-radius: 10px;
+<<<<<<< HEAD
+=======
+ /*  padding-inline: 80px; */
+>>>>>>> c623af1b44b9a6241be0fa0e240274b2937457ea
 }
 
 
@@ -275,7 +286,7 @@
   flex: 1;
 }
 
-.storyCard .profileImage {
+.storyCard .a_profileImage {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -324,7 +335,7 @@
 .popularCardInfo {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
   align-items: start;
 }
 
@@ -353,6 +364,15 @@
 
 .popularCardDesc {
   margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* 2줄까지만 표시 */
+  line-clamp: 2;
+  /* 표준 속성 추가 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }
 
 
@@ -450,6 +470,12 @@
 
 }
 
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
 .aBannerContainer {
   width: 100%;
   display: flex;
@@ -507,7 +533,7 @@
 
 }
 
-.storyCard .profileImage {
+.storyCard .a_profileImage {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -553,6 +579,9 @@
   display: flex;
   gap: 8px;
   padding-top: 20px;
+  width: 100%;
+  height: 480px;
+  /*  align-items: center; */
 }
 
 .a_media img,
@@ -560,6 +589,7 @@
   width: 100%;
   border-radius: 15px;
   object-fit: cover;
+  height: 100%;
 }
 
 
@@ -590,10 +620,42 @@
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-/*   margin-top: 10px;
+  /*   margin-top: 10px;
   margin-right: 20px; */
 }
 
+
+.doa .a_profileImage {
+  border: 2px solid var(--point-color-purple);
+}
+
+.doa .a_profile_img {
+  border: 2px solid var(--point-color-purple);
+}
+
+.luha .a_profileImage {
+  border: 2px solid var(--sub-color-apricot);
+}
+
+.luha .a_profile_img {
+  border: 2px solid var(--sub-color-apricot);
+}
+
+.arin .a_profileImage {
+  border: 2px solid var(--point-color-yellow);
+}
+
+.arin .a_profile_img {
+  border: 2px solid var(--point-color-yellow);
+}
+
+.sei .a_profileImage {
+  border: 2px solid #4D9697;
+}
+
+.sei .a_profile_img {
+  border: 2px solid #4D9697;
+}
 
 /* 말풍선 상자 */
 
@@ -602,7 +664,7 @@
   display: flex;
   align-items: flex-start;
   position: relative;
-  gap: 10px;
+  gap: 35px;
   margin-bottom: 12px;
   /* background-color: #F9F9F9; */
 }
@@ -611,7 +673,7 @@
   flex-shrink: 0;
   align-self: flex-start;
   position: absolute;
-  left: 65px;
+  left: 78px;
   /* bubble_box 왼쪽에 붙도록 조정 */
   top: 5px;
   /* bubble_box의 중간쯤에 맞추기 */
@@ -702,7 +764,7 @@
 .swiperArea {
   flex: 1 1 0;
   min-width: 0;
-  max-width: 1100px;
+  max-width: 800px;
   min-width: 340px;
   padding: 0 10px;
   /* 원하는 최대 길이로 조정 */
@@ -720,6 +782,8 @@
 
 
 @media (min-width: 1024px) {
+
+
   .popularPostContent {
     width: 1024px;
     margin: 0 auto;
@@ -735,7 +799,12 @@
     padding: 0 40px;
   }
 
-
+  /*   .storyCard .a_profileImage {
+    display: none;
+  } */
+  .storyCard .profileImage {
+    display: none;
+  }
 
   .popularBanner {
     background-image: url('/public/images/fan/fanBanner_t.png');
@@ -771,45 +840,67 @@
 
 
 @media (max-width: 767px) {
-  .badge_img{
+<<<<<<< HEAD
+  .body_wrapper>p>img {
+    width: 120px;
+    height: 120px;
+    border: none;
+=======
+  .popularTitle {
+    padding-bottom: 30px;
+  }
+
+  .popularCardInfo {
+    gap: 2px;
+>>>>>>> c623af1b44b9a6241be0fa0e240274b2937457ea
+  }
+
+  .badge_img {
     width: 19px;
     height: 19px;
   }
+
   .artist .info {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-}
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+
   .fan.info {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
   .profile_img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
-  background: #ddd;
-}
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    background: #ddd;
+  }
+
   .meta_row button img {
-  width:26px;
-  height: 26px;
-}
-  .hashtags{
+    width: 26px;
+    height: 26px;
+  }
+
+  .hashtags {
     font-size: 14px;
     font-weight: 500;
-     margin-bottom: 10px;
+    margin-bottom: 10px;
   }
-    .fan.post_card {
+
+  .fan.post_card {
     padding: 0px;
   }
+
   .post_card.fan {
-  background-color: #f9f9f9;
-  border:0;
-}
+    background-color: #f9f9f9;
+    border: 0;
+  }
 
   .banner {
     background-image: url(../../public/images/artist/top_banner_mov.jpg);
@@ -832,7 +923,7 @@
 
   .popularBannerContainer {
     width: 100%;
-    height: 400px;
+    height: 420px;
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -851,8 +942,6 @@
     background-size: cover;
     background-position: center;
   }
-
-
 
   .popularPostContent {
     width: 100%;
@@ -897,7 +986,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-   /*  margin: 0 0 8px 0 !important; */
+    /*  margin: 0 0 8px 0 !important; */
     position: static !important;
   }
 
@@ -961,9 +1050,16 @@
 }
 
 @media (max-width: 656px) {
+
   /*   .popularPostContainer {
     height: 58vh;
   } */
+  .body_wrapper>p>img {
+    width: 100px;
+    height: 100px;
+    border: none;
+  }
+
 
   .popularPostContent {
     width: 100%;
@@ -978,6 +1074,12 @@
 }
 
 @media (max-width: 402px) {
+  .body_wrapper>p>img {
+    width: 80px;
+    height: 80px;
+    border: none;
+  }
+
   .popularBanner {
     height: 350px;
     background-image: url('/public/images/fan/fanBanner_m.png');

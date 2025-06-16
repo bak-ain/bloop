@@ -380,6 +380,10 @@
     font-size: 24px;
   }
 
+  .uploadPopupEditor img {
+    width: 80%;
+  }
+
   .uploadPopupBtnBoxRight {
     gap: 5px;
   }
