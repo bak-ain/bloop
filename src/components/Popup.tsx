@@ -113,7 +113,7 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
   };
 
   // 실제 유저의 badgeLevel로 변경
-  const userLevel = (user && (user as any).badgeLevel) || 1;
+  const userLevel = (user && (user as any).badgeLevel) || 3;
   const emojis = getAvailableEmojis(userLevel);
 
   // 파일 선택 시 미리보기

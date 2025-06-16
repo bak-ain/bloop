@@ -9,12 +9,21 @@
 }
 
 .mypageSection {
+    border-radius: 15px;
     height: 250px;
     position: relative;
-    /* background: url(/public/images/mypage/mbtiLine.svg) no-repeat center center / 100% 100%; */
+    background-image: url(/public/images/mypage/lineTop.svg),
+        url(/public/images/mypage/lineBottom.svg),
+        url(/public/images/mypage/sideLine.svg),
+        url(/public/images/mypage/sideLine.svg);
+    background-repeat: no-repeat, no-repeat, repeat-y, repeat-y;
+    background-position: top center, bottom center, left center, right center;
+    background-size: 100%, 100%, contain, contain;
+    /* background-size:; */
+
 }
 
-.sectionBorder {
+/* .sectionBorder {
     position: absolute;
     left: 0;
     top: 0;
@@ -26,13 +35,20 @@
 
 .sectionBorderM {
     display: none;
-}
+} */
 
 .profileSection {
     flex: 1 1 30%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(/public/images/mypage/profileLineTop.svg),
+        url(/public/images/mypage/profileLineBottom.svg),
+        url(/public/images/mypage/sideLine.svg),
+        url(/public/images/mypage/sideLine.svg);
+    background-repeat: no-repeat, no-repeat, repeat-y, repeat-y;
+    background-position: top center, bottom center, left center, right center;
+    background-size: 100%, 100%, contain, contain;
 }
 
 .profileCard {
@@ -338,7 +354,17 @@
     .mypageSection {
         width: 100%;
         flex: none;
-        /* background: url(/public/images/mypage/profileLineM.svg) no-repeat center center / 100% 100%; */
+        background-image: url(/public/images/mypage/lineTopM.svg),
+            url(/public/images/mypage/lineBottomM.svg),
+            url(/public/images/mypage/sideLineM.svg),
+            url(/public/images/mypage/sideLineM.svg);
+    }
+
+    .menuSection {
+        background-image: url(/public/images/mypage/lineTopM.svg),
+            url(/public/images/mypage/lineBottomM.svg),
+            url(/public/images/mypage/sideLineM2.svg),
+            url(/public/images/mypage/sideLineM2.svg);
     }
 
     .sectionBorder {

@@ -187,7 +187,7 @@ const Join = () => {
       addUser({ ...fanInput });
       if (window.confirm('회원가입이 완료되었습니다.\n로그인하시겠어요?')) {
         setUser({ ...fanInput }); // 바로 로그인 처리
-        navigate('/');
+        navigate('/grade-status');
       } else {
         navigate('/login?type=fan');
       }

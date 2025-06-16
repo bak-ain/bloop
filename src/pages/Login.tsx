@@ -19,8 +19,6 @@ const Login = () => {
 
 
 
-
-
     // 탭 전환
     const handleTab = (type: "fan" | "agency") => {
         setUserType(type);
@@ -54,8 +52,8 @@ const Login = () => {
         if (found) {
             setUser(found); // 로그인 유저 저장!
             if (userType === "fan") {
-                navigate("/grade-status");
-                /* navigate("/"); */
+                // navigate("/grade-status");
+                navigate("/");
             } else {
                 // 어드민은 새로고침하면서 이동
                 window.location.replace("/admin");
