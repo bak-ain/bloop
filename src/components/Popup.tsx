@@ -156,19 +156,11 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
       }
     }
 
-    // 이미지 이모지 삽입
+    // 이미지 이모지 삽입 업로드팝업 이모지
     const img = document.createElement("img");
     img.src = emoji;
     img.alt = "emoji";
-<<<<<<< HEAD
-    img.style.width = "100px";
-    img.style.height = "100px";
-    img.style.verticalAlign = "middle";
-    // img.style.border = "1px solid #e0e0e0";
-    img.style.borderRadius = "8px";
-=======
     img.className = styles.emojiImg;
->>>>>>> c85da3325df330e6d80c8f77e8c2de9d2fbd0383
 
     if (selection) {
       const range = selection.getRangeAt(0);
@@ -467,18 +459,11 @@ const EditPopup = ({
         selection.addRange(range);
       }
     }
+    // 수정팝업 이모지
     const img = document.createElement("img");
     img.src = emoji;
     img.alt = "emoji";
-<<<<<<< HEAD
-    img.style.width = "200px";
-    img.style.height = "200px";
-    img.style.verticalAlign = "middle";
-    // img.style.border = "1px solid #e0e0e0";
-    img.style.borderRadius = "8px";
-=======
     img.className = styles.emojiImg;
->>>>>>> c85da3325df330e6d80c8f77e8c2de9d2fbd0383
     if (selection) {
       const range = selection.getRangeAt(0);
       range.collapse(false);
