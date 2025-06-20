@@ -171,6 +171,7 @@ export interface MyCommentPost {
   date: string;
   editable: true;
   userId: string;
+  postId: string; // 댓글이 달린 포스트 I
 }
 
 //팬성향

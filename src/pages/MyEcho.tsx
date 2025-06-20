@@ -7,11 +7,11 @@ import { useLikedScrapped } from '../context/LikedScrappedContext';
 import { useComment } from '../context/CommentContext';
 import Popup from '../components/Popup';
 import { usePostList } from '../context/PostListContext';
-import type { ArtistPost, FanPost, OfficialContent } from '../types';
+import type { ArtistPost, FanPost, OfficialContent, MyCommentPost } from '../types';
 import { useNavigate } from "react-router-dom";
 
 
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 5;
 
 const tabList = [
   { key: 'written', label: '게시물' },
@@ -47,6 +47,8 @@ const MyEcho = () => {
   const [selectedPost, setSelectedPost] = useState<ArtistPost | FanPost | null>(null);
   const [editMode, setEditMode] = useState(false);
   const [checkedIds, setCheckedIds] = useState<string[]>([]);
+  const [editPopupOpen, setEditPopupOpen] = useState(false);
+  const [editPost, setEditPost] = useState<FanPost | null>(null);
 
   const { written, comments, setWritten } = useMyContent();
   const { artistPosts, setArtistPosts, fanPosts, setFanPosts } = usePostList();
@@ -59,6 +61,15 @@ const MyEcho = () => {
     setOfficialLikedPosts,
   } = useLikedScrapped();
   const { myComments, setMyComments } = useComment();
+  const allPosts: (ArtistPost | FanPost)[] = [...artistPosts, ...fanPosts];
+  // commentItems 생성 시
+  const commentItems = comments.map(comment => {
+    const parentPost = allPosts.find(post => post.id === comment.postId);
+    return {
+      ...comment,
+      parentDescription: parentPost?.description || ""
+    };
+  }) as (MyCommentPost & { parentDescription?: string })[];
 
   // ...생략...
   let items: any[] = [];
@@ -158,20 +169,32 @@ const MyEcho = () => {
         </div>
         {/* 카드 리스트 */}
         <MyContentsCard
-          items={pagedItems}
+          items={tab === 'comment' ? commentItems : pagedItems}
           type={tab}
           editMode={editMode}
           checkedIds={checkedIds}
           onCheck={handleCheck}
-          onCardClick={(post) => {
+          onCardClick={(item) => {
             if (editMode) {
-              handleCheck(post.id);
+              handleCheck(item.id);
               return;
             }
-            if (isOfficialContent(post)) {
-              navigate(`/official/${post.id}`);
+            if (isOfficialContent(item)) {
+              navigate(`/official/${item.id}`);
+            } else if (tab === 'comment') {
+              // 댓글 클릭 시: postId로 원본 게시물 찾기
+              const postId = item.postId;
+              const post =
+                artistPosts.find((p) => p.id === postId) ||
+                fanPosts.find((p) => p.id === postId);
+              if (post) {
+                setSelectedPost(post);
+                setPopupOpen(true);
+              } else {
+                alert("원본 게시물을 찾을 수 없습니다.");
+              }
             } else {
-              setSelectedPost(post);
+              setSelectedPost(item);
               setPopupOpen(true);
             }
           }}
@@ -218,6 +241,27 @@ const MyEcho = () => {
             onClose={() => setPopupOpen(false)}
             postList={fanPosts}
             setPostList={setFanPosts}
+            onEdit={(post) => {
+              setEditPost(post);
+              setEditPopupOpen(true);
+              setPopupOpen(false);
+            }}
+          />
+        )}
+
+        {editPopupOpen && editPost && (
+          <Popup
+            type="edit"
+            data={editPost}
+            onClose={() => setEditPopupOpen(false)}
+            onUpdate={(updated) => {
+              setFanPosts((prev) =>
+                prev.map((p) => (p.id === updated.id ? updated : p))
+              );
+              setEditPopupOpen(false);
+              setSelectedPost(updated);
+              setPopupOpen(true);
+            }}
           />
         )}
       </div>

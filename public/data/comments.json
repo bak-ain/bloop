@@ -4,11 +4,11 @@
     "postId": "a1",
     "postType": "artist",
     "user": {
-      "name": "nanfan",
-      "profileImage": "/images/artist/u1.png",
+      "name": "testfan",
+      "profileImage": "/images/profile_img.png",
       "badgeType": "fan",
       "badgeLevel": 1,
-      "userId": "nanfan"
+      "userId": "testfan"
     },
     "content": "무대 불태웠다ㅠㅠ 이거 레전드 직캠임 확정...",
     "emoji": "/images/emoji1.png",
@@ -114,7 +114,7 @@
       "profileImage": "/images/artist/u1.png",
       "badgeType": "fan",
       "badgeLevel": 3,
-      "userId": "testfan"
+      "userId": "bamboo"
     },
     "content": "루하언니 갓벽 그 자체 💘",
     "date": "2025.06.26",
@@ -304,11 +304,11 @@
     "postId": "a3",
     "postType": "artist",
     "user": {
-      "name": "milktea",
-      "profileImage": "/images/artist/u4.png",
+      "name": "testfan",
+      "profileImage": "/images/profile_img.png",
       "badgeType": "fan",
       "badgeLevel": 1,
-      "userId": "milk44"
+      "userId": "testfan"
     },
     "content": "마음 치유됐다 오늘 하루 끝... 댕댕이 뷰 💘",
     "date": "2025.06.24",
@@ -461,11 +461,11 @@
     "postId": "a5",
     "postType": "artist",
     "user": {
-      "name": "BLOOMIE",
-      "profileImage": "/images/artist/u1.png",
+      "name": "testfan",
+      "profileImage": "/images/profile_img.png",
       "badgeType": "fan",
       "badgeLevel": 1,
-      "userId": "BLOOMIE"
+      "userId": "testfan"
     },
     "content": "배경과 노래 분위기 짱... 나만 없어 분위기 😭",
     "emoji": "/images/emoji/heart.png",

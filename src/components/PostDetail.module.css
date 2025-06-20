@@ -10,7 +10,9 @@
   align-items: center;
   justify-content: center;
 }
-
+.comment_list::-webkit-scrollbar {
+  display: none;              /* 크롬, 사파리, 엣지 */
+}
 /* 포스트 디테일에서 보여지는 이모지 크기조절 */
 .body_wrapper>p>img {
   width: 150px;

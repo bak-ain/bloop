@@ -1,62 +1,121 @@
+.myContentsWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cardWrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.cardCheckbox {
+  width: 18px;
+  height: 18px;
+  color: var(--font-color-7);
+}
+
+.card {
+  flex: 1;
+  border-radius: 15px;
+  background-image: url(/public/images/mypage/Mytop.svg),
+    url(/public/images/mypage/MyBottom.svg),
+    url(/public/images/mypage/Myleft.svg),
+    url(/public/images/mypage/Myleft.svg);
+  background-repeat: no-repeat, no-repeat, repeat-y, repeat-y;
+  background-position: top center, bottom center, left center, right center;
+  background-size: 100%, 100%, contain, contain;
+  padding: 20px 25px;
+}
+
 .cardRow {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 30px;
 }
+
 .cardThumb {
-  width: 70px;
-  height: 70px;
+  width: 120px;
+  height: 120px;
   border-radius: 10px;
   object-fit: cover;
   flex-shrink: 0;
 }
+
 .cardTextWrap {
   flex: 1;
-  font-size: 1.1rem;
-  color: #222;
 }
+
 .cardLikeIcon {
   margin-left: auto;
   opacity: 0.5;
 }
+
 .cardDate {
   text-align: right;
-  color: #888;
-  font-size: 0.95rem;
-  margin-top: 8px;
+  color: var(--font-color-7);
+  align-self: flex-end;
 }
-.commentCard {
-  background: #d4edfa;
-  border-radius: 10px;
-  padding: 10px 0 0 0;
-  margin-bottom: 12px;
+
+.cardWrap_comment .card {
+  padding: 0;
+  background-image: none;
 }
+
+
+.commentCard>div {
+  padding: 15px 20px;
+}
+
 .commentHeader {
-  background: #b3e0fc;
-  border-radius: 10px 10px 0 0;
-  padding: 8px 12px;
   display: flex;
   align-items: center;
-  font-weight: bold;
-  font-size: 1rem;
+  background-image: url(/public/images/mypage/Mytop.svg), url(/public/images/mypage/commentLeft.svg),
+    url(/public/images/mypage/commentLeft.svg), url(/public/images/mypage/middleLine.svg);
+  background-repeat: no-repeat, repeat-y, repeat-y, repeat-x;
+  background-position: center top, left center, right center, center bottom;
+  background-size: 100%, contain, contain, 100%;
+  background-color: #DDEEFB;
+  border-radius: 15px 15px 0 0;
+  gap: 50px;
 }
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  background-image: url(/public/images/mypage/commentLeft.svg),
+    url(/public/images/mypage/commentLeft.svg), url(/public/images/mypage/MyBottom.svg);
+  background-repeat: repeat-y, repeat-y, no-repeat;
+  background-position: left center, right center, center bottom;
+  background-size: contain, contain, 100%;
+  border-radius: 0 0 15px 15px;
+}
+
 .commentLabel {
-  margin-right: 12px;
-  color: #222;
+  font-size: 18px;
+  font-weight: 600;
+  /* line-height: 144%; */
 }
+
 .commentParentTitle {
-  color: #222;
+  font-size: 18px;
+  font-weight: 400;
 }
+
 .commentContent {
-  background: #fff;
-  padding: 12px;
-  border-radius: 0 0 10px 10px;
-  font-size: 1.05rem;
-  color: #222;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--font-color-7);
 }
-.cardDate {
-  text-align: right;
-  color: #888;
-  font-size: 0.95rem;
-  margin: 8px 12px 0 0;
+.badgeIcon{
+  width: 30px;
+  height: auto;
+  object-fit: cover;
+}
+.likeIcon{
+  width: 30px;
+  height: auto;
+  object-fit: cover;
 }

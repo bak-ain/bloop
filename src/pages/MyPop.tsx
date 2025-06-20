@@ -8,7 +8,7 @@ import { usePostList } from '../context/PostListContext';
 import { useNavigate } from "react-router-dom";
 import type { ArtistPost, FanPost, OfficialContent } from '../types';
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 5;
 
 const tabList = [
     { key: 'scrap-official', label: '기획사' },
