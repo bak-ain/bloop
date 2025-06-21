@@ -16,30 +16,30 @@ const EMAIL_DOMAINS = [
 
 const defaultFan: FanSignupInput = {
   userType: 'fan',
-  id: 'testfan',
-  nickname: '테스트팬',
-  password: '1234',
-  confirmPassword: '1234',
-  name: '이소민',
-  email: 'testfan@naver.com',
-  phone: '010-1234-5678',
+  id: '',
+  nickname: '',
+  password: '',
+  confirmPassword: '',
+  name: '',
+  email: '',
+  phone: '',
   gender: 'female',
   profileImage: '/images/profile_img.png', // 기본 프로필 이미지
-  birth: { year: '2000', month: '01', day: '01' },
-  agree: { privacy: true, communityPolicy: true, marketing: true, over14: true }
+  birth: { year: '', month: '', day: '' },
+  agree: { privacy: false, communityPolicy: false, marketing: false, over14: false }
 };
 
 const defaultAgency: AgencySignupInput = {
-  userType: "agency",
-  company: "테스트기획사",
-  artistName: "테스트아티스트",
-  id: "testagency",
-  password: "5678",
-  confirmPassword: "5678",
-  name: "김기획",
-  email: "testagency@daum.net",
-  phone: "010-8765-4321",
-  agree: { privacy: true, uploadResponsibility: true, marketing: false, over14: true }
+  userType: 'agency',
+  company: '',
+  artistName: '',
+  id: '',
+  password: '',
+  confirmPassword: '',
+  name: '',
+  email: '',
+  phone: '',
+  agree: { privacy: false, uploadResponsibility: false, marketing: false, over14: false }
 };
 
 const parseEmail = (email: string) => {
@@ -56,10 +56,10 @@ const Join = () => {
   const [agencyInput, setAgencyInput] = useState<AgencySignupInput>({ ...defaultAgency });
   const [showDomainSelect, setShowDomainSelect] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const { addUser } = useUserContext();
+  const navigate = useNavigate();
   const fanEmailDomainInputRef = useRef<HTMLInputElement>(null);
   const agencyEmailDomainInputRef = useRef<HTMLInputElement>(null);
-  const { addUser, setUser } = useUserContext(); // setUser 추가
-  const navigate = useNavigate();
   // 이메일 도메인 선택
   const handleDomainSelect = (domain: string) => {
     setShowDomainSelect(false);
@@ -185,24 +185,16 @@ const Join = () => {
         return;
       }
       addUser({ ...fanInput });
-      if (window.confirm('회원가입이 완료되었습니다.\n로그인하시겠어요?')) {
-        setUser({ ...fanInput }); // 바로 로그인 처리
-        navigate('/grade-status');
-      } else {
-        navigate('/login?type=fan');
-      }
+      alert('회원가입이 완료되었습니다.');
+      navigate('/login?type=fan');
     } else {
       if (agencyInput.password !== agencyInput.confirmPassword) {
         alert('비밀번호가 일치하지 않습니다.');
         return;
       }
       addUser({ ...agencyInput });
-      if (window.confirm('회원가입이 완료되었습니다.\n로그인하시겠어요?')) {
-        setUser({ ...agencyInput }); // 바로 로그인 처리
-        navigate('/admin');
-      } else {
-        navigate('/login?type=agency');
-      }
+      alert('회원가입이 완료되었습니다.');
+      navigate('/login?type=agency');
     }
   };
 
@@ -306,12 +298,25 @@ const Join = () => {
                   <div className={styles.row}>
                     <span className={`join_p`}>성별</span>
                     <div className={styles.genderRadio}>
-                      <label>
-                        <input type="radio" checked={fanInput.gender === 'male'} onChange={() => handleGender('male')} className={`${styles.gen}`} /> 남성</label>
-                      <label>
-                        <input type="radio" checked={fanInput.gender === 'female'} onChange={() => handleGender('female')} className={`${styles.gen}`} /> 여성</label>
+                      <label className={`${styles.genderLabel} ${fanInput.gender === 'male' ? styles.selected : ''}`}>
+                        <input
+                          type="radio"
+                          name="gender"
+                          checked={fanInput.gender === 'male'}
+                          onChange={() => handleGender('male')}
+                          className={styles.gen}
+                        /> 남성
+                      </label>
+                      <label className={`${styles.genderLabel} ${fanInput.gender === 'female' ? styles.selected : ''}`}>
+                        <input
+                          type="radio"
+                          name="gender"
+                          checked={fanInput.gender === 'female'}
+                          onChange={() => handleGender('female')}
+                          className={styles.gen}
+                        /> 여성
+                      </label>
                     </div>
-
                   </div>
                   <div className={styles.row}>
                     <span className={`join_p`}>생년월일</span>
@@ -348,13 +353,13 @@ const Join = () => {
 
                   </div>
                   <div className={styles.agreeSection}>
-                    <div className={styles.agreeTitle}>
+                    <div className={`${styles.agreeTitle} join_p`}>
                       이용약관동의<span className={styles.red_star}>*</span>
                     </div>
                     <div className={styles.agreeBox}>
                       {/* 전체동의 */}
                       <div className={styles.agreeAllRow}>
-                        <label className={styles.circleLabel}>
+                        <label className={`${styles.circleLabel} ${styles.join_all}`}>
 
                           <input
                             type="checkbox"
@@ -381,14 +386,14 @@ const Join = () => {
                           <span className={styles.agreeAllText}>전체동의합니다.</span>
 
                         </label>
-                        <div className={styles.agreeSubDesc2}>
+                        <div className={`${styles.agreeSubDesc2} day_span`}>
                           선택항목에 동의하지 않은 경우도 회원가입이 가능합니다.
                         </div>
                       </div>
 
                       {/* 개인정보 수집/이용 동의 */}
                       <div className={styles.agreeRow}>
-                        <label className={styles.circleLabel}>
+                        <label className={`${styles.circleLabel} join_p`}>
                           <input
                             type="checkbox"
                             checked={fanInput.agree.privacy}
@@ -401,13 +406,13 @@ const Join = () => {
                             className={styles.circleRadio}
                             required
                           />
-                          개인정보 수집/이용 동의 (필수)
+                          개인정보 수집/이용 동의 <span className={styles.red_star}>(필수)</span>
                         </label>
                       </div>
 
                       {/* 커뮤니티 운영 정책 동의 */}
                       <div className={styles.agreeRow}>
-                        <label className={styles.circleLabel}>
+                        <label className={`${styles.circleLabel} join_p`}>
                           <input
                             type="checkbox"
                             checked={fanInput.agree.communityPolicy}
@@ -420,16 +425,16 @@ const Join = () => {
                             className={styles.circleRadio}
                             required
                           />
-                          커뮤니티 운영 정책 동의 (필수)
+                          커뮤니티 운영 정책 동의 <span className={styles.red_star}>(필수)</span>
                         </label>
-                        <div className={styles.agreeSubDesc}>
+                        <div className={`${styles.agreeSubDesc} day_span`}>
                           게시글/댓글 작성 시 준수해야 할 커뮤니티 규칙에 동의합니다.
                         </div>
                       </div>
 
                       {/* 광고 및 정보 수신 동의 (선택) */}
                       <div className={styles.agreeRow}>
-                        <label className={styles.circleLabel}>
+                        <label className={`${styles.circleLabel} join_p`}>
                           <input
                             type="checkbox"
                             checked={!!fanInput.agree.marketing}
@@ -441,10 +446,10 @@ const Join = () => {
                             }
                             className={styles.circleRadio}
                           />
-                          블루프 관련 광고 및 정보 수신 동의 (선택)
+                          블루프 관련 광고 및 정보 수신 동의<span className={styles.red_star}>(선택)</span>
                         </label>
                         <div className={styles.agreeSubOptions}>
-                          <label className={styles.circleLabel}>
+                          <label className={`${styles.circleLabel} day_span`}>
                             <input
                               type="checkbox"
                               checked={!!fanInput.agree}
@@ -454,12 +459,12 @@ const Join = () => {
                                   agree: { ...prev.agree, sms: e.target.checked },
                                 }))
                               }
-                              className={styles.circleRadio}
+                              className={styles.circleRadio1}
                               disabled={!fanInput.agree.marketing}
                             />
                             SMS
                           </label>
-                          <label className={styles.circleLabel}>
+                          <label className={`${styles.circleLabel} day_span`}>
                             <input
                               type="checkbox"
                               checked={!!fanInput.agree}
@@ -469,7 +474,7 @@ const Join = () => {
                                   agree: { ...prev.agree, email: e.target.checked },
                                 }))
                               }
-                              className={styles.circleRadio}
+                              className={styles.circleRadio1}
                               disabled={!fanInput.agree.marketing}
                             />
                             이메일
@@ -479,7 +484,7 @@ const Join = () => {
 
                       {/* 만 14세 이상 동의 */}
                       <div className={styles.agreeRow}>
-                        <label className={styles.circleLabel}>
+                        <label className={`${styles.circleLabel} join_p`}>
                           <input
                             type="checkbox"
                             checked={fanInput.agree.over14}
@@ -492,7 +497,7 @@ const Join = () => {
                             className={styles.circleRadio}
                             required
                           />
-                          본인은 만 14세 이상입니다 (필수)
+                          본인은 만 14세 이상입니다 <span className={styles.red_star}>(필수)</span>
                         </label>
                       </div>
                     </div>
@@ -564,13 +569,14 @@ const Join = () => {
                     </label>
                   </div>
                   <div className={styles.agreeSection}>
-                    <div className={styles.agreeTitle}>
+                    <div  className={`${styles.agreeTitle} join_p`}
+                    >
                       이용약관동의<span className={styles.red_star}>*</span>
                     </div>
                     <div className={styles.agreeBox}>
                       {/* 전체동의 */}
                       <div className={styles.agreeAllRow}>
-                        <label className={styles.circleLabel}>
+                        <label className={`${styles.circleLabel} ${styles.join_all}`}>
 
                           <input
                             type="checkbox"
@@ -597,7 +603,7 @@ const Join = () => {
                           <span className={styles.agreeAllText}>전체동의합니다.</span>
 
                         </label>
-                        <div className={styles.agreeSubDesc2}>
+                        <div className={`${styles.agreeSubDesc} day_span`} >
                           선택항목에 동의하지 않은 경우도 회원가입이 가능합니다.
                         </div>
                       </div>
@@ -617,7 +623,7 @@ const Join = () => {
                             className={styles.circleRadio}
                             required
                           />
-                          개인정보 수집/이용 동의 (필수)
+                          개인정보 수집/이용 동의 <span className={styles.red_star}>(필수)</span>
                         </label>
                       </div>
 
@@ -636,9 +642,10 @@ const Join = () => {
                             className={styles.circleRadio}
                             required
                           />
-                          아티스트 콘텐츠 업로드 및 저작권 책임 동의 (필수)
+                          {/* 아티스트 */} 콘텐츠 업로드 및 저작권 책임 동의 <span className={styles.red_star}>(필수)</span>
                         </label>
-                        <div className={styles.agreeSubDesc}>
+                        <div className={`${styles.agreeSubDesc} day_span`}
+                       >
                           업로드하는 콘텐츠에 대한 저작권 및 운영 책임이 기획사에 있음을 확인하고 동의합니다.
                         </div>
                       </div>
@@ -657,9 +664,9 @@ const Join = () => {
                             }
                             className={styles.circleRadio}
                           />
-                          운영 리포트 수신 동의 (선택)
+                          운영 리포트 수신 동의 <span className={styles.red_star}>(필수)</span>
                         </label>
-                        <div className={styles.agreeSubDesc}>
+                        <div className={`${styles.agreeSubDesc} day_span`}>
                           월간 팬 활동 리포트, 콘텐츠 조회수 통계 등을 이메일로 수신하겠습니다.
                         </div>
                       </div>
@@ -679,7 +686,7 @@ const Join = () => {
                             className={styles.circleRadio}
                             required
                           />
-                          본인은 만 14세 이상입니다 (필수)
+                          본인은 만 14세 이상입니다<span className={styles.red_star}>(필수)</span>
                         </label>
                       </div>
                     </div>
@@ -688,7 +695,7 @@ const Join = () => {
               )}
 
             </form>
-            <button className={styles.joinBtn} type="submit" onClick={handleSubmit}>회원가입완료하기</button>
+            <button className={styles.joinBtn} type="submit">회원가입완료하기</button>
           </div>
 
         </div>
