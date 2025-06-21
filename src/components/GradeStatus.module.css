@@ -42,6 +42,7 @@
 }
 
 .highlight {
+  font-family: var(--level-font-family);
   color: var(--point-color-yellow);
   font-weight: 700;
 }
