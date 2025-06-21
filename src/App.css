@@ -216,7 +216,7 @@ button {
   /* mobile */
   --movbile-sec-pad: 100px;
   --mobile-tit-pad: 30px;
-  --mobile-footer-pad: 150px;
+  --mobile-footer-pad: 160px;
 }
 
 /* 공통 */
@@ -796,10 +796,6 @@ footer .inner,
 
 
 
-  .inner {
-    padding: 0 20px;
-    padding-bottom: var(--wep-footer-pad);
-  }
 
   .con {
     padding: 0 20px;
@@ -1004,7 +1000,7 @@ footer .inner,
 
 
   .inner {
-    padding-bottom: var(--wep-sec-pad);
+    padding-bottom: var( --mobile-footer-pad);
   }
 
   .office_tag {

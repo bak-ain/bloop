@@ -286,7 +286,6 @@ const MyMood = () => {
                     value={emailLocal}
                     onChange={handleChange}
                     className={`${styles.emailInput} card_p2`}
-                    style={{ width: '30%' }}
                   />
                   <span className='card_p2'> @ </span>
                   <input
@@ -294,16 +293,16 @@ const MyMood = () => {
                     name="emailDomain"
                     value={emailDomain}
                     onChange={handleChange}
-                    className={`${styles.emailInput} card_p2`}
-                    style={{ width: '30%' }}
+                    className={`${styles.emailInput} card_p2 ${styles.emailDomainInput}`}
                     readOnly={EMAIL_DOMAINS.includes(emailDomain) && emailDomain !== '직접입력'}
                   />
                   <button
                     type="button"
-                    className={`${styles.emailSelectBtn} `}
+                    className={styles.emailSelectBtn}
                     onClick={() => setShowDomainSelect(v => !v)}
                   >
-                     선택하기
+                    <span className={styles.btnTextPc}>선택하기</span>
+                    <span className={styles.btnTextMobile}>선택</span>
                   </button>
                   {showDomainSelect && (
                     <ul className={styles.emailDomainList}>

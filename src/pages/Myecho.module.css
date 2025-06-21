@@ -6,10 +6,6 @@
     background-position: center 87%;
 }
 
-.myWrap {
-    padding-top: 200px;
-}
-
 .myEchoTitle {
     background-image: url(/public/images/icon/echoB.png);
     background-repeat: no-repeat;
@@ -17,6 +13,11 @@
     background-position: center right;
     padding-right: 70px;
 }
+
+.myWrap {
+    padding-top: 200px;
+}
+
 
 .myTitle {
     width: max-content;
@@ -53,45 +54,21 @@
 }
 
 .tabBtn.active {
-    /* flex: 1; */
-    /* width: 190px;
-    padding: 10px 0; */
     background-color: #b3dcff;
-    background-image:  url(/public/images/mypage/buttonLine.svg);
+    background-image: url(/public/images/mypage/buttonLine.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    /* overflow: visible; */
-    /* background-image:
-        url(/public/images/mypage/buttonLine.svg),
-        linear-gradient(to bottom right, rgba(65, 157, 223, 0.10) 0%, rgba(65, 157, 223, 0.60) 50%),
-        linear-gradient(to bottom left, rgba(65, 157, 223, 0.10) 0%, rgba(65, 157, 223, 0.60) 50%),
-        linear-gradient(to top left, rgba(65, 157, 223, 0.10) 0%, rgba(65, 157, 223, 0.60) 50%),
-        linear-gradient(to top right, rgba(65, 157, 223, 0.10) 0%, rgba(65, 157, 223, 0.60) 50%);
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
-    background-position:
-        center,
-        bottom right,
-        bottom left,
-        top left,
-        top right;
-    background-size:
-        cover,
-        50% 50%,
-        50% 50%,
-        50% 50%,
-        50% 50%; */
     color: var(--font-1, #1F1F1F);
     font-weight: 500;
     border-radius: 30px;
-    /* box-shadow: 3px 3px 0.5px -3.5px #FFF inset, 2px 2px 1px -2px #B3B3B3 inset, -2px -2px 1px -2px #B3B3B3 inset, 0px 0px 0px 1px #999 inset, 0px 0px 22px 0px rgba(255, 255, 255, 0.50) inset; */
-    /* backdrop-filter: blur(22.5px); */
 }
 
 .cardHeaderRow {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -116,7 +93,7 @@
 /* my pop */
 .myePopBg {
     background-color: #FFE9A2;
-    background-image: url(/public/images/mypage/mypopBg.png);
+    background-image: url(/public/images/mypage/myPopBg.svg);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -125,14 +102,83 @@
 /* my mood banner */
 .myeMoodBg {
     background-color: #FFD3AC;
-    background-image: url(/public/images/mypage/myMoodBg.png);
+    background-image: url(/public/images/mypage/myMoodBg.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
-@media (max-width: 767px) {
-    .myeWrap {
-        padding-top: 100px;
+@media screen and (max-width: 1200px) {
+    .myechoBg {
+        background-image: url(/public/images/mypage/myechoBgT.svg);
     }
+
+}
+
+@media screen and (max-width: 900px) {
+    .myePopBg {
+        background-image: url(/public/images/mypage/myPopBgT.svg);
+    }
+
+    .myeMoodBg {
+        background-image: url(/public/images/mypage/myMoodBgT.svg);
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .myWrap {
+        padding-top: 13vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .myBg {
+        height: 200px;
+    }
+
+    .myechoBg {
+        background-image: url(/public/images/mypage/myechoBgM.svg);
+        background-position: center 90%;
+    }
+
+    .myePopBg {
+        background-image: url(/public/images/mypage/mypopBgM.svg);
+    }
+
+    .myeMoodBg {
+        background-image: url(/public/images/mypage/myMoodBgM.svg);
+    }
+
+    .tabContainer {
+        padding: 100px 0 40px 0;
+    }
+    .tabBar {
+        padding: 8px 5px;
+    }
+    .tabBtn {
+        width: 110px;
+        font-size: 16px;
+        padding: 6px 0;
+    }
+    .tabBtn.active{
+          background-image: url(/public/images/mypage/buttonLineM.svg);
+    }
+    .cardCount{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .myWrap {
+        padding-top:113px;
+    }
+     .tabBar{
+        padding: 6px 5px;
+     }
+     .tabBtn{
+        width: 100px;
+        padding: 4px;
+     }
 }
