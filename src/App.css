@@ -610,13 +610,18 @@ footer .inner,
 }
 
 #chatbase-bubble-button {
-  background-image: url(/public/images/chatbot.png) !important;
-  background-size: cover !important;
+  background-image: url(/public/images/chatbot2.png) !important;
+  background-size: 100% !important;
   border-radius: 0% !important;
   background-color: transparent !important;
-  bottom: 4rem !important;
-  right: 3.7rem !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  bottom: 40px !important;
+  right: 60px !important;
   z-index: 999 !important;
+  box-shadow: none !important;
+  width: 60px !important;
+  height: 60px !important;
 }
 
 #chatbase-bubble-button img {
@@ -626,6 +631,11 @@ footer .inner,
 
 #chatbase-message-bubbles {
   display: none !important;
+}
+
+#chatbase-bubble-window {
+  bottom: 100px !important;
+  /* right: 60px !important; */
 }
 
 .react-calendar__navigation {
@@ -728,7 +738,7 @@ footer .inner,
   top: 95% !important;
   z-index: 10;
 
-  width: 30px!important;
+  width: 30px !important;
   height: 30px !important;
   border-radius: 50%;
   display: flex;
@@ -752,7 +762,7 @@ footer .inner,
 .officeSwiper .swiper-button-next::after {
   font-size: 20px !important;
   font-weight: bold !important;
-    color: #fff !important;
+  color: #fff !important;
 }
 
 @media (max-width: 1024px) {
@@ -1024,8 +1034,13 @@ footer .inner,
 
 
   #chatbase-bubble-button {
-    bottom: 120px !important;
-    right: 30px !important;
+    bottom: 110px !important;
+    right: 25px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+  #chatbase-bubble-window {
+    max-height: 100vh !important;
   }
 
   /* 커뮤니티 */

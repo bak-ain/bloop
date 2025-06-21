@@ -189,6 +189,12 @@
     top: 0;
     z-index: 2;
 }
+@media (max-width: 900px){
+   .nav{
+    width: 550px;
+    padding-left: 30px;
+   }
+}
 
 @media (max-width: 767px) {
     .header {
