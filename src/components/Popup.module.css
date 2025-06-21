@@ -398,5 +398,14 @@
     height: 40px;
   }
 
+  .uploadPopupEmojiPicker {
+    width: 94%;
+    bottom: 18%;
+  }
 
+  .closeBtn {
+    color: #111;
+    top: 26px;
+    right: 20px;
+  }
 }
