@@ -152,7 +152,9 @@ const PostCard = <T extends ArtistPost | FanPost>({
               <p className="card_p" dangerouslySetInnerHTML={{ __html: data.description }} />
             </div>
             {data.media && (
-              <div className={styles.a_media}>
+              <div
+                className={`${styles.a_media} ${data.media.length === 1 ? styles.single : styles.multi}`}
+              >
                 {data.media.slice(0, 2).map((m, i) =>
                   m.type === "video" ? (
                     <video key={i} src={m.url} controls className={styles.a_media_item} />

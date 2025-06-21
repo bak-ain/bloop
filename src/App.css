@@ -225,11 +225,13 @@ button {
   font-weight: 400;
   color: var(--font-color-7);
 }
-.day_span_2{
+
+.day_span_2 {
   font-size: 16px;
   font-weight: 400;
   color: var(--font-color-7);
 }
+
 .icon_num {
   font-size: 16px;
   font-weight: 500;
@@ -541,9 +543,11 @@ button {
   /* opacity: 0.5; */
   /* width: 400px !important; */
 }
-.swiper-3d .swiper-slide-shadow{
+
+.swiper-3d .swiper-slide-shadow {
   background: 0 !important;
 }
+
 .mainOfficialSwiper .swiper-slide.swiper-slide-active {
   /* opacity: 1; */
   transform: scale(1);
@@ -718,7 +722,38 @@ footer .inner,
   display: none;
 }
  */
+.officeSwiper .swiper-button-prev,
+.officeSwiper .swiper-button-next {
+  position: absolute;
+  top: 95% !important;
+  z-index: 10;
 
+  width: 30px!important;
+  height: 30px !important;
+  border-radius: 50%;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.officeSwiper .swiper-button-prev {
+  right: 12% !important;
+  left: auto !important;
+  /* bottom: 16px !important; */
+}
+
+.officeSwiper .swiper-button-next {
+  right: 5% !important;
+  left: auto !important;
+  /* bottom: 16px !important; */
+}
+
+.officeSwiper .swiper-button-prev::after,
+.officeSwiper .swiper-button-next::after {
+  font-size: 20px !important;
+  font-weight: bold !important;
+    color: #fff !important;
+}
 
 @media (max-width: 1024px) {
 
@@ -751,6 +786,18 @@ footer .inner,
     right: 10px;
     background-image: url('/public/images/icon/page_ri_on.png');
     background-size: contain;
+  }
+
+  .officeSwiper .swiper-button-prev {
+    right: 12%;
+    left: auto;
+    /* bottom: 16px !important; */
+  }
+
+  .officeSwiper .swiper-button-next {
+    right: 5%;
+    left: auto;
+    /* bottom: 16px !important; */
   }
 
 
@@ -883,12 +930,26 @@ footer .inner,
 }
 
 @media (max-width: 767px) {
-  .day_span_2{
+
+  .officeSwiper .swiper-button-prev,
+  .officeSwiper .swiper-button-next {
+    top: 92%;
+  }
+
+  .officeSwiper .swiper-button-prev::after,
+  .officeSwiper .swiper-button-next::after {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .day_span_2 {
     font-size: 14px;
   }
-  .artist-swiper-pagination{
+
+  .artist-swiper-pagination {
     padding-top: 12px;
   }
+
   .fan_top_p {
     font-size: 14px;
     line-height: 20px;
@@ -996,11 +1057,41 @@ footer .inner,
   }
 }
 
+
+
+
+@media (max-width: 656px) {
+  .officeSwiper img {
+    height: 340px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+  }
+
+  .officeSwiper .swiper-button-prev {
+    right: 15% !important;
+    left: auto !important;
+    /* bottom: 16px !important; */
+  }
+
+  .officeSwiper .swiper-button-next {
+    right: 5% !important;
+    left: auto !important;
+    /* bottom: 16px !important; */
+  }
+
+
+}
+
+
+
+
+
 @media (max-width:530px) {
 
 
   .inner {
-    padding-bottom: var( --mobile-footer-pad);
+    padding-bottom: var(--mobile-footer-pad);
   }
 
   .office_tag {
