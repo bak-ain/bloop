@@ -24,8 +24,6 @@
     position: relative;
 } */
 
-
-
 /* ===== 새 게시글 작성 ===== */
 .uploadPopupWrapper {
   width: 70vw;
@@ -284,12 +282,16 @@
   position: absolute;
   top: 30px;
   right: 60px;
-  background: none;
-  border: none;
-  color: #fff;
   font-size: 24px;
   cursor: pointer;
   z-index: 1001;
+}
+
+.closeBtn img {
+  width: 30px;
+  height: 30px;
+  transition: filter 0.2s;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
 /* 이모지 클래스 */
@@ -381,11 +383,8 @@
   }
 
   .uploadPopupEditor img {
-    width: 80%;
-  }
-
-  .uploadPopupBtnBoxRight {
-    gap: 5px;
+    width: 30%;
+    height: auto;
   }
 
   .uploadPopupTempBtn {
@@ -404,8 +403,14 @@
   }
 
   .closeBtn {
-    color: #111;
     top: 26px;
-    right: 20px;
+    right: 10px;
   }
+
+  .closeBtn img {
+    width: 20px;
+    height: 20px;
+    filter: none;
+  }
+
 }
