@@ -101,7 +101,10 @@
   flex-direction: column;
   gap: 5px;
 }
-
+.infoTxt p{
+  margin: 0;
+  white-space: nowrap;
+}
 .info {
   display: flex;
   flex-direction: column;
@@ -141,7 +144,7 @@
 .hashtags {
   color: var(--point-color-blue);
   font-size: 17px;
-  margin-bottom: 15px;
+/*   margin-bottom: 15px; */
   font-weight: 500;
   line-height: 33px;
 }
@@ -572,6 +575,7 @@
   display: inline-block;
   margin-left: 6px;
   vertical-align: middle;
+  margin-bottom: 4px;
 }
 
 /* .a_media {
@@ -893,7 +897,7 @@
 
 
 
-.single {
+/* .single {
   display: flex;
   gap: 8px;
   width: 100%;
@@ -930,8 +934,12 @@
     object-fit: cover;
     border-radius: 10px;
   }
+} */
+.profile_row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
-
 
 
 .single {
@@ -975,7 +983,9 @@
   }
 }
 
-
+.popularCard {
+  padding: 5px;
+}
 
 
 
@@ -1011,8 +1021,8 @@
   }
 
   .profile_img {
-    width: 32px;
-    height: 32px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
@@ -1027,7 +1037,8 @@
   .hashtags {
     font-size: 14px;
     font-weight: 500;
-    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    line-height: 20px;
   }
 
   .fan.post_card {
@@ -1128,8 +1139,8 @@
   }
 
   .a_profile_img {
-    width: 42px !important;
-    height: 42px !important;
+    width: 45px !important;
+    height: 45px !important;
     display: block;
     position: static !important;
   }

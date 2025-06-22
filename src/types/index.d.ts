@@ -102,7 +102,7 @@ export interface ScheduleEvent {
   date: string;
   title: string;
   description?: string;
-  type?: '공연' | '방송' | '팬미팅' |'팬사인회'| '기타';
+  type?: '공연' | '방송' | '팬미팅' |'팬사인회'| '기타' | '컴백';
 }
 
 export interface ScheduleDay {

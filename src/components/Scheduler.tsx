@@ -53,10 +53,15 @@ const Scheduler = () => {
       srcs: ["/images/calenderSt6.png", "/images/calenderSt2.png"],
       classNames: [styles.fansign1, styles.fansign2],
     },
+  
     기타: {
       srcs: ["/images/calenderSt10.png", "/images/calenderSt9.png"],
       classNames: [styles.etc1, styles.etc2],
     },
+    컴백: {
+      srcs: ["/images/calenderSt10.png", "/images/calenderSt9.png"],
+      classNames: [styles.etc1, styles.etc2],
+    }
   };
 
   // 타입별 전체 등장 순서 계산

@@ -5,7 +5,7 @@
     background-image: url(../../public/images/artist/bg.jpg);
     background-size: cover;
     background-position: bottom;
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
 
 }
 
@@ -31,8 +31,8 @@
 
 .writeButton {
     position: fixed;
-    bottom: 9rem;
-    right: 3.7rem;
+    bottom: 120px;
+    right: 60px;
     background: transparent;
     width: 55px;
     height: 55px;
@@ -169,7 +169,7 @@
 .storyPopupContent {
     width: 640px;
     height: 700px;
-    padding:  20px;
+    padding: 20px;
 }
 
 .closeBtn {
@@ -186,12 +186,14 @@
     align-items: center;
 
 }
-.closeBtn img{
+
+.closeBtn img {
     width: 20px;
     height: 20px;
     cursor: pointer;
     margin-bottom: 5px;
 }
+
 .storyHeader {
     display: flex;
     align-items: center;
@@ -215,7 +217,7 @@
     display: flex;
     align-items: center;
     /*     gap: 10px; */
-   /*  position: relative; */
+    /*  position: relative; */
     margin-bottom: 0;
 }
 
@@ -297,36 +299,80 @@
 }
 
 @media (max-width: 767px) {
+    .writeButton {
+    position: fixed;
+    bottom: 180px;
+    right: 25px;
+    background: transparent;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    z-index: 100;
+}
+
+    .paginationBtn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .pagination {
+        padding-top: 50px
+    }
+
+    .paginationBtn img {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+.paginationBtn+.paginationBtn {
+    margin-left: 15px;
+}
+
+
+
+
     .storyHeaderLeft {
-    gap: 5px;
-}
+        gap: 10px;
+    }
+
     .storyHeaderTxt {
-    gap: 0px;
-}
+        gap: 0px;
+    }
+
     .profileImg {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ff6fcb;
-}
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ff6fcb;
+    }
+
     .shareBtn img {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    margin-bottom: 5px;
-}
-.closeBtn img{
-    width: 17px;
-    height: 17px;
-    cursor: pointer;
-    margin-bottom: 5px;
-}
-    .storyHeaderRight{
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+
+    .closeBtn img {
+        width: 17px;
+        height: 17px;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+
+    .storyHeaderRight {
         position: relative;
     }
+
     .closeBtn {
- 
+
         top: 30px;
         right: 60px;
         background: none;
@@ -341,9 +387,7 @@
 
     }
 
-    .pagination {
-        padding-top: 50px
-    }
+
 
     /* .paginationBtn img {
     width: ;
@@ -363,9 +407,9 @@
     }
 
     .popView {
-        width: 110px;
-        height: 35px;
-        padding: 0 7px;
+        width: 130px;
+        height: 40px;
+        padding: 0 15px;
     }
 
     .popView img {
@@ -377,6 +421,7 @@
         padding-top: 30px;
         display: flex;
         justify-content: flex-end;
+        padding-right: 0px;
     }
 
     .feed {
