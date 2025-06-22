@@ -38,29 +38,29 @@ const Scheduler = () => {
     { srcs: string[]; classNames: string[] }
   > = {
     공연: {
-      srcs: ["/images/calenderSt1.png", "/images/calenderSt5.png"],
-      classNames: [styles.performance1, styles.performance2],
+      srcs: ["/images/schedule/s1-1.png", "/images/schedule/s1-2.png","/images/schedule/s1-3.png","/images/schedule/s1-4.png"],
+      classNames: [styles.performance1, styles.performance2,styles.performance3, styles.performance4],
     },
     방송: {
-      srcs: ["/images/calenderSt7.png", "/images/calenderSt3.png"],
-      classNames: [styles.broadcast1, styles.broadcast2],
+      srcs: ["/images/schedule/s2-1.png"],
+      classNames: [styles.broadcast1],
     },
     팬미팅: {
-      srcs: ["/images/calenderSt4.png", "/images/calenderSt8.png", "/images/calenderSt2.png"],
-      classNames: [styles.fanmeeting1, styles.fanmeeting2, styles.fanmeeting3],
+      srcs: ["/images/schedule/s3-1.png"],
+      classNames: [styles.fanmeeting1],
     },
     팬사인회: {
-      srcs: ["/images/calenderSt6.png", "/images/calenderSt2.png"],
-      classNames: [styles.fansign1, styles.fansign2],
+      srcs: ["/images/schedule/s3-2.png"],
+      classNames: [styles.fansign1],
     },
   
     기타: {
-      srcs: ["/images/calenderSt10.png", "/images/calenderSt9.png"],
-      classNames: [styles.etc1, styles.etc2],
+      srcs: ["/images/schedule/s5-1.png"],
+      classNames: [styles.etc1],
     },
-    컴백: {
-      srcs: ["/images/calenderSt10.png", "/images/calenderSt9.png"],
-      classNames: [styles.etc1, styles.etc2],
+    촬영: {
+      srcs: ["/images/schedule/s6-1.png", "/images/schedule/s6-2.png"],
+      classNames: [styles.Filming1, styles.Filming2],
     }
   };
 
