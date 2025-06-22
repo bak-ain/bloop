@@ -685,7 +685,7 @@ footer .inner,
 }
 
 .artist-swiper-pagination .swiper-pagination-bullet {
-  background: #ccc !important;
+  background: #000 !important;
   opacity: 1 !important;
   width: 10px !important;
   height: 10px !important;
@@ -693,6 +693,7 @@ footer .inner,
 
 .artist-swiper-pagination .swiper-pagination-bullet-active {
   background: var(--point-color-yellow) !important;
+/*   border: 2px solid #000 !important; */
 }
 
 /* 인기 게시물 */
@@ -916,6 +917,7 @@ footer .inner,
     font-weight: 500;
     font-size: 18px;
     line-height: 25px;
+    
   }
 
   .offic_h4 {
@@ -971,6 +973,7 @@ footer .inner,
   .fan_top_p {
     font-size: 14px;
     line-height: 20px;
+    padding-left: 5px;
   }
 
   .h3_tit {
@@ -1310,6 +1313,11 @@ footer .inner,
 }
 
 @media (max-width: 402px) {
+    .all_p_t {
+    padding-top: 80px;
+
+  }
+
 
   .offic_h2 {
     font-size: 22px;
