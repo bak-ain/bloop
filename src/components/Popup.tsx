@@ -220,7 +220,7 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
     const newPost: FanPost = {
       id: "temp-id-" + Date.now(),
       user: {
-        name: user.name,
+        name: (user as any).nickname || user.name || "",
         profileImage: (user as any).profileImage || "/profile_img.png",
         badgeType: user.userType === 'agency' ? 'fan' : user.userType,
         badgeLevel: (user as any).badgeLevel || 1,
@@ -228,7 +228,7 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
       },
       date: dayjs().toISOString(),
       description, // HTML로 저장
-      hashtag: hashtags.map(tag => `#${tag}`).join(","),
+      hashtag: hashtags.map(tag => `#${tag}`).join(" "),
       likes: 0,
       comment: 0,
       media: images.map((url) => ({ type: "image", url })),
@@ -391,7 +391,11 @@ const EditPopup = ({
   const [images, setImages] = useState<string[]>(data.media?.map((m) => m.url) || []);
   const [hashtagInput, setHashtagInput] = useState("");
   const [hashtags, setHashtags] = useState<string[]>(
-    data.hashtag ? data.hashtag.split(",").map((tag) => tag.replace(/^#/, "")) : []
+    data.hashtag
+      ? data.hashtag
+        .split(/(?:\s+|#)+/) // 공백 또는 # 기준으로 분리
+        .filter(tag => tag.trim() !== "")
+      : []
   );
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const editorRef = useRef<HTMLDivElement>(null);
@@ -489,7 +493,7 @@ const EditPopup = ({
     const updatedPost: FanPost = {
       ...data,
       description,
-      hashtag: hashtags.map(tag => `#${tag}`).join(","),
+      hashtag: hashtags.map(tag => `#${tag}`).join(" "),
       media: images.map((url) => ({ type: "image", url })),
     };
     if (onSubmit) onSubmit(updatedPost);

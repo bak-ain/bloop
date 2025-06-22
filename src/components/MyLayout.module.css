@@ -139,7 +139,11 @@
   height: auto;
   object-fit: cover;
 } */
-.badgeIcon,
+ .badgeIcon{
+  width: 24px;
+  height: auto;
+  object-fit: cover;
+ }
 .likeIcon,
 .pop_icon {
   width: 30px;
@@ -150,7 +154,7 @@
 .CardUserRow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .CardRight {
@@ -178,8 +182,9 @@
     background-size: 100%, 100%, contain, contain;
     padding: 15px;
   }
-
-  .badgeIcon,
+  .badgeIcon{
+    width: 22px;
+  }
   .likeIcon,
   .pop_icon {
     width: 24px;
@@ -190,7 +195,7 @@
   }
 
   .CardUserRow {
-    gap: 5px;
+    gap: 3px;
   }
 
   .cardThumb {
