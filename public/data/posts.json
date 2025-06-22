@@ -356,7 +356,7 @@
     {
       "id": "f1",
       "user": {
-        "name": "@testfan",
+        "name": "testfan",
         "profileImage": "/images/my/me.png",
         "badgeType": "fan",
         "badgeLevel": 1,
@@ -479,7 +479,7 @@
     {
       "id": "f6",
       "user": {
-        "name": "@testfan",
+        "name": "testfan",
         "profileImage": "/images/my/me.png",
         "badgeType": "fan",
         "badgeLevel": 1
@@ -505,7 +505,7 @@
     {
       "id": "f7",
       "user": {
-        "name": "@testfan",
+        "name": "testfan",
         "profileImage": "/images/my/me.png",
         "badgeType": "fan",
         "badgeLevel": 1,
@@ -650,7 +650,7 @@
     {
       "id": "f13",
       "user": {
-        "name": "@testfan",
+        "name": "testfan",
         "profileImage": "/images/my/me.png",
         "badgeType": "fan",
         "badgeLevel": 1,
@@ -703,7 +703,7 @@
     {
       "id": "f15",
       "user": {
-        "name": "@testfan",
+        "name": "testfan",
         "profileImage": "/images/my/me.png",
         "badgeType": "fan",
         "badgeLevel": 1,
