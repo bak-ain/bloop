@@ -4,7 +4,8 @@ export interface UserPreview {
   profileImage: string;
   badgeType: 'fan' | 'artist';
   badgeLevel?: 1 | 2 | 3;
-  userId?: string;              // @아이디 표기용 (옵셔널)
+  userId?: string;   
+  nickname?: string; // 팬 계정일 경우 닉네임
 }
 
 //게시물

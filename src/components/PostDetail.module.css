@@ -25,7 +25,8 @@
 
 /* PostDetail.module.css 예시 */
 .reply_toggle_row {
-  position: relative;
+  width: 100%;
+  text-align: left;
 }
 
 .reply_toggle_btn {
@@ -40,7 +41,7 @@
 /* 답글(대댓글) 리스트가 댓글 아래로 자연스럽게 펼쳐지도록 스타일 추가 */
 .reply_list {
   width: calc(100% + 20px);
-  margin-left: 20px;
+  /* margin-left: 20px; */
   margin-top: 8px;
   display: flex;
   flex-direction: column;
@@ -335,6 +336,7 @@
 .comment_item {
   display: flex;
   justify-content: space-between;
+  /* align-items: center; */
 }
 
 .comment_item_left {
@@ -415,6 +417,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .comment_like_box {
@@ -422,6 +425,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-self: flex-start;
+  margin-top: 3%;
 }
 
 .comment_like_box button {
@@ -602,6 +607,15 @@
   .post_detail_all {
     width: 90%;
   }
+
+
+}
+
+@media screen and (max-width: 768px) {
+  .reply_item {
+    width: 90%;
+  }
+
 }
 
 @media (max-width: 767px) {
@@ -692,6 +706,10 @@
     width: 38px;
     height: 38px;
   }
+
+  .reply_item {
+    width: 100%;
+  }
 }
 
 @media (max-width: 656px) {
@@ -771,7 +789,7 @@
   .post_detail {
     padding: 0;
   }
-  
+
   .mobile_header {
     display: flex;
     width: 100%;
@@ -848,9 +866,9 @@
     font-size: 16px;
   }
 
-    .profile_row p {
-      font-size: 14px;
-    }
+  .profile_row p {
+    font-size: 14px;
+  }
 
   .profile_row .info img {
     width: 20px;
@@ -967,5 +985,11 @@
   .sticker_picker {
     height: 32%;
     padding-top: 10px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .reply_item {
+    width: 90%;
   }
 }

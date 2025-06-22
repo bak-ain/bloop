@@ -11,7 +11,6 @@ import { useComment } from "../context/CommentContext";
 import { useUserContext } from "../context/UserContext ";
 import { useMyContent } from "../context/MyContentContext";
 
-
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
@@ -49,7 +48,8 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     likedCommentIds,
   } = useComment();
 
-  const { user } = useUserContext(); // 추가
+  const { user } = useUserContext();
+  const { removeWritten, removeComment } = useMyContent();
 
   function getDisplayDate(dateStr: string) {
     const now = dayjs();
@@ -72,15 +72,13 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
   const [replyToId, setReplyToId] = useState<string | null>(null);
   const [showStickerPicker, setShowStickerPicker] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState<{ type: "post" | "comment", id: string } | null>(null);
-  const userLevel = (user && (user as any).badgeLevel) || 1; // 실제 유저의 badgeLevel 사용
+  const userLevel = (user && (user as any).badgeLevel) || 1;
   const emojis = getAvailableEmojis(userLevel);
   const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
   const [showMoreMenu, setShowMoreMenu] = useState(false);
-  const [showEditPopup, setShowEditPopup] = useState(false);
-  const { removeWritten, removeComment } = useMyContent();
 
   // 내 userId
-  const myUserId = user?.id || ""; // Context에서 가져옴
+  const myUserId = user?.id || "";
 
   useEffect(() => {
     setLiked(likedPostIds.includes(data.id));
@@ -125,11 +123,22 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     }
     if (!input.content.trim() && !input.emoji) return;
 
+    let content = input.content;
+    // 답글일 때만 @유저이름 제거
+    if (replyToId) {
+      // 댓글 내용이 "@닉네임 "으로 시작하면 제거
+      const replyTarget = comments.find(c => c.id === replyToId);
+      if (replyTarget && content.startsWith(`@${replyTarget.user.name} `)) {
+        content = content.replace(`@${replyTarget.user.name} `, "");
+      }
+    }
+
     const commentData: CommentPost = {
       id: `${Date.now()}-${Math.random()}`,
       postId: data.id,
       postType: type,
       ...input,
+      content, // 수정된 내용 사용
       user: {
         name: user.name,
         profileImage: (user as any).profileImage || "/images/profiles/me.png",
@@ -161,13 +170,13 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     if (!confirmDelete) return;
     if (confirmDelete.type === "post") {
       setPostList(prev => prev.filter(post => post.id !== confirmDelete.id));
-      removeWritten(confirmDelete.id); // 마이페이지 내 글에서도 삭제
+      removeWritten(confirmDelete.id);
       alert("삭제되었습니다.");
       setConfirmDelete(null);
       if (typeof onClose === "function") onClose();
     } else {
       deleteComment(type, data.id, confirmDelete.id);
-      removeComment(confirmDelete.id); // 마이페이지 내 댓글에서도 삭제
+      removeComment(confirmDelete.id);
       alert("삭제되었습니다.");
       setConfirmDelete(null);
     }
@@ -203,7 +212,6 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
           className={styles.back_btn}
           onClick={() => {
             if (onClose) onClose();
-            // 아티스트/팬 피드로 이동
             if (type === "artist") navigate("/muse");
             else navigate("/loop");
           }}
@@ -287,7 +295,6 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                 src={scrapped ? "/images/icon/pop_p_icon.png" : "/images/icon/pop_icon.png"}
                 alt={scrapped ? "스크랩 취소" : "스크랩"}
               />
-              {/* {scrapped ? "🔖" : "📌"} */}
             </button>
           </div>
         </section>
@@ -297,74 +304,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
               <div key={c.id} className={styles.comment_item}>
                 <div className={styles.comment_item_left}>
                   <img src={c.user.profileImage} alt={c.user.name} className={styles.comment_avatar} />
-                  {/* <div className={styles.comment_content}>
-                                    <strong>
-                                        {c.user.name}
-                                        <img className={styles.badge_img} src={getBadgeImage(c.user.badgeType, c.user.badgeLevel)} alt="badge" />
-                                    </strong>
-                                    <p>{c.content}</p>
-                                    {c.emoji && <img src={c.emoji} className={styles.comment_emoji} />}
-                                    <div className={styles.comment_meta}>
-                                        <span>{getDisplayDate(c.date)}</span>
-                                        <button className={styles.commentBtn} onClick={() => toggleReplyInput(c.id, c.user.name)}>답글 달기</button>
-                                        <button className={styles.deleteBtn}
-                                            onClick={() => setConfirmDelete({ type: "comment", id: c.id })}> 삭제
-                                        </button>
-                                        {c.editable && (
-                                            <button
-                                                className={styles.delete}
-                                                onClick={() => setConfirmDelete({ type: "comment", id: c.id })}
-                                            >
-                                                삭제
-                                            </button>
-                                        )}
-                                    </div>
-                                    <div className={styles.comment_actions}>
-                                        <button onClick={() => handleCommentLike(c.id)}>
-                                            <img
-                                                src={likedCommentIds.includes(c.id) ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
-                                                alt={likedCommentIds.includes(c.id) ? "좋아요 취소" : "좋아요"}
-                                                className={styles.comment_like_icon}
-                                            />
-                                        </button>
-                                        <span>{c.likes}</span>
-                                    </div>
-                                    {c.replies && c.replies.length > 0 && (
-                                        <div className={styles.reply_toggle_row}>
-                                            <button onClick={() => handleShowReplies(c.id)}>
-                                                {c.replies.length}개 답글 보기
-                                            </button>
-                                        </div>
-                                    )}
-                                    {c.replies && c.replies.length > 0 && showRepliesMap[c.id] && (
-                                        <div className={styles.reply_list}>
-                                            {c.replies.map((r) => (
-                                                <div key={r.id} className={styles.reply_item}>
-                                                    <img src={r.user.profileImage} alt={r.user.name} className={styles.comment_avatar} />
-                                                    <div>
-                                                        <strong>
-                                                            {r.user.name}
-                                                            <img className={styles.badge_img} src={getBadgeImage(r.user.badgeType, r.user.badgeLevel)} alt="badge" />
-                                                        </strong>
-                                                        <p>{r.content}</p>
-                                                        {r.emoji && <img src={r.emoji} className={styles.comment_emoji} />}
-                                                        <div className={styles.comment_meta}>
-                                                            <span>{getDisplayDate(r.date)}</span>
-                                                            {r.editable && <button className={styles.delete} onClick={() => setConfirmDelete({ type: "comment", id: r.id })}>삭제</button>}
-                                                        </div>
-                                                        <div className={styles.comment_actions}>
-                                                            <button onClick={() => handleCommentLike(r.id)}>{likedCommentIds.includes(r.id) ? "❤️" : "🤍"}</button>
-                                                            <span>{r.likes}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-
-                                </div> */}
                   <div className={styles.comment_content_row}>
-                    {/* 왼쪽 영역: 유저 정보 + 내용 + 삭제 버튼 */}
                     <div className={styles.comment_main}>
                       <div className={styles.comment_main_top}>
                         <strong>
@@ -377,19 +317,59 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                       <div className={styles.comment_meta}>
                         <span>{getDisplayDate(c.date)}</span>
                         <button className={styles.commentBtn} onClick={() => toggleReplyInput(c.id, c.user.name)}>답글 달기</button>
-                        <button className={styles.deleteBtn} onClick={() => setConfirmDelete({ type: "comment", id: c.id })}>삭제</button>
-                        {/* {c.editable && (
-                                                    <button className={styles.delete} onClick={() => setConfirmDelete({ type: "comment", id: c.id })}>삭제</button>
-                                                )} */}
+                        {c.user.userId === myUserId && (
+                          <button className={styles.deleteBtn} onClick={() => setConfirmDelete({ type: "comment", id: c.id })}>삭제</button>
+                        )}
+
                       </div>
+                      {/* 답글 토글/리스트 */}
+                      {c.replies && c.replies.length > 0 && (
+                        <div className={styles.reply_toggle_row}>
+                          <button onClick={() => handleShowReplies(c.id)} className={styles.reply_toggle_btn}>
+                            {showRepliesMap[c.id]
+                              ? "답글 숨기기"
+                              : `${c.replies.length}개 답글 보기`}
+                          </button>
+                        </div>
+                      )}
+                      {c.replies && c.replies.length > 0 && showRepliesMap[c.id] && (
+                        <div className={styles.reply_list}>
+                          {c.replies.map((r) => (
+                            <div key={r.id} className={styles.reply_item}>
+                              <div className={styles.reply_item_left}>
+                                <img src={r.user.profileImage} alt={r.user.name} className={styles.comment_avatar} />
+                                <div className={styles.reply_item_info}>
+                                  <strong>
+                                    {r.user.name}
+                                    <img className={styles.badge_img} src={getBadgeImage(r.user.badgeType, r.user.badgeLevel)} alt="badge" />
+                                  </strong>
+
+                                  <p>{r.content}</p>
+                                  {r.emoji && <img src={r.emoji} className={styles.comment_emoji} />}
+                                  <div className={styles.comment_meta}>
+                                    <span>{getDisplayDate(r.date)}</span>
+                                    {r.user.userId === myUserId && (
+                                      <button className={styles.delete} onClick={() => setConfirmDelete({ type: "comment", id: r.id })}>삭제</button>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className={styles.comment_actions}>
+                                <button onClick={() => handleCommentLike(r.id)}>  <img
+                                  src={likedCommentIds.includes(r.id) ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+                                  alt={likedCommentIds.includes(r.id) ? "좋아요 취소" : "좋아요"}
+                                  className={styles.comment_like_icon}
+                                /></button>
+                                <span>{r.likes}</span>
+                              </div>
+
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
-
-
                   </div>
                 </div>
-
-
-
                 {/* 오른쪽 영역: 좋아요 */}
                 <div className={styles.comment_like_box}>
                   <button onClick={() => handleCommentLike(c.id)}>
@@ -401,6 +381,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
                   </button>
                   <span>{c.likes}</span>
                 </div>
+
               </div>
             ))}
           </div>
@@ -417,7 +398,6 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
             </div>
           )}
 
-
           <div className={styles.comment_input}>
             <input
               className={`${styles.comment_input_field} ${styles.day_span}`}
@@ -425,6 +405,12 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
               value={input.content}
               onChange={(e) => setInput({ ...input, content: e.target.value })}
               placeholder="댓글을 입력하세요"
+              onKeyDown={e => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSubmitComment();
+                }
+              }}
             />
             <button className={styles.smileBtn} onClick={() => setShowStickerPicker((prev) => !prev)}>
               <img src="/images/icon/smile.png" alt="스티커 선택" />

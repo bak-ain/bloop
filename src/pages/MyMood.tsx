@@ -176,7 +176,7 @@ const MyMood = () => {
                 alt="뱃지"
               />
             </span>
-            <span className={styles.profileNickname}>{user.name}</span>
+            <span className={styles.profileNickname}>{profile.nickname}</span>
           </div>
         </div>
 
