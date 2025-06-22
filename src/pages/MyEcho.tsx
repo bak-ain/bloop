@@ -51,7 +51,7 @@ const MyEcho = () => {
   const [editPopupOpen, setEditPopupOpen] = useState(false);
   const [editPost, setEditPost] = useState<FanPost | null>(null);
 
-  const { written, comments, setWritten } = useMyContent();
+  const { written, setWritten, removeWritten, comments, removeComment } = useMyContent();
   const { artistPosts, setArtistPosts, fanPosts, setFanPosts } = usePostList();
   const {
     artistLikedPosts,
@@ -113,9 +113,15 @@ const MyEcho = () => {
 
   const handleDelete = () => {
     if (tab === 'written') {
-      setWritten(written.filter(w => !checkedIds.includes(w.id)));
+      checkedIds.forEach(id => {
+        removeWritten(id); // 마이페이지(내가 쓴 글)에서 삭제
+
+        // 전체 피드에서도 삭제
+        setArtistPosts(prev => prev.filter(post => post.id !== id));
+        setFanPosts(prev => prev.filter(post => post.id !== id));
+      });
     } else if (tab === 'comment') {
-      setMyComments(myComments.filter(c => !checkedIds.includes(c.id)));
+      checkedIds.forEach(id => removeComment(id));
     } else if (tab === 'liked') {
       setArtistLikedPosts(artistLikedPosts.filter(p => !checkedIds.includes(p.id)));
       setFanLikedPosts(fanLikedPosts.filter(p => !checkedIds.includes(p.id)));

@@ -9,6 +9,9 @@ import 'dayjs/locale/ko';
 import { useLikedScrapped } from "../context/LikedScrappedContext";
 import { useComment } from "../context/CommentContext";
 import { useUserContext } from "../context/UserContext ";
+import { useMyContent } from "../context/MyContentContext";
+
+
 dayjs.extend(relativeTime);
 dayjs.locale('ko');
 
@@ -74,6 +77,7 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
   const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
   const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
+  const { removeWritten, removeComment } = useMyContent();
 
   // 내 userId
   const myUserId = user?.id || ""; // Context에서 가져옴
@@ -157,11 +161,13 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
     if (!confirmDelete) return;
     if (confirmDelete.type === "post") {
       setPostList(prev => prev.filter(post => post.id !== confirmDelete.id));
+      removeWritten(confirmDelete.id); // 마이페이지 내 글에서도 삭제
       alert("삭제되었습니다.");
       setConfirmDelete(null);
       if (typeof onClose === "function") onClose();
     } else {
       deleteComment(type, data.id, confirmDelete.id);
+      removeComment(confirmDelete.id); // 마이페이지 내 댓글에서도 삭제
       alert("삭제되었습니다.");
       setConfirmDelete(null);
     }
