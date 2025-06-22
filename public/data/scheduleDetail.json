@@ -1,98 +1,130 @@
 [
   {
     "id": "s1",
-    "title": "SBS 인기가요 컴백 무대",
-    "imageUrl": "/images/1.png",
-    "datetime": "2025.06.01(일) 오후 3:00",
-    "location": "서울 등촌동 SBS 공개홀",
-    "description": "3집 앨범 활동 첫 음악방송 출연"
+    "title": "Dream 녹음",
+    "imageUrl": "/images/schedule/s1.png",
+    "datetime": "2025.06.05(목) 오후 3:00",
+    "location": "서울 성수동 H-Studios 3층",
+    "description": "미니 3집 타이틀 곡 ‘Dream’의 보컬 녹음"
   },
   {
     "id": "s2",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "런닝맨촬영",
+    "imageUrl": "/images/schedule/s2.png",
+    "datetime": "2025.06.08(일) 오전 10:00",
+    "location": "SBS 프리즘타워 공개홀",
+    "description": "SBS 예능 ‘런닝맨’ 촬영 일정"
   },
     {
     "id": "s3",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "뮤직비디오 촬영",
+    "imageUrl": "/images/schedule/s3.png",
+    "datetime": "2025.06.09(월) 오전 7:00",
+    "location": "경기 파주시 모션랩스 스튜디오",
+    "description": "타이틀곡 ‘Dream’의 공식 뮤직비디오 촬영 일정"
   },
     {
     "id": "s4",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "음악중심 사전녹화",
+    "imageUrl": "/images/schedule/s4.png",
+    "datetime": "2025.06.10(화) 오전 5:30",
+    "location": "서울 상암 MBC 공개홀",
+    "description": "MBC ‘쇼! 음악중심’ 출연을 위한 무대 사전 녹화 일정"
   },
     {
     "id": "s5",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "팬사인회(부산)",
+    "imageUrl": "/images/schedule/s5.png",
+    "datetime": "2025.06.14(토) 오후 6:00",
+    "location": "부산 서면 롯데백화점 9층",
+    "description": "미니 3집 ‘DREAM’ 발매 기념 오프라인 팬사인회 (부산) 일정"
   },
     {
     "id": "s6",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "팬사인회(대전)",
+    "imageUrl": "/images/schedule/s6.png",
+    "datetime": "2025.06.15(일) 오후 3:00",
+    "location": "대전 신세계백화점 아트홀 10층",
+    "description": "미니 3집 ‘DREAM’ 발매 기념 오프라인 팬사인회 (대전) 일정"
   },
     {
     "id": "s7",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "건국대학교 축제",
+    "imageUrl": "/images/schedule/s7.png",
+    "datetime": "2025.06.18(수) 오후 5:00",
+    "location": "건국대학교 서울캠퍼스 운동장",
+    "description": "건국대학교 축제 초청 공연 스케줄"
   },
     {
     "id": "s8",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "콘서트 DAY1",
+    "imageUrl": "/images/schedule/s8.png",
+    "datetime": "2025.06.23(월) 오후 6:00",
+    "location": "올림픽공원 SK 핸드볼경기장",
+    "description": "HIBIS 첫 단독 콘서트 ‘[STARSEED]’ DAY 1 공연 일정"
   },
-    {
+      {
     "id": "s9",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "콘서트 DAY2",
+    "imageUrl": "/images/schedule/s9.png",
+    "datetime": "2025.06.24(화) 오후 6:00",
+    "location": "올림픽공원 SK 핸드볼경기장",
+    "description": "HIBIS 첫 단독 콘서트 ‘[STARSEED]’ DAY 2 공연 일정"
   },
-    {
+      {
     "id": "s10",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "Dream 앨범 발매",
+    "imageUrl": "/images/schedule/s10.png",
+    "datetime": "2025.06.28(토) 오후 8:00",
+    "location": "온라인 음원 및 오프라인 매장",
+    "description": "타이틀곡 ‘Dream’ 공식 음원 및 앨범 발매 일정"
   },
-    {
+        {
     "id": "s11",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": "M/V 비하인드 공개",
+    "imageUrl": "/images/schedule/s11.png",
+    "datetime": "2025.07.09(수) 오후 6:00",
+    "location": "공식 YouTube 채널",
+    "description": "타이틀곡 ‘Dream’ 공식 음원 및 앨범 발매 일정"
   },
-    {
+          {
     "id": "s12",
-    "title": "팬사인회 (홍대)",
-    "imageUrl": "/images/2.png",
-    "datetime": "2025.06.10(화) 오후 5:00",
-    "location": "홍대 무신사 스튜디오",
-    "description": "앨범 구매자 대상 추첨 팬사인회"
+    "title": " 도쿄 쇼케이스",
+    "imageUrl": "/images/schedule/s12.png",
+    "datetime": "2025.07.13(일) 오후 4:00",
+    "location": "Zepp Haneda, Tokyo, Japan",
+    "description": "HIBIS 일본 첫 단독 쇼케이스 공연 일정"
+  },
+            {
+    "id": "s13",
+    "title": "인간극장 촬영",
+    "imageUrl": "/images/schedule/s13.png",
+    "datetime": "2025.07.15(화) 오후 4:00",
+    "location": "Zepp Haneda, Tokyo, Japan",
+    "description": "다큐멘터리 예능 ‘아이돌 인간극장’ 촬영 일정"
+  },
+              {
+    "id": "s14",
+    "title": "[아린] 나이키 화보",
+    "imageUrl": "/images/schedule/s14.png",
+    "datetime": "2025.07.16(수) 오전 2:00",
+    "location": "서울 성수동 D-Studio",
+    "description": "아린 × Nike 브랜드 협업 화보 촬영 일정"
+  },
+                {
+    "id": "s15",
+    "title": "[도아] 화보 촬영",
+    "imageUrl": "/images/schedule/s15.png",
+    "datetime": "2025.07.20(일) 오전 5:00",
+    "location": "비공개 스튜디오 (Seoul)",
+    "description": "도아 단독 화보 촬영 일정"
+  },
+                  {
+    "id": "s16",
+    "title": "방콕 단독 공연",
+    "imageUrl": "/images/schedule/s16.png",
+    "datetime": "2025.07.26(토) 오후 6:00",
+    "location": "Thunder Dome, Bangkok (Thailand)",
+    "description": "HIBIS 첫 태국 단독 콘서트 ‘in Bangkok’ 공연 일정"
   }
 ]
