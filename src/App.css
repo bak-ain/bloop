@@ -940,6 +940,14 @@ footer .inner,
 }
 
 @media (max-width: 767px) {
+  .icon_num {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .btn_txt {
+    font-size: 14px;
+  }
 
   .officeSwiper .swiper-button-prev,
   .officeSwiper .swiper-button-next {
@@ -1039,6 +1047,7 @@ footer .inner,
     width: 50px !important;
     height: 50px !important;
   }
+
   #chatbase-bubble-window {
     max-height: 100vh !important;
   }
@@ -1194,17 +1203,13 @@ footer .inner,
     font-size: 14px;
   }
 
-  .icon_num {
-    font-size: 16px;
-  }
+
 
   .pagenation_num {
     font-size: 16px;
   }
 
-  .btn_txt {
-    font-size: 14px;
-  }
+
 
   /* 메인 */
   .main_card_h2 {
@@ -1222,7 +1227,7 @@ footer .inner,
 
 
   .fan_top_day {
-    font-size: 10px;
+    font-size: 13px;
   }
 
 
