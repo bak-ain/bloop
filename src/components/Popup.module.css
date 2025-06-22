@@ -310,6 +310,7 @@
 
 /* 모바일: 모달이 아니라 페이지 전체처럼 */
 @media (max-width: 768px) {
+
   .popupWrapper {
     position: fixed;
     left: 0;
