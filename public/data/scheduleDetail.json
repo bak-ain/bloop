@@ -61,7 +61,7 @@
     "imageUrl": "/images/schedule/s8.png",
     "datetime": "2025.06.23(월) 오후 6:00",
     "location": "올림픽공원 SK 핸드볼경기장",
-    "description": "HIBIS 첫 단독 콘서트 ‘[STARSEED]’ DAY 1 공연 일정"
+    "description": "HIBIS 첫 단독 콘서트 [STARSEED] DAY 1 공연 일정"
   },
       {
     "id": "s9",
@@ -69,7 +69,7 @@
     "imageUrl": "/images/schedule/s9.png",
     "datetime": "2025.06.24(화) 오후 6:00",
     "location": "올림픽공원 SK 핸드볼경기장",
-    "description": "HIBIS 첫 단독 콘서트 ‘[STARSEED]’ DAY 2 공연 일정"
+    "description": "HIBIS 첫 단독 콘서트 [STARSEED] DAY 2 공연 일정"
   },
       {
     "id": "s10",
@@ -124,7 +124,40 @@
     "title": "방콕 단독 공연",
     "imageUrl": "/images/schedule/s16.png",
     "datetime": "2025.07.26(토) 오후 6:00",
-    "location": "Thunder Dome, Bangkok (Thailand)",
+    "location": "Thunder Dome, Bangkok",
     "description": "HIBIS 첫 태국 단독 콘서트 ‘in Bangkok’ 공연 일정"
+  },
+                    {
+    "id": "s17",
+    "title": "유퀴즈 출연",
+    "imageUrl": "/images/schedule/s17.png",
+    "datetime": "2025.08.06(수) 오후 2:00",
+    "location": "서울 마포구 CJ ENM 센터 1층 스튜디오",
+    "description": "유 퀴즈 온 더 블럭 출연 일정"
+  },
+                      {
+    "id": "s18",
+    "title": "WATERBOMB",
+    "imageUrl": "/images/schedule/s18.png",
+    "datetime": "2025.08.14(목) 오후 5:30",
+    "location": "서울 잠실종합운동장 보조경기장",
+    "description": " ‘WATERBOMB SEOUL 2025’ 특별 무대"
+  },
+                        {
+    "id": "s19",
+    "title": "SUMMER K-POP NIGHT",
+    "imageUrl": "/images/schedule/s19.png",
+    "datetime": "2025.08.16(토) 오후 7:00",
+    "location": "제주국제컨벤션센터",
+    "description": "제주국제컨벤션센터 야외 특설무대"
+  },
+                          {
+    "id": "s20",
+    "title": "단체 휴가 시작",
+    "imageUrl": "/images/schedule/s20.png",
+    "datetime": "2025.08.17(일)",
+    "location": "비공개 (멤버 개별 일정)",
+    "description": "하이비스 단체 공식 여름휴가"
   }
+  
 ]

@@ -17,7 +17,7 @@ const initialUsers: User[] = [
     {
         userType: "fan",
         id: "testfan",
-        nickname: "테스트팬",
+        nickname: "비스러버",
         password: "1234",
         confirmPassword: "1234",
         name: "이소민",

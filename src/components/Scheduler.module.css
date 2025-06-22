@@ -161,35 +161,42 @@
 }
 
 .performance1 {
-    width: 40%;
-
+    width: 45%;
+    right: 5%;
+    top: 10%;
 }
 
 .performance2 {
-    width: 30%;
+    width: 60%;
+    right: 10%;
+}
+
+.performance3 {
+    width: 50%;
+    right: 0%;
+    top: 5%;
+}
+
+.performance4 {
+    width: 50%;
+    right: 15%;
+    top: 5%;
 }
 
 .broadcast1 {
     width: 40%;
-}
-
-.broadcast2 {
-    width: 50%;
-    top: 0;
-    right: 0;
+   top: 30%;
+   right: 5%;
 }
 
 .fanmeeting1 {
-    width: 60%;
-
+    width: 70%;
+top: 15%;
+right: 5%;
 }
 
 .fanmeeting2 {
     width: 50%;
-}
-
-.fanmeeting3 {
-    width: 60%;
 }
 
 .fansign1 {
@@ -198,20 +205,22 @@
     right: 0;
 }
 
-.fansign2 {
-    width: 60%;
-}
-
 .etc1 {
-    width: 20%;
-    top: 40%;
-    right: 20%;
+    width: 50%;
+    top: 10%;
+    right: 5%;
 }
 
-.etc2 {
-    width: 30%;
-    top: 30%;
-    right: 20%;
+.Filming1 {
+    width: 60%;
+    top: 5%;
+    right: 5%;
+}
+
+.Filming2 {
+    width: 70%;
+    top: 0%;
+    right: 0%;
 }
 
 .schedulerInfo {

@@ -31,6 +31,7 @@ const Mypage = () => {
         badgeType: user.userType === "agency" ? "artist" : user.userType,
         badgeLevel: user.userType === "fan" ? (user as any).badgeLevel ?? 1 : 1,
         userId: user.id,
+        nickname: (user as any).nickname || "비스러버",
     };
 
     // 임시 등급 데이터 (실제 서비스에서는 user 데이터 기반으로 변경)
@@ -69,7 +70,7 @@ const Mypage = () => {
                                 )}
                             </div>
                             <div className={styles.profileInfo}>
-                                <p className={styles.profileName}>{userPreview.name} 님</p>
+                                <p className={styles.profileName}>{userPreview.nickname} 님</p>
                                 <span className={styles.profileId}>@{userPreview.userId}</span>
                             </div>
                         </div>
@@ -78,7 +79,7 @@ const Mypage = () => {
                         <div className={styles.levelCard}>
                             <div className={styles.levelInfo}>
                                 <div className={styles.levelLabel}>
-                                    현재 {userPreview.name}님의 등급은
+                                    현재 {userPreview.nickname}님의 등급은
                                 </div>
                                 <div className={styles.levelName}>
                                     <span>BLING</span>

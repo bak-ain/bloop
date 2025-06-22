@@ -4,7 +4,7 @@
     "postId": "a1",
     "postType": "artist",
     "user": {
-      "name": "@testfan",
+      "name": "비스러버",
       "profileImage": "/images/my/me.png",
       "badgeType": "fan",
       "badgeLevel": 1,
@@ -375,7 +375,7 @@
     "postId": "a3",
     "postType": "artist",
     "user": {
-      "name": "@testfan",
+      "name": "비스러버",
       "profileImage": "/images/my/me.png",
       "badgeType": "fan",
       "badgeLevel": 1,
@@ -532,7 +532,7 @@
     "postId": "a5",
     "postType": "artist",
     "user": {
-      "name": "@testfan",
+      "name": "비스러버",
       "profileImage": "/images/my/me.png",
       "badgeType": "fan",
       "badgeLevel": 1,
