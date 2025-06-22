@@ -4,8 +4,8 @@
     "postId": "a1",
     "postType": "artist",
     "user": {
-      "name": "testfan",
-      "profileImage": "/images/profile_img.png",
+      "name": "@testfan",
+      "profileImage": "/images/my/me.png",
       "badgeType": "fan",
       "badgeLevel": 1,
       "userId": "testfan"
@@ -14,7 +14,7 @@
     "emoji": "/images/emoji1.png",
     "date": "2025.06.27",
     "likes": 3,
-    "comments": 0,
+    "comments": 1,
     "isLiked": true,
     "replies": [
       {
@@ -100,11 +100,82 @@
       "userId": "Vocalfan_0914"
     },
     "content": "오늘도 힐링 주셔서 감사합니다 🌿",
-    "date": "마이크 잡자마자 분위기 씹어먹네 진짜 ㄷㄷ",
+    "date": "2025.06.27",
     "likes": 2,
     "comments": 0,
     "isLiked": false
   },
+    {
+    "id": "2",
+    "postId": "a1",
+    "postType": "artist",
+    "user": {
+      "name": "Loopin_dream",
+      "profileImage": "/images/artist/u2.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "Loopin_dream"
+    },
+    "content": "나 또 반해버렸어..",
+    "emoji": "/images/emoji/fire.png",
+    "date": "2025.06.27",
+    "likes": 8,
+    "comments": 1,
+    "isLiked": false
+  },
+  {
+    "id": "3",
+    "postId": "a1",
+    "postType": "artist",
+    "user": {
+      "name": "Arinnight",
+      "profileImage": "/images/artist/u3.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "Arinnight"
+    },
+    "content": "사랑해요 세이온니 ㅠㅠ",
+    "date": "2025.06.27",
+    "likes": 1,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "4",
+    "postId": "a1",
+    "postType": "artist",
+    "user": {
+      "name": "LOOPY",
+      "profileImage": "/images/artist/u4.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "LOOPY"
+    },
+    "content": "체고예요 증말..",
+    "date": "2025.06.27",
+    "likes": 4,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "5",
+    "postId": "a1",
+    "postType": "artist",
+    "user": {
+      "name": "Vocalfan_0914",
+      "profileImage": "/images/artist/u5.png",
+      "badgeType": "fan",
+      "badgeLevel": 3,
+      "userId": "Vocalfan_0914"
+    },
+    "content": "오늘도 잠 못이루겠다ㅠㅠ",
+    "date": "2025.06.27",
+    "likes": 2,
+    "comments": 0,
+    "isLiked": false
+  },
+
+
   {
     "id": "6",
     "postId": "a2",
@@ -119,7 +190,7 @@
     "content": "루하언니 갓벽 그 자체 💘",
     "date": "2025.06.26",
     "likes": 4,
-    "comments": 0,
+    "comments": 2,
     "isLiked": false,
         "replies": [
       {
@@ -172,7 +243,7 @@
     "content": "이 비주얼 말이 돼요? 너무 사기잖아요 ㅠㅜㅠ",
     "date": "2025.06.26",
     "likes": 8,
-    "comments": 1,
+    "comments": 0,
     "isLiked": true
   },
   {
@@ -277,7 +348,7 @@
     "emoji": "/images/emoji/fire.png",
     "date": "2025.06.24",
     "likes": 3,
-    "comments": 0,
+    "comments": 1,
     "isLiked": false,
         "replies": [
       {
@@ -304,8 +375,8 @@
     "postId": "a3",
     "postType": "artist",
     "user": {
-      "name": "testfan",
-      "profileImage": "/images/profile_img.png",
+      "name": "@testfan",
+      "profileImage": "/images/my/me.png",
       "badgeType": "fan",
       "badgeLevel": 1,
       "userId": "testfan"
@@ -400,7 +471,7 @@
     "content": "어머 이건 저장이죠... 내 앨범에 100장 있움ㅎ",
     "date": "2025.06.24",
     "likes": 8,
-    "comments": 0,
+    "comments": 2,
     "isLiked": false,
         "replies": [
       {
@@ -453,7 +524,7 @@
     "content": "언니가 듣는 노래면 무조건 저장💖",
     "date": "2025.06.24",
     "likes": 5,
-    "comments": 1,
+    "comments": 0,
     "isLiked": true
   },
   {
@@ -461,8 +532,8 @@
     "postId": "a5",
     "postType": "artist",
     "user": {
-      "name": "testfan",
-      "profileImage": "/images/profile_img.png",
+      "name": "@testfan",
+      "profileImage": "/images/my/me.png",
       "badgeType": "fan",
       "badgeLevel": 1,
       "userId": "testfan"
@@ -471,7 +542,7 @@
     "emoji": "/images/emoji/heart.png",
     "date": "2025.06.24",
     "likes": 2,
-    "comments": 0,
+    "comments": 1,
         "isLiked": false,
         "replies": [
       {
@@ -507,7 +578,7 @@
     "content": "덕분에 출퇴근길이 힐링될 것 같아요 🍃",
     "date": "2025.06.24",
     "likes": 3,
-    "comments": 1,
+    "comments": 0,
     "isLiked": true
   },
   {
@@ -558,7 +629,7 @@
     "content": "무대 아니고..? 연습도 전광판급이야 🔥💗",
     "date": "2025.06.22",
     "likes": 2,
-    "comments": 0,
+    "comments": 2,
        "isLiked": false,
         "replies": [
       {
@@ -645,7 +716,7 @@
     "content": "지금 이 사진은 다큐에 넣어야 해…",
     "date": "2025.06.22",
     "likes": 4,
-    "comments": 1,
+    "comments": 0,
     "isLiked": false
   },
   {
@@ -662,7 +733,24 @@
     "content": "눈빛이 진심이다…! 언니 🥹 💙",
     "date": "2025.06.22",
     "likes": 8,
-    "comments": 1,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "26",
+    "postId": "a6",
+    "postType": "artist",
+    "user": {
+      "name": "BLOOMIE",
+      "profileImage": "/images/artist/u2.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "BLOOMIE"
+    },
+    "content": "카리스마 쩔어용 !!!",
+    "date": "2025.06.22",
+    "likes": 1,
+    "comments": 0,
     "isLiked": true
   },
   {
@@ -750,6 +838,57 @@
     "comments": 0,
     "isLiked": false
   },
+    {
+    "id": "30",
+    "postId": "a7",
+    "postType": "artist",
+    "user": {
+      "name": "BLOOMIE",
+      "profileImage": "/images/artist/u2.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "BLOOMIE"
+    },
+    "content": "언니의 최애 도넛은!?",
+    "date": "2025.06.21",
+    "likes": 2,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "31",
+    "postId": "a7",
+    "postType": "artist",
+    "user": {
+      "name": "Loopin_dream",
+      "profileImage": "/images/artist/u3.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "Loopin_dream"
+    },
+    "content": "프레첼짤 처럼 해줘요 !!",
+    "date": "2025.06.21",
+    "likes": 0,
+    "comments": 0,
+    "isLiked": false
+  },
+  {
+    "id": "32",
+    "postId": "a7",
+    "postType": "artist",
+    "user": {
+      "name": "Arinnight",
+      "profileImage": "/images/artist/u4.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "Arinnight"
+    },
+    "content": "아 배고프당..",
+    "date": "2025.06.21",
+    "likes": 0,
+    "comments": 0,
+    "isLiked": false
+  },
   {
     "id": "35",
     "postId": "a8",
@@ -765,7 +904,7 @@
     "emoji": "/images/emoji5.png",
     "date": "2025.06.21",
     "likes": 2,
-    "comments": 0,
+    "comments": 1,
    "isLiked": false,
         "replies": [
       {
@@ -940,6 +1079,23 @@
     "likes": 3,
     "comments": 0,
     "isLiked": true
+  },
+    {
+    "id": "36",
+    "postId": "a9",
+    "postType": "artist",
+    "user": {
+      "name": "BLOOMIE",
+      "profileImage": "/images/artist/u2.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "BLOOMIE"
+    },
+    "content": "작가가 누군지 알 수 있을까용",
+    "date": "2025.06.20",
+    "likes": 0,
+    "comments": 0,
+    "isLiked": false
   },
   {
     "id": "41",
@@ -1196,6 +1352,40 @@
     "content": "하루 피로 다 사라졌어 이 사진 한 장으로ㅜㅜ",
     "date": "2025.06.17",
     "likes": 5,
+    "comments": 0,
+    "isLiked": false
+  },
+    {
+    "id": "51",
+    "postId": "a12",
+    "postType": "artist",
+    "user": {
+      "name": "BLOOMIE",
+      "profileImage": "/images/artist/u1.png",
+      "badgeType": "fan",
+      "badgeLevel": 2,
+      "userId": "BLOOMIE"
+    },
+    "content": "딱 제 취향 잠옷 언니도 옷도 ㅠㅠ",
+    "date": "2025.06.17",
+    "likes": 6,
+    "comments": 0,
+    "isLiked": true
+  },
+  {
+    "id": "52",
+    "postId": "a12",
+    "postType": "artist",
+    "user": {
+      "name": "Loopin_dream",
+      "profileImage": "/images/artist/u2.png",
+      "badgeType": "fan",
+      "badgeLevel": 1,
+      "userId": "Loopin_dream"
+    },
+    "content": "꺅 어디 잠옷이예요??",
+    "date": "2025.06.17",
+    "likes": 0,
     "comments": 0,
     "isLiked": false
   },
@@ -1764,7 +1954,7 @@
     "content": "오늘 도아는 완전 드라마 주인공 비주얼이었음 💘",
     "date": "2025.06.16",
     "likes": 1,
-    "comments": 0,
+    "comments": 2,
    "isLiked": false,
         "replies": [
       {
@@ -1937,6 +2127,7 @@
     "content": "도아야… 진짜 네가 있어서 오늘 하루도 버텼어.고마워 우리 별빛 ✨",
     "date": "2025.06.11",
     "likes": 6,
+    "comments": 2,
   "isLiked": false,
         "replies": [
       {
@@ -2097,7 +2288,7 @@
     "emoji": "/images/emoji/emoji9.png",
     "date": "2025.06.10",
     "likes": 1,
-    "comments": 0,
+    "comments": 1,
   "isLiked": false,
         "replies": [
       {
@@ -2187,7 +2378,7 @@
         "emoji": "/images/emoji/emoji1.png",
     "date": "2025.06.10",
     "likes": 0,
-    "comments": 0,
+    "comments": 2,
   "isLiked": false,
         "replies": [
       {
@@ -2311,7 +2502,7 @@
     "content": "아니 진짜 이거 포카 맞아요? 미술관에서 훔쳐온 거 아님??",
     "date": "2025.06.09",
     "likes": 0,
-    "comments": 0,
+    "comments": 1,
   "isLiked": false,
         "replies": [
       {
