@@ -224,42 +224,43 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
               )}
             </div>
           )}
-          <div className={styles.profile_row}>
-            <img className={styles.profile_img} src={data.user.profileImage} alt={data.user.name} />
-            <div className={styles.info}>
-              <strong className={styles.card_name}>
-                {data.user.name}
-                <img
-                  className={styles.badge_img}
-                  src={getBadgeImage(
-                    data.user.badgeType,
-                    data.user.badgeType === "fan" ? data.user.badgeLevel : undefined
+          <div className={styles.feed_wrapper}>
+            <div className={styles.profile_row}>
+              <img className={styles.profile_img} src={data.user.profileImage} alt={data.user.name} />
+              <div className={styles.info}>
+                <strong className={styles.card_name}>
+                  {data.user.name}
+                  <img
+                    className={styles.badge_img}
+                    src={getBadgeImage(
+                      data.user.badgeType,
+                      data.user.badgeType === "fan" ? data.user.badgeLevel : undefined
+                    )}
+                    alt="badge"
+                  />
+                </strong>
+                <p className={styles.date}>{getDisplayDate(data.date)}</p>
+              </div>
+            </div>
+
+            <div className={styles.body_wrapper}>
+              <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
+              {data.hashtag && (
+                <div className={styles.hashtags}>
+                  {data.hashtag.split(" ").map((tag, i) => <span key={i} className={styles.tag}>{tag}</span>)}
+                </div>
+              )}
+              {data.media && (
+                <div className={styles.media}>
+                  {data.media.map((m, i) =>
+                    m.type === "video"
+                      ? <video key={i} src={m.url} controls className={styles.media_item} />
+                      : <img key={i} src={m.url} alt={`media-${i}`} className={styles.media_item} />
                   )}
-                  alt="badge"
-                />
-              </strong>
-              <p className={styles.date}>{getDisplayDate(data.date)}</p>
+                </div>
+              )}
             </div>
           </div>
-
-          <div className={styles.body_wrapper}>
-            <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.description }} />
-            {data.hashtag && (
-              <div className={styles.hashtags}>
-                {data.hashtag.split(" ").map((tag, i) => <span key={i} className={styles.tag}>{tag}</span>)}
-              </div>
-            )}
-            {data.media && (
-              <div className={styles.media}>
-                {data.media.map((m, i) =>
-                  m.type === "video"
-                    ? <video key={i} src={m.url} controls className={styles.media_item} />
-                    : <img key={i} src={m.url} alt={`media-${i}`} className={styles.media_item} />
-                )}
-              </div>
-            )}
-          </div>
-
           <div className={styles.meta_row}>
             <button onClick={handleToggleLike}>
               <img className={styles.like_icon}
