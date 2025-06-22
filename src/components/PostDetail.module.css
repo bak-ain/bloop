@@ -993,4 +993,30 @@
   .reply_item {
     width: 90%;
   }
+
+  .mobile_header span {
+    font-size: 18px;
+  }
+
+  .back_btn img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .profile_row {
+    padding-top: 0;
+  }
+
+  .more_btn {
+    top: 6px;
+    right: 18px
+  }
+
+  .more_menu {
+    top: 50px;
+  }
+
+  .more_menu button {
+    font-size: 14px;
+  }
 }
