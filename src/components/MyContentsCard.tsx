@@ -98,7 +98,12 @@ const MyContentsCard = ({
     return (
         <div className={styles.myContentsWrap}>
             {items.length === 0 && (
-                <div className={styles.emptyMsg}>데이터가 없습니다.</div>
+                <div className={styles.emptyMsg}>
+                    {type === 'written' && '작성한 게시물이 없습니다.'}
+                    {type === 'comment' && '작성한 댓글이 없습니다.'}
+                    {(type === 'scrap-fan' || type === 'scrap-artist' || type === 'scrap-official') && 'POP한 게시물이 없습니다.'}
+                    {type === 'liked' && '좋아요한 게시물이 없습니다.'}
+                </div>
             )}
             {items.map((item) => {
                 const firstImage = getFirstImage(item);
