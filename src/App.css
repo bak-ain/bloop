@@ -1053,6 +1053,7 @@ footer .inner,
 
   #chatbase-bubble-window {
     max-height: 100vh !important;
+    bottom: 0 !important;
   }
 
   /* 커뮤니티 */
