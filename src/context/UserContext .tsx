@@ -35,7 +35,7 @@ const initialUsers: User[] = [
         id: "testagency",
         password: "5678",
         confirmPassword: "5678",
-        name: "김기획",
+        name: "정유찬",
         email: "testagency@daum.net",
         phone: "010-8765-4321",
         agree: { privacy: true, uploadResponsibility: true, marketing: false, over14: true },

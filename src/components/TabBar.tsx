@@ -77,7 +77,7 @@ const TabBar = () => {
                 {({ isActive }) => (
                     <>
                         <img
-                            src={isActive ? "/images/icon/mybox2.png" : "/images/icon/mybox.png"}
+                            src={isActive ? "/images/icon/myBox2.png" : "/images/icon/myBox.png"}
                             alt="MY BOX"
                         />
                         <span>MY BOX</span>
