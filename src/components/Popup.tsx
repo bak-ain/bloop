@@ -666,7 +666,13 @@ const Popup = (props: PopupProps) => {
       )}
       {type === 'upload' && <UploadPopup onSubmit={props.onSubmit} onClose={onClose} />}
       {type === 'edit' && <EditPopup data={props.data} onClose={onClose} onSubmit={props.onUpdate} />}
-      <button className={styles.closeBtn} onClick={onClose}>
+      <button className={`
+    ${styles.closeBtn}
+    ${type === 'artistFeed' ? styles.closeBtnFeed : ''}
+    ${type === 'fanFeed' ? styles.closeBtnFeed : ''}
+    ${type === 'upload' ? styles.closeBtnUpload : ''}
+    ${type === 'edit' ? styles.closeBtnEdit : ''}
+  `} onClick={onClose}>
         <img src="/images/icon/close.png" alt="닫기" className={styles.closeIcon} />
       </button>
     </div>

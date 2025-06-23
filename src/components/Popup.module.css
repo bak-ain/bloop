@@ -412,6 +412,10 @@
     right: 15px;
   }
 
+  .closeBtnFeed {
+    display: none;
+  }
+
   .closeBtn img {
     width: 22px;
     height: 22px;

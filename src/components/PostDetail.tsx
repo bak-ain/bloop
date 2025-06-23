@@ -212,8 +212,6 @@ const PostDetail = <T extends ArtistPost | FanPost>({ type, data, postList, setP
           className={styles.back_btn}
           onClick={() => {
             if (onClose) onClose();
-            if (type === "artist") navigate("/muse");
-            else navigate("/loop");
           }}
         >
           <img src="/images/icon/back.png" alt="뒤로가기" />
