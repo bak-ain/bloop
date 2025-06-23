@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
 import styles from './Myecho.module.css';
+import styles2 from "../components/FeedLayout.module.css"
 import MyContentsCard from '../components/MyContentsCard';
 import { useLikedScrapped } from '../context/LikedScrappedContext';
 import Popup from '../components/Popup';
@@ -130,7 +131,7 @@ const MyPop = () => {
         <Container>
             <div className={`${styles.myePopBg} ${styles.myBg}`} />
             <div className={`${styles.myWrap} inner`}>
-                <h3 className={`${styles.myTitle} h3_tit`}>MY POP</h3>
+                <h3 className={`${styles.myTitle} ${styles.myPopTitle} h3_tit`}>MY POP</h3>
                 {/* 탭바 */}
                 <div className={`${styles.tabContainer}`}>
                     <div className={styles.tabBar}>
@@ -182,27 +183,51 @@ const MyPop = () => {
                 />
                 {/* 페이지네이션 */}
                 {totalPages > 1 && (
-                    <div className={styles.pagination}>
+                    <div className={styles2.pagination}>
                         <button
-                            onClick={() => handlePageChange(page - 1)}
+                            className={styles2.paginationBtn}
+                            onClick={() => setPage(page - 1)}
                             disabled={page === 1}
+                            type="button"
+                            aria-label="이전 페이지"
                         >
-                            &lt;
+                            <img
+                                src={
+                                    page === 1
+                                        ? "/images/icon/page_le_off.png"
+                                        : "/images/icon/page_le_on.png"
+                                }
+                                alt="이전"
+
+                            />
                         </button>
                         {Array.from({ length: totalPages }, (_, idx) => (
                             <button
                                 key={idx + 1}
-                                className={page === idx + 1 ? styles.activePage : ''}
-                                onClick={() => handlePageChange(idx + 1)}
+                                onClick={() => setPage(idx + 1)}
+                                className={`${styles2.paginationBtn} ${page === idx + 1 ? styles2.paginationBtnActive : ""}`}
+                                type="button"
+                                tabIndex={0}
                             >
                                 {idx + 1}
                             </button>
                         ))}
                         <button
-                            onClick={() => handlePageChange(page + 1)}
-                            disabled={page === totalPages}
+                            className={styles2.paginationBtn}
+                            onClick={() => setPage(page + 1)}
+                            disabled={page === totalPages || totalPages < 2}
+                            type="button"
+                            aria-label="다음 페이지"
                         >
-                            &gt;
+                            <img
+                                src={
+                                    page === totalPages || totalPages < 2
+                                        ? "/images/icon/page_ri_off.png"
+                                        : "/images/icon/page_ri_on.png "
+                                }
+                                alt="다음"
+
+                            />
                         </button>
                     </div>
                 )}

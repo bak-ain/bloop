@@ -17,6 +17,7 @@
   color: var(--font-color-7);
 }
 
+/* 기본 카드 및 내가 작성한 게시물 카드 */
 .card {
   flex: 1;
   border-radius: 15px;
@@ -46,6 +47,23 @@
 
 .cardTextWrap {
   flex: 1;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.cardDesc {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* 1줄만 보이게 */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* width: 80%; */
 }
 
 .cardLikeIcon {
@@ -57,7 +75,10 @@
   text-align: right;
   color: var(--font-color-7);
   align-self: flex-end;
+  white-space: nowrap;
 }
+
+/* 내가 작성한 댓글 카드 */
 
 .cardWrap_comment .card {
   padding: 0;
@@ -96,6 +117,7 @@
 .commentLabel {
   font-size: 18px;
   font-weight: 600;
+  white-space: nowrap;
   /* line-height: 144%; */
 }
 
@@ -109,13 +131,131 @@
   font-weight: 400;
   color: var(--font-color-7);
 }
-.badgeIcon{
+
+/* 내가 좋아요한 게시물 카드 */
+
+/* .badgeIcon{
+  width: 30px;
+  height: auto;
+  object-fit: cover;
+} */
+ .badgeIcon{
+  width: 24px;
+  height: auto;
+  object-fit: cover;
+ }
+.likeIcon,
+.pop_icon {
   width: 30px;
   height: auto;
   object-fit: cover;
 }
-.likeIcon{
-  width: 30px;
-  height: auto;
-  object-fit: cover;
+
+.CardUserRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.CardRight {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.officialCardTitle {
+  font-size: 24px;
+  font-weight: 600;
+
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    background-image: url(/public/images/mypage/MytopM.svg),
+      url(/public/images/mypage/MyBottomM.svg),
+      url(/public/images/mypage/MyleftM.svg),
+      url(/public/images/mypage/MyleftM.svg);
+    background-repeat: no-repeat, no-repeat, repeat-y, repeat-y;
+    background-position: top center, bottom center, left center, right center;
+    background-size: 100%, 100%, contain, contain;
+    padding: 15px;
+  }
+  .badgeIcon{
+    width: 22px;
+  }
+  .likeIcon,
+  .pop_icon {
+    width: 24px;
+  }
+
+  .cardRow {
+    gap: 15px;
+  }
+
+  .CardUserRow {
+    gap: 3px;
+  }
+
+  .cardThumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+  }
+
+  .CardRight {
+    height: 80px;
+  }
+
+  .commentCard>div {
+    padding: 12px 15px;
+  }
+
+  .commentHeader {
+    background-image: url(/public/images/mypage/commentTopM.svg), url(/public/images/mypage/commentLeftM.svg),
+      url(/public/images/mypage/commentLeftM.svg), url(/public/images/mypage/MiddleM.svg);
+    background-repeat: no-repeat, repeat-y, repeat-y, repeat-x;
+    background-position: center top, left center, right center, center bottom;
+    background-size: 100%, contain, contain, 100%;
+    gap: 20px;
+  }
+
+  .cardFooter {
+    display: flex;
+    justify-content: space-between;
+    background-image: url(/public/images/mypage/commentLeftM.svg),
+      url(/public/images/mypage/commentLeftM.svg), url(/public/images/mypage/commentBottomM.svg);
+    background-repeat: repeat-y, repeat-y, no-repeat;
+    background-position: left center, right center, center bottom;
+    background-size: contain, contain, 100%;
+  }
+
+  .commentLabel {
+    font-size: 16px;
+  }
+
+  .commentParentTitle,
+  .commentContent {
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* 1줄만 보이게 */
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .officialCardTitle {
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

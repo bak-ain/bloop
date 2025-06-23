@@ -4,6 +4,7 @@ import { usePostList } from "../context/PostListContext";
 import { getAvailableEmojis } from "../utils/badge";
 import React, { useRef, useState, useEffect } from "react";
 import { useUserContext } from "../context/UserContext ";
+import { useMyContent } from "../context/MyContentContext";
 import styles from "./Popup.module.css";
 import dayjs from "dayjs";
 
@@ -91,6 +92,7 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
   const editorRef = useRef<HTMLDivElement>(null);
   const { user } = useUserContext();
   const [images, setImages] = useState<string[]>([]);
+  const { addWritten } = useMyContent();
 
 
   const handleHashtagInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -220,25 +222,30 @@ const UploadPopup = ({ onSubmit, onClose }: { onSubmit: (data: FanPost) => void;
     const newPost: FanPost = {
       id: "temp-id-" + Date.now(),
       user: {
-        name: user.name,
+        name: (user as any).nickname || user.name || "",
         profileImage: (user as any).profileImage || "/profile_img.png",
         badgeType: user.userType === 'agency' ? 'fan' : user.userType,
         badgeLevel: (user as any).badgeLevel || 1,
         userId: user.id,
       },
       date: dayjs().toISOString(),
-      description, // HTML로 저장
-      hashtag: hashtags.map(tag => `#${tag}`).join(","),
+      description,
+      hashtag: hashtags.map(tag => `#${tag}`).join(" "),
       likes: 0,
       comment: 0,
       media: images.map((url) => ({ type: "image", url })),
     };
+
     onSubmit(newPost);
-    // 내 게시물 리스트에 저장
-    const myPosts = JSON.parse(localStorage.getItem("myFanPosts") || "[]");
-    myPosts.push(newPost);
-    localStorage.setItem("myFanPosts", JSON.stringify(myPosts));
-    // 임시저장 데이터 삭제
+
+    // MyWrittenPost 타입 필드 추가
+    addWritten({
+      ...newPost,
+      viewType: "written",
+      editable: true,
+      type: "community",
+    });
+
     localStorage.removeItem("fanUploadTemp");
   };
 
@@ -391,7 +398,11 @@ const EditPopup = ({
   const [images, setImages] = useState<string[]>(data.media?.map((m) => m.url) || []);
   const [hashtagInput, setHashtagInput] = useState("");
   const [hashtags, setHashtags] = useState<string[]>(
-    data.hashtag ? data.hashtag.split(",").map((tag) => tag.replace(/^#/, "")) : []
+    data.hashtag
+      ? data.hashtag
+        .split(/(?:\s+|#)+/) // 공백 또는 # 기준으로 분리
+        .filter(tag => tag.trim() !== "")
+      : []
   );
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const editorRef = useRef<HTMLDivElement>(null);
@@ -489,7 +500,7 @@ const EditPopup = ({
     const updatedPost: FanPost = {
       ...data,
       description,
-      hashtag: hashtags.map(tag => `#${tag}`).join(","),
+      hashtag: hashtags.map(tag => `#${tag}`).join(" "),
       media: images.map((url) => ({ type: "image", url })),
     };
     if (onSubmit) onSubmit(updatedPost);
@@ -655,7 +666,9 @@ const Popup = (props: PopupProps) => {
       )}
       {type === 'upload' && <UploadPopup onSubmit={props.onSubmit} onClose={onClose} />}
       {type === 'edit' && <EditPopup data={props.data} onClose={onClose} onSubmit={props.onUpdate} />}
-      <button className={styles.closeBtn} onClick={onClose}>X</button>
+      <button className={styles.closeBtn} onClick={onClose}>
+        <img src="/images/icon/close.png" alt="닫기" className={styles.closeIcon} />
+      </button>
     </div>
   );
 };

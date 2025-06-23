@@ -162,7 +162,7 @@ const MyContentsCard = ({
                                         </div>
                                     </div>
                                     {/* <div className={styles.cardFooter}>
-                                    <div className={` ${styles.cardDate} pop_icon_num`}>
+                                    <div className={` ${` ${styles.cardDate} pop_icon_num`} pop_icon_num`}>
                                         {('date' in item && formatDate(item.date ?? "")) || ''}
                                     </div>
                                 </div> */}
@@ -184,7 +184,7 @@ const MyContentsCard = ({
                                                 __html: item.content
                                             }}
                                         />
-                                        <div className={styles.cardDate}>
+                                        <div className={` ${styles.cardDate} pop_icon_num`}>
                                             {('date' in item && formatDate(item.date ?? "")) || ''}
                                         </div>
                                     </div>
@@ -195,7 +195,7 @@ const MyContentsCard = ({
                                 <>
                                     {/* 오피셜 게시물 */}
                                     {isOfficialContent(item) ? (
-                                        <div className={styles.likedCardRow}>
+                                        <div className={`${styles.cardRow} ${styles.likedCardRow}`}>
                                             {firstImage && (
                                                 <img
                                                     src={firstImage}
@@ -203,41 +203,43 @@ const MyContentsCard = ({
                                                     className={styles.cardThumb}
                                                 />
                                             )}
-                                            <div className={styles.likedCardTextWrap}>
+                                            <div className={` ${styles.cardTextWrap} ${styles.likedCardTextWrap} `}>
                                                 <div
-                                                    className={styles.likedCardTitle}
+                                                    className={styles.officialCardTitle}
                                                     dangerouslySetInnerHTML={{
-                                                        __html: `${item.title ?? ""}${item.descriptionDetail ? `<br>${item.descriptionDetail}` : ""}`
+                                                        __html: (item.title ?? "").replace(/<br\s*\/?>/gi, " ")
                                                     }}
                                                 />
                                                 <div
-                                                    className={styles.likedCardDesc}
+                                                    className={`${styles.officialCardDesc} ${styles.cardDesc} user_txt_p_tag`}
                                                     dangerouslySetInnerHTML={{
-                                                        __html: item.description ?? ""
+                                                        __html: item.descriptionDetail ?? ""
                                                     }}
                                                 />
                                             </div>
-                                            <button
-                                                className={styles.likedCardLikeBtn}
-                                                onClick={e => {
-                                                    e.stopPropagation();
-                                                    toggleLike('official', item.id, item.likes ?? 0, item);
-                                                }}
-                                                aria-label="좋아요 토글"
-                                            >
-                                                <img
-                                                    src={isLiked(item) ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
-                                                    alt={isLiked(item) ? "좋아요됨" : "좋아요"}
-                                                    className={styles.likeIcon}
-                                                />
-                                            </button>
-                                            <div className={styles.cardDate}>
-                                                {('date' in item && formatDate(item.date ?? "")) || ''}
+                                            <div className={styles.CardRight}>
+                                                <button
+                                                    className={styles.likedCardLikeBtn}
+                                                    onClick={e => {
+                                                        e.stopPropagation();
+                                                        toggleLike('official', item.id, item.likes ?? 0, item);
+                                                    }}
+                                                    aria-label="좋아요 토글"
+                                                >
+                                                    <img
+                                                        src={isLiked(item) ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+                                                        alt={isLiked(item) ? "좋아요됨" : "좋아요"}
+                                                        className={styles.likeIcon}
+                                                    />
+                                                </button>
+                                                <div className={` ${styles.cardDate} pop_icon_num`}>
+                                                    {('date' in item && formatDate(item.date ?? "")) || ''}
+                                                </div>
                                             </div>
                                         </div>
                                     ) : (
                                         // 팬/아티스트 게시물
-                                        <div className={styles.likedCardRow}>
+                                        <div className={`${styles.cardRow} ${styles.likedCardRow}`}>
                                             {firstImage && (
                                                 <img
                                                     src={firstImage}
@@ -245,9 +247,9 @@ const MyContentsCard = ({
                                                     className={styles.cardThumb}
                                                 />
                                             )}
-                                            <div className={styles.likedCardTextWrap}>
-                                                <div className={styles.likedCardUserRow}>
-                                                    <span className={styles.likedCardUserName}>{('user' in item && item.user?.name) || ''}</span>
+                                            <div className={` ${styles.cardTextWrap} ${styles.likedCardTextWrap} `}>
+                                                <div className={styles.CardUserRow}>
+                                                    <span className={` ${styles.likedCardUserName} card_name`}>{('user' in item && item.user?.name) || ''}</span>
                                                     {('user' in item && item.user?.badgeType) && (
                                                         <img
                                                             src={getBadgeImage(
@@ -260,32 +262,34 @@ const MyContentsCard = ({
                                                     )}
                                                 </div>
                                                 <div
-                                                    className={styles.likedCardDesc}
+                                                    className={`${styles.likedCardDesc} ${styles.cardDesc} card_p`}
                                                     dangerouslySetInnerHTML={{
                                                         __html: ('description' in item && item.description) || ''
                                                     }}
                                                 />
                                             </div>
-                                            <button
-                                                className={styles.likedCardLikeBtn}
-                                                onClick={e => {
-                                                    e.stopPropagation();
-                                                    if (isArtistPost(item)) {
-                                                        toggleLike('artist', item.id, item.likes ?? 0, item);
-                                                    } else if (isFanPost(item)) {
-                                                        toggleLike('fan', item.id, item.likes ?? 0, item);
-                                                    }
-                                                }}
-                                                aria-label="좋아요 토글"
-                                            >
-                                                <img
-                                                    src={isLiked(item) ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
-                                                    alt={isLiked(item) ? "좋아요됨" : "좋아요"}
-                                                    className={styles.likeIcon}
-                                                />
-                                            </button>
-                                            <div className={styles.cardDate}>
-                                                {('date' in item && formatDate(item.date ?? "")) || ''}
+                                            <div className={styles.CardRight}>
+                                                <button
+                                                    className={styles.likedCardLikeBtn}
+                                                    onClick={e => {
+                                                        e.stopPropagation();
+                                                        if (isArtistPost(item)) {
+                                                            toggleLike('artist', item.id, item.likes ?? 0, item);
+                                                        } else if (isFanPost(item)) {
+                                                            toggleLike('fan', item.id, item.likes ?? 0, item);
+                                                        }
+                                                    }}
+                                                    aria-label="좋아요 토글"
+                                                >
+                                                    <img
+                                                        src={isLiked(item) ? "/images/icon/heart_p_icon.png" : "/images/icon/heart_icon.png"}
+                                                        alt={isLiked(item) ? "좋아요됨" : "좋아요"}
+                                                        className={styles.likeIcon}
+                                                    />
+                                                </button>
+                                                <div className={` ${styles.cardDate} pop_icon_num`}>
+                                                    {('date' in item && formatDate(item.date ?? "")) || ''}
+                                                </div>
                                             </div>
                                         </div>
                                     )}
@@ -293,7 +297,7 @@ const MyContentsCard = ({
                             )}
                             {/* 내가 스크랩한 게시물 */}
                             {(type === 'scrap-fan' || type === 'scrap-artist' || type === 'scrap-official') && !isMyCommentPost(item) && (
-                                <div className={styles.scrapCardRow}>
+                                <div className={`${styles.cardRow} ${styles.scrapCardRow}`}>
                                     {firstImage && (
                                         <img
                                             src={firstImage}
@@ -301,10 +305,10 @@ const MyContentsCard = ({
                                             className={styles.cardThumb}
                                         />
                                     )}
-                                    <div className={styles.scrapCardTextWrap}>
+                                    <div className={` ${styles.cardTextWrap} ${styles.scrapCardTextWrap} `}>
                                         {(type === 'scrap-fan' || type === 'scrap-artist') && 'user' in item && (
-                                            <div className={styles.scrapCardUserRow}>
-                                                <span className={styles.scrapCardUserName}>{item.user?.name}</span>
+                                            <div className={styles.CardUserRow}>
+                                                <span className={` ${styles.scrapCardUserName} card_name`}>{item.user?.name}</span>
                                                 {item.user?.badgeType && (
                                                     <img
                                                         src={getBadgeImage(
@@ -315,32 +319,32 @@ const MyContentsCard = ({
                                                         className={styles.badgeIcon}
                                                     />
                                                 )}
-                                                {type === 'scrap-fan' && (
+                                                {/* {type === 'scrap-fan' && (
                                                     <span className={styles.scrapCardUserId}>@{item.user?.userId}</span>
-                                                )}
+                                                )} */}
                                             </div>
                                         )}
                                         {type === 'scrap-official' && isOfficialContent(item) && (
                                             <>
-                                                <div className={styles.scrapCardTitle}>
-                                                    {item.title && (
-                                                        <div
-                                                            className={styles.scrapCardDetail}
-                                                            dangerouslySetInnerHTML={{ __html: item.title }}
-                                                        />
-                                                    )}
-                                                </div>
+                                                {item.title && (
+                                                    <div
+                                                        className={styles.officialCardTitle}
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: (item.title ?? "").replace(/<br\s*\/?>/gi, " ")
+                                                        }}
+                                                    />
+                                                )}
 
                                                 {item.descriptionDetail && (
                                                     <div
-                                                        className={styles.scrapCardDetail}
+                                                        className={`${styles.officialCardDesc} ${styles.cardDesc} user_txt_p_tag`}
                                                         dangerouslySetInnerHTML={{ __html: item.descriptionDetail }}
                                                     />
                                                 )}
                                             </>
                                         )}
                                         <div
-                                            className={styles.scrapCardDesc}
+                                            className={`${styles.scrapCardDesc} ${styles.cardDesc} card_p`}
                                             dangerouslySetInnerHTML={{
                                                 __html:
                                                     type === 'scrap-official' && isOfficialContent(item)
@@ -349,7 +353,7 @@ const MyContentsCard = ({
                                             }}
                                         />
                                     </div>
-                                    <div className={styles.scrapCardRight}>
+                                    <div className={styles.CardRight}>
                                         <button
                                             className={styles.scrapBtn}
                                             onClick={e => {
@@ -364,9 +368,21 @@ const MyContentsCard = ({
                                             }}
                                             aria-label="스크랩 토글"
                                         >
-                                            {isScrapped(item as ArtistPost | FanPost | OfficialContent) ? "🔖" : "📌"}
+                                            <img
+                                                className={styles.pop_icon}
+                                                src={
+                                                    isScrapped(item as ArtistPost | FanPost | OfficialContent)
+                                                        ? "/images/icon/pop_p_icon.png"
+                                                        : "/images/icon/pop_icon.png"
+                                                }
+                                                alt={
+                                                    isScrapped(item as ArtistPost | FanPost | OfficialContent)
+                                                        ? "스크랩 취소"
+                                                        : "스크랩"
+                                                }
+                                            />
                                         </button>
-                                        <div className={styles.cardDate}>{('date' in item && item.date) || ''}</div>
+                                        <div className={` ${styles.cardDate} pop_icon_num`}>{('date' in item && item.date) || ''}</div>
                                     </div>
                                 </div>
                             )}

@@ -71,21 +71,9 @@
     display: flex;
     flex-direction: column;
     gap: 80px;
-}
-
-.sectionBorder {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
     width: 100%;
-    height: auto;
-    display: block;
 }
 
-.sectionBorderM {
-    display: none;
-}
 
 .infoBox {
     position: relative;
@@ -106,15 +94,12 @@
     /* align-items: center; */
 }
 
-.infoBoxLogin {
-    /* height: 325px; */
-}
 
 .infoBoxProfile {
     background-image: url(/public/images/mypage/lineTop.svg),
         url(/public/images/mypage/lineBottom.svg),
-        url(/public/images/mypage/sideLineM3.svg),
-        url(/public/images/mypage/sideLineM3.svg);
+        url(/public/images/mypage/sideLine2.svg),
+        url(/public/images/mypage/sideLine2.svg);
 }
 
 .infoTab {
@@ -135,6 +120,7 @@
     justify-content: space-between;
     align-items: center;
     color: var(--font-color-3);
+    position: relative;
 }
 
 .infoRow> :last-child {
@@ -172,6 +158,7 @@
     border: 0;
     background: 0;
     outline: none;
+    width: 30%;
     /* padding: 10px 20px;
     border: 1px solid #C7E7FF;
     border-radius: 10px; */
@@ -212,6 +199,10 @@
     cursor: pointer;
     font-size: 18px;
     color: inherit;
+}
+
+.btnTextMobile {
+    display: none;
 }
 
 input {
@@ -256,21 +247,95 @@ input {
     margin-top: 38px;
 }
 
-/* .saveBtn,
-.editBtn {
-    background: #4da3e6;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
-    border: none;
-    border-radius: 8px;
-    padding: 14px 0;
-    width: 220px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
+@media screen and (max-width: 767px) {
+    .myeMoodProfileTop {
+        margin-top: 100px;
+    }
 
-.saveBtn:hover,
-.editBtn:hover {
-    background: #3689c9;
-} */
+    .profileImgWrap {
+        width: 110px;
+        height: 110px;
+    }
+
+    .infoBoxWrap {
+        gap: 40px;
+    }
+
+    .cameraBtn {
+        width: 35px;
+        height: 35px;
+        bottom: -5px;
+        right: -5px;
+    }
+
+    .infoBox {
+        background-image: url(/public/images/mypage/lineTopM.svg),
+            url(/public/images/mypage/lineBottomM.svg),
+            url(/public/images/mypage/sideLine.svg),
+            url(/public/images/mypage/sideLine.svg);
+        padding: 40px 20px;
+        gap: 20px;
+    }
+
+    .infoBoxProfile {
+        background-image: url(/public/images/mypage/lineTopM.svg),
+            url(/public/images/mypage/lineBottomM.svg),
+            url(/public/images/mypage/sideLine2.svg),
+            url(/public/images/mypage/sideLine2.svg);
+    }
+
+    .infoTab {
+        font-size: 18px;
+        padding: 10px 18px;
+    }
+
+    .infoInput,
+    .emailInputWrap,
+    .birthInputWrap {
+        padding: 10px;
+    }
+
+    .infoRow> :last-child {
+        width: 70%;
+    }
+
+    .emailSelectBtn {
+        width: max-content;
+    }
+
+    .emailDomainInput {
+        width: 40%;
+    }
+
+    .btnTextMobile {
+        display: block;
+        font-size: 14px;
+    }
+
+    .btnTextPc {
+        display: none;
+    }
+
+    .birthInput {
+        width: 40px;
+    }
+
+    .birthInput+span {
+        margin: 0 4px;
+    }
+
+    .birthDatePicker {
+        position: absolute;
+        right: 0;
+        bottom: -15px;
+    }
+}
+@media screen and (max-width: 375px){
+
+    .emailDomainInput {
+        width: 45%;
+    }
+    .emailSelectBtn span{
+        white-space: nowrap;
+    }
+}

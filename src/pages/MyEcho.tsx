@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
 import styles from './Myecho.module.css';
+import styles2 from "../components/FeedLayout.module.css"
 import MyContentsCard from '../components/MyContentsCard';
 import { useMyContent } from '../context/MyContentContext';
 import { useLikedScrapped } from '../context/LikedScrappedContext';
@@ -50,7 +51,7 @@ const MyEcho = () => {
   const [editPopupOpen, setEditPopupOpen] = useState(false);
   const [editPost, setEditPost] = useState<FanPost | null>(null);
 
-  const { written, comments, setWritten } = useMyContent();
+  const { written, setWritten, removeWritten, comments, removeComment } = useMyContent();
   const { artistPosts, setArtistPosts, fanPosts, setFanPosts } = usePostList();
   const {
     artistLikedPosts,
@@ -112,9 +113,15 @@ const MyEcho = () => {
 
   const handleDelete = () => {
     if (tab === 'written') {
-      setWritten(written.filter(w => !checkedIds.includes(w.id)));
+      checkedIds.forEach(id => {
+        removeWritten(id); // 마이페이지(내가 쓴 글)에서 삭제
+
+        // 전체 피드에서도 삭제
+        setArtistPosts(prev => prev.filter(post => post.id !== id));
+        setFanPosts(prev => prev.filter(post => post.id !== id));
+      });
     } else if (tab === 'comment') {
-      setMyComments(myComments.filter(c => !checkedIds.includes(c.id)));
+      checkedIds.forEach(id => removeComment(id));
     } else if (tab === 'liked') {
       setArtistLikedPosts(artistLikedPosts.filter(p => !checkedIds.includes(p.id)));
       setFanLikedPosts(fanLikedPosts.filter(p => !checkedIds.includes(p.id)));
@@ -201,27 +208,51 @@ const MyEcho = () => {
         />
         {/* 페이지네이션 UI */}
         {totalPages > 1 && (
-          <div className={styles.pagination}>
+          <div className={styles2.pagination}>
             <button
-              onClick={() => handlePageChange(page - 1)}
+              className={styles2.paginationBtn}
+              onClick={() => setPage(page - 1)}
               disabled={page === 1}
+              type="button"
+              aria-label="이전 페이지"
             >
-              &lt;
+              <img
+                src={
+                  page === 1
+                    ? "/images/icon/page_le_off.png"
+                    : "/images/icon/page_le_on.png"
+                }
+                alt="이전"
+
+              />
             </button>
             {Array.from({ length: totalPages }, (_, idx) => (
               <button
                 key={idx + 1}
-                className={page === idx + 1 ? styles.activePage : ''}
-                onClick={() => handlePageChange(idx + 1)}
+                onClick={() => setPage(idx + 1)}
+                className={`${styles2.paginationBtn} ${page === idx + 1 ? styles2.paginationBtnActive : ""}`}
+                type="button"
+                tabIndex={0}
               >
                 {idx + 1}
               </button>
             ))}
             <button
-              onClick={() => handlePageChange(page + 1)}
-              disabled={page === totalPages}
+              className={styles2.paginationBtn}
+              onClick={() => setPage(page + 1)}
+              disabled={page === totalPages || totalPages < 2}
+              type="button"
+              aria-label="다음 페이지"
             >
-              &gt;
+              <img
+                src={
+                  page === totalPages || totalPages < 2
+                    ? "/images/icon/page_ri_off.png"
+                    : "/images/icon/page_ri_on.png "
+                }
+                alt="다음"
+
+              />
             </button>
           </div>
         )}

@@ -1,13 +1,14 @@
 import Nav from "./Nav";
+import { NavLink, useNavigate } from "react-router-dom"
 import styles from './Header.module.css';
 const Header = () => {
     return (
         <header className={`${styles.header} inner`}>
 
             <h1>
-                <a href="/" className={styles.logo}>
+                <NavLink to="/" className={styles.logo}>
                     <img src="/images/logo.png" alt="Logo" />
-                </a>
+                </NavLink>
             </h1>
             <Nav />
         </header>

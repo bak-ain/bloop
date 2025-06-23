@@ -216,7 +216,7 @@ button {
   /* mobile */
   --movbile-sec-pad: 100px;
   --mobile-tit-pad: 30px;
-  --mobile-footer-pad: 150px;
+  --mobile-footer-pad: 160px;
 }
 
 /* 공통 */
@@ -225,11 +225,13 @@ button {
   font-weight: 400;
   color: var(--font-color-7);
 }
-.day_span_2{
+
+.day_span_2 {
   font-size: 16px;
   font-weight: 400;
   color: var(--font-color-7);
 }
+
 .icon_num {
   font-size: 16px;
   font-weight: 500;
@@ -541,9 +543,11 @@ button {
   /* opacity: 0.5; */
   /* width: 400px !important; */
 }
-.swiper-3d .swiper-slide-shadow{
+
+.swiper-3d .swiper-slide-shadow {
   background: 0 !important;
 }
+
 .mainOfficialSwiper .swiper-slide.swiper-slide-active {
   /* opacity: 1; */
   transform: scale(1);
@@ -606,13 +610,18 @@ footer .inner,
 }
 
 #chatbase-bubble-button {
-  background-image: url(/public/images/chatbot.png) !important;
-  background-size: cover !important;
+  background-image: url(/public/images/chatbot2.png) !important;
+  background-size: 100% !important;
   border-radius: 0% !important;
   background-color: transparent !important;
-  bottom: 4rem !important;
-  right: 3.7rem !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  bottom: 40px !important;
+  right: 60px !important;
   z-index: 999 !important;
+  box-shadow: none !important;
+  width: 60px !important;
+  height: 60px !important;
 }
 
 #chatbase-bubble-button img {
@@ -622,6 +631,11 @@ footer .inner,
 
 #chatbase-message-bubbles {
   display: none !important;
+}
+
+#chatbase-bubble-window {
+  bottom: 100px !important;
+  /* right: 60px !important; */
 }
 
 .react-calendar__navigation {
@@ -671,7 +685,7 @@ footer .inner,
 }
 
 .artist-swiper-pagination .swiper-pagination-bullet {
-  background: #ccc !important;
+  background: #000 !important;
   opacity: 1 !important;
   width: 10px !important;
   height: 10px !important;
@@ -679,6 +693,7 @@ footer .inner,
 
 .artist-swiper-pagination .swiper-pagination-bullet-active {
   background: var(--point-color-yellow) !important;
+/*   border: 2px solid #000 !important; */
 }
 
 /* 인기 게시물 */
@@ -718,7 +733,38 @@ footer .inner,
   display: none;
 }
  */
+.officeSwiper .swiper-button-prev,
+.officeSwiper .swiper-button-next {
+  position: absolute;
+  top: 95% !important;
+  z-index: 10;
 
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50%;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.officeSwiper .swiper-button-prev {
+  right: 12% !important;
+  left: auto !important;
+  /* bottom: 16px !important; */
+}
+
+.officeSwiper .swiper-button-next {
+  right: 5% !important;
+  left: auto !important;
+  /* bottom: 16px !important; */
+}
+
+.officeSwiper .swiper-button-prev::after,
+.officeSwiper .swiper-button-next::after {
+  font-size: 20px !important;
+  font-weight: bold !important;
+  color: #fff !important;
+}
 
 @media (max-width: 1024px) {
 
@@ -751,6 +797,18 @@ footer .inner,
     right: 10px;
     background-image: url('/public/images/icon/page_ri_on.png');
     background-size: contain;
+  }
+
+  .officeSwiper .swiper-button-prev {
+    right: 12%;
+    left: auto;
+    /* bottom: 16px !important; */
+  }
+
+  .officeSwiper .swiper-button-next {
+    right: 5%;
+    left: auto;
+    /* bottom: 16px !important; */
   }
 
 
@@ -796,10 +854,6 @@ footer .inner,
 
 
 
-  .inner {
-    padding: 0 20px;
-    padding-bottom: var(--wep-footer-pad);
-  }
 
   .con {
     padding: 0 20px;
@@ -863,6 +917,7 @@ footer .inner,
     font-weight: 500;
     font-size: 18px;
     line-height: 25px;
+    
   }
 
   .offic_h4 {
@@ -887,19 +942,42 @@ footer .inner,
 }
 
 @media (max-width: 767px) {
-  .day_span_2{
+  .icon_num {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .btn_txt {
     font-size: 14px;
   }
-  .artist-swiper-pagination{
+
+  .officeSwiper .swiper-button-prev,
+  .officeSwiper .swiper-button-next {
+    top: 92%;
+  }
+
+  .officeSwiper .swiper-button-prev::after,
+  .officeSwiper .swiper-button-next::after {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .day_span_2 {
+    font-size: 14px;
+  }
+
+  .artist-swiper-pagination {
     padding-top: 12px;
   }
+
   .fan_top_p {
     font-size: 14px;
     line-height: 20px;
+    padding-left: 5px;
   }
 
   .h3_tit {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
   }
 
@@ -967,8 +1045,14 @@ footer .inner,
 
 
   #chatbase-bubble-button {
-    bottom: 120px !important;
-    right: 30px !important;
+    bottom: 110px !important;
+    right: 25px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  #chatbase-bubble-window {
+    max-height: 100vh !important;
   }
 
   /* 커뮤니티 */
@@ -1000,11 +1084,41 @@ footer .inner,
   }
 }
 
+
+
+
+@media (max-width: 656px) {
+  .officeSwiper img {
+    height: 340px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+  }
+
+  .officeSwiper .swiper-button-prev {
+    right: 15% !important;
+    left: auto !important;
+    /* bottom: 16px !important; */
+  }
+
+  .officeSwiper .swiper-button-next {
+    right: 5% !important;
+    left: auto !important;
+    /* bottom: 16px !important; */
+  }
+
+
+}
+
+
+
+
+
 @media (max-width:530px) {
 
 
   .inner {
-    padding-bottom: var(--wep-sec-pad);
+    padding-bottom: var(--mobile-footer-pad);
   }
 
   .office_tag {
@@ -1092,17 +1206,13 @@ footer .inner,
     font-size: 14px;
   }
 
-  .icon_num {
-    font-size: 16px;
-  }
+
 
   .pagenation_num {
     font-size: 16px;
   }
 
-  .btn_txt {
-    font-size: 14px;
-  }
+
 
   /* 메인 */
   .main_card_h2 {
@@ -1120,7 +1230,7 @@ footer .inner,
 
 
   .fan_top_day {
-    font-size: 10px;
+    font-size: 13px;
   }
 
 
@@ -1203,6 +1313,11 @@ footer .inner,
 }
 
 @media (max-width: 402px) {
+    .all_p_t {
+    padding-top: 80px;
+
+  }
+
 
   .offic_h2 {
     font-size: 22px;

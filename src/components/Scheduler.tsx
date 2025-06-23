@@ -9,6 +9,7 @@ const Scheduler = () => {
   const { events, details, loading, error } = useSchedule();
   const [popupEvent, setPopupEvent] = useState<ScheduleEvent | null>(null);
   const [activeStartDate, setActiveStartDate] = useState(new Date());
+
   // 팝업이 열릴 때 스크롤 막기
   useEffect(() => {
     if (popupEvent) {
@@ -31,33 +32,38 @@ const Scheduler = () => {
     return map;
   }, [events]);
 
-
   // 타입별 여러 스티커 배열로 변경
   const typeStickerMap: Record<
     NonNullable<ScheduleEvent["type"]>,
     { srcs: string[]; classNames: string[] }
   > = {
     공연: {
-      srcs: ["/images/calenderSt1.png", "/images/calenderSt5.png"],
-      classNames: [styles.performance1, styles.performance2],
+      srcs: ["/images/schedule/s1-1.png", "/images/schedule/s1-2.png","/images/schedule/s1-3.png","/images/schedule/s1-4.png"],
+      classNames: [styles.performance1, styles.performance2,styles.performance3, styles.performance4],
     },
     방송: {
-      srcs: ["/images/calenderSt7.png", "/images/calenderSt3.png"],
-      classNames: [styles.broadcast1, styles.broadcast2],
+      srcs: ["/images/schedule/s2-1.png"],
+      classNames: [styles.broadcast1],
     },
     팬미팅: {
-      srcs: ["/images/calenderSt4.png", "/images/calenderSt8.png", "/images/calenderSt2.png"],
-      classNames: [styles.fanmeeting1, styles.fanmeeting2, styles.fanmeeting3],
+      srcs: ["/images/schedule/s3-1.png"],
+      classNames: [styles.fanmeeting1],
     },
     팬사인회: {
-      srcs: ["/images/calenderSt6.png", "/images/calenderSt2.png"],
-      classNames: [styles.fansign1, styles.fansign2],
+      srcs: ["/images/schedule/s3-2.png"],
+      classNames: [styles.fansign1],
     },
+  
     기타: {
-      srcs: ["/images/calenderSt10.png", "/images/calenderSt9.png"],
-      classNames: [styles.etc1, styles.etc2],
+      srcs: ["/images/schedule/s5-1.png"],
+      classNames: [styles.etc1],
     },
+    촬영: {
+      srcs: ["/images/schedule/s6-1.png", "/images/schedule/s6-2.png"],
+      classNames: [styles.Filming1, styles.Filming2],
+    }
   };
+
   // 타입별 전체 등장 순서 계산
   const typeGlobalCount: Record<string, number> = {};
   events.forEach(ev => {
@@ -65,6 +71,7 @@ const Scheduler = () => {
     if (!typeGlobalCount[ev.type]) typeGlobalCount[ev.type] = 0;
     typeGlobalCount[ev.type]++;
   });
+
   // 날짜순 정렬
   const sortedEvents = [...events].sort((a, b) => a.date.localeCompare(b.date));
 
@@ -78,23 +85,30 @@ const Scheduler = () => {
     typeOrderCounter[ev.type]++;
   });
 
+  // 로컬 타임존 기준 YYYY-MM-DD 반환
+  function getYMD(date: Date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+  }
 
   function tileContent({ date }: { date: Date }) {
-    const ymd = date.toISOString().slice(0, 10);
+    const ymd = getYMD(date);
     const dayEvents = scheduleMap[ymd];
     if (!dayEvents) return null;
 
     // 이전 날짜의 마지막 이벤트 타입
     const prevDate = new Date(date);
     prevDate.setDate(prevDate.getDate() - 1);
-    const prevYmd = prevDate.toISOString().slice(0, 10);
+    const prevYmd = getYMD(prevDate);
     const prevDayEvents = scheduleMap[prevYmd];
     const prevLastEventType = prevDayEvents?.[prevDayEvents.length - 1]?.type;
 
     // 다음 날짜의 첫 번째 이벤트 타입
     const nextDate = new Date(date);
     nextDate.setDate(nextDate.getDate() + 1);
-    const nextYmd = nextDate.toISOString().slice(0, 10);
+    const nextYmd = getYMD(nextDate);
     const nextDayEvents = scheduleMap[nextYmd];
     const nextFirstEventType = nextDayEvents?.[0]?.type;
 
@@ -141,7 +155,6 @@ const Scheduler = () => {
     );
   }
 
-
   if (loading) return <div className={styles.loading}>일정 불러오는 중...</div>;
   if (error) return <div className={styles.error}>{error}</div>;
 
@@ -175,7 +188,7 @@ const Scheduler = () => {
         calendarType="gregory"
         tileContent={tileContent}
         onClickDay={date => {
-          const ymd = date.toISOString().slice(0, 10);
+          const ymd = getYMD(date);
           if (scheduleMap[ymd]) {
             setPopupEvent(scheduleMap[ymd][0]);
           }
