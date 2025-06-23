@@ -33,18 +33,27 @@ export const MyContentProvider = ({ children }: { children: React.ReactNode }) =
 
     // 데이터 fetch 또는 localStorage에서 불러오기
     const fetchAll = async () => {
-        // 1. 목데이터 fetch
-        const writtenRes = await fetch("/data/myWritten.json");
-        const writtenMock = await writtenRes.json();
+        // 1. 전체 포스트 데이터 fetch
+        const postsRes = await fetch("/data/posts.json");
+        const postsMock = await postsRes.json();
 
-        // 2. localStorage 데이터
+        // 내 userId로 필터링 (예: myUserId = "testfan")
+        const myUserId = "testfan";
+        const myWrittenFromMock = (postsMock.fan || []).filter(
+            (post: any) => post.user?.userId === myUserId
+        );
+
+        // 3. localStorage 데이터
         const writtenLS = localStorage.getItem("myFanPosts");
         const writtenLocal = writtenLS ? JSON.parse(writtenLS) : [];
 
-        // 3. 합치기 (중복 제거: id 기준)
-        const allWritten = [...writtenLocal, ...writtenMock.filter(
-            (mock: MyWrittenPost) => !writtenLocal.some((local: MyWrittenPost) => local.id === mock.id)
-        )];
+        // 4. 합치기 (중복 제거: id 기준)
+        const allWritten = [
+            ...writtenLocal,
+            ...myWrittenFromMock.filter(
+                (mock: any) => !writtenLocal.some((local: any) => local.id === mock.id)
+            )
+        ];
 
         setWritten(allWritten);
 

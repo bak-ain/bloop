@@ -1,97 +1,197 @@
+.levelGuideWrap {
+  text-align: center;
+}
 
-.levelGuideTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 8px;
-}
 .levelGuideSubtitle {
-  font-size: 1.1rem;
-  text-align: center;
-  margin-bottom: 32px;
-  color: #888;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
+
+.levelGuideSubtitle br {
+  display: none;
+}
+
 .levelGrid {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   justify-content: center;
   align-items: stretch;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
+
 .levelCard {
   background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  padding: 32px 18px 18px 18px;
-  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 40px 15px;
+  width: 300px;
   height: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 40px;
 }
+
+.levelCardTop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
 .levelBadgeWrap {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
+
 .levelBadgeImg {
-  width: 64px;
-  height: 64px;
+  width: 100px;
+  height: auto;
 }
+
 .levelName {
-  font-size: 2rem;
+  font-family: var(--level-font-family);
+  font-size: 30px;
   font-weight: bold;
-  margin-bottom: 8px;
+  /* margin-bottom: 20px; */
   text-transform: capitalize;
 }
+
+.levelDescWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
 .levelDesc {
-  font-size: 1.1rem;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 10px;
+  color: var(--font-color-3);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 150%;
 }
+
 .levelDetail {
-  font-size: 1rem;
-  color: #444;
-  text-align: center;
-  margin-bottom: 18px;
+  color: var(--font-color-7);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 180%;
+  /* margin-top: 50px; */
 }
+
+.levelCardFooter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
 .levelCondition {
-  background: #f7f7f7;
+  background: var(--sub-color-yellow);
   border-radius: 10px;
   padding: 10px 0;
   width: 100%;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 12px;
+  color: var(--font-color-3);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
 }
+
+.levelCondition_loopy {
+  background: var(--sub-color-blue);
+}
+
+.levelCondition_popin {
+  background: var(--sub-color-purple);
+
+}
+
 .levelEmojis {
   width: 100%;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
+
 .levelEmojiLabel {
-  font-size: 0.95rem;
-  color: #888;
-  margin-bottom: 4px;
+  color: var(--font-color-3);
+  font-size: 16px;
+  font-weight: 500;
 }
+
 .levelEmojiList {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
+  width: 80%;
 }
+
 .levelEmojiImg {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border-radius: 8px;
   background: #f0f0f0;
 }
+
 @media (max-width: 900px) {
   .levelGrid {
     flex-direction: column;
     align-items: center;
+    gap: 40px;
   }
+
   .levelCard {
     width: 90%;
     max-width: 340px;
+  }
+}
+
+@media (max-width: 767px) {
+  .levelCard {
+    gap: 30px;
+  }
+
+
+  .levelGuideSubtitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+  }
+
+  .levelGuideSubtitle br {
+    display: block;
+  }
+
+  .levelCardTop {
+    gap: 15px;
+  }
+
+  .levelBadgeImg {
+    width: 50px;
+  }
+
+  .levelName {
+    font-size: 24px;
+  }
+
+  .levelDesc {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .levelDetail {
+    display: none;
   }
 }

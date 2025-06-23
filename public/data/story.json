@@ -4,7 +4,7 @@
         "user": {
             "id": "doa",
             "name": "DOA",
-            "profileImage": "/images/mainDoaP.png",
+            "profileImage": "/images/profiles/DOA_full.png",
             "badgeType": "artist"
         },
         "date": "1일 전",
@@ -22,7 +22,7 @@
         "user": {
             "id": "arin",
             "name": "ARIN",
-            "profileImage": "/images/mainArinP.png",
+            "profileImage": "/images/profiles/ARIN_full.png",
             "badgeType": "artist"
         },
         "date": "1분 전",
@@ -40,7 +40,7 @@
         "user": {
             "id": "sei",
             "name": "SEI",
-            "profileImage": "/images/mainSeiP.png",
+            "profileImage": "/images/profiles/SEI_full.png",
             "badgeType": "artist"
         },
         "date": "18시간 전",
@@ -58,7 +58,7 @@
         "user": {
             "id": "luha",
             "name": "LUHA",
-            "profileImage": "/images/mainLuhaP.png",
+            "profileImage": "/images/profiles/LUHA_full.png",
             "badgeType": "artist"
         },
         "date": "30분 전",

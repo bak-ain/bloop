@@ -22,7 +22,7 @@ const OfficialBanner = ({ highlights }: OfficialBannerProps) => {
         navigation
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         loop
-        className={styles.swiperWrapper}
+        className="officeSwiper"
       >
         {highlights.map((banner) => (
           <SwiperSlide key={banner.id}>

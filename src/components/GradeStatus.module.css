@@ -42,6 +42,7 @@
 }
 
 .highlight {
+  font-family: var(--level-font-family);
   color: var(--point-color-yellow);
   font-weight: 700;
 }
@@ -95,7 +96,7 @@
 }
 
 @media (max-width: 966px) {
-    .textWrap {
+  .textWrap {
     padding-bottom: 90px;
   }
 
@@ -227,8 +228,8 @@
   }
 
   .buttonRow button {
-    width: 45vw;
-    height: 4.4vh;
+    width: 42vw;
+    height: 6vh;
     font-size: 16px;
     font-weight: 500;
     border-radius: 5px;

@@ -117,14 +117,23 @@ const OfficialPost = ({ data, index }: OfficialPostProps) => {
               />
             </div>
             <button
-              className={`${styles.behindDetailBtn}  officeBtn`}
+              className={`${styles.behindDetailBtn} officeBtn`}
               onClick={(e) => {
                 e.stopPropagation();
                 handleClick();
               }}
             >
               보러가기
-              <img src="/images/icon/office_icon.png" alt="go" className={styles.behindIcon} />
+              <img
+                src="/images/icon/office_icon.png"
+                alt="go"
+                className={`${styles.behindIcon} ${styles.defaultIcon}`}
+              />
+              <img
+                src="/images/icon/officeW_icon.png"
+                alt="go"
+                className={`${styles.behindIcon} ${styles.hoverIcon}`}
+              />
             </button>
 
           </div>

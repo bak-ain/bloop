@@ -22,7 +22,7 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
         onLike,
         onScrap,
         onPostClick,
-        pageSize = 10,
+        pageSize = 5,
         className,
     }: FeedLayoutProps<T>
 ) => {
@@ -88,21 +88,24 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
                                         : "/images/icon/page_le_on.png"
                                 }
                                 alt="이전"
-                                
                             />
                         </button>
-                        {[1, 2, 3].map(i => (
-                            <button
-                                key={i}
-                                onClick={() => setPage(i)}
-                                className={`${styles.paginationBtn} ${page === i ? styles.paginationBtnActive : ""}`}
-                                type="button"
-                                disabled={i > totalPages}
-                                tabIndex={i > totalPages ? -1 : 0}
-                            >
-                                {i}
-                            </button>
-                        ))}
+                        {Array.from({ length: Math.min(totalPages, 3) }, (_, idx) => {
+                            // 페이지가 3개 이상일 때 현재 페이지를 중앙에 위치
+                            let start = Math.max(1, Math.min(page - 1, totalPages - 2));
+                            const pageNum = start + idx;
+                            return (
+                                <button
+                                    key={pageNum}
+                                    onClick={() => setPage(pageNum)}
+                                    className={`${styles.paginationBtn} ${page === pageNum ? styles.paginationBtnActive : ""}`}
+                                    type="button"
+                                    tabIndex={0}
+                                >
+                                    {pageNum}
+                                </button>
+                            );
+                        })}
                         <button
                             className={styles.paginationBtn}
                             onClick={() => setPage(page + 1)}
@@ -117,7 +120,6 @@ const FeedLayout = <T extends ArtistPost | FanPost>(
                                         : "/images/icon/page_ri_on.png "
                                 }
                                 alt="다음"
-                              
                             />
                         </button>
                     </div>

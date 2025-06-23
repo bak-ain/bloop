@@ -4,7 +4,8 @@ export interface UserPreview {
   profileImage: string;
   badgeType: 'fan' | 'artist';
   badgeLevel?: 1 | 2 | 3;
-  userId?: string;              // @아이디 표기용 (옵셔널)
+  userId?: string;   
+  nickname?: string; // 팬 계정일 경우 닉네임
 }
 
 //게시물
@@ -102,7 +103,7 @@ export interface ScheduleEvent {
   date: string;
   title: string;
   description?: string;
-  type?: '공연' | '방송' | '팬미팅' |'팬사인회'| '기타';
+  type?: '공연' | '방송' | '팬미팅' |'팬사인회'| '기타' | '촬영';
 }
 
 export interface ScheduleDay {
@@ -171,6 +172,7 @@ export interface MyCommentPost {
   date: string;
   editable: true;
   userId: string;
+  postId: string; // 댓글이 달린 포스트 I
 }
 
 //팬성향
