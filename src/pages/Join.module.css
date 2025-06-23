@@ -157,6 +157,7 @@ label {
   margin-top: 18px;
   cursor: pointer;
   transition: background 0.2s;
+  /* justify-content: center; */
 }
 
 .joinBtn:hover {

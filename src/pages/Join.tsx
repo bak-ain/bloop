@@ -57,7 +57,7 @@ const Join = () => {
   const [agencyInput, setAgencyInput] = useState<AgencySignupInput>({ ...defaultAgency });
   const [showDomainSelect, setShowDomainSelect] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const { addUser } = useUserContext();
+  const { addUser, setUser } = useUserContext();
   const navigate = useNavigate();
   const fanEmailDomainInputRef = useRef<HTMLInputElement>(null);
   const agencyEmailDomainInputRef = useRef<HTMLInputElement>(null);
@@ -180,22 +180,53 @@ const Join = () => {
   // 회원가입 처리
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 1. 필수 입력값 체크 (fan)
     if (userType === 'fan') {
+      if (!fanInput.id || !fanInput.nickname || !fanInput.password || !fanInput.confirmPassword ||
+        !fanInput.name || !fanInput.email || !fanInput.phone ||
+        !fanInput.birth.year || !fanInput.birth.month || !fanInput.birth.day) {
+        alert('필수 정보를 모두 입력해 주세요.');
+        return;
+      }
+      if (!fanInput.agree.privacy || !fanInput.agree.communityPolicy || !fanInput.agree.over14) {
+        alert('필수 약관에 모두 동의해 주세요.');
+        return;
+      }
       if (fanInput.password !== fanInput.confirmPassword) {
         alert('비밀번호가 일치하지 않습니다.');
         return;
       }
       addUser({ ...fanInput });
-      alert('회원가입이 완료되었습니다.');
-      navigate('/login?type=fan');
+      if (window.confirm('회원가입이 완료되었습니다.\n로그인하시겠어요?')) {
+        setUser({ ...fanInput });
+        navigate('/gradeStatus');
+      } else {
+        navigate('/login?type=fan');
+      }
     } else {
+      // 2. 필수 입력값 체크 (agency)
+      if (!agencyInput.company || !agencyInput.artistName || !agencyInput.id ||
+        !agencyInput.password || !agencyInput.confirmPassword ||
+        !agencyInput.name || !agencyInput.email || !agencyInput.phone) {
+        alert('필수 정보를 모두 입력해 주세요.');
+        return;
+      }
+      if (!agencyInput.agree.privacy || !agencyInput.agree.uploadResponsibility || !agencyInput.agree.over14) {
+        alert('필수 약관에 모두 동의해 주세요.');
+        return;
+      }
       if (agencyInput.password !== agencyInput.confirmPassword) {
         alert('비밀번호가 일치하지 않습니다.');
         return;
       }
       addUser({ ...agencyInput });
-      alert('회원가입이 완료되었습니다.');
-      navigate('/login?type=agency');
+      if (window.confirm('회원가입이 완료되었습니다.\n로그인하시겠어요?')) {
+        setUser({ ...agencyInput });
+        navigate('/admin');
+      } else {
+        navigate('/login?type=agency');
+      }
     }
   };
 
@@ -696,7 +727,7 @@ const Join = () => {
               )}
 
             </form>
-            <button className={styles.joinBtn} type="submit">회원가입완료하기</button>
+            <button onClick={handleSubmit} className={styles.joinBtn} type="submit">회원가입완료하기</button>
           </div>
 
         </div>

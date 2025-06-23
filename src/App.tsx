@@ -71,7 +71,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/join" element={<Join />} />
                   {/* 은님추가 */}
-                  <Route path="/grade-status" element={<GradeStatus />} />
+                  <Route path="/gradeStatus" element={<GradeStatus />} />
                   {/* -------- */}
                   <Route path="/official" element={<OfficialFeed />} />
                   <Route path="/official/:id" element={<OfficialPostDetail />} />
