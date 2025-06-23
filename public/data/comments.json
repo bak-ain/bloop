@@ -105,8 +105,8 @@
     "comments": 0,
     "isLiked": false
   },
-    {
-    "id": "2",
+  {
+    "id": "6",
     "postId": "a1",
     "postType": "artist",
     "user": {
@@ -124,7 +124,7 @@
     "isLiked": false
   },
   {
-    "id": "3",
+    "id": "7",
     "postId": "a1",
     "postType": "artist",
     "user": {
@@ -141,7 +141,7 @@
     "isLiked": true
   },
   {
-    "id": "4",
+    "id": "8",
     "postId": "a1",
     "postType": "artist",
     "user": {
@@ -158,7 +158,7 @@
     "isLiked": false
   },
   {
-    "id": "5",
+    "id": "9",
     "postId": "a1",
     "postType": "artist",
     "user": {
@@ -174,10 +174,8 @@
     "comments": 0,
     "isLiked": false
   },
-
-
   {
-    "id": "6",
+    "id": "10",
     "postId": "a2",
     "postType": "artist",
     "user": {
@@ -192,7 +190,7 @@
     "likes": 4,
     "comments": 2,
     "isLiked": false,
-        "replies": [
+    "replies": [
       {
         "id": "601",
         "postId": "a2",
@@ -210,7 +208,7 @@
         "comments": 0,
         "isLiked": false
       },
-            {
+      {
         "id": "602",
         "postId": "a2",
         "postType": "artist",
@@ -230,7 +228,7 @@
     ]
   },
   {
-    "id": "7",
+    "id": "11",
     "postId": "a2",
     "postType": "artist",
     "user": {
@@ -247,7 +245,7 @@
     "isLiked": true
   },
   {
-    "id": "8",
+    "id": "12",
     "postId": "a2",
     "postType": "artist",
     "user": {
@@ -265,7 +263,7 @@
     "isLiked": false
   },
   {
-    "id": "9",
+    "id": "13",
     "postId": "a2",
     "postType": "artist",
     "user": {
@@ -283,7 +281,7 @@
     "isLiked": true
   },
   {
-    "id": "10",
+    "id": "14",
     "postId": "a2",
     "postType": "artist",
     "user": {
@@ -300,7 +298,7 @@
     "isLiked": false
   },
   {
-    "id": "11",
+    "id": "15",
     "postId": "a3",
     "postType": "artist",
     "user": {
@@ -317,7 +315,7 @@
     "isLiked": false
   },
   {
-    "id": "12",
+    "id": "16",
     "postId": "a3",
     "postType": "artist",
     "user": {
@@ -334,7 +332,7 @@
     "isLiked": false
   },
   {
-    "id": "13",
+    "id": "17",
     "postId": "a3",
     "postType": "artist",
     "user": {
@@ -350,7 +348,7 @@
     "likes": 3,
     "comments": 1,
     "isLiked": false,
-        "replies": [
+    "replies": [
       {
         "id": "1301",
         "postId": "a3",
@@ -371,7 +369,7 @@
     ]
   },
   {
-    "id": "14",
+    "id": "18",
     "postId": "a3",
     "postType": "artist",
     "user": {
@@ -388,7 +386,7 @@
     "isLiked": true
   },
   {
-    "id": "15",
+    "id": "19",
     "postId": "a3",
     "postType": "artist",
     "user": {
@@ -406,7 +404,7 @@
     "isLiked": false
   },
   {
-    "id": "16",
+    "id": "20",
     "postId": "a4",
     "postType": "artist",
     "user": {
@@ -424,7 +422,7 @@
     "isLiked": false
   },
   {
-    "id": "17",
+    "id": "21",
     "postId": "a4",
     "postType": "artist",
     "user": {
@@ -441,7 +439,7 @@
     "isLiked": true
   },
   {
-    "id": "18",
+    "id": "22",
     "postId": "a4",
     "postType": "artist",
     "user": {
@@ -458,7 +456,7 @@
     "isLiked": false
   },
   {
-    "id": "19",
+    "id": "23",
     "postId": "a4",
     "postType": "artist",
     "user": {
@@ -473,7 +471,7 @@
     "likes": 8,
     "comments": 2,
     "isLiked": false,
-        "replies": [
+    "replies": [
       {
         "id": "1901",
         "postId": "a4",
@@ -491,7 +489,7 @@
         "comments": 0,
         "isLiked": false
       },
-            {
+      {
         "id": "1902",
         "postId": "a4",
         "postType": "artist",
@@ -511,7 +509,7 @@
     ]
   },
   {
-    "id": "20",
+    "id": "24",
     "postId": "a5",
     "postType": "artist",
     "user": {
@@ -528,7 +526,7 @@
     "isLiked": true
   },
   {
-    "id": "21",
+    "id": "25",
     "postId": "a5",
     "postType": "artist",
     "user": {
@@ -543,8 +541,8 @@
     "date": "2025.06.24",
     "likes": 2,
     "comments": 1,
-        "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "2101",
         "postId": "a5",
@@ -565,7 +563,7 @@
     ]
   },
   {
-    "id": "22",
+    "id": "26",
     "postId": "a5",
     "postType": "artist",
     "user": {
@@ -630,8 +628,8 @@
     "date": "2025.06.22",
     "likes": 2,
     "comments": 2,
-       "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "2501",
         "postId": "a6",
@@ -649,7 +647,7 @@
         "comments": 0,
         "isLiked": false
       },
-            {
+      {
         "id": "2501",
         "postId": "a6",
         "postType": "artist",
@@ -737,7 +735,7 @@
     "isLiked": true
   },
   {
-    "id": "26",
+    "id": "30",
     "postId": "a6",
     "postType": "artist",
     "user": {
@@ -754,7 +752,7 @@
     "isLiked": true
   },
   {
-    "id": "30",
+    "id": "31",
     "postId": "a7",
     "postType": "artist",
     "user": {
@@ -838,8 +836,8 @@
     "comments": 0,
     "isLiked": false
   },
-    {
-    "id": "30",
+  {
+    "id": "35",
     "postId": "a7",
     "postType": "artist",
     "user": {
@@ -856,7 +854,7 @@
     "isLiked": false
   },
   {
-    "id": "31",
+    "id": "36",
     "postId": "a7",
     "postType": "artist",
     "user": {
@@ -873,7 +871,7 @@
     "isLiked": false
   },
   {
-    "id": "32",
+    "id": "37",
     "postId": "a7",
     "postType": "artist",
     "user": {
@@ -890,7 +888,7 @@
     "isLiked": false
   },
   {
-    "id": "35",
+    "id": "38",
     "postId": "a8",
     "postType": "artist",
     "user": {
@@ -905,8 +903,8 @@
     "date": "2025.06.21",
     "likes": 2,
     "comments": 1,
-   "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "3501",
         "postId": "a8",
@@ -927,7 +925,7 @@
     ]
   },
   {
-    "id": "35",
+    "id": "39",
     "postId": "a8",
     "postType": "artist",
     "user": {
@@ -944,7 +942,7 @@
     "isLiked": false
   },
   {
-    "id": "35",
+    "id": "40",
     "postId": "a8",
     "postType": "artist",
     "user": {
@@ -961,7 +959,7 @@
     "isLiked": false
   },
   {
-    "id": "35",
+    "id": "41",
     "postId": "a8",
     "postType": "artist",
     "user": {
@@ -978,7 +976,7 @@
     "isLiked": false
   },
   {
-    "id": "35",
+    "id": "42",
     "postId": "a8",
     "postType": "artist",
     "user": {
@@ -995,7 +993,7 @@
     "isLiked": false
   },
   {
-    "id": "36",
+    "id": "43",
     "postId": "a9",
     "postType": "artist",
     "user": {
@@ -1012,7 +1010,7 @@
     "isLiked": false
   },
   {
-    "id": "37",
+    "id": "44",
     "postId": "a9",
     "postType": "artist",
     "user": {
@@ -1029,7 +1027,7 @@
     "isLiked": false
   },
   {
-    "id": "38",
+    "id": "45",
     "postId": "a9",
     "postType": "artist",
     "user": {
@@ -1047,7 +1045,7 @@
     "isLiked": false
   },
   {
-    "id": "39",
+    "id": "46",
     "postId": "a9",
     "postType": "artist",
     "user": {
@@ -1064,7 +1062,7 @@
     "isLiked": false
   },
   {
-    "id": "40",
+    "id": "47",
     "postId": "a9",
     "postType": "artist",
     "user": {
@@ -1080,8 +1078,8 @@
     "comments": 0,
     "isLiked": true
   },
-    {
-    "id": "36",
+  {
+    "id": "48",
     "postId": "a9",
     "postType": "artist",
     "user": {
@@ -1098,7 +1096,7 @@
     "isLiked": false
   },
   {
-    "id": "41",
+    "id": "49",
     "postId": "a10",
     "postType": "artist",
     "user": {
@@ -1116,7 +1114,7 @@
     "isLiked": false
   },
   {
-    "id": "42",
+    "id": "50",
     "postId": "a10",
     "postType": "artist",
     "user": {
@@ -1133,7 +1131,7 @@
     "isLiked": false
   },
   {
-    "id": "43",
+    "id": "51",
     "postId": "a10",
     "postType": "artist",
     "user": {
@@ -1150,7 +1148,7 @@
     "isLiked": false
   },
   {
-    "id": "44",
+    "id": "52",
     "postId": "a10",
     "postType": "artist",
     "user": {
@@ -1167,7 +1165,7 @@
     "isLiked": true
   },
   {
-    "id": "45",
+    "id": "53",
     "postId": "a10",
     "postType": "artist",
     "user": {
@@ -1184,7 +1182,7 @@
     "isLiked": false
   },
   {
-    "id": "46",
+    "id": "54",
     "postId": "a11",
     "postType": "artist",
     "user": {
@@ -1202,7 +1200,7 @@
     "isLiked": false
   },
   {
-    "id": "47",
+    "id": "55",
     "postId": "a11",
     "postType": "artist",
     "user": {
@@ -1219,7 +1217,7 @@
     "isLiked": false
   },
   {
-    "id": "48",
+    "id": "56",
     "postId": "a11",
     "postType": "artist",
     "user": {
@@ -1236,7 +1234,7 @@
     "isLiked": false
   },
   {
-    "id": "49",
+    "id": "57",
     "postId": "a11",
     "postType": "artist",
     "user": {
@@ -1253,7 +1251,7 @@
     "isLiked": false
   },
   {
-    "id": "50",
+    "id": "58",
     "postId": "a11",
     "postType": "artist",
     "user": {
@@ -1270,7 +1268,7 @@
     "isLiked": false
   },
   {
-    "id": "51",
+    "id": "60",
     "postId": "a12",
     "postType": "artist",
     "user": {
@@ -1287,7 +1285,7 @@
     "isLiked": true
   },
   {
-    "id": "52",
+    "id": "61",
     "postId": "a12",
     "postType": "artist",
     "user": {
@@ -1304,7 +1302,7 @@
     "isLiked": false
   },
   {
-    "id": "53",
+    "id": "62",
     "postId": "a12",
     "postType": "artist",
     "user": {
@@ -1322,7 +1320,7 @@
     "isLiked": true
   },
   {
-    "id": "54",
+    "id": "63",
     "postId": "a12",
     "postType": "artist",
     "user": {
@@ -1339,7 +1337,7 @@
     "isLiked": false
   },
   {
-    "id": "55",
+    "id": "64",
     "postId": "a12",
     "postType": "artist",
     "user": {
@@ -1355,8 +1353,8 @@
     "comments": 0,
     "isLiked": false
   },
-    {
-    "id": "51",
+  {
+    "id": "65",
     "postId": "a12",
     "postType": "artist",
     "user": {
@@ -1373,7 +1371,7 @@
     "isLiked": true
   },
   {
-    "id": "52",
+    "id": "66",
     "postId": "a12",
     "postType": "artist",
     "user": {
@@ -1390,7 +1388,7 @@
     "isLiked": false
   },
   {
-    "id": "56",
+    "id": "67",
     "postId": "a13",
     "postType": "artist",
     "user": {
@@ -1407,7 +1405,7 @@
     "isLiked": true
   },
   {
-    "id": "57",
+    "id": "68",
     "postId": "a13",
     "postType": "artist",
     "user": {
@@ -1424,7 +1422,7 @@
     "isLiked": false
   },
   {
-    "id": "58",
+    "id": "69",
     "postId": "a13",
     "postType": "artist",
     "user": {
@@ -1442,7 +1440,7 @@
     "isLiked": true
   },
   {
-    "id": "59",
+    "id": "70",
     "postId": "a13",
     "postType": "artist",
     "user": {
@@ -1459,7 +1457,7 @@
     "isLiked": false
   },
   {
-    "id": "60",
+    "id": "71",
     "postId": "a13",
     "postType": "artist",
     "user": {
@@ -1476,7 +1474,7 @@
     "isLiked": false
   },
   {
-    "id": "61",
+    "id": "72",
     "postId": "a14",
     "postType": "artist",
     "user": {
@@ -1493,7 +1491,7 @@
     "isLiked": true
   },
   {
-    "id": "62",
+    "id": "73",
     "postId": "a14",
     "postType": "artist",
     "user": {
@@ -1510,7 +1508,7 @@
     "isLiked": false
   },
   {
-    "id": "63",
+    "id": "74",
     "postId": "a14",
     "postType": "artist",
     "user": {
@@ -1527,7 +1525,7 @@
     "isLiked": true
   },
   {
-    "id": "64",
+    "id": "75",
     "postId": "a14",
     "postType": "artist",
     "user": {
@@ -1545,7 +1543,7 @@
     "isLiked": false
   },
   {
-    "id": "65",
+    "id": "76",
     "postId": "a14",
     "postType": "artist",
     "user": {
@@ -1562,7 +1560,7 @@
     "isLiked": false
   },
   {
-    "id": "66",
+    "id": "77",
     "postId": "a15",
     "postType": "artist",
     "user": {
@@ -1579,7 +1577,7 @@
     "isLiked": true
   },
   {
-    "id": "67",
+    "id": "78",
     "postId": "a15",
     "postType": "artist",
     "user": {
@@ -1596,7 +1594,7 @@
     "isLiked": false
   },
   {
-    "id": "68",
+    "id": "79",
     "postId": "a15",
     "postType": "artist",
     "user": {
@@ -1613,7 +1611,7 @@
     "isLiked": true
   },
   {
-    "id": "69",
+    "id": "80",
     "postId": "a15",
     "postType": "artist",
     "user": {
@@ -1648,7 +1646,7 @@
     "isLiked": false
   },
   {
-    "id": "71",
+    "id": "81",
     "postId": "f1",
     "postType": "fan",
     "user": {
@@ -1665,7 +1663,7 @@
     "isLiked": true
   },
   {
-    "id": "72",
+    "id": "82",
     "postId": "f1",
     "postType": "fan",
     "user": {
@@ -1682,7 +1680,7 @@
     "isLiked": false
   },
   {
-    "id": "73",
+    "id": "83",
     "postId": "f1",
     "postType": "fan",
     "user": {
@@ -1699,7 +1697,7 @@
     "isLiked": true
   },
   {
-    "id": "74",
+    "id": "84",
     "postId": "f1",
     "postType": "fan",
     "user": {
@@ -1716,7 +1714,7 @@
     "isLiked": false
   },
   {
-    "id": "75",
+    "id": "85",
     "postId": "f1",
     "postType": "fan",
     "user": {
@@ -1734,7 +1732,7 @@
     "isLiked": false
   },
   {
-    "id": "76",
+    "id": "86",
     "postId": "f2",
     "postType": "fan",
     "user": {
@@ -1751,7 +1749,7 @@
     "isLiked": true
   },
   {
-    "id": "77",
+    "id": "87",
     "postId": "f2",
     "postType": "fan",
     "user": {
@@ -1768,7 +1766,7 @@
     "isLiked": false
   },
   {
-    "id": "78",
+    "id": "88",
     "postId": "f2",
     "postType": "fan",
     "user": {
@@ -1786,7 +1784,7 @@
     "isLiked": true
   },
   {
-    "id": "79",
+    "id": "89",
     "postId": "f2",
     "postType": "fan",
     "user": {
@@ -1803,7 +1801,7 @@
     "isLiked": false
   },
   {
-    "id": "80",
+    "id": "90",
     "postId": "f2",
     "postType": "fan",
     "user": {
@@ -1820,7 +1818,7 @@
     "isLiked": false
   },
   {
-    "id": "81",
+    "id": "91",
     "postId": "f3",
     "postType": "fan",
     "user": {
@@ -1837,7 +1835,7 @@
     "isLiked": true
   },
   {
-    "id": "82",
+    "id": "92",
     "postId": "f3",
     "postType": "fan",
     "user": {
@@ -1854,7 +1852,7 @@
     "isLiked": false
   },
   {
-    "id": "83",
+    "id": "93",
     "postId": "f3",
     "postType": "fan",
     "user": {
@@ -1872,7 +1870,7 @@
     "isLiked": true
   },
   {
-    "id": "84",
+    "id": "94",
     "postId": "f3",
     "postType": "fan",
     "user": {
@@ -1889,7 +1887,7 @@
     "isLiked": false
   },
   {
-    "id": "85",
+    "id": "95",
     "postId": "f3",
     "postType": "fan",
     "user": {
@@ -1906,7 +1904,7 @@
     "isLiked": false
   },
   {
-    "id": "87",
+    "id": "96",
     "postId": "f4",
     "postType": "fan",
     "user": {
@@ -1924,7 +1922,7 @@
     "isLiked": true
   },
   {
-    "id": "88",
+    "id": "97",
     "postId": "f4",
     "postType": "fan",
     "user": {
@@ -1941,7 +1939,7 @@
     "isLiked": false
   },
   {
-    "id": "89",
+    "id": "98",
     "postId": "f4",
     "postType": "fan",
     "user": {
@@ -1955,8 +1953,8 @@
     "date": "2025.06.16",
     "likes": 1,
     "comments": 2,
-   "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "8901",
         "postId": "f4",
@@ -1974,7 +1972,7 @@
         "comments": 0,
         "isLiked": false
       },
-            {
+      {
         "id": "8902",
         "postId": "f4",
         "postType": "fan",
@@ -1994,7 +1992,7 @@
     ]
   },
   {
-    "id": "90",
+    "id": "99",
     "postId": "f4",
     "postType": "fan",
     "user": {
@@ -2011,7 +2009,7 @@
     "isLiked": false
   },
   {
-    "id": "91",
+    "id": "100",
     "postId": "f4",
     "postType": "fan",
     "user": {
@@ -2028,7 +2026,7 @@
     "isLiked": false
   },
   {
-    "id": "92",
+    "id": "101",
     "postId": "f5",
     "postType": "fan",
     "user": {
@@ -2046,7 +2044,7 @@
     "isLiked": true
   },
   {
-    "id": "93",
+    "id": "102",
     "postId": "f5",
     "postType": "fan",
     "user": {
@@ -2063,7 +2061,7 @@
     "isLiked": false
   },
   {
-    "id": "94",
+    "id": "103",
     "postId": "f5",
     "postType": "fan",
     "user": {
@@ -2080,7 +2078,7 @@
     "isLiked": true
   },
   {
-    "id": "95",
+    "id": "104",
     "postId": "f5",
     "postType": "fan",
     "user": {
@@ -2097,7 +2095,7 @@
     "isLiked": false
   },
   {
-    "id": "96",
+    "id": "105",
     "postId": "f5",
     "postType": "fan",
     "user": {
@@ -2114,7 +2112,7 @@
     "isLiked": false
   },
   {
-    "id": "97",
+    "id": "106",
     "postId": "f6",
     "postType": "fan",
     "user": {
@@ -2128,8 +2126,8 @@
     "date": "2025.06.11",
     "likes": 6,
     "comments": 2,
-  "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "9701",
         "postId": "f6",
@@ -2147,7 +2145,7 @@
         "comments": 0,
         "isLiked": false
       },
-            {
+      {
         "id": "9702",
         "postId": "f6",
         "postType": "fan",
@@ -2167,7 +2165,7 @@
     ]
   },
   {
-    "id": "98",
+    "id": "107",
     "postId": "f6",
     "postType": "fan",
     "user": {
@@ -2184,7 +2182,7 @@
     "isLiked": false
   },
   {
-    "id": "99",
+    "id": "108",
     "postId": "f6",
     "postType": "fan",
     "user": {
@@ -2195,14 +2193,14 @@
       "userId": "Arinnight"
     },
     "content": "도아가 밤하늘이라면 나는 별이 되고 싶어… 네 곁에서 빛나고 싶어 ⭐️",
-        "emoji": "/images/emoji/emoji3.png",
+    "emoji": "/images/emoji/emoji3.png",
     "date": "2025.06.11",
     "likes": 1,
     "comments": 0,
     "isLiked": true
   },
   {
-    "id": "100",
+    "id": "109",
     "postId": "f6",
     "postType": "fan",
     "user": {
@@ -2219,7 +2217,7 @@
     "isLiked": false
   },
   {
-    "id": "101",
+    "id": "110",
     "postId": "f6",
     "postType": "fan",
     "user": {
@@ -2236,7 +2234,7 @@
     "isLiked": false
   },
   {
-    "id": "102",
+    "id": "111",
     "postId": "f7",
     "postType": "fan",
     "user": {
@@ -2253,7 +2251,7 @@
     "isLiked": true
   },
   {
-    "id": "103",
+    "id": "112",
     "postId": "f7",
     "postType": "fan",
     "user": {
@@ -2269,12 +2267,8 @@
     "comments": 0,
     "isLiked": false
   },
-
-
-
-
   {
-    "id": "104",
+    "id": "113",
     "postId": "f7",
     "postType": "fan",
     "user": {
@@ -2289,8 +2283,8 @@
     "date": "2025.06.10",
     "likes": 1,
     "comments": 1,
-  "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "10401",
         "postId": "f7",
@@ -2311,7 +2305,7 @@
     ]
   },
   {
-    "id": "105",
+    "id": "114",
     "postId": "f7",
     "postType": "fan",
     "user": {
@@ -2328,7 +2322,7 @@
     "isLiked": false
   },
   {
-    "id": "106",
+    "id": "115",
     "postId": "f7",
     "postType": "fan",
     "user": {
@@ -2344,10 +2338,8 @@
     "comments": 0,
     "isLiked": false
   },
-
-
   {
-    "id": "107",
+    "id": "116",
     "postId": "f8",
     "postType": "fan",
     "user": {
@@ -2364,7 +2356,7 @@
     "isLiked": true
   },
   {
-    "id": "108",
+    "id": "117",
     "postId": "f8",
     "postType": "fan",
     "user": {
@@ -2375,12 +2367,12 @@
       "userId": "Loopin_dream"
     },
     "content": "진짜 실시간으로 보다가 숨 멎었어요… 무대에서 조명까지 삼킨 비주얼 😭💘",
-        "emoji": "/images/emoji/emoji1.png",
+    "emoji": "/images/emoji/emoji1.png",
     "date": "2025.06.10",
     "likes": 0,
     "comments": 2,
-  "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "10801",
         "postId": "f8",
@@ -2398,7 +2390,7 @@
         "comments": 0,
         "isLiked": false
       },
-            {
+      {
         "id": "10802",
         "postId": "f8",
         "postType": "fan",
@@ -2418,7 +2410,7 @@
     ]
   },
   {
-    "id": "109",
+    "id": "118",
     "postId": "f8",
     "postType": "fan",
     "user": {
@@ -2435,7 +2427,7 @@
     "isLiked": true
   },
   {
-    "id": "110",
+    "id": "119",
     "postId": "f8",
     "postType": "fan",
     "user": {
@@ -2452,7 +2444,7 @@
     "isLiked": false
   },
   {
-    "id": "111",
+    "id": "120",
     "postId": "f8",
     "postType": "fan",
     "user": {
@@ -2468,11 +2460,8 @@
     "comments": 0,
     "isLiked": false
   },
-
-
-
-    {
-    "id": "112",
+  {
+    "id": "121",
     "postId": "f9",
     "postType": "fan",
     "user": {
@@ -2489,7 +2478,7 @@
     "isLiked": true
   },
   {
-    "id": "113",
+    "id": "122",
     "postId": "f9",
     "postType": "fan",
     "user": {
@@ -2503,8 +2492,8 @@
     "date": "2025.06.09",
     "likes": 0,
     "comments": 1,
-  "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "11301",
         "postId": "f9",
@@ -2525,7 +2514,7 @@
     ]
   },
   {
-    "id": "114",
+    "id": "123",
     "postId": "f9",
     "postType": "fan",
     "user": {
@@ -2539,8 +2528,8 @@
     "date": "2025.06.09",
     "likes": 1,
     "comments": 0,
-      "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "11401",
         "postId": "f9",
@@ -2558,7 +2547,7 @@
         "comments": 0,
         "isLiked": false
       },
-            {
+      {
         "id": "11402",
         "postId": "f9",
         "postType": "fan",
@@ -2578,7 +2567,7 @@
     ]
   },
   {
-    "id": "115",
+    "id": "124",
     "postId": "f9",
     "postType": "fan",
     "user": {
@@ -2595,7 +2584,7 @@
     "isLiked": false
   },
   {
-    "id": "116",
+    "id": "125",
     "postId": "f9",
     "postType": "fan",
     "user": {
@@ -2611,13 +2600,8 @@
     "comments": 0,
     "isLiked": false
   },
-
-
-
-
-  
-    {
-    "id": "117",
+  {
+    "id": "126",
     "postId": "f10",
     "postType": "fan",
     "user": {
@@ -2634,7 +2618,7 @@
     "isLiked": true
   },
   {
-    "id": "118",
+    "id": "127",
     "postId": "f10",
     "postType": "fan",
     "user": {
@@ -2648,8 +2632,8 @@
     "date": "2025.06.09",
     "likes": 0,
     "comments": 0,
-      "isLiked": false,
-        "replies": [
+    "isLiked": false,
+    "replies": [
       {
         "id": "11801",
         "postId": "f10",
@@ -2670,7 +2654,7 @@
     ]
   },
   {
-    "id": "119",
+    "id": "128",
     "postId": "f10",
     "postType": "fan",
     "user": {
@@ -2687,7 +2671,7 @@
     "isLiked": true
   },
   {
-    "id": "120",
+    "id": "129",
     "postId": "f10",
     "postType": "fan",
     "user": {
@@ -2704,7 +2688,7 @@
     "isLiked": false
   },
   {
-    "id": "121",
+    "id": "130",
     "postId": "f10",
     "postType": "fan",
     "user": {
@@ -2715,18 +2699,14 @@
       "userId": "Vocalfan_0914"
     },
     "content": "도아는 진짜 스타일 그 자체니까… 우리도 우리 스타일로 찰떡 만들자! 🔥👗",
-        "emoji": "/images/emoji1.png",
+    "emoji": "/images/emoji1.png",
     "date": "2025.06.09",
     "likes": 5,
     "comments": 0,
     "isLiked": false
   },
-
-
-
-
-      {
-    "id": "122",
+  {
+    "id": "131",
     "postId": "f11",
     "postType": "fan",
     "user": {
@@ -2737,14 +2717,14 @@
       "userId": "BLOOMIE"
     },
     "content": "진심… 도아 얼굴 보면 커피 안 마셔도 각성🔥반전매력은 덤이지",
-            "emoji": "/images/emoji/heart.png",
+    "emoji": "/images/emoji/heart.png",
     "date": "2025.06.07",
     "likes": 6,
     "comments": 0,
     "isLiked": true
   },
   {
-    "id": "123",
+    "id": "132",
     "postId": "f11",
     "postType": "fan",
     "user": {
@@ -2761,7 +2741,7 @@
     "isLiked": false
   },
   {
-    "id": "124",
+    "id": "133",
     "postId": "f11",
     "postType": "fan",
     "user": {
@@ -2778,7 +2758,7 @@
     "isLiked": true
   },
   {
-    "id": "125",
+    "id": "134",
     "postId": "f11",
     "postType": "fan",
     "user": {
@@ -2795,7 +2775,7 @@
     "isLiked": false
   },
   {
-    "id": "126",
+    "id": "135",
     "postId": "f11",
     "postType": "fan",
     "user": {
@@ -2811,12 +2791,8 @@
     "comments": 0,
     "isLiked": false
   },
-
-
-
-
-        {
-    "id": "127",
+  {
+    "id": "136",
     "postId": "f12",
     "postType": "fan",
     "user": {
@@ -2833,7 +2809,7 @@
     "isLiked": true
   },
   {
-    "id": "128",
+    "id": "137",
     "postId": "f12",
     "postType": "fan",
     "user": {
@@ -2850,7 +2826,7 @@
     "isLiked": false
   },
   {
-    "id": "129",
+    "id": "138",
     "postId": "f12",
     "postType": "fan",
     "user": {
@@ -2861,14 +2837,14 @@
       "userId": "Arinnight"
     },
     "content": "이거 프로필 사진으로 저장한 사람 나 포함 723명 예상합니다 📸✨",
-            "emoji": "/images/emoji5.png",
+    "emoji": "/images/emoji5.png",
     "date": "2025.06.06",
     "likes": 1,
     "comments": 0,
     "isLiked": true
   },
   {
-    "id": "130",
+    "id": "139",
     "postId": "f12",
     "postType": "fan",
     "user": {
@@ -2885,7 +2861,7 @@
     "isLiked": false
   },
   {
-    "id": "131",
+    "id": "140",
     "postId": "f12",
     "postType": "fan",
     "user": {
@@ -2896,20 +2872,14 @@
       "userId": "Vocalfan_0914"
     },
     "content": "이런 표정으로 가사 불러주면… 내 마음이 먼저 녹아버리잖아 🎶🥲",
-        "emoji": "/images/emoji1.png",
+    "emoji": "/images/emoji1.png",
     "date": "2025.06.06",
     "likes": 5,
     "comments": 0,
     "isLiked": false
   },
-
-
-
-
-
-
-          {
-    "id": "132",
+  {
+    "id": "141",
     "postId": "f13",
     "postType": "fan",
     "user": {
@@ -2926,7 +2896,7 @@
     "isLiked": true
   },
   {
-    "id": "133",
+    "id": "142",
     "postId": "f13",
     "postType": "fan",
     "user": {
@@ -2943,7 +2913,7 @@
     "isLiked": false
   },
   {
-    "id": "134",
+    "id": "143",
     "postId": "f13",
     "postType": "fan",
     "user": {
@@ -2960,7 +2930,7 @@
     "isLiked": true
   },
   {
-    "id": "135",
+    "id": "144",
     "postId": "f13",
     "postType": "fan",
     "user": {
@@ -2971,14 +2941,14 @@
       "userId": "LOOPY"
     },
     "content": "하이비스 영상 보면서 졸린 눈 하는 고양이 상상만 해도 귀여움 폭발 😽🎧",
-            "emoji": "/images/emoji1.png",
+    "emoji": "/images/emoji1.png",
     "date": "2025.06.06",
     "likes": 3,
     "comments": 0,
     "isLiked": false
   },
   {
-    "id": "136",
+    "id": "145",
     "postId": "f13",
     "postType": "fan",
     "user": {
@@ -2994,12 +2964,8 @@
     "comments": 0,
     "isLiked": false
   },
-
-
-
-
-            {
-    "id": "137",
+  {
+    "id": "146",
     "postId": "f14",
     "postType": "fan",
     "user": {
@@ -3016,7 +2982,7 @@
     "isLiked": true
   },
   {
-    "id": "138",
+    "id": "147",
     "postId": "f14",
     "postType": "fan",
     "user": {
@@ -3033,7 +2999,7 @@
     "isLiked": false
   },
   {
-    "id": "139",
+    "id": "148",
     "postId": "f14",
     "postType": "fan",
     "user": {
@@ -3050,7 +3016,7 @@
     "isLiked": true
   },
   {
-    "id": "140",
+    "id": "149",
     "postId": "f14",
     "postType": "fan",
     "user": {
@@ -3067,7 +3033,7 @@
     "isLiked": false
   },
   {
-    "id": "141",
+    "id": "150",
     "postId": "f14",
     "postType": "fan",
     "user": {
@@ -3078,19 +3044,14 @@
       "userId": "Vocalfan_0914"
     },
     "content": "세이 추천곡은 항상 믿고 듣는다. 오늘도 마음 뺏기고 갑니다 🎧",
-                "emoji": "/images/emoji9.png",
+    "emoji": "/images/emoji9.png",
     "date": "2025.06.05",
     "likes": 5,
     "comments": 0,
     "isLiked": false
   },
-
-
-
-
-  
-            {
-    "id": "142",
+  {
+    "id": "151",
     "postId": "f15",
     "postType": "fan",
     "user": {
@@ -3107,7 +3068,7 @@
     "isLiked": true
   },
   {
-    "id": "143",
+    "id": "152",
     "postId": "f15",
     "postType": "fan",
     "user": {
@@ -3124,7 +3085,7 @@
     "isLiked": false
   },
   {
-    "id": "144",
+    "id": "153",
     "postId": "f15",
     "postType": "fan",
     "user": {
@@ -3135,14 +3096,14 @@
       "userId": "Arinnight"
     },
     "content": "이 정도면 팬 아니고 거의 파티플래너… 쿠키에서도 아린 사랑 뿜뿜이다 😭🎀",
-                    "emoji": "/images/emoji5.png",
+    "emoji": "/images/emoji5.png",
     "date": "2025.06.04",
     "likes": 1,
     "comments": 0,
     "isLiked": true
   },
   {
-    "id": "145",
+    "id": "154",
     "postId": "f15",
     "postType": "fan",
     "user": {
@@ -3159,7 +3120,7 @@
     "isLiked": false
   },
   {
-    "id": "146",
+    "id": "155",
     "postId": "f15",
     "postType": "fan",
     "user": {
@@ -3175,13 +3136,4 @@
     "comments": 0,
     "isLiked": false
   }
-
-
-
-
-
- 
-
-
-  
 ]
