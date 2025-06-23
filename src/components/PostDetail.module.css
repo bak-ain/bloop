@@ -292,6 +292,7 @@
   /* 상위 요소에서 비율 조절이 있다면 확인 */
   zoom: 1;
   background: #fff;
+  border-radius: 0 0 0 20px;
 }
 
 .meta_row button {
