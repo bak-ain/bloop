@@ -15,31 +15,32 @@ const EMAIL_DOMAINS = [
 ];
 
 const defaultFan: FanSignupInput = {
-  userType: 'fan',
-  id: '',
-  nickname: '',
-  password: '',
-  confirmPassword: '',
-  name: '',
-  email: '',
-  phone: '',
-  gender: 'female',
-  profileImage: '/images/profile_img.png', // 기본 프로필 이미지
-  birth: { year: '', month: '', day: '' },
-  agree: { privacy: false, communityPolicy: false, marketing: false, over14: false }
+  userType: "fan",
+  id: "testfan",
+  nickname: "비스러버",
+  password: "1234",
+  confirmPassword: "1234",
+  name: "이소민",
+  email: "testfan@naver.com",
+  phone: "010-1234-5678",
+  gender: "female",
+  birth: { year: "2000", month: "01", day: "01" },
+  agree: { privacy: true, communityPolicy: true, marketing: false, over14: true },
+  profileImage: "/images/profile_img.png" // 프로필 이미지 추가
 };
 
 const defaultAgency: AgencySignupInput = {
-  userType: 'agency',
-  company: '',
-  artistName: '',
-  id: '',
-  password: '',
-  confirmPassword: '',
-  name: '',
-  email: '',
-  phone: '',
-  agree: { privacy: false, uploadResponsibility: false, marketing: false, over14: false }
+  userType: "agency",
+  company: "테스트기획사",
+  artistName: "하이비스",
+  id: "testagency",
+  password: "5678",
+  confirmPassword: "5678",
+  name: "정유찬",
+  email: "testagency@daum.net",
+  phone: "010-8765-4321",
+  agree: { privacy: true, uploadResponsibility: true, marketing: false, over14: true },
+  profileImage: "/images/profile_img.png" // 프로필 이미지 추가
 };
 
 const parseEmail = (email: string) => {
@@ -569,7 +570,7 @@ const Join = () => {
                     </label>
                   </div>
                   <div className={styles.agreeSection}>
-                    <div  className={`${styles.agreeTitle} join_p`}
+                    <div className={`${styles.agreeTitle} join_p`}
                     >
                       이용약관동의<span className={styles.red_star}>*</span>
                     </div>
@@ -645,7 +646,7 @@ const Join = () => {
                           {/* 아티스트 */} 콘텐츠 업로드 및 저작권 책임 동의 <span className={styles.red_star}>(필수)</span>
                         </label>
                         <div className={`${styles.agreeSubDesc} day_span`}
-                       >
+                        >
                           업로드하는 콘텐츠에 대한 저작권 및 운영 책임이 기획사에 있음을 확인하고 동의합니다.
                         </div>
                       </div>

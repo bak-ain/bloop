@@ -31,7 +31,7 @@ const initialUsers: User[] = [
     {
         userType: "agency",
         company: "테스트기획사",
-        artistName: "테스트아티스트",
+        artistName: "하이비스",
         id: "testagency",
         password: "5678",
         confirmPassword: "5678",
