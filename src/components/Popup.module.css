@@ -26,7 +26,7 @@
 
 /* ===== 새 게시글 작성 ===== */
 .uploadPopupWrapper {
-  width: 1300px;
+  width: 930px;
   height: 750px;
   background: #fff;
   border-radius: 16px;
@@ -42,7 +42,7 @@
 }
 
 .uploadPopupTitle {
-  font-size: 2rem;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 35px;
@@ -306,10 +306,14 @@
 /* ======================================== */
 /* ================ 반응형 ================ */
 /* ======================================== */
-
+@media (max-width: 1024px) {
+  .uploadPopupWrapper {
+    width: 90vw;
+  }
+}
 
 /* 모바일: 모달이 아니라 페이지 전체처럼 */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
   .popupWrapper {
     position: fixed;
