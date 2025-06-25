@@ -41,7 +41,7 @@ const LEVELS = [
         이제 당신은 푹 빠진 중독성 팬 loopy
       </>
     ),
-    condition: "댓글 15개 이상 + 게시글 10개 이상",
+    condition: "댓글 10개 이상 + 게시글 5개 이상",
     badge: getLevelBadgeIcon("LOOPY"),
     emojis: getAvailableEmojis(2),
   },

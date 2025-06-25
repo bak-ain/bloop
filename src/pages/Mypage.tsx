@@ -41,7 +41,7 @@ const Mypage = () => {
         progress: 62,
         remaining: {
             posts: 3,
-            comments: 10,
+            comments: 7,
         },
         badgeIconUrl: getLevelBadgeIcon("BLING"),
     };
